@@ -6,3 +6,6 @@ node_modules/
 
 # Ignore distribution files
 dist/
+
+# Ignore package-lock.json
+package-lock.json
