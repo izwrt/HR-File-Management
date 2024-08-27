@@ -5,7 +5,11 @@
 .custom-font {
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 120;
+  font-weight: 58;
   font-style: normal;
   background-color: aqua;
+}
+
+.customColorBlue {
+  background-color: #3d91a3;
 }
