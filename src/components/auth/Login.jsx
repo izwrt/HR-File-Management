@@ -3,31 +3,67 @@ import LoginButton from "../common/LoginButton";
 import { useReducer, useState } from "react";
 
 const Login = () => {
-  const [isTrue, setIsTrue] = useState(true);
+  // const [isTrue, setIsTrue] = useState(true);
 
-  const intialValue = { email: null, password: null };
-  const [state, dispatch] = useReducer(reducer, intialValue);
 
-  function useReducer(state, action) {}
+  function reducer(state, action) {
+    switch (action.type) {
+      case 'email':
+        return {
+          ...state,
+          email: action.payload,
+        };
+
+      case 'password':
+        return{
+          ...state,
+          password: action.payload
+        }
+
+      case 'isAuthoticated':
+        return{
+          ...state,
+          isTrue: action.payload
+        }
+
+      default:
+        return state; 
+    }
+  }
+  
+  const initialValue = { email: null, password: null ,isTrue:true };
+  const [state, dispatch] = useReducer(reducer, initialValue);
 
   return (
     <div className="  w-screen h-screen flex justify-center">
       <form className=" w-2/5 h-auto flex items-center flex-col p-10 px-20">
-        <h1 className="custom-font text-6xl font-bold m-[16%]">Login</h1>
+        <h1 className="custom-font text-5xl font-bold m-[20%]">Login</h1>
+
         <div className="w-full p-4 flex justify-center flex-col gap-8">
-          <LoginTextBox isTrue={isTrue} placeholder={"Email"} type={"text"} />
           <LoginTextBox
-            isTrue={isTrue}
-            placeholder={"Password"}
+            isTrue={state.isTrue} 
+            placeholder={"Email"} 
+            type={"text"}
+            name={"email"} 
+            dispatch={dispatch} 
+            value={state.email || ""}/>
+
+          <LoginTextBox 
+            isTrue={state.isTrue} 
+            placeholder={"Password"} 
             type={"password"}
-          />
+            name={"password"}
+            dispatch={dispatch}  
+            value={state.password || ""}/>
         </div>
-        <div className="mt-8 p-4 w-full flex justify-center items-center flex-col gap-12">
-          <LoginButton>Login</LoginButton>
-          <a className="text-customBlue font-semibold text-xl" href="">
+
+        <div className="mt-4 p-4 w-full flex justify-center items-center flex-col gap-8">
+          <LoginButton dispatch={dispatch}>Login</LoginButton>
+          <a className="text-customBlue font-semibold text-lg" href="">
             Forgot Password ?
           </a>
         </div>
+
       </form>
     </div>
   );
