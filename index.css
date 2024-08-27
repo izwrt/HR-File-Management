@@ -5,6 +5,15 @@
 .custom-font {
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 58;
+}
+
+.custom-font-mavan-pro{
+    font-family: "Maven Pro", sans-serif;
+    font-optical-sizing: auto;
+  font-weight:40px ;
   font-style: normal;
+}
+
+.customColorBlue{
+    background-color: #3D91A3;
 }
