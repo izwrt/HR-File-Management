@@ -5,56 +5,66 @@ import { useReducer, useState } from "react";
 const Login = () => {
   // const [isTrue, setIsTrue] = useState(true);
 
-
   function reducer(state, action) {
     switch (action.type) {
-      case 'email':
+      case "email":
         return {
           ...state,
           email: action.payload,
         };
 
-      case 'password':
-        return{
+      case "password":
+        return {
           ...state,
-          password: action.payload
-        }
+          password: action.payload,
+        };
 
-      case 'isAuthoticated':
-        return{
+      case "isAuthoticated":
+        return {
           ...state,
-          isTrue: action.payload
-        }
+          isTrue: action.payload,
+        };
 
       default:
-        return state; 
+        return state;
     }
   }
-  
-  const initialValue = { email: null, password: null ,isTrue:true };
+
+  const initialValue = { email: null, password: null, isTrue: true };
   const [state, dispatch] = useReducer(reducer, initialValue);
+  console.log(state.email);
+  console.log(state.password);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="  w-screen h-screen flex justify-center">
-      <form className=" w-2/5 h-auto flex items-center flex-col p-10 px-20">
+      <form
+        className=" w-2/5 h-auto flex items-center flex-col p-10 px-20"
+        onSubmit={handleSubmit}
+      >
         <h1 className="custom-font text-5xl font-bold m-[20%]">Login</h1>
 
         <div className="w-full p-4 flex justify-center flex-col gap-8">
           <LoginTextBox
-            isTrue={state.isTrue} 
-            placeholder={"Email"} 
+            isTrue={state.isTrue}
+            placeholder={"Email"}
             type={"text"}
-            name={"email"} 
-            dispatch={dispatch} 
-            value={state.email || ""}/>
+            name={"email"}
+            dispatch={dispatch}
+            value={state.email || ""}
+          />
 
-          <LoginTextBox 
-            isTrue={state.isTrue} 
-            placeholder={"Password"} 
+          <LoginTextBox
+            isTrue={state.isTrue}
+            placeholder={"Password"}
             type={"password"}
             name={"password"}
-            dispatch={dispatch}  
-            value={state.password || ""}/>
+            dispatch={dispatch}
+            value={state.password || ""}
+          />
         </div>
 
         <div className="mt-4 p-4 w-full flex justify-center items-center flex-col gap-8">
@@ -63,7 +73,6 @@ const Login = () => {
             Forgot Password ?
           </a>
         </div>
-
       </form>
     </div>
   );
