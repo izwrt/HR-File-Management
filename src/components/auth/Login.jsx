@@ -1,6 +1,7 @@
-import LoginTextBox from "../common/LoginTextBox";
+import { useReducer, useContext } from "react";
 import LoginButton from "../common/LoginButton";
-import { useReducer, useState } from "react";
+import LoginTextBox from "../common/LoginTextBox";
+import CustomReducerContext from "../../utils/useContext/CustomReducerContext";
 
 const Login = () => {
   // const [isTrue, setIsTrue] = useState(true);
@@ -32,19 +33,10 @@ const Login = () => {
 
   const initialValue = { email: null, password: null, isTrue: true };
   const [state, dispatch] = useReducer(reducer, initialValue);
-  console.log(state.email);
-  console.log(state.password);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-  };
 
   return (
     <div className="  w-screen h-screen flex justify-center">
-      <form
-        className=" w-2/5 h-auto flex items-center flex-col p-10 px-20"
-        onSubmit={handleSubmit}
-      >
+      <form className=" w-2/5 h-auto flex items-center flex-col p-10 px-20">
         <h1 className="custom-font text-5xl font-bold m-[20%]">Login</h1>
 
         <div className="w-full p-4 flex justify-center flex-col gap-8">
@@ -69,7 +61,10 @@ const Login = () => {
 
         <div className="mt-4 p-4 w-full flex justify-center items-center flex-col gap-8">
           <LoginButton dispatch={dispatch}>Login</LoginButton>
-          <a className="text-customBlue font-semibold text-lg" href="">
+          <a
+            className="text-customBlue font-semibold text-sm"
+            href="https://puginarug.com/"
+          >
             Forgot Password ?
           </a>
         </div>

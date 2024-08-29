@@ -8,7 +8,7 @@ const LoginButton = ({ customColorBlue, children,dispatch }) => {
   }
 
   return (
-    <button className="customColorBlue w-full text-xl p-3 font-semibold text-white rounded-2xl" onClick={handlerClick} type="button" >
+    <button className="customColorBlue w-full text-xl p-2 font-semibold text-white rounded-2xl" onClick={handlerClick} type="button" >
       {children}
     </button>
   );
