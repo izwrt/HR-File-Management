@@ -1,30 +1,31 @@
 import React from "react";
 import ReactDom from "react-dom/client";
 import Login from "./components/auth/Login";
-import SetPassword from "./components/auth/SetPassword";
-import { CustomReducerProvider } from './utils/useContext/CustomReducerContext';
+import { CustomReducerProvider } from "./components/utils/useContext/CustomReducerContext.js";
 
 import {
-    createBrowserRouter,
-    RouterProvider
-} from "react-router-dom"
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
+import Login from "./components/auth/Login";
+import SetPassword from "./components/auth/SetPassword.jsx";
 
-const router = createBrowserRouter([
-   {
+const appRouter = createBrowserRouter([
+  {
     path: "/login",
-    element: <Login/>
-   },
-   {
+    element: <Login />,
+  },
+  {
     path: "/setpassword",
-    element: <SetPassword/>
-   }
-])
+    element: <SetPassword />,
+  },
+]);
 
-const root = ReactDom.createRoot(document.getElementById('root'));
+const root = ReactDom.createRoot(document.getElementById("root"));
 root.render(
-<CustomReducerProvider>
-<RouterProvider router={router}/>
-</CustomReducerProvider>
-
-
+  <CustomReducerProvider>
+    <RouterProvider router={appRouter} />
+  </CustomReducerProvider>
 );
