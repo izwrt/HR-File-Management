@@ -1,7 +1,7 @@
 import { useReducer, useContext } from "react";
 import LoginButton from "../common/LoginButton";
 import LoginTextBox from "../common/LoginTextBox";
-import CustomReducerContext from '../../utils/useContext/CustomReducerContext'
+import CustomReducerContext from '../../utils/useContext/CustomReducerContext';
 
 const Login = () => {
   // const [isTrue, setIsTrue] = useState(true);

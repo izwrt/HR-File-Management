@@ -1,21 +1,24 @@
 {
-    "empName": "Anubhav",
-    "empNo": "101",
-    "empDepartMent": "Cloud",
-    "empRole": "Manager",
-    "jobPoistion": "intern",
-    "reportingManger": "Ajay Mehra",
-    "teamLead": "Sushant Rai",
-    "DOB": "03-08-2002",
-    "businessUnit": "invenger Technology",
-    "resume": "NehaDesaicv.pdf",
-    "empPersonalEmail": "abc@gmail.com",
-    "phoneNo": "9999999999",
-    "workEmail": "neha.desai@gmail.com",
-    "bloodGroup": "O +ve",
-    "TshitSoze": "Medium",
-    "permanentAddress": "Ballalbag, Mangalore",
-    "currentAddress": "Ballalbag, Mangalore",
-    "currentClient": "One Inc"
+  "employees": [
+    {
+      "empName": "Anubhav",
+      "empNo": "101",
+      "empDepartMent": "Cloud",
+      "empRole": "Manager",
+      "jobPoistion": "intern",
+      "reportingManger": "Ajay Mehra",
+      "teamLead": "Sushant Rai",
+      "DOB": "03-08-2002",
+      "businessUnit": "invenger Technology",
+      "resume": "NehaDesaicv.pdf",
+      "empPersonalEmail": "abc@gmail.com",
+      "phoneNo": "9999999999",
+      "workEmail": "neha.desai@gmail.com",
+      "bloodGroup": "O +ve",
+      "TshitSoze": "Medium",
+      "permanentAddress": "Ballalbag, Mangalore",
+      "currentAddress": "Ballalbag, Mangalore",
+      "currentClient": "One Inc"
+    }
+  ]
 }
-  
