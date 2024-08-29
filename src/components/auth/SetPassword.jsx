@@ -1,46 +1,21 @@
 import React from "react";
-import { useReducer } from "react";
+import { useReducer,useContext } from "react";
 import LoginButton from "../common/LoginButton";
 import LoginTextBox from "../common/LoginTextBox";
+import CustomReducerContext from '../utils/useContext/CustomReducerContext'
+
 
 const SetPassword = () => {
-  function reducer(state, action) {
-    switch (action.type) {
-      case "employeeId":
-        return {
-          ...state,
-          employeeId: action.payload,
-        };
+  
+  const { state, dispatch } = useContext(CustomReducerContext);
 
-      case "changePassword":
-        return {
-          ...state,
-          changePassword: action.payload,
-        };
-
-      case "confirmPassword":
-        return {
-          ...state,
-          confirmPassword: action.payload,
-        };
-
-      case "isAuthoticated":
-        return {
-          ...state,
-          isTrue: action.payload,
-        };
-
-      default:
-        return state;
-    }
-  }
   const initialValue = {
     employeeId: null,
     changePassword: null,
     confirmPassword: null,
     isTrue: true,
   };
-  const [state, dispatch] = useReducer(reducer, initialValue);
+ 
 
   return (
     <div className="  w-screen h-screen flex justify-center items-center flex-col">

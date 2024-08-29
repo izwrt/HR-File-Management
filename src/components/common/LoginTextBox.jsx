@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 export default function LoginTextBox({ placeholder, type, isTrue, dispatch, value,name }) {
   console.log(isTrue);
 
