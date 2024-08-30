@@ -16,6 +16,10 @@ const router = createBrowserRouter([
     path: "/setpassword",
     element: <SetPassword />,
   },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+  },
 ]);
 
 const root = ReactDom.createRoot(document.getElementById("root"));
