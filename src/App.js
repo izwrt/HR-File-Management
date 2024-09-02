@@ -7,6 +7,8 @@ import SetPassword from "./components/auth/SetPassword";
 import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MainDashboardCard from "./components/common/MainDashboardCard";
+import EmployeeCard from "./components/common/EmployeeCard";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,14 @@ const router = createBrowserRouter([
   {
     path: "/setpassword",
     element: <SetPassword />,
+  },
+  {
+    path: "/box",
+    element: <MainDashboardCard />,
+  },
+  {
+    path: "/employee",
+    element: <EmployeeCard />,
   },
 ]);
 
