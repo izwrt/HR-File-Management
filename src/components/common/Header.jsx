@@ -9,7 +9,7 @@ import Setting from "../../assets/images/setting.jsx";
 const Header = () => {
   const [empImg, setEmpImg] = useState("N");
 
-  const location  = useLocation();
+  const location = useLocation();
 
   console.log(location.pathname);
 
@@ -22,8 +22,7 @@ const Header = () => {
       } catch (error) {
         console.error("Error fetching employee data:", error);
       }
-    })
-    ();
+    })();
   }, []);
 
   const handleNavigation = () => {
@@ -31,16 +30,16 @@ const Header = () => {
   };
 
   return (
-    <nav className="w-fullscreen flex items-center pr-8  shadow-xl">
-        { location?.pathname !=  "/home" ? 
-             ( <div className=" w-60 h-16 flex items-center justify-start pl-5 bg-black">
-              <Logo />
-              </div>)
-          : 
-             ( <div className=" w-60 h-20 flex items-center justify-start pl-8 ">
-              <HomeLogo />
-              </div> )
-        }
+    <nav className="w-fullscreen flex items-center pr-8  shadow-lg bg-white">
+      {location?.pathname != "/home" ? (
+        <div className=" w-60 h-16 flex items-center justify-start pl-5 bg-black">
+          <Logo />
+        </div>
+      ) : (
+        <div className=" w-60 h-20 flex items-center justify-start pl-8 ">
+          <HomeLogo />
+        </div>
+      )}
       <ul className="flex gap-10 ml-auto pr-8 text-customBlue custom-font-mavan-pro font-normal text-base">
         <li>Home</li>
         <li>Dashboard</li>
@@ -48,12 +47,12 @@ const Header = () => {
         <Bellicon />
       </ul>
       <div className=" h-12 w-12 overflow-hidden bg-black rounded-full border-2 ">
-                <img
-                  className="h-full w-full object-center object-cover rounded-full scale-150"
-                  src={empImg}
-                  alt="Employee"
-                />
-        </div>
+        <img
+          className="h-full w-full object-center object-cover rounded-full scale-150"
+          src={empImg}
+          alt="Employee"
+        />
+      </div>
     </nav>
   );
 };
