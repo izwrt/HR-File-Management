@@ -115,8 +115,8 @@ const Header = () => {
             Dashboard
           </button> */}
           <ul className="flex-1 gap-10  text-right">
-            <li className="inline-block  ml-auto  pr-4 cursor-pointer">Home</li>
-            <li className="inline-block gap-10 ml-auto  pr-4 cursor-pointer">Dashboard</li>
+            <li className="text-customBlue font-medium text-xl inline-block  ml-auto  pr-4 cursor-pointer">Home</li>
+            <li className="text-customBlue font-medium text-xl inline-block gap-10 ml-auto  pr-4 cursor-pointer">Dashboard</li>
           </ul>
 
           <button onClick={handleNavigation}>
