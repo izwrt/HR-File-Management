@@ -31,9 +31,9 @@ const Header = () => {
   };
 
   return (
-    <nav className="w-fullscreen flex items-center pr-8 mb-6 shadow-lg">
+    <nav className="w-fullscreen flex items-center pr-8">
         { location?.pathname !=  "/home" ? 
-             ( <div className=" w-60 h-20 flex items-center justify-start pl-8 bg-black">
+             ( <div className=" w-60 h-16 flex items-center justify-start pl-5 bg-black">
               <Logo />
               </div>)
           : 
