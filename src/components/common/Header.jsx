@@ -1,20 +1,145 @@
-import React from "react";
+// import React, { useEffect, useState } from "react";
+// import axios from "axios";
+// import Logo from "../../assets/images/logo.jsx";
+// import Setting from "../../assets/images/setting.jsx";
+// import Bellicon from "../../assets/images/bellicon.jsx";
+
+// const Header = () => {
+//   const [empImg, setEmpImg] = useState("");
+
+//   useEffect(() => {
+//     const getEmployee = async () => {
+//       try {
+//         const res = await axios.get("http://localhost:8000/employees");
+//         const employee = res.data[0];
+//         setEmpImg(employee.empImg);
+//       } catch (error) {
+//         console.error("Error fetching employee data:", error);
+//       }
+//     };
+//     getEmployee();
+//   }, []);
+
+//   const handleNavigation = () => {
+//     window.location.href = "https://puginarug.com/";
+//   };
+
+//   return (
+//     <>
+//       <div className="bg-white  pr-2 shadow-md w-fullscreen flex items-center">
+//         <div className="bg-customBlue  w-60 h-16 flex items-center justify-start pl-5">
+//           <Logo />
+//         </div>
+//         <div className="flex gap-10 ml-auto  pr-4  items-center">
+//           <button
+//             className="text-customBlue font-medium text-xl"
+//             onClick={handleNavigation}
+//           >
+//             Home
+//           </button>
+//           <button
+//             className="text-customBlue font-medium text-xl"
+//             onClick={handleNavigation}
+//           >
+//             Dashboard
+//           </button>
+
+//           <button onClick={handleNavigation}>
+//             <Setting />
+//           </button>
+//           <button onClick={handleNavigation}>
+//             <Bellicon />
+//           </button>
+//           <button onClick={handleNavigation}>
+//             {empImg && (
+//               <div className=" rounded-full h-12 w-12 overflow-hidden">
+//                 <img
+//                   className=" h-full w-full object-center object-cover rounded-full"
+//                   src={empImg}
+//                   alt="Employee"
+//                 />
+//               </div>
+//             )}
+//           </button>
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
+
+// export default Header;
+
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Logo from "../../assets/images/logo.jsx";
 import Setting from "../../assets/images/setting.jsx";
-import Reminder from "../../assets/images/reminder.jsx";
+import Bellicon from "../../assets/images/bellicon.jsx";
 
 const Header = () => {
+  const [empImg, setEmpImg] = useState("");
+
+  useEffect(() => {
+    const getEmployee = async () => {
+      try {
+        const res = await axios.get("http://localhost:8000/employees");
+        const employee = res.data[0];
+        setEmpImg(employee.empImg);
+      } catch (error) {
+        console.error("Error fetching employee data:", error);
+      }
+    };
+    getEmployee();
+  }, []);
+
+  const handleNavigation = () => {
+    window.location.href = "https://puginarug.com/";
+  };
+
   return (
     <>
-      <div className="bg-white shadow-md w-screen h-16 flex items-center">
-        <div className="bg-cyan-600 p-1 w-44 h-16 flex items-center justify-center ">
+      <div className="bg-white  pr-2 shadow-md w-fullscreen flex items-center">
+        <div className="bg-customBlue  w-60 h-16 flex items-center justify-start pl-5">
           <Logo />
         </div>
-        <div className=" bg-orange-200  flex flex-row gap-4 ">
-          <div className="font-semibold font-slate-500">Home</div>
-          <div className="font-semibold font-slate-500">Dashboard</div>
-          <Setting />
-          {/* <Reminder /> */}
+        <div className="flex gap-10 ml-auto  pr-4  items-center">
+          <button
+            className="text-customBlue font-medium text-xl"
+            onClick={handleNavigation}
+          >
+            Home
+          </button>
+          <button
+            className="text-customBlue font-medium text-xl"
+            onClick={handleNavigation}
+          >
+            Dashboard
+          </button>
+
+          <button onClick={handleNavigation}>
+            <Setting />
+          </button>
+          <button onClick={handleNavigation}>
+            <Bellicon />
+          </button>
+
+          <button onClick={handleNavigation}>
+            {empImg && (
+              // <div className=" h-1/2 ">
+              //   <img
+              //     className="h-full w-full rounded-full  "
+              //     src={empImg}
+              //     alt="Employee"
+              //   />
+              // </div>
+              <div className=" h-10 w-10 md:h-14 md:w-14 overflow-hidden">
+                <img
+                  className="h-full w-full object-center object-cover rounded-full"
+                  src={empImg}
+                  alt="Employee"
+                />
+              </div>
+            )}
+          </button>
         </div>
       </div>
     </>

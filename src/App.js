@@ -3,6 +3,7 @@ import ReactDom from "react-dom/client";
 import Login from "./components/auth/Login";
 import Dashboard from "./components/auth/Dashboard";
 import SetPassword from "./components/auth/SetPassword";
+import Dashboard from "./components/auth/Dashboard";
 import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/setpassword",
     element: <SetPassword />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
 ]);
 
