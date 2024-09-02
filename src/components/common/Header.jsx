@@ -102,7 +102,7 @@ const Header = () => {
           <Logo />
         </div>
         <div className="flex gap-10 ml-auto  pr-4  items-center">
-          <button
+          {/* <button
             className="text-customBlue font-medium text-xl"
             onClick={handleNavigation}
           >
@@ -113,7 +113,11 @@ const Header = () => {
             onClick={handleNavigation}
           >
             Dashboard
-          </button>
+          </button> */}
+          <ul className="flex-1 gap-10  text-right">
+            <li className="inline-block  ml-auto  pr-4 cursor-pointer">Home</li>
+            <li className="inline-block gap-10 ml-auto  pr-4 cursor-pointer">Dashboard</li>
+          </ul>
 
           <button onClick={handleNavigation}>
             <Setting />

@@ -5,6 +5,7 @@ import Footer from "../common/Footer";
 const Dashboard = () => {
   return (
     <div>
+      <Header />
       <Footer />
     </div>
   );
