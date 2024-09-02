@@ -31,19 +31,17 @@ const Header = () => {
   };
 
   return (
-    <nav className="w-fullscreen flex items-center pr-8">
-        { location?.pathname !=  "/dashboard" ? 
-             ( <div className=" w-60 h-16 flex items-center justify-start pl-5 bg-black">
+    <nav className="w-fullscreen flex items-center pr-8 mb-6 shadow-lg">
+        { location?.pathname !=  "/home" ? 
+             ( <div className=" w-60 h-20 flex items-center justify-start pl-8 bg-black">
               <Logo />
               </div>)
           : 
-             ( <div className=" w-60 h-16 flex items-center justify-start pl-5 ">
+             ( <div className=" w-60 h-20 flex items-center justify-start pl-8 ">
               <HomeLogo />
               </div> )
         }
-
-
-      <ul className="flex gap-10 ml-auto  pr-8   text-customBlue custom-font-mavan-pro  text-base">
+      <ul className="flex gap-10 ml-auto pr-8 text-customBlue custom-font-mavan-pro font-normal text-base">
         <li>Home</li>
         <li>Dashboard</li>
         <Setting />
