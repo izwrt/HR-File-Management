@@ -22,7 +22,13 @@
 .customColorBlue {
   background-color: #3d91a3;
 }
-
 .footerBgColor {
   background-color: #ddefed;
+}
+
+.homeBgColor {
+  background-color: #f4f5ff;
+}
+.homeFontColor{
+  color:   #34495e;
 }
