@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import Bellicon from "../../assets/images/bellicon.jsx";
+import HomeLogo from "../../assets/images/HomeLogo.jsx";
 import Logo from "../../assets/images/logo.jsx";
 import Setting from "../../assets/images/setting.jsx";
-import Bellicon from "../../assets/images/bellicon.jsx";
-import { useLocation } from "react-router-dom";
-import HomeLogo from "../../assets/images/HomeLogo.jsx";
 
 const Header = () => {
   const [empImg, setEmpImg] = useState("N");
@@ -31,7 +31,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="w-fullscreen flex items-center pr-8">
+    <nav className="w-fullscreen flex items-center pr-8  shadow-xl">
         { location?.pathname !=  "/home" ? 
              ( <div className=" w-60 h-16 flex items-center justify-start pl-5 bg-black">
               <Logo />
