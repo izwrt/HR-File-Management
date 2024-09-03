@@ -3,8 +3,13 @@ import ReactDom from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/pages/Home";
 import Login from "./components/auth/Login";
+
 import SetPassword from "./components/auth/SetPassword";
 import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MainDashboardCard from "./components/common/MainDashboardCard";
+import EmployeeCard from "./components/common/EmployeeCard";
 
 const router = createBrowserRouter([
   {
@@ -16,8 +21,12 @@ const router = createBrowserRouter([
     element: <SetPassword />,
   },
   {
+    path: "/box",
+    element: <MainDashboardCard />,
+  },
+  {
     path: "/home",
-    element: <Home/>,
+    element: <Home />,
   },
 ]);
 
