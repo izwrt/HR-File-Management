@@ -3,41 +3,14 @@ import LoginButton from "../common/LoginButton";
 import LoginTextBox from "../common/LoginTextBox";
 import CustomReducerContext from "../../utils/useContext/CustomReducerContext";
 import { loginApi } from "../../../api/loginApi";
-import { useNavigate } from "react-router-dom";
-import axios from "../../../api/axios";
-import Cookies from "js-cookie";
-
-CHECK_URL = "/api/v1/user/get-me";
 
 const Login = () => {
-  // const [isTrue, setIsTrue] = useState(true);
   const { state, dispatch } = useContext(CustomReducerContext);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // Define the async function to check authentication
-    const checkAuth = async () => {
-      try {
-        const response = await axios.get(CHECK_URL, {
-          // Timeout after 5000 ms
-          withCredentials: true, // Include credentials (e.g., cookies) with the request
-        });
-        navigate("/home");
-      } catch (err) {
-        navigate("/login");
-      }
-    };
-
-    checkAuth(); // Call the async function
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { success, data } = await loginApi(state.email, state.password);
     dispatch({ type: "isAuthoticated", payload: success });
-    if (success === true) {
-      navigate("/home");
-    }
   };
 
   return (

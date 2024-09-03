@@ -1,7 +1,6 @@
 import React from "react";
 import Footer from "../common/Footer";
 import Header from "../common/Header";
-
 import ReminderCard from "../common/ReminderCard";
 
 const Home = () => {

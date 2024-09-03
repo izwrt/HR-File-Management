@@ -50,6 +50,7 @@ const initialValue = {
   employeeId: null,
   changePassword: null,
   confirmPassword: null,
+  token: false
 };
 
 const CustomReducerContext = createContext();
