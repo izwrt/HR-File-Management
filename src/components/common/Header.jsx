@@ -33,10 +33,9 @@ const Header = () => {
         <div className=" w-60 h-16 flex items-center justify-start pl-6 ">
           <HomeLogo />
         </div>
-      
       ) : (
         <div className=" w-60 h-16 flex items-center justify-start pl-6 bg-black">
-        <Logo />
+          <Logo />
         </div>
       )}
 
