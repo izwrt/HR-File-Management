@@ -10,11 +10,6 @@ const Header = () => {
   const [empImg, setEmpImg] = useState("N");
 
   const location = useLocation();
-<<<<<<< HEAD
-=======
-
-  console.log(location.pathname);
->>>>>>> b5d85f41fca38ff83849d1552217b9a96055ef9b
 
   useEffect(() => {
     (async () => {
@@ -33,31 +28,18 @@ const Header = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <nav className="w-fullscreen flex items-center pr-8">
-      {location?.pathname != "/dashboard" ? (
-=======
-    <nav className="w-fullscreen flex items-center pr-8  shadow-lg bg-white">
-      {location?.pathname != "/home" ? (
->>>>>>> b5d85f41fca38ff83849d1552217b9a96055ef9b
-        <div className=" w-60 h-16 flex items-center justify-start pl-5 bg-black">
-          <Logo />
-        </div>
-      ) : (
-<<<<<<< HEAD
+    <nav className="w-fullscreen flex items-center pr-8 bg-white drop-shadow-md">
+      {location?.pathname == "/home" ? (
         <div className=" w-60 h-16 flex items-center justify-start pl-5 ">
           <HomeLogo />
+        </div>
+      ) : (
+        <div className=" w-60 h-16 flex items-center justify-start pl-5 bg-black">
+          <Logo />
         </div>
       )}
 
       <ul className="flex gap-10 ml-auto  pr-8   text-customBlue custom-font-mavan-pro  text-base">
-=======
-        <div className=" w-60 h-20 flex items-center justify-start pl-8 ">
-          <HomeLogo />
-        </div>
-      )}
-      <ul className="flex gap-10 ml-auto pr-8 text-customBlue custom-font-mavan-pro font-normal text-base">
->>>>>>> b5d85f41fca38ff83849d1552217b9a96055ef9b
         <li>Home</li>
         <li>Dashboard</li>
         <Setting />
