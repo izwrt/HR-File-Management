@@ -1,9 +1,9 @@
-import { useReducer, useContext } from "react";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { loginApi } from "../../../api/loginApi";
+import CustomReducerContext from "../../utils/useContext/CustomReducerContext";
 import LoginButton from "../common/LoginButton";
 import LoginTextBox from "../common/LoginTextBox";
-import CustomReducerContext from "../../utils/useContext/CustomReducerContext";
-import { loginApi } from "../../../api/loginApi";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   // const [isTrue, setIsTrue] = useState(true);
@@ -20,9 +20,9 @@ const Login = () => {
   };
 
   return (
-    <div className="  w-screen h-screen flex justify-center">
+    <div className="w-screen h-screen flex justify-center">
       <form
-        className=" w-2/5 h-auto flex items-center flex-col p-10 px-20"
+        className="w-[40%] 2xl:w-[30%] h-auto flex items-center flex-col p-10 px-20"
         onSubmit={handleSubmit}
       >
         <h1 className="custom-font text-5xl font-bold m-[20%]">Login</h1>
@@ -50,7 +50,7 @@ const Login = () => {
         <div className="mt-4 p-4 w-full flex justify-center items-center flex-col gap-8">
           <LoginButton>Login</LoginButton>
           <a
-            className="text-customBlue font-semibold text-sm"
+            className="text-customBlue font-semibold text-lg"
             href="https://puginarug.com/"
           >
             Forgot Password ?
