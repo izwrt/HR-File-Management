@@ -7,13 +7,22 @@
   font-optical-sizing: auto;
 }
 
-.custom-font-mavan-pro{
-    font-family: "Maven Pro", sans-serif;
-    font-optical-sizing: auto;
-  font-weight:40px ;
+.custom-font-dm-sans {
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.custom-font-mavan-pro {
+  font-family: "Maven Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 40px;
   font-style: normal;
 }
 
-.customColorBlue{
-    background-color: #3D91A3;
+.customColorBlue {
+  background-color: #3d91a3;
+}
+
+.footerBgColor {
+  background-color: #ddefed;
 }

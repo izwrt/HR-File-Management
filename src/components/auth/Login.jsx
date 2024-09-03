@@ -2,41 +2,29 @@ import { useReducer, useContext } from "react";
 import LoginButton from "../common/LoginButton";
 import LoginTextBox from "../common/LoginTextBox";
 import CustomReducerContext from "../../utils/useContext/CustomReducerContext";
+import { loginApi } from "../../../api/loginApi";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   // const [isTrue, setIsTrue] = useState(true);
+  const { state, dispatch } = useContext(CustomReducerContext);
+  const navigate = useNavigate();
 
-  function reducer(state, action) {
-    switch (action.type) {
-      case "email":
-        return {
-          ...state,
-          email: action.payload,
-        };
-
-      case "password":
-        return {
-          ...state,
-          password: action.payload,
-        };
-
-      case "isAuthoticated":
-        return {
-          ...state,
-          isTrue: action.payload,
-        };
-
-      default:
-        return state;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { success, data } = await loginApi(state.email, state.password);
+    dispatch({ type: "isAuthoticated", payload: success });
+    if (success === true) {
+      navigate("/home");
     }
-  }
-
-  const initialValue = { email: null, password: null, isTrue: true };
-  const [state, dispatch] = useReducer(reducer, initialValue);
+  };
 
   return (
     <div className="  w-screen h-screen flex justify-center">
-      <form className=" w-2/5 h-auto flex items-center flex-col p-10 px-20">
+      <form
+        className=" w-2/5 h-auto flex items-center flex-col p-10 px-20"
+        onSubmit={handleSubmit}
+      >
         <h1 className="custom-font text-5xl font-bold m-[20%]">Login</h1>
 
         <div className="w-full p-4 flex justify-center flex-col gap-8">
@@ -60,7 +48,7 @@ const Login = () => {
         </div>
 
         <div className="mt-4 p-4 w-full flex justify-center items-center flex-col gap-8">
-          <LoginButton dispatch={dispatch}>Login</LoginButton>
+          <LoginButton>Login</LoginButton>
           <a
             className="text-customBlue font-semibold text-sm"
             href="https://puginarug.com/"

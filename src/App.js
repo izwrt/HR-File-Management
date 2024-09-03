@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDom from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./components/pages/Home";
 import Login from "./components/auth/Login";
-import Dashboard from "./components/auth/Dashboard";
 
 import SetPassword from "./components/auth/SetPassword";
 import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
@@ -24,8 +25,8 @@ const router = createBrowserRouter([
     element: <MainDashboardCard />,
   },
   {
-    path: "/employee",
-    element: <EmployeeCard />,
+    path: "/home",
+    element: <Home />,
   },
 ]);
 

@@ -11,8 +11,6 @@ const Header = () => {
 
   const location = useLocation();
 
-  console.log(location.pathname);
-
   useEffect(() => {
     (async () => {
       try {
