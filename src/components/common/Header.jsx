@@ -28,14 +28,15 @@ const Header = () => {
   };
 
   return (
-    <nav className="w-fullscreen flex items-center pr-8">
+    <nav className="w-fullscreen flex items-center pr-8 bg-white drop-shadow-md">
       {location?.pathname != "/dashboard" ? (
-        <div className=" w-60 h-16 flex items-center justify-start pl-5 bg-black">
-          <Logo />
-        </div>
-      ) : (
         <div className=" w-60 h-16 flex items-center justify-start pl-5 ">
           <HomeLogo />
+        </div>
+      
+      ) : (
+        <div className=" w-60 h-16 flex items-center justify-start pl-5 bg-black">
+        <Logo />
         </div>
       )}
 
