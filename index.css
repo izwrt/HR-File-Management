@@ -2,11 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/*-----------------------------------------------------Fonts----------------------------------------------*/
+
 .custom-font {
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
 }
-
+.footer-font {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  letter-spacing: 0.3px;
+}
 .custom-font-dm-sans {
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
@@ -22,41 +28,40 @@
   font-style: normal;
 }
 
+/*-----------------------------------------------------Colors----------------------------------------------*/
+
 .customColorBlue {
   background-color: #3d91a3;
-}
-.footerBgColor {
-  background-color: #ddefed;
-}
-
-.footer-font{
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  letter-spacing: 0.3px;
-}
-
-.homeBgColor {
-  background-color: #f4f5ff;
-}
-.homeFontColor {
-  color: #34495e;
 }
 
 .customWhiteColor {
   background-color: #ffffff;
 }
-.homeInactiveColor{
- color: #34495ed5;
+.footerBgColor {
+  background-color: #ddefed;
 }
-.homeBusinessColor{
-color: #000000de;
+
+/*----------------------------------------------Home-Page-Colors---------------------------------------------*/
+
+.homeInactiveColor {
+  color: #34495ed5;
 }
-.homeUnitSwitchColor{
-  background-color:#FE555D;
+.homeBgColor {
+  background-color: #f4f5ff;
 }
-.homeUnitSwitchFont{
-  color:#ffffff;
+.homeActiveColor {
+  color: #34495e;
 }
-.homeUnitSwitchUnSelected{
-  background-color:#fe555ebe;
+
+.homeFontColor {
+  color: #000000de;
+}
+.homeUnitNavSelected {
+  background-color: #fe555d;
+}
+.homeUnitsFont {
+  color: #ffffff;
+}
+.homeUnitNavUnSelected {
+  background-color: #fe555ebe;
 }

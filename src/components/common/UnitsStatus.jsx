@@ -1,6 +1,6 @@
 import React from "react";
 
-const StatusCards = () => {
+const UnitsStatus= () => {
   const businessUnitsStatus = [
     { name: "Invenger Technologies", active: 120, inactive: 10 },
     { name: "Invenger Solutions", active: 90, inactive: 5 },
@@ -12,12 +12,12 @@ const StatusCards = () => {
       {businessUnitsStatus.map((unit, index) => (
         <div
           key={index}
-          className=" customWhiteColor w-1/3 rounded-3xl drop-shadow text-center "
+          className=" customWhiteColor w-1/3 rounded-3xl drop-shadow text-center    "
         >
-          <h2 className="custom-font-raleway homeBusinessColor p-5  font-normal text-2xl">
+          <h2 className="custom-font-raleway homeFontColor  font-medium text-2xl pt-8 p-4 text-center">
             {unit.name}
           </h2>
-          <div className="flex justify-center gap-12 p-5  font-semibold homeFontColor text-2xl">
+          <div className="flex justify-center gap-12  pb-8  font-semibold homeActiveColor text-xl">
             <div className="text-center custom-font-mavan-pro  ">
               <p>Active</p>
               <p>{unit.active}</p>
@@ -33,4 +33,4 @@ const StatusCards = () => {
   );
 };
 
-export default StatusCards;
+export default UnitsStatus;
