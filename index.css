@@ -11,7 +11,10 @@
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
 }
-
+.custom-font-raleway {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+}
 .custom-font-mavan-pro {
   font-family: "Maven Pro", sans-serif;
   font-optical-sizing: auto;
@@ -33,3 +36,21 @@
   color: #34495e;
 }
 
+.customWhiteColor {
+  background-color: #ffffff;
+}
+.homeInactiveColor{
+ color: #34495ed5;
+}
+.homeBusinessColor{
+color: #000000de;
+}
+.homeUnitSwitchColor{
+  background-color:#FE555D;
+}
+.homeUnitSwitchFont{
+  color:#ffffff;
+}
+.homeUnitSwitchUnSelected{
+  background-color:#fe555ebe;
+}
