@@ -25,8 +25,8 @@ const Footer = () => {
         </p>
         <div className="w-full h-2 border-t border-black mt-4 opacity-50" />
 
-        <div className="flex md: flex-row w-full items-center justify-between mt-1 px-10">
-          <p className="footer-font text-center md:text-left whitespace-nowrap">
+        <div className="flex w-full items-center justify-center mt-1 px-10 gap-[60%]">
+          <p className="footer-font text-center whitespace-nowrap">
             © 2012-2024 Invenger. All rights reserved.
           </p>
             <div className=" flex items-end justify-end space-x-5">

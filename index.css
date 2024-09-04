@@ -39,3 +39,10 @@
   color: #34495e;
 }
 
+
+.nav-hover:hover, .nav-hover:hover path{
+  fill: #6db9ca;
+  color:  #6db9ca;
+  cursor: pointer;
+}
+

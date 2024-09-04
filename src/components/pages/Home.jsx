@@ -21,9 +21,6 @@ const Home = () => {
           <h1 className="custom-font-mavan-pro font-bold text-lg p-5 homeFontColor">
             Business Units
           </h1>
-
-
-
           <Footer />
     </div >
       

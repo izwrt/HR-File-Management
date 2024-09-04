@@ -5,7 +5,6 @@ import Bellicon from "../../assets/images/bellicon.jsx";
 import HomeLogo from "../../assets/images/HomeLogo.jsx";
 import Logo from "../../assets/images/logo.jsx";
 import Setting from "../../assets/images/setting.jsx";
-import { Link } from "react-router-dom";
 
 const Header = () => {
   const [empImg, setEmpImg] = useState("N");
@@ -29,30 +28,36 @@ const Header = () => {
   };
 
   return (
-    <nav className="w-fullscreen flex items-center pr-8 bg-white drop-shadow-md">
+    <nav className="w-fullscreen flex items-center justify-center bg-white drop-shadow-md gap-[60%] px-10">
       {location?.pathname === "/home" ? (
-        <div className=" w-60 h-16 flex items-center justify-start pl-6 ">
+        <div className=" w-60 h-16 flex items-center">
           <HomeLogo />
         </div>
       ) : (
-        <div className=" w-60 h-16 flex items-center justify-start pl-6 bg-black">
+        <div className=" w-60 h-16 flex items-center bg-black">
           <Logo />
         </div>
       )}
 
-      <ul className="flex gap-10 ml-auto  pr-8   text-customBlue custom-font-mavan-pro  text-base">
-        <li>Home</li>
-        <li>Dashboard</li>
-        <Setting />
-        <Bellicon />
-      </ul>
-      <div className=" h-12 w-12 overflow-hidden bg-black rounded-full border-2 ">
-        <img
-          className="h-full w-full object-center object-cover rounded-full scale-150"
-          src={empImg}
-          alt="Employee"
-        />
+      <div className="flex items-center justify-center gap-10">
+        <ul className="text-customBlue custom-font-mavan-pro font-medium text-[15px] flex items-center justify-center gap-10">
+                  <lic className="nav-hover" >Home</lic>
+                  <li className="nav-hover">Dashboard</li>
+                  <Setting />
+                  <Bellicon />
+        </ul>
+
+        <div className=" h-12 w-12 overflow-hidden bg-black rounded-full border-2 ">
+          <img
+            className="h-full w-full object-center object-cover rounded-full scale-150"
+            src={empImg}
+            alt="Employee"
+          />
+        </div>
+
       </div>
+
+  
     </nav>
   );
 };

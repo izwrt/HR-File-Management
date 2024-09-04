@@ -7,6 +7,7 @@ module.exports = {
         customBlue: '#3D91A3',
       }
     },
+  
   },
   plugins: [],
 }

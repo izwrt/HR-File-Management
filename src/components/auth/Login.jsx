@@ -1,8 +1,8 @@
-import { useReducer, useContext, useEffect } from "react";
+import { useContext } from "react";
+import { loginApi } from "../../../api/loginApi";
+import CustomReducerContext from "../../utils/useContext/CustomReducerContext";
 import LoginButton from "../common/LoginButton";
 import LoginTextBox from "../common/LoginTextBox";
-import CustomReducerContext from "../../utils/useContext/CustomReducerContext";
-import { loginApi } from "../../../api/loginApi";
 
 const Login = () => {
   const { state, dispatch } = useContext(CustomReducerContext);
@@ -16,7 +16,7 @@ const Login = () => {
   return (
     <div className="w-screen h-screen flex justify-center">
       <form
-        className="w-[40%] 2xl:w-[30%] h-auto flex items-center flex-col p-10 px-20"
+        className="flex items-center flex-col p-10 px-20 md:w-[70%] lg:w-[40%] 2xl:w-[30%] h-auto"
         onSubmit={handleSubmit}
       >
         <h1 className="custom-font text-5xl font-bold m-[20%]">Login</h1>
