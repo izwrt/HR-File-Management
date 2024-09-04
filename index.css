@@ -29,6 +29,12 @@
   background-color: #ddefed;
 }
 
+.footer-font{
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  letter-spacing: 0.3px;
+}
+
 .homeBgColor {
   background-color: #f4f5ff;
 }

@@ -6,6 +6,7 @@ import ReminderCard from "../common/ReminderContainer";
 import StatusCards from "../common/StatusCards";
 import UnitsRedCards from "../common/UnitsRedCards";
 
+
 const Home = () => {
   return (
     <div className="homeBgColor ">
