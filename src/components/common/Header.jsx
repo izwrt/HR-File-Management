@@ -28,7 +28,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="w-fullscreen flex items-center justify-center bg-white drop-shadow-md gap-[60%] px-10">
+    <nav className="w-fullscreen flex items-center justify-center bg-white gap-[60%] px-10 nav-container">
       {location?.pathname === "/home" ? (
         <div className=" w-60 h-16 flex items-center">
           <HomeLogo />
@@ -39,12 +39,13 @@ const Header = () => {
         </div>
       )}
 
-      <div className="flex items-center justify-center gap-10">
-        <ul className="text-black custom-font-mavan-pro font-medium text-[16px] flex items-center justify-center gap-10">
+      <div className="flex items-center justify-center gap-8">
+        <ul className="text-black custom-font-mavan-pro font-medium text-[16px] flex items-center justify-center gap-8">
                   <lic className="nav-hover" >Home</lic>
                   <li className="nav-hover">Dashboard</li>
+                  <li className="nav-hover">Settings</li>
                   <Bellicon />
-                  <Setting />
+                  
         </ul>
 
         <div className=" h-12 w-12 overflow-hidden bg-black rounded-full border-2 ">

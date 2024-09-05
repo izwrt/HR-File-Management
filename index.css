@@ -39,8 +39,12 @@
   color: #34495e;
 }
 
+.nav-container{
+ box-shadow:  0px 1px 10px 0px rgba(0, 0, 0, 0.04);
+}
+
 .nav-hover{
-  fill:rgb(32, 32, 32)
+  fill:rgba(32, 32, 32, 0.623);
 }
 
 .nav-hover:hover, .nav-hover:hover path{
