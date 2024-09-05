@@ -43,8 +43,8 @@ const Header = () => {
         <ul className="text-black custom-font-mavan-pro font-medium text-[16px] flex items-center justify-center gap-10">
                   <lic className="nav-hover" >Home</lic>
                   <li className="nav-hover">Dashboard</li>
-                  <Setting />
                   <Bellicon />
+                  <Setting />
         </ul>
 
         <div className=" h-12 w-12 overflow-hidden bg-black rounded-full border-2 ">
