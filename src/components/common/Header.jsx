@@ -40,7 +40,7 @@ const Header = () => {
       )}
 
       <div className="flex items-center justify-center gap-10">
-        <ul className="text-customBlue custom-font-mavan-pro font-medium text-[15px] flex items-center justify-center gap-10">
+        <ul className="text-black custom-font-mavan-pro font-medium text-[16px] flex items-center justify-center gap-10">
                   <lic className="nav-hover" >Home</lic>
                   <li className="nav-hover">Dashboard</li>
                   <Setting />
