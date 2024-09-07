@@ -48,7 +48,7 @@ const Header = () => {
                   
         </ul>
 
-        <div className=" h-12 w-12 overflow-hidden rounded-full border-2 transition ease-out delay-100 hover:scale-105 cursor-pointer">
+        <div className=" h-12 w-12 overflow-hidden rounded-full border-[1.5px]  transition ease-out delay-100 hover:scale-105 cursor-pointer">
           <img
             className="h-full w-full object-center object-cover rounded-full"
             src={empImg}
