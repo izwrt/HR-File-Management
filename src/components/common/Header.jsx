@@ -41,16 +41,16 @@ const Header = () => {
 
       <div className="flex items-center justify-center gap-8">
         <ul className="text-black custom-font-mavan-pro font-medium text-[16px] flex items-center justify-center gap-8">
-                  <lic className="nav-hover" >Home</lic>
+                  <li className="nav-hover" >Home</li>
                   <li className="nav-hover">Dashboard</li>
                   <li className="nav-hover">Settings</li>
                   <Bellicon />
                   
         </ul>
 
-        <div className=" h-12 w-12 overflow-hidden bg-black rounded-full border-2 ">
+        <div className=" h-12 w-12 overflow-hidden rounded-full border-2 transition ease-out delay-100 hover:scale-105 cursor-pointer">
           <img
-            className="h-full w-full object-center object-cover rounded-full scale-150"
+            className="h-full w-full object-center object-cover rounded-full"
             src={empImg}
             alt="Employee"
           />

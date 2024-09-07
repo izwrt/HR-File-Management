@@ -43,13 +43,19 @@
  box-shadow:  0px 1px 10px 0px rgba(0, 0, 0, 0.04);
 }
 
-.nav-hover{
+.nav-hover,
+.nav-hover path{
   fill:rgba(32, 32, 32, 0.623);
+  transition: fill 0.3s ease, color 0.3s ease;
 }
 
-.nav-hover:hover, .nav-hover:hover path{
-  fill: #3d91a3;
+.nav-hover:hover{
   color:  #3d91a3;
+  cursor: pointer;
+}
+
+.nav-hover:hover path{
+  fill: #3d91a3;
   cursor: pointer;
 }
 
