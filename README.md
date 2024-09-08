@@ -28,3 +28,36 @@ Follow these steps to set up the project locally:
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/izwrt/HR-File-Management.git
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # or
+   yarn install
+   
+3.**Start the development server:**
+   ```bash
+   npm start
+   # or
+   yarn start
+
+## Contributing
+
+To contribute to this project, please follow these steps:
+
+1. **Fork the repository.**
+
+2. **Create a new branch:**
+   ```bash
+   git checkout -b feature-branch
+
+   git commit -am 'Add new feature'
+
+   git push origin feature-branch
+
+
+
+
+
+
+
