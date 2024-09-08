@@ -35,7 +35,7 @@ Follow these steps to set up the project locally:
    # or
    yarn install
    
-3.**Start the development server:**
+3. **Start the development server:**
    ```bash
    npm start
    # or
@@ -51,13 +51,18 @@ To contribute to this project, please follow these steps:
    ```bash
    git checkout -b feature-branch
 
+3. **Commit your changes:**
+   ```bash
    git commit -am 'Add new feature'
-
+   
+4. **Push to the branch:**
+   ```bash
    git push origin feature-branch
 
+5. **Create a Pull Request.**
+   - **Go to the repository on GitHub.**
+   - **You will see an option to create a Pull Request from your new branch.**
+   - **Provide a descriptive title and summary for your changes.**
+   - **Submit the Pull Request for review.**
 
-
-
-
-
-
+## By following these steps, you'll help ensure that your contributions are integrated smoothly into the project. Thank you for your interest in contributing!
