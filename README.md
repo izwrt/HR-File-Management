@@ -65,4 +65,7 @@ To contribute to this project, please follow these steps:
    - **Provide a descriptive title and summary for your changes.**
    - **Submit the Pull Request for review.**
 
-## By following these steps, you'll help ensure that your contributions are integrated smoothly into the project. Thank you for your interest in contributing!
+By following these steps, you'll help ensure that your contributions are integrated smoothly into the project.
+
+**Thank you for your interest in contributing!** 
+
