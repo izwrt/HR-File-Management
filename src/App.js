@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, Outlet, RouterProvider ,Navigate, useNavigate} from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider ,Navigate, useNavigate, useParams, useLocation} from "react-router-dom";
 import Home from "./components/pages/Home";
 import Login from "./components/auth/Login";
 import SetPassword from "./components/auth/SetPassword";
@@ -8,6 +8,7 @@ import MainDashboardCard from "./components/common/MainDashboardCard";
 import Authontications from "./Authontication";
 import axios from "../api/axios";
 import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
+import Header from "./components/common/Header";
 
 // const AppLoyout = () => {
 
@@ -80,20 +81,39 @@ import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
 // root.render(<RouterProvider router={appRouter}/>);
 
 
+const AppLoyout = () => {
+  const location = useLocation();
+  const hidePath = ['/login','/setpassword']
+  const hideHeader = hidePath.includes(location.pathname);
+
+  return(
+    <div>
+      {!hideHeader && <Header/>}
+      <Outlet/>
+    </div>
+  )
+}
+
 
 const router = createBrowserRouter([
   {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/setpassword",
-    element: <SetPassword />,
-  },
-  {
-    path: "/home",
-    element: <Home/>,
-  },
+    path: "/",
+    element: <AppLoyout/>,
+    children: [
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/setpassword",
+        element: <SetPassword />,
+      },
+      {
+        path: "/",
+        element: <Home/>,
+      },
+    ]
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

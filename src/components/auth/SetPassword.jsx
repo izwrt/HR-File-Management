@@ -18,9 +18,9 @@ const SetPassword = () => {
  
 
   return (
-    <div className="  w-screen h-screen flex justify-center items-center flex-col">
-      <h1 className="custom-font text-5xl font-bold m-10">Set Password</h1>
-      <form className="min-w-[600px] h-auto flex items-center flex-col p-10 px-20">
+    <div className="w-screen h-screen flex justify-center">
+      <form className="flex items-center flex-col p-10 px-20 md:w-[70%] lg:w-[40%] 2xl:w-[30%] h-auto">
+        <h1 className="custom-font text-5xl font-bold m-10">Set Password</h1>
         <div className="w-full p-4 flex justify-center flex-col gap-8">
           <LoginTextBox
             isTrue={state.isTrue}

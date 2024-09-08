@@ -7,10 +7,6 @@ import ReminderCard from "../common/ReminderCard";
 const Home = () => {
   return (
     <div className="homeBgColor">
-          <Header />
-
-
-
           <h1 className="custom-font-mavan-pro font-bold text-lg p-5 homeFontColor">
              Important Reminders
           </h1>

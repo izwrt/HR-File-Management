@@ -44,10 +44,8 @@ const Header = () => {
                   <li className="nav-hover" >Home</li>
                   <li className="nav-hover">Dashboard</li>
                   <li className="nav-hover">Settings</li>
-                  <Bellicon />
-                  
+                  <Bellicon />    
         </ul>
-
         <div className=" h-12 w-12 overflow-hidden rounded-full border-[1.5px]  transition ease-out delay-100 hover:scale-105 cursor-pointer">
           <img
             className="h-full w-full object-center object-cover rounded-full"
@@ -57,8 +55,6 @@ const Header = () => {
         </div>
 
       </div>
-
-  
     </nav>
   );
 };
