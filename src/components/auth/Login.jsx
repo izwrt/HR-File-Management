@@ -14,14 +14,10 @@ const Login = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex justify-center">
-      <form
-        className="flex items-center flex-col p-10 px-20 md:w-[70%] lg:w-[40%] 2xl:w-[30%] h-auto"
-        onSubmit={handleSubmit}
-      >
-        <h1 className="custom-font text-5xl font-bold m-[20%]">Login</h1>
+    <div className="w-screen h-screen flex justify-center ">
+      <form className="flex items-center flex-col p-10 gap-10 lg:w-[35%] lg:h-[87%] 2xl:h-[57%] 2xl:w-[25%] " onSubmit={handleSubmit}>
+        <h1 className="custom-font text-5xl font-bold my-12">Login</h1>
 
-        <div className="w-full p-4 flex justify-center flex-col gap-8">
           <LoginTextBox
             isTrue={state.isTrue}
             placeholder={"Email"}
@@ -39,17 +35,11 @@ const Login = () => {
             dispatch={dispatch}
             value={state.password || ""}
           />
-        </div>
 
-        <div className="mt-4 p-4 w-full flex justify-center items-center flex-col gap-8">
           <LoginButton>Login</LoginButton>
-          <a
-            className="text-customBlue font-semibold text-lg"
-            href="https://puginarug.com/"
-          >
+          <a className="text-customBlue font-semibold text-lg" href="https://puginarug.com/">
             Forgot Password ?
           </a>
-        </div>
       </form>
     </div>
   );
