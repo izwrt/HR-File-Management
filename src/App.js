@@ -10,7 +10,7 @@ import BusinessUnit from "./components/pages/BusinessUnit";
 import Home from "./components/pages/Home";
 import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
 import DashboardHeader from "./components/common/DashboardHeader";
-import ComboHeader from "./components/common/ComboHeader";
+import CustomOutlate from "./components/common/CustomOutlate";
 
 // const AppLoyout = () => {
 
@@ -84,15 +84,13 @@ import ComboHeader from "./components/common/ComboHeader";
 
 
 const AppLoyout = () => {
+  const location = useLocation();
+  const hidePath = ['/login','/setpassword']
+  const hideHeader = hidePath.includes(location.pathname);
 
   return(
-    <div>
-      <ComboHeader/>
-      <div className="flex flex-row">
-        <DashboardHeader/>
-        <Outlet/>
-      </div>
-      
+    <div className="flex w-screen">
+      <CustomOutlate/>
     </div>
   )
 }
