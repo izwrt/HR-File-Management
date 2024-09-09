@@ -31,13 +31,22 @@ function reducer(state, action) {
         ...state,
         changePassword: action.payload,
       };
-
+      case "code":
+        return {
+          ...state,
+          code: action.payload,
+        };
+  
     case "confirmPassword":
       return {
         ...state,
         confirmPassword: action.payload,
       };
-
+    case "currentPassword":
+      return {
+        ...state,
+        currentPassword: action.payload,
+      };
     default:
       return state;
   }
@@ -50,7 +59,9 @@ const initialValue = {
   employeeId: null,
   changePassword: null,
   confirmPassword: null,
-  token: false
+  currentPassword: null,
+  code:null,
+  token: false,
 };
 
 const CustomReducerContext = createContext();

@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, Outlet, RouterProvider ,Navigate, useNavigate} from "react-router-dom";
+import {
+  createBrowserRouter,
+  Outlet,
+  RouterProvider,
+  Navigate,
+  useNavigate,
+} from "react-router-dom";
 import Home from "./components/pages/Home";
 import Login from "./components/auth/Login";
 import SetPassword from "./components/auth/SetPassword";
@@ -8,11 +14,12 @@ import MainDashboardCard from "./components/common/MainDashboardCard";
 import Authontications from "./Authontication";
 import axios from "../api/axios";
 import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
+import ChangePassword from "./components/auth/ChangePassword";
+import AddRecovery from "./components/auth/AddRecovery";
 
 // const AppLoyout = () => {
 
 //   const navigate = useNavigate();
-
 
 //   const CHECK_URL = "/api/v1/user/get-me";
 
@@ -29,9 +36,8 @@ import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
 //       }
 //     };
 
-//     checkAuth(); 
-//   }, []); 
-
+//     checkAuth();
+//   }, []);
 
 //   return(
 //         <div className="app">
@@ -42,7 +48,6 @@ import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
 // )
 
 // }
-
 
 //   const appRouter = createBrowserRouter([
 //     {
@@ -73,13 +78,9 @@ import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
 //     },
 //   ]);
 
-
-
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 
 // root.render(<RouterProvider router={appRouter}/>);
-
-
 
 const router = createBrowserRouter([
   {
@@ -92,7 +93,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Home/>,
+    element: <Home />,
+  },
+  {
+    path: "/changepassword",
+    element: <ChangePassword />,
+  },
+  {
+    path: "/addrecovery",
+    element: <AddRecovery />,
   },
 ]);
 
