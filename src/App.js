@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, Outlet, RouterProvider ,Navigate, useNavigate, useParams, useLocation} from "react-router-dom";
-import Home from "./components/pages/Home";
+import { createBrowserRouter, Outlet, RouterProvider, useLocation } from "react-router-dom";
+import HomeLogo from "./assets/images/HomeLogo";
+import Logo from "./assets/images/logo";
 import Login from "./components/auth/Login";
 import SetPassword from "./components/auth/SetPassword";
-import MainDashboardCard from "./components/common/MainDashboardCard";
-import Authontications from "./Authontication";
-import axios from "../api/axios";
-import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
 import Header from "./components/common/Header";
+import BusinessUnit from "./components/pages/BusinessUnit";
+import Home from "./components/pages/Home";
+import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
+import DashboardHeader from "./components/common/DashboardHeader";
+import ComboHeader from "./components/common/ComboHeader";
 
 // const AppLoyout = () => {
 
@@ -82,18 +84,18 @@ import Header from "./components/common/Header";
 
 
 const AppLoyout = () => {
-  const location = useLocation();
-  const hidePath = ['/login','/setpassword']
-  const hideHeader = hidePath.includes(location.pathname);
 
   return(
     <div>
-      {!hideHeader && <Header/>}
-      <Outlet/>
+      <ComboHeader/>
+      <div className="flex flex-row">
+        <DashboardHeader/>
+        <Outlet/>
+      </div>
+      
     </div>
   )
 }
-
 
 const router = createBrowserRouter([
   {
@@ -112,6 +114,10 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home/>,
       },
+      {
+        path: "/businessunit",
+        element: <BusinessUnit/>
+      }
     ]
   }
 ]);

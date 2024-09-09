@@ -40,7 +40,7 @@
 }
 
 .nav-container{
- box-shadow:  0px 1px 10px 0px rgba(0, 0, 0, 0.04);
+ box-shadow:  0px 2px 10px 0px rgba(0, 0, 0, 0.04);
 }
 
 .nav-hover,
@@ -59,3 +59,6 @@
   cursor: pointer;
 }
 
+.comobo-header {
+  background-color: #212121;
+}
