@@ -1,10 +1,9 @@
 import React from "react";
 import Footer from "../common/Footer";
-import Header from "../common/Header";
+
 
 import ReminderCard from "../common/ReminderContainer";
-import UnitsStatus from "../common/UnitsStatus";
-import UnitsNav from "../common/UnitsNav";
+
 
 const Home = () => {
   return (

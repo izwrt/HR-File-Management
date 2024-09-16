@@ -11,7 +11,8 @@ import Home from "./components/pages/Home";
 import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
 import DashboardHeader from "./components/common/DashboardHeader";
 import ComboHeader from "./components/common/ComboHeader";
-
+import ChangePassword from "./components/auth/ChangePassword";
+import AddRecovery from "./components/auth/AddRecovery";
 // const AppLoyout = () => {
 
 //   const navigate = useNavigate();
@@ -104,6 +105,14 @@ const router = createBrowserRouter([
       {
         path: "/setpassword",
         element: <SetPassword />,
+      },
+      {
+        path: "/changepassword",
+        element: <ChangePassword />,
+      },
+      {
+        path: "/addrecovery",
+        element: <AddRecovery />,
       },
       {
         path: "/",
