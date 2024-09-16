@@ -12,7 +12,7 @@ import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
 import DashboardHeader from "./components/common/DashboardHeader";
 import ComboHeader from "./components/common/ComboHeader";
 import ChangePassword from "./components/auth/ChangePassword";
-import AddRecovery from "./components/auth/AddRecovery";
+import PasswordRecovery from "./components/auth/PasswordRecovery";
 // const AppLoyout = () => {
 
 //   const navigate = useNavigate();
@@ -112,7 +112,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/addrecovery",
-        element: <AddRecovery />,
+        element: <PasswordRecovery />,
       },
       {
         path: "/",

@@ -3,7 +3,7 @@ import LoginButton from "../common/LoginButton";
 import LoginTextBox from "../common/LoginTextBox";
 import CustomReducerContext from "../../utils/useContext/CustomReducerContext";
 
-const AddRecovery = () => {
+const PasswordRecovery = () => {
   const { state, dispatch } = useContext(CustomReducerContext);
 
   const [isNextClicked, setIsNextClicked] = useState(false);
@@ -58,4 +58,4 @@ const AddRecovery = () => {
     </div>
   );
 };
-export default AddRecovery;
+export default PasswordRecovery;
