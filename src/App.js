@@ -12,7 +12,6 @@ import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
 import DashboardHeader from "./components/common/DashboardHeader";
 import CustomOutlate from "./components/common/CustomOutlate";
 
-import ComboHeader from "./components/common/ComboHeader";
 import ChangePassword from "./components/auth/ChangePassword";
 import PasswordRecovery from "./components/auth/PasswordRecovery";
 // const AppLoyout = () => {
