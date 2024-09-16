@@ -12,10 +12,12 @@ import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
 import DashboardHeader from "./components/common/DashboardHeader";
 import CustomOutlate from "./components/common/CustomOutlate";
 
+import ComboHeader from "./components/common/ComboHeader";
+import ChangePassword from "./components/auth/ChangePassword";
+import PasswordRecovery from "./components/auth/PasswordRecovery";
 // const AppLoyout = () => {
 
 //   const navigate = useNavigate();
-
 
 //   const CHECK_URL = "/api/v1/user/get-me";
 
@@ -32,9 +34,8 @@ import CustomOutlate from "./components/common/CustomOutlate";
 //       }
 //     };
 
-//     checkAuth(); 
-//   }, []); 
-
+//     checkAuth();
+//   }, []);
 
 //   return(
 //         <div className="app">
@@ -45,7 +46,6 @@ import CustomOutlate from "./components/common/CustomOutlate";
 // )
 
 // }
-
 
 //   const appRouter = createBrowserRouter([
 //     {
@@ -76,8 +76,6 @@ import CustomOutlate from "./components/common/CustomOutlate";
 //     },
 //   ]);
 
-
-
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 
 // root.render(<RouterProvider router={appRouter}/>);
@@ -107,6 +105,14 @@ const router = createBrowserRouter([
       {
         path: "/setpassword",
         element: <SetPassword />,
+      },
+      {
+        path: "/changepassword",
+        element: <ChangePassword />,
+      },
+      {
+        path: "/addrecovery",
+        element: <PasswordRecovery />,
       },
       {
         path: "/",

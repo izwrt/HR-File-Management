@@ -2,16 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/*-----------------------------------------------------Fonts----------------------------------------------*/
+
 .custom-font {
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
 }
-
+.footer-font {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  letter-spacing: 0.3px;
+}
 .custom-font-dm-sans {
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
 }
-
+.custom-font-raleway {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+}
 .custom-font-mavan-pro {
   font-family: "Maven Pro", sans-serif;
   font-optical-sizing: auto;
@@ -19,23 +28,28 @@
   font-style: normal;
 }
 
+/*-----------------------------------------------------Colors----------------------------------------------*/
+
 .customColorBlue {
   background-color: #3d91a3;
+}
+
+.customWhiteColor {
+  background-color: #ffffff;
 }
 .footerBgColor {
   background-color: #ddefed;
 }
 
-.footer-font{
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  letter-spacing: 0.3px;
-}
+/*----------------------------------------------Home-Page-Colors---------------------------------------------*/
 
+.homeInactiveColor {
+  color: #34495ed5;
+}
 .homeBgColor {
   background-color: #f4f5ff;
 }
-.homeFontColor {
+.homeActiveColor {
   color: #34495e;
 }
 
@@ -61,4 +75,17 @@
 
 .comobo-header {
   background-color: #212121;
+}
+
+.homeFontColor {
+  color: #000000de;
+}
+.homeUnitNavSelected {
+  background-color: #fe555d;
+}
+.homeUnitsFont {
+  color: #ffffff;
+}
+.homeUnitNavUnSelected {
+  background-color: #fe555ebe;
 }
