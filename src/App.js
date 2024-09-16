@@ -16,7 +16,6 @@ import ComboHeader from "./components/common/ComboHeader";
 
 //   const navigate = useNavigate();
 
-
 //   const CHECK_URL = "/api/v1/user/get-me";
 
 //   useEffect(() => {
@@ -32,9 +31,8 @@ import ComboHeader from "./components/common/ComboHeader";
 //       }
 //     };
 
-//     checkAuth(); 
-//   }, []); 
-
+//     checkAuth();
+//   }, []);
 
 //   return(
 //         <div className="app">
@@ -45,7 +43,6 @@ import ComboHeader from "./components/common/ComboHeader";
 // )
 
 // }
-
 
 //   const appRouter = createBrowserRouter([
 //     {
@@ -75,8 +72,6 @@ import ComboHeader from "./components/common/ComboHeader";
 //       ],
 //     },
 //   ]);
-
-
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 
