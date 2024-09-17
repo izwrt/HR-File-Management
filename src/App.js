@@ -20,6 +20,7 @@ import CustomOutlate from "./components/common/CustomOutlate";
 import ChangePassword from "./components/auth/ChangePassword";
 import PasswordRecovery from "./components/auth/PasswordRecovery";
 import Dashboard from "./components/pages/Dashboard";
+import AddEmployee from "./components/pages/AddEmployee";
 // const AppLoyout = () => {
 
 //   const navigate = useNavigate();
@@ -129,6 +130,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/addEmployee",
+        element: <AddEmployee />,
       },
     ],
   },
