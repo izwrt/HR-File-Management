@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 /*-----------------------------------------------------Fonts----------------------------------------------*/
+*{
+  margin: 0;
+  padding:0;
+}
 
 .custom-font {
   font-family: "DM Sans", sans-serif;

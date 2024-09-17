@@ -15,7 +15,7 @@ const Login = () => {
 
   return (
     <div className="w-screen h-screen flex justify-center ">
-      <form className="flex items-center flex-col p-10 gap-10 lg:w-[35%] lg:h-[87%] 2xl:h-[57%] 2xl:w-[25%] " onSubmit={handleSubmit}>
+      <form className="flex bg-red-600 flex-col w-[40%]" onSubmit={handleSubmit}>
         <h1 className="custom-font text-5xl font-bold my-12">Login</h1>
 
           <LoginTextBox
