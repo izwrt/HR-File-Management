@@ -1,6 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, Outlet, RouterProvider, useLocation } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Outlet,
+  RouterProvider,
+  useLocation,
+} from "react-router-dom";
 import HomeLogo from "./assets/images/HomeLogo";
 import Logo from "./assets/images/logo";
 import Login from "./components/auth/Login";
@@ -14,6 +19,8 @@ import CustomOutlate from "./components/common/CustomOutlate";
 
 import ChangePassword from "./components/auth/ChangePassword";
 import PasswordRecovery from "./components/auth/PasswordRecovery";
+import Dashboard from "./components/pages/Dashboard";
+import AddEmployee from "./components/pages/AddEmployee";
 // const AppLoyout = () => {
 
 //   const navigate = useNavigate();
@@ -79,23 +86,22 @@ import PasswordRecovery from "./components/auth/PasswordRecovery";
 
 // root.render(<RouterProvider router={appRouter}/>);
 
-
 const AppLoyout = () => {
   const location = useLocation();
-  const hidePath = ['/login','/setpassword']
+  const hidePath = ["/login", "/setpassword"];
   const hideHeader = hidePath.includes(location.pathname);
 
-  return(
+  return (
     <div className="flex w-screen">
-      <CustomOutlate/>
+      <CustomOutlate />
     </div>
-  )
-}
+  );
+};
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AppLoyout/>,
+    element: <AppLoyout />,
     children: [
       {
         path: "/login",
@@ -115,14 +121,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/",
-        element: <Home/>,
+        element: <Home />,
       },
       {
         path: "/businessunit",
-        element: <BusinessUnit/>
-      }
-    ]
-  }
+        element: <BusinessUnit />,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "/addEmployee",
+        element: <AddEmployee />,
+      },
+    ],
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
