@@ -39,7 +39,7 @@
 }
 
 .customColorBlue-lite {
-  background-color: #D6E7EB;
+  background-color: #99c6d367;
 }
 
 .customWhiteColor {
@@ -50,7 +50,7 @@
 }
 
 .textbox-color{
-  background-color: #F5F5F5;
+  background-color: #f1f0f0;
 }
 
 /*----------------------------------------------Home-Page-Colors---------------------------------------------*/
@@ -115,14 +115,12 @@
 .overflow::-webkit-scrollbar-track {
   background: transparent; 
   border: none; 
-  padding: 20px 0;
+  margin-top: 50px;
 }
 
 
 .overflow::-webkit-scrollbar-thumb {
-  background: #212121e1; 
+  background: #21212146; 
   border-radius: 10px; 
-  min-height: 20px; 
-  height: 40px; 
 }
 

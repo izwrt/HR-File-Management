@@ -12,8 +12,8 @@ export default function BusinessUnit() {
         <CountContainer smallText={`Relieved`} largeNumber={`999`}/>
       </div>
 
-      <div className="bg-yellow-200 h-full pl-8 pr-12">
-        <div className="bg-white rounded-lg px-5 py-4 flex flex-col gap-3">
+      <div className="xl:h-[85%] 2xl:h-[44rem] pl-8 pr-12 pb-5">
+        <div className="bg-white rounded-lg px-5 py-4 flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200  ">
           <div className=" flex justify-between items-center">
             <span className="text-black font-semibold text-base 2xl:text-base custom-font-mavan-pro opacity-80 ">Employees</span>
             <span className="flex gap-3 items-center">
@@ -25,8 +25,26 @@ export default function BusinessUnit() {
             </span>
           </div>
           
-          <div>
-            <EmployeeBusinessLog employeeName="Employee Name" client={"Client"} startDate={"Start Date"} endDate={"End Date"} status={"Status"} color="customColorBlue-lite"/>
+          <div className="flex flex-col gap-3 h-fit overflow-auto overflow">
+            <div className="sticky top-0 z-10 backdrop-blur-sm">
+              <EmployeeBusinessLog employeeName="Employee Name" client={"Client"} startDate={"Start Date"} endDate={"End Date"} status={"Status"}  action={"Action"} color="customColorBlue-lite" fontWeight={"font-semibold"}/>
+            </div>
+
+            <EmployeeBusinessLog employeeName={"Muthuswami Venugopal Iyer"} client={"One Inc"} startDate={"01/01/2024"} endDate={"01/01/2025"} status={"Active"} action={"Action"} color="textbox-color" fontWeight={"font-medium"}/>
+            <EmployeeBusinessLog employeeName={"Muthuswami Venugopal Iyer"} client={"One Inc"} startDate={"01/01/2024"} endDate={"01/01/2025"} status={"Active"} action={"Action"} color="textbox-color" fontWeight={"font-medium"}/>
+            <EmployeeBusinessLog employeeName={"Muthuswami Venugopal Iyer"} client={"One Inc"} startDate={"01/01/2024"} endDate={"01/01/2025"} status={"Active"} action={"Action"} color="textbox-color" fontWeight={"font-medium"}/>
+            <EmployeeBusinessLog employeeName={"Muthuswami Venugopal Iyer"} client={"One Inc"} startDate={"01/01/2024"} endDate={"01/01/2025"} status={"Active"} action={"Action"} color="textbox-color" fontWeight={"font-medium"}/>
+
+            <EmployeeBusinessLog employeeName={"Muthuswami Venugopal Iyer"} client={"One Inc"} startDate={"01/01/2024"} endDate={"01/01/2025"} status={"Active"} action={"Action"} color="textbox-color" fontWeight={"font-medium"}/>
+            <EmployeeBusinessLog employeeName={"Muthuswami Venugopal Iyer"} client={"One Inc"} startDate={"01/01/2024"} endDate={"01/01/2025"} status={"Active"} action={"Action"} color="textbox-color" fontWeight={"font-medium"}/>
+            <EmployeeBusinessLog employeeName={"Muthuswami Venugopal Iyer"} client={"One Inc"} startDate={"01/01/2024"} endDate={"01/01/2025"} status={"Active"} action={"Action"} color="textbox-color" fontWeight={"font-medium"}/>
+            <EmployeeBusinessLog employeeName={"Muthuswami Venugopal Iyer"} client={"One Inc"} startDate={"01/01/2024"} endDate={"01/01/2025"} status={"Active"} action={"Action"} color="textbox-color" fontWeight={"font-medium"}/>
+
+            <EmployeeBusinessLog employeeName={"Muthuswami Venugopal Iyer"} client={"One Inc"} startDate={"01/01/2024"} endDate={"01/01/2025"} status={"Active"} action={"Action"} color="textbox-color" fontWeight={"font-medium"}/>
+            <EmployeeBusinessLog employeeName={"Muthuswami Venugopal Iyer"} client={"One Inc"} startDate={"01/01/2024"} endDate={"01/01/2025"} status={"Active"} action={"Action"} color="textbox-color" fontWeight={"font-medium"}/>
+            <EmployeeBusinessLog employeeName={"Muthuswami Venugopal Iyer"} client={"One Inc"} startDate={"01/01/2024"} endDate={"01/01/2025"} status={"Active"} action={"Action"} color="textbox-color" fontWeight={"font-medium"}/>
+            <EmployeeBusinessLog employeeName={"Muthuswami Venugopal Iyer"} client={"One Inc"} startDate={"01/01/2024"} endDate={"01/01/2025"} status={"Active"} action={"Action"} color="textbox-color" fontWeight={"font-medium"}/>
+            
           </div>
         </div>
       </div>
