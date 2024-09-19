@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { loginApi } from "../../../api/loginApi";
 import CustomReducerContext from "../../utils/useContext/CustomReducerContext";
 import LoginTextBox from "../common/LoginTextBox";
+import LoginButton from "../common/LoginButton"
 
 const Login = () => {
   const { state, dispatch } = useContext(CustomReducerContext);
@@ -13,11 +14,11 @@ const Login = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex justify-center ">
-      <form className="flex bg-red-100 flex-col justify-center items-center w-[600px]" onSubmit={handleSubmit}>
+    <div className="w-screen h-screen flex justify-center p-20">
+      <form className="flex  flex-col items-center gap-2 w-[500px]" onSubmit={handleSubmit}>
         <h1 className="custom-font text-5xl font-bold my-12">Login</h1>
 
-          <div className="bg-red-500 flex flex-col h-[200px] w-[90%] gap-10">
+          <div className=" flex flex-col h-[120px] w-[90%] gap-8 ">
             <LoginTextBox
               isTrue={state.isTrue}
               placeholder={"Email"}
@@ -37,10 +38,14 @@ const Login = () => {
             />
             </div>
 
-          {/* <LoginButton>Login</LoginButton>
-          <a className="text-customBlue font-semibold text-lg" href="https://puginarug.com/">
-            Forgot Password ?
-          </a> */}
+            <div className=" flex flex-col items-center h-[120px] w-[90%] gap-8  mt-6">
+              <LoginButton>Login</LoginButton>
+              <a className="text-customBlue font-semibold text-lg" href="https://puginarug.com/">
+                Forgot Password ?
+              </a>
+            </div>
+
+
       </form>
     </div>
   );

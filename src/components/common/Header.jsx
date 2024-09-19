@@ -24,7 +24,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="h-16 w-full flex items-center justify-end bg-white gap-[60%] pr-5 p-2 nav-container">
+    <nav className="h-16 w-full flex items-center justify-end bg-white gap-[60%] pr-5 p-2 nav-container fixed  z-50">
       <div className="flex items-center justify-left gap-8" >
         <ul className="text-black custom-font-mavan-pro font-medium text-[16px] flex items-center justify-center gap-8">
                   <li className="nav-hover" >Home</li>

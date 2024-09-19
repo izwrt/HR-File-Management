@@ -38,11 +38,19 @@
   background-color: #3d91a3;
 }
 
+.customColorBlue-lite {
+  background-color: #D6E7EB;
+}
+
 .customWhiteColor {
   background-color: #ffffff;
 }
 .footerBgColor {
   background-color: #ddefed;
+}
+
+.textbox-color{
+  background-color: #F5F5F5;
 }
 
 /*----------------------------------------------Home-Page-Colors---------------------------------------------*/
@@ -51,7 +59,7 @@
   color: #34495ed5;
 }
 .homeBgColor {
-  background-color: #f4f5ff;
+  background-color: rgb(249,249,249);
 }
 .homeActiveColor {
   color: #34495e;
@@ -94,4 +102,27 @@
   background-color: #fe555ebe;
 }
 
-/*----------------------------------------------Media-Query---------------------------------------------*/
+/*----------------------------------------------Overflow---------------------------------------------*/
+.overflow{
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.overflow::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.overflow::-webkit-scrollbar-track {
+  background: transparent; 
+  border: none; 
+  padding: 20px 0;
+}
+
+
+.overflow::-webkit-scrollbar-thumb {
+  background: #212121e1; 
+  border-radius: 10px; 
+  min-height: 20px; 
+  height: 40px; 
+}
+

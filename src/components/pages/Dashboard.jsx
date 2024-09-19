@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import MainDashboardCard from "../common/MainDashboardCard";
+import CountContainer from "../common/CountContainer";
 import debounce from "lodash.debounce";
 import EmployeeCard from "../common/EmployeeCard";
 import axios from "axios";
@@ -43,10 +43,10 @@ function Dashboard() {
         <div className="flex flex-col w-[65%]">
           <div className="m-6 flex flex-col md:flex-row gap-8">
             <div className="w-full md:w-1/2 lg:w-[50%]">
-              <MainDashboardCard />
+              <CountContainer />
             </div>
             <div className="w-full md:w-1/2 lg:w-[50%]">
-              <MainDashboardCard />
+              <CountContainer />
             </div>
           </div>
           <div className="p-6 ml-6 mr-6 bg-white shadow-lg lg:h-[calc(100vh-21rem)] rounded-lg overflow-auto">
