@@ -45,7 +45,7 @@ export default function BusinessUnit() {
             {employeeDetails.map((emp) => {
               return(
                 <EmployeeBusinessLog
-                  key={emp.id} // Use a unique key for each employee
+                  key={emp.id}
                   employeeName={emp.name} 
                   client={emp.client}
                   startDate={emp.startDate}
