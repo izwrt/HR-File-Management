@@ -13,7 +13,7 @@ export default function apiFecthEmployees() {
           })
           .catch((error) => {
             console.error(
-              `There was a error fetching the employees and the error is ${error}`
+              `There was a error fetching the employees ${error}`
             );
           });
       },[]);
