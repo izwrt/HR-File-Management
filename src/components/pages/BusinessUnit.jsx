@@ -1,4 +1,4 @@
-import React,{ useState, useMemo, useEffect } from 'react';
+import React,{ useState, useMemo } from 'react';
 import { CiFilter, CiSearch } from "react-icons/ci";
 import apiFecthEmployees from '../../../api/apiFecthEmployees';
 import CountContainer from "../common/CountContainer";
