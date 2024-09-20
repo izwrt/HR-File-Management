@@ -46,7 +46,7 @@ export default function BusinessUnit() {
               return(
                 <EmployeeBusinessLog
                   key={emp.id} // Use a unique key for each employee
-                  employeeName={emp.name} // Assuming these properties exist
+                  employeeName={emp.name} 
                   client={emp.client}
                   startDate={emp.startDate}
                   endDate={emp.endDate}
