@@ -10,7 +10,7 @@ import Header from './Header'
     const hidePath = ['/login','/setpassword','/changepassword']
     const hideHeader = hidePath.includes(location.pathname);
   return (
-    <div className="flex flex-row w-full ">
+    <div className="flex flex-row w-full">
             <div className="flex flex-col w-full h-screen ">
           {!hideHeader && <Header/>}
             <Outlet/>
@@ -19,8 +19,8 @@ import Header from './Header'
 
     {!hideHeader && (
       (location?.pathname === "/home" || location?.pathname === "/") ? (
-        <div className=" pl-4 ">
-          <HomeLogo />
+        <div className=" pl-4 fixed z-50">
+          <HomeLogo/>
         </div>
       ) : (
         <div className="w-[220px] h-screen flex flex-col pl-0 comobo-header fixed z-50">
