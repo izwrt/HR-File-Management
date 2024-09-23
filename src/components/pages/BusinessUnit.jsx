@@ -3,9 +3,35 @@ import { CiFilter, CiSearch } from "react-icons/ci";
 import apiFecthEmployees from '../../../api/apiFecthEmployees';
 import CountContainer from "../common/CountContainer";
 import EmployeeBusinessLog from '../common/EmployeeBusinessLog';
+import debouce from "lodash.debounce";
+import NodataFound from '../common/NodataFound';
+import Filter from '../common/Filters';
 
 export default function BusinessUnit() {
-  const employeeDetails = apiFecthEmployees();
+  let employeeDetails = apiFecthEmployees();
+  const [searchEmployee,setSearchEmployee] = useState("");
+
+  const handleChange = (e) => {
+    setSearchEmployee(e.target.value)
+  }
+
+  const debouncedResults = useMemo(() => {
+    return debouce(handleChange,300)
+  },[])
+
+  const filteredEmployeeDetails = useMemo(() => {
+    if (searchEmployee !== "") {
+      return employeeDetails.filter((emp) => {
+        return emp.name.toLowerCase().includes(searchEmployee.toLowerCase()) ||
+               emp.empid.toString().includes(searchEmployee);
+      });
+    }
+    return employeeDetails;
+  }, [employeeDetails, searchEmployee]);
+  
+
+  console.log(filteredEmployeeDetails);
+
   return (
     <div className="h-full mt-16 ml-[220px]">
       <div className=" p-8 pr-12 flex gap-[12%] 2xl:h-[220px] ">
@@ -21,13 +47,13 @@ export default function BusinessUnit() {
             <span className="flex gap-1 items-center">
               <label htmlFor="search" className=" border border-slate-200  flex w-[200px] items-center rounded-lg p-[2px] px-[6px] gap-1.5 textbox-color">
                 <CiSearch className="size-5 stroke-1 h-fit opacity-40"/>
-                <input type="text" name="search" className="w-full focus:outline-none textbox-color custom-font-mavan-pro opacity-80" placeholder="Search" />
+                <input type="text" name="search" className="w-full focus:outline-none textbox-color custom-font-mavan-pro opacity-80" placeholder="Search" onChange={debouncedResults} />
               </label>
               <CiFilter className="size-7 opacity-40"/>
             </span>
           </div>
-          
-          <div className="flex flex-col gap-3 h-fit overflow-auto overflow">
+
+          <div className="flex flex-col gap-3 h-full overflow-auto overflow">
             <div className="sticky top-0 z-10 backdrop-blur-sm">
                 <EmployeeBusinessLog
                   employeeName="Employee Name"
@@ -42,7 +68,7 @@ export default function BusinessUnit() {
                 />
               </div>
 
-            {employeeDetails.map((emp) => {
+              { filteredEmployeeDetails.length !== 0 ? (filteredEmployeeDetails.map((emp) => {
               return(
                 <EmployeeBusinessLog
                   key={emp.id}
@@ -57,8 +83,9 @@ export default function BusinessUnit() {
                   id={emp.empid}
                 />
               )
-            })}
-
+            })) :
+            <NodataFound/>
+            }
           </div>
         </div>
       </div>
