@@ -28,14 +28,7 @@ export default function BusinessUnit() {
     }
     return employeeDetails;
   }, [employeeDetails, searchEmployee]);
-
-  let display = "flex";
   
-  const hideDiv = () =>{
-    if (display === "flex") {
-      console.log(display);
-    }
-  }
 
   console.log(filteredEmployeeDetails);
 
@@ -96,7 +89,7 @@ export default function BusinessUnit() {
           </div>
         </div>
       </div>
-      <div className={`bg-red-300 fixed h-full w-full bg-opacity-30 top-0 z-50 left-0 right-0 flex justify-center items-center`} onClick={hideDiv}>
+      <div className="bg-red-300 fixed h-full w-screen bg-opacity-30 top-0 z-50 left-0 right-0 flex justify-center items-center">
             <div className="bg-white h-fit w-fit">
               <Filter/>
             </div>

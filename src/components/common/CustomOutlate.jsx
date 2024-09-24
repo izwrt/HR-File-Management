@@ -19,11 +19,11 @@ import Header from './Header'
 
     {!hideHeader && (
       (location?.pathname === "/home" || location?.pathname === "/") ? (
-        <div className=" pl-4 fixed z-50">
+        <div className=" pl-4 fixed z-20">
           <HomeLogo/>
         </div>
       ) : (
-        <div className="w-[220px] h-screen flex flex-col pl-0 comobo-header fixed z-50">
+        <div className="w-[220px] h-screen flex flex-col pl-0 comobo-header fixed z-20">
           <div className="border-b-2 border-white border-opacity-15 pl-4 w-full ">
             <Logo />
           </div>
