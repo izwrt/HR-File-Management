@@ -8,16 +8,14 @@ import rightarrow from "../../assets/images/rightarrow.png";
 import leftarrow from "../../assets/images/leftarrow.png";
 
 const CustomPrevArrow = ({ onClick }) => (
-  <button
+  <div
     onClick={onClick}
+    className=""
     style={{
       position: "absolute",
-      left: "10px",
-      top: "50%",
-      transform: "translateY(-50%)",
-      background: "transparent",
+      left: "0px",
+      background: "red",
       border: "none",
-      zIndex: 10,
     }}
   >
     <img
@@ -25,7 +23,7 @@ const CustomPrevArrow = ({ onClick }) => (
       alt="Previous"
       style={{ width: "30px", height: "30px" }}
     />
-  </button>
+  </div>
 );
 
 const CustomNextArrow = ({ onClick }) => (
@@ -33,12 +31,11 @@ const CustomNextArrow = ({ onClick }) => (
     onClick={onClick}
     style={{
       position: "absolute",
-      right: "10px",
+      right: "0px",
       top: "50%",
       transform: "translateY(-50%)",
-      background: "transparent",
+      background: "red",
       border: "none",
-      zIndex: 10,
     }}
   >
     <img
@@ -88,11 +85,12 @@ const Cards = () => {
   };
 
   return (
-    <div className="w-3/4 h-auto m-auto relative">
+    <div className="w-full px-20 h-auto m-auto relative bg-yellow-400">
       {loading ? (
         <div>Loading...</div>
       ) : (
         <Carousel
+          className="bg-green-600"
           responsive={responsive}
           customLeftArrow={<CustomPrevArrow />}
           customRightArrow={<CustomNextArrow />}
@@ -100,7 +98,7 @@ const Cards = () => {
           {data.map((d) => (
             <div
               key={d.id}
-              className="bg-customBlue h-[150px] text-black rounded-xl p-2 flex mx-2 flex-col justify-between"
+              className="bg-customBlue h-[150px] text-black rounded-xl p-2 flex mx-10 flex-col justify-between"
             >
               <div className="text-white text-[18px] custom-font-mavan-pro text-center font-bold p-2">
                 {d.empReminder}
@@ -128,3 +126,127 @@ const Cards = () => {
 };
 
 export default Cards;
+
+// import React, { useState, useEffect } from "react";
+// import Carousel from "react-multi-carousel";
+// import "react-multi-carousel/lib/styles.css";
+// import axios from "axios";
+// import rightarrow from "../../assets/images/rightarrow.png";
+// import leftarrow from "../../assets/images/leftarrow.png";
+
+// const CustomPrevArrow = ({ className, style, onClick }) => (
+//   <div
+//     className={className}
+//     style={{
+//       ...style,
+//       display: "flex",
+//       alignItems: "center",
+//       justifyContent: "left",
+//       height: "100px",
+//       background: "transparent",
+//     }}
+//     onClick={onClick}
+//   >
+//     <img
+//       src={leftarrow}
+//       alt="Previous"
+//       style={{ width: "24px", height: "24px" }}
+//     />
+//   </div>
+// );
+
+// const CustomNextArrow = ({ className, style, onClick }) => (
+//   <div
+//     className={className}
+//     style={{
+//       ...style,
+//       display: "flex",
+//       alignItems: "center",
+//       justifyContent: "right",
+//       height: "100px",
+//     }}
+//     onClick={onClick}
+//   >
+//     <img
+//       src={rightarrow}
+//       alt="Next"
+//       style={{ width: "24px", height: "24px", backgroundColor: "pink" }}
+//     />
+//   </div>
+// );
+
+// const Cards = () => {
+//   const [data, setData] = useState([]);
+//   const [loading, setLoading] = useState(true);
+
+//   useEffect(() => {
+//     axios
+//       .get("http://localhost:8000/employees")
+//       .then((response) => {
+//         console.log("API response:", response.data);
+//         setData(response.data.slice(0, 10));
+//         setLoading(false);
+//       })
+//       .catch((error) => {
+//         console.error("Error fetching data:", error);
+//         setLoading(false);
+//       });
+//   }, []);
+
+//   const responsive = {
+//     superLargeDesktop: {
+//       breakpoint: { max: 4000, min: 1024 },
+//       items: 5,
+//     },
+//     desktop: {
+//       breakpoint: { max: 3000, min: 800 },
+//       items: 3,
+//     },
+//     tablet: {
+//       breakpoint: { max: 800, min: 464 },
+//       items: 2,
+//     },
+//     mobile: {
+//       breakpoint: { max: 464, min: 0 },
+//       items: 1,
+//     },
+//   };
+
+//   return (
+//     <div className="w-3/4 h-auto m-auto">
+//       <div>
+//         {loading ? (
+//           <div>Loading...</div>
+//         ) : (
+//           <Carousel responsive={responsive}>
+//             {data.map((d) => (
+//               <div
+//                 key={d.id}
+//                 className="bg-customBlue h-[150px] text-black rounded-xl p-2 flex mx-2 flex-col justify-between"
+//               >
+//                 <div className="text-white text-[18px] custom-font-mavan-pro text-center font-bold p-2">
+//                   {d.empReminder}
+//                 </div>
+//                 <div className="flex items-center pb-10 gap-2">
+//                   <div className="w-[60px] h-[50px] flex  items-center justify-center p-2">
+//                     <img
+//                       src={d.empImg}
+//                       alt={d.empName}
+//                       className="w-[85px] h-[50px] object-cover rounded-full"
+//                     />
+//                   </div>
+//                   <div className="text-xs custom-font-mavan-pro flex items-center text-white font-semibold flex-col">
+//                     <p className="text-sm">{d.empName}</p>
+//                     <p className="text-sm">Department</p>
+//                     <p>{d.empDepartMent}</p>
+//                   </div>
+//                 </div>
+//               </div>
+//             ))}
+//           </Carousel>
+//         )}
+//       </div>
+//     </div>
+//   );
+// };
+// export default Cards;
