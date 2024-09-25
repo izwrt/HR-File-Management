@@ -105,6 +105,9 @@
 .homeUnitNavUnSelected {
   background-color: #fe555ebe;
 }
+.seeAll{
+  color: #FE555D;
+}
 
 /*----------------------------------------------Overflow---------------------------------------------*/
 .overflow{

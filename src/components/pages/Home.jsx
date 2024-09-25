@@ -1,36 +1,5 @@
-// import React from "react";
-// import Footer from "../common/Footer";
-
-
-// import ReminderCard from "../common/ReminderContainer";
-
-
-// const Home = () => {
-//   return (
-//     <div className="bg-red-300 w-screen mt-16">
-//           <h1 className="custom-font-mavan-pro font-bold text-lg p-5 homeFontColor">
-//              Important Reminders
-//           </h1>
-//           <ReminderCard/>
-//           <h1 className="custom-font-mavan-pro font-bold text-lg p-5 homeFontColor">
-//             Business Unit Status
-//           </h1>
-//           <h1 className="custom-font-mavan-pro font-bold text-lg p-5 homeFontColor">
-//             Business Units
-//           </h1>
-//           <Footer />
-//     </div >
-      
-
-//   );
-// };
-
-// export default Home;
-
-
 import React from "react";
 import Footer from "../common/Footer";
-
 import Header from "../common/Header";
 import ReminderCard from "../common/ReminderContainer";
 import UnitsStatus from "../common/UnitsStatus";
@@ -39,29 +8,25 @@ import SeeAll from "../common/SeeAll";
 
 const Home = () => {
   return (
-    <div className="homeBgColor ">
-      <Header />
-      <h1 className="custom-font-mavan-pro font-bold text-lg ml-6 p-5  homeActiveColor ">
+    <div className="bg-red-300 w-screen mt-16">
+      <h1 className="custom-font-mavan-pro font-bold text-lg p-5 homeFontColor">
         Important Reminders
       </h1>
-      <SeeAll/>
+      <SeeAll />
       <ReminderCard />
-      
-      <h1 className="custom-font-mavan-pro font-bold text-lg ml-6 p-5 homeActiveColor">
+      <h1 className="custom-font-mavan-pro font-bold text-lg p-5 homeFontColor">
         Business Unit Status
       </h1>
-      <SeeAll/>
       <UnitsStatus />
-     
-
-      <h1 className="custom-font-mavan-pro font-bold text-lg ml-6  p-5 homeActiveColor">
+      <h1 className="custom-font-mavan-pro font-bold text-lg p-5 homeFontColor">
         Business Units
       </h1>
-      <SeeAll/>
+      <SeeAll />
       <UnitsNav />
-           <Footer />
+      <Footer />
     </div>
   );
 };
 
 export default Home;
+
