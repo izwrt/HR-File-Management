@@ -13,6 +13,7 @@ export default function BusinessUnit() {
   const [popUp, setPopUp] = useState(false);
   const [selectedClients, setSelectedClients] = useState([]);
   const [selectedStatuses, setSelectedStatuses] = useState([]);
+  const [isExiting, setIsExiting] = useState(false);
   const popupRef = useRef(null);
 
   const handleChange = (e) => {
@@ -37,11 +38,15 @@ export default function BusinessUnit() {
   }, [employeeDetails, searchEmployee, selectedClients, selectedStatuses]);
 
   const onOpen = () => {
-    setPopUp(true);
+      setPopUp(true);
+    setIsExiting(true)
   };
 
   const onClose = () => {
-    setPopUp(false);
+    setTimeout(() =>{
+      setPopUp(false);
+    },300)
+    setIsExiting(false)
   };
 
   const popClose = (e) => {
@@ -115,8 +120,8 @@ export default function BusinessUnit() {
       </div>
 
       {popUp && (
-        <div ref={popupRef} className={`bg-red-300 fixed h-full w-full bg-opacity-30 top-0 z-50 left-0 right-0 flex justify-center items-center`} onClick={popClose}>
-          <div className="bg-white h-fit w-fit rounded-md">
+        <div ref={popupRef} className={`bg-black fixed h-full w-full bg-opacity-30 top-0 z-50 left-0 right-0 flex justify-center items-center backdrop-blur-sm ${isExiting ? 'popup' :'popup-exit'}`} onClick={popClose}>
+          <div className="bg-white h-fit w-fit rounded-lg">
             <Filter onClose={onClose} onApply={handleApplyFilters} />
           </div>
         </div>

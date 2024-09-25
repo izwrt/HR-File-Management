@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const clients = ['One Inc', 'Slide', 'Metaz'];
-const statuses = ['Active', 'Inactive'];
+const statuses = ['Active', 'Inactive', 'Relieved'];
 
 const Filter = ({ onClose, onApply }) => {
     const [selectedClients, setSelectedClients] = useState([]);
@@ -25,40 +25,50 @@ const Filter = ({ onClose, onApply }) => {
     };
 
     return (
-        <div className="flex gap-10 p-5">
-            <span className="flex gap-5">
+        <div className="flex flex-col gap-4 p-7  ">
+            <div className="custom-font-mavan-pro text-lg flex justify-between font-semibold  text-gray-950 text-opacity-70">Search filters
+            <div className=" cursor-pointer" onClick={onClose}>
+                X
+            </div>
+            </div>
+            <div>
+            <span className="flex gap-24">
                 <div className="flex flex-col gap-2">
-                    <h4>Client</h4>
+                    <h4 className="border-b border-gray-600 custom-font-mavan-pro pb-2 mb-2 text-base">Client</h4>
                     {clients.map(client => (
-                        <label key={client}>
+                        <label key={client} className="custom-font-mavan-pro text-base opacity-80">
                             <input 
                                 type="checkbox"
                                 checked={selectedClients.includes(client)} 
-                                onChange={() => handleClientChange(client)} />
+                                onChange={() => handleClientChange(client)}
+                                className="mr-2 " />
                             {client}
                         </label>
                     ))}
                 </div>
 
                 <div className="flex flex-col gap-2">
-                    <h4>Status</h4>
+                    <h4 className="border-b border-gray-600 custom-font-mavan-pro pb-2 mb-2 text-base">Status</h4>
                     {statuses.map(status => (
-                        <label key={status}>
+                        <label key={status} className="custom-font-mavan-pro text-base opacity-80 ">
                             <input 
                                 type="checkbox"
                                 checked={selectedStatuses.includes(status)} 
-                                onChange={() => handleStatusChange(status)} />
+                                onChange={() => handleStatusChange(status)} 
+                                className="mr-2 custom-font-mavan-pro"/>
                             {status}
                         </label>
                     ))}
                 </div>
+
             </span>
-            <div className="bg-slate-200 h-fit px-2 rounded-full cursor-pointer" onClick={applyFilters}>
-                Apply Filters
+            
             </div>
-            <div className="bg-slate-200 h-fit px-2 rounded-full cursor-pointer" onClick={onClose}>
-                X
-            </div>
+            <div className="text-black customColorBlue-lite h-fit rounded-lg cursor-pointer px-4 py-2 w-fit custom-font-mavan-pro self-center mt-2 text-opacity-80 hover:opacity-70 hover:scale-95 transition-all duration-100" onClick={applyFilters}>
+    Apply
+</div>
+
+
         </div>
     );
 };
