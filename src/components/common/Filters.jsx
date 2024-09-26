@@ -37,12 +37,12 @@ const Filter = ({ onClose, onApply }) => {
                 <div className="flex flex-col gap-2">
                     <h4 className="border-b border-gray-500 custom-font-mavan-pro pb-2 pr-16 mb-2 text-base">Client</h4>
                     {clients.map(client => (
-                        <label key={client} className="custom-font-mavan-pro text-base opacity-80">
+                        <label key={client} className={`custom-font-mavan-pro text-base  ${selectedClients.includes(client) ? 'opacity-90' : 'opacity-70'}`}>
                             <input 
                                 type="checkbox"
                                 checked={selectedClients.includes(client)} 
                                 onChange={() => handleClientChange(client)}
-                                className="mr-2 " />
+                                className="mr-2"/>
                             {client}
                         </label>
                     ))}
@@ -51,7 +51,7 @@ const Filter = ({ onClose, onApply }) => {
                 <div className="flex flex-col gap-2">
                     <h4 className="border-b border-gray-500 custom-font-mavan-pro pb-2 pr-16 mb-2 text-base">Status</h4>
                     {statuses.map(status => (
-                        <label key={status} className="custom-font-mavan-pro text-base opacity-80 ">
+                        <label key={status} className={`custom-font-mavan-pro text-base  ${selectedStatuses.includes(status) ? 'opacity-90 ' : 'opacity-70'}`}>
                             <input 
                                 type="checkbox"
                                 checked={selectedStatuses.includes(status)} 
