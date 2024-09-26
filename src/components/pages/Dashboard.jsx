@@ -4,6 +4,7 @@ import debounce from "lodash.debounce";
 import EmployeeCard from "../common/EmployeeCard";
 import axios from "axios";
 import AdminCard from "../common/AdminCard";
+import { CiSearch } from "react-icons/ci";
 
 function Dashboard() {
   const [employees, setEmployees] = useState([]);
@@ -22,6 +23,7 @@ function Dashboard() {
         employee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         employee.id.toString().includes(searchTerm)
     );
+    0;
   }, [employees, searchTerm]);
 
   useEffect(() => {
@@ -38,10 +40,10 @@ function Dashboard() {
   }, [employees]);
 
   return (
-    <div className=" flex flex-col h-screen ">
-      <div className="flex flex-row flex-grow">
+    <div className="flex flex-col">
+      <div className="flex flex-row">
         <div className="flex flex-col w-[65%]">
-          <div className="m-6 flex flex-col md:flex-row gap-8">
+          <div className="m-6 flex sm:flex-col md:flex-row gap-8">
             <div className="w-full md:w-1/2 lg:w-[50%]">
               <CountContainer />
             </div>
@@ -49,20 +51,21 @@ function Dashboard() {
               <CountContainer />
             </div>
           </div>
-          <div className="p-6 ml-6 mr-6 bg-white shadow-lg lg:h-[calc(100vh-21rem)] rounded-lg overflow-auto">
+          <div className="p-6 ml-6 mr-6 bg-white shadow-lg rounded-lg h-[calc(100vh-21rem)] overflow-auto">
             <div className="flex items-center justify-between">
               <div className="font-bold mb-4 text-xl">Employees</div>
-              <div className="flex space-x-4 mb-6">
+              <label className="flex space-x-4 mb-6 relative">
+                <CiSearch className="absolute left-6 top-3.5" />
                 <input
                   type="text"
                   placeholder="search"
-                  className="p-2 rounded-lg border border-x-gray-300"
+                  className="p-2 pl-8 rounded-lg border border-x-gray-300"
                   value={searchTerm}
                   onChange={(e) => handleSearchChange(e.target.value)}
                 />
-              </div>
+              </label>
             </div>
-            <div className=" grid sm:grid-cols-1 lg:grid-cols-2 gap-x-28 gap-y-4">
+            <div className=" grid sm:grid-cols-1 grid-cols-2 gap-x-28 gap-y-4">
               {filteredE.map((employee) => (
                 <EmployeeCard
                   key={employee.id}
@@ -75,7 +78,7 @@ function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="mt-6 mr-6 mb-4 bg-white shadow-lg w-[35%] sm:w-[10%] flex-grow rounded-lg">
+        <div className="mt-6 mr-6 bg-white shadow-lg w-[35%] sm:w-[10%] rounded-lg">
           <div className="relative">
             <div className="font-bold ml-4 mt-10 text-lg">Admins</div>
             <div className="ml-4 mt-2 absolute w-11/12 border-b-2 border-black"></div>
