@@ -32,7 +32,7 @@ const Header = ({openMenu,setOpenMenu,menuOpen}) => {
           <RxHamburgerMenu size={25} className="opacity-70 md:opacity-70" onClick={menuOpen}/>
         </div>
         <div className="flex items-center  gap-8 ">
-          <ul className="text-black custom-font-mavan-pro font-medium text-[16px] flex items-center justify-center gap-8">
+          <ul className="text-black custom-font-mavan-pro font-sm text-[16px] flex items-center justify-center gap-8">
           <li className="nav-hover" >Home</li>
           <li className="nav-hover">Dashboard</li>
           <li className="nav-hover">Settings</li>

@@ -21,7 +21,7 @@ import Header from './Header'
     setMenuTransition(false)
     setTimeout(()=>{
       setOpenMenu(false)
-    },150)
+    },400)
   }
 
   const menuHandler = (e) => {
@@ -53,11 +53,11 @@ import Header from './Header'
               ref={popMenu}
               onClick = {menuHandler}
               >
-              <div className={`w-[220px] transition-all duration-300 ${menuTransition ? 'md:w-[220px]' : 'md:w-0'} h-screen flex flex-col pl-0 comobo-header overflow-hidden`}>
+              <div className={`w-[220px] transition-all duration-500 ${menuTransition ? 'md:w-[220px]' : 'md:w-0'} h-screen flex flex-col pl-0 comobo-header overflow-hidden`}>
               <div className="border-b-2 border-white border-opacity-15 pl-4 w-full">
                 <Logo />
               </div>
-              <div className={`transition-all duration-500 ${menuTransition ? 'md:opacity-100' : 'md:opacity-0'}`}>
+              <div className={`transition-all duration-1000  ${menuTransition ? 'menu-open-css' : 'md:opacity-0'}`}>
               <DashboardHeader />
               </div>
             </div>
