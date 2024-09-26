@@ -13,8 +13,10 @@ const CustomPrevArrow = ({ onClick }) => (
     className=""
     style={{
       position: "absolute",
-      left: "0px",
-      background: "red",
+      left: "10px",
+      top: "50%",
+      transform: "translateY(-50%)",
+      background: "transparent",
       border: "none",
     }}
   >
@@ -31,10 +33,10 @@ const CustomNextArrow = ({ onClick }) => (
     onClick={onClick}
     style={{
       position: "absolute",
-      right: "0px",
+      right: "10px",
       top: "50%",
       transform: "translateY(-50%)",
-      background: "red",
+      background: "transparent",
       border: "none",
     }}
   >
@@ -85,12 +87,11 @@ const Cards = () => {
   };
 
   return (
-    <div className="w-full px-20 h-auto m-auto relative bg-yellow-400">
+    <div className="w-3/4 h-auto m-auto relative">
       {loading ? (
         <div>Loading...</div>
       ) : (
         <Carousel
-          className="bg-green-600"
           responsive={responsive}
           customLeftArrow={<CustomPrevArrow />}
           customRightArrow={<CustomNextArrow />}
@@ -98,7 +99,7 @@ const Cards = () => {
           {data.map((d) => (
             <div
               key={d.id}
-              className="bg-customBlue h-[150px] text-black rounded-xl p-2 flex mx-10 flex-col justify-between"
+              className="bg-customBlue h-[150px] text-black rounded-xl p-2 flex mx-2 flex-col justify-between"
             >
               <div className="text-white text-[18px] custom-font-mavan-pro text-center font-bold p-2">
                 {d.empReminder}
