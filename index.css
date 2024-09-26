@@ -26,9 +26,8 @@
   font-optical-sizing: auto;
 }
 .custom-font-mavan-pro {
-  font-family: "Maven Pro", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 40px;
+  font-family: "Poppins", sans-serif;
+  
   font-style: normal;
 }
 
@@ -159,3 +158,8 @@
 .popup-exit {
   animation: fadeOut 0.3s forwards; /* Fade out */
 }
+
+.menu-open-css{
+  animation: fadeIn 2.5s forwards;
+}
+

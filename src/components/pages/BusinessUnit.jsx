@@ -2,11 +2,10 @@ import debounce from "lodash.debounce";
 import React, { useMemo, useRef, useState } from 'react';
 import { CiFilter, CiSearch } from "react-icons/ci";
 import apiFecthEmployees from '../../../api/apiFecthEmployees';
+import BusinessunitPopup from "../common/BusinessunitPopup";
 import CountContainer from "../common/CountContainer";
 import EmployeeBusinessLog from '../common/EmployeeBusinessLog';
-import Filter from "../common/Filters";
 import NodataFound from '../common/NodataFound';
-import BusinessunitPopup from "../common/BusinessunitPopup";
 
 export default function BusinessUnit() {
   const employeeDetails = apiFecthEmployees();
@@ -68,7 +67,7 @@ export default function BusinessUnit() {
       <div className="xl:h-[35rem] 2xl:h-[44rem] pl-8 pr-12 pb-5 md:bg-red-400 md:px-4">
         <div className="bg-white rounded-lg px-5 py-4 flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 overflow-y-auto">
           <div className="flex justify-between items-center">
-            <span className="text-black font-semibold text-base 2xl:text-base custom-font-mavan-pro opacity-80">Employees</span>
+            <span className="text-black font-medium text-base 2xl:text-base custom-font-mavan-pro opacity-80">Employees</span>
             <span className="flex gap-1 items-center">
               <label htmlFor="search" className="border border-slate-200 flex w-[200px] items-center rounded-lg p-[2px] px-[6px] gap-1.5 textbox-color">
                 <CiSearch className="size-5 stroke-1 h-fit opacity-40" />
@@ -78,7 +77,7 @@ export default function BusinessUnit() {
             </span>
           </div>
 
-          <div className="flex flex-col gap-3 h-full overflow-auto">
+          <div className="flex flex-col gap-3 h-full overflow-auto overflow scroll-smooth">
             <div className="sticky top-0 z-10 backdrop-blur-sm md:w-[1000px]">
               <EmployeeBusinessLog
                 employeeName="Employee Name"
@@ -88,7 +87,7 @@ export default function BusinessUnit() {
                 status={"Status"}
                 action={"Action"}
                 color="customColorBlue-lite"
-                fontWeight={"font-semibold"}
+                fontWeight={"font-medium"}
                 id={"Employee Id"}
               />
             </div>
@@ -104,7 +103,7 @@ export default function BusinessUnit() {
                   status={emp.status}
                   action={"Action"}
                   color="textbox-color"
-                  fontWeight={"font-medium"}
+                  fontWeight={"font-sm"}
                   id={emp.empid}
                 />
               ))
