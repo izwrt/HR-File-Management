@@ -6,6 +6,7 @@ import CountContainer from "../common/CountContainer";
 import EmployeeBusinessLog from '../common/EmployeeBusinessLog';
 import Filter from "../common/Filters";
 import NodataFound from '../common/NodataFound';
+import BusinessunitPopup from "../common/BusinessunitPopup";
 
 export default function BusinessUnit() {
   const employeeDetails = apiFecthEmployees();
@@ -49,11 +50,6 @@ export default function BusinessUnit() {
     setIsExiting(false)
   };
 
-  const popClose = (e) => {
-    if (popupRef.current === e.target) {
-      onClose();
-    }
-  };
 
   const handleApplyFilters = (clients, statuses) => {
     setSelectedClients(clients);
@@ -120,11 +116,7 @@ export default function BusinessUnit() {
       </div>
 
       {popUp && (
-        <div ref={popupRef} className={`bg-black fixed h-full w-full bg-opacity-30 top-0 z-50 left-0 right-0 flex justify-center items-center backdrop-blur-sm ${isExiting ? 'popup' :'popup-exit'}`} onClick={popClose}>
-          <div className="bg-white h-fit w-fit rounded-lg">
-            <Filter onClose={onClose} onApply={handleApplyFilters} />
-          </div>
-        </div>
+        <BusinessunitPopup onClose={onClose} popupRef={popupRef} handleApplyFilters={handleApplyFilters} isExiting={isExiting}/>
       )}
     </div>
   );
