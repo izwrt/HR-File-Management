@@ -25,7 +25,7 @@ const Header = ({openMenu,setOpenMenu,menuOpen}) => {
   };
 
   return (
-    <nav className="h-16 w-full flex items-center justify-end bg-white gap-[60%] pr-5 p-2 md:p-5 nav-container fixed z-10">
+    <nav className="h-16 w-full flex items-center justify-end bg-white gap-[60%] pr-5 p-2 md:p-5 nav-container fixed z-20">
       
       <div className="flex items-center w-full justify-between" >
         <div className="flex justify-center items-center gap-4">
