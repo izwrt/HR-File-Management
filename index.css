@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 /*-----------------------------------------------------Fonts----------------------------------------------*/
-*{
+* {
   margin: 0;
-  padding:0;
+  padding: 0;
 }
 
 .custom-font {
@@ -44,6 +44,9 @@
 .footerBgColor {
   background-color: #ddefed;
 }
+.font-color {
+  color: #3d91a3;
+}
 
 /*----------------------------------------------Home-Page-Colors---------------------------------------------*/
 
@@ -57,22 +60,22 @@
   color: #34495e;
 }
 
-.nav-container{
- box-shadow:  0px 2px 10px 0px rgba(0, 0, 0, 0.04);
+.nav-container {
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.04);
 }
 
 .nav-hover,
-.nav-hover path{
-  fill:rgba(32, 32, 32, 0.623);
+.nav-hover path {
+  fill: rgba(32, 32, 32, 0.623);
   transition: fill 0.3s ease, color 0.3s ease;
 }
 
-.nav-hover:hover{
-  color:  #3d91a3;
+.nav-hover:hover {
+  color: #3d91a3;
   cursor: pointer;
 }
 
-.nav-hover:hover path{
+.nav-hover:hover path {
   fill: #3d91a3;
   cursor: pointer;
 }
