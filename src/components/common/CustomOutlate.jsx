@@ -1,4 +1,4 @@
-import React, { useState,useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import HomeLogo from '../../assets/images/HomeLogo'
 import Logo from '../../assets/images/logo'
@@ -21,7 +21,7 @@ import Header from './Header'
     setMenuTransition(false)
     setTimeout(()=>{
       setOpenMenu(false)
-    },110)
+    },150)
   }
 
   const menuHandler = (e) => {
@@ -53,11 +53,11 @@ import Header from './Header'
               ref={popMenu}
               onClick = {menuHandler}
               >
-              <div className={`w-[220px] transition-all duration-300 ${menuTransition ? 'md:w-[300px]' : 'md:w-0'} h-screen flex flex-col pl-0 comobo-header overflow-hidden`}>
+              <div className={`w-[220px] transition-all duration-300 ${menuTransition ? 'md:w-[220px]' : 'md:w-0'} h-screen flex flex-col pl-0 comobo-header overflow-hidden`}>
               <div className="border-b-2 border-white border-opacity-15 pl-4 w-full">
                 <Logo />
               </div>
-              <div className={`transition-all duration-700 ${menuTransition ? 'md:opacity-100' : 'md:opacity-0'}`}>
+              <div className={`transition-all duration-500 ${menuTransition ? 'md:opacity-100' : 'md:opacity-0'}`}>
               <DashboardHeader />
               </div>
             </div>

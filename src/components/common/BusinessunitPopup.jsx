@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Filter from './Filters';
 
 const BusinessunitPopup = ({popupRef,handleApplyFilters,onClose,isExiting}) => {

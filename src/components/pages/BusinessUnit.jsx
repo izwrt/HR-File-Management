@@ -2,11 +2,10 @@ import debounce from "lodash.debounce";
 import React, { useMemo, useRef, useState } from 'react';
 import { CiFilter, CiSearch } from "react-icons/ci";
 import apiFecthEmployees from '../../../api/apiFecthEmployees';
+import BusinessunitPopup from "../common/BusinessunitPopup";
 import CountContainer from "../common/CountContainer";
 import EmployeeBusinessLog from '../common/EmployeeBusinessLog';
-import Filter from "../common/Filters";
 import NodataFound from '../common/NodataFound';
-import BusinessunitPopup from "../common/BusinessunitPopup";
 
 export default function BusinessUnit() {
   const employeeDetails = apiFecthEmployees();
