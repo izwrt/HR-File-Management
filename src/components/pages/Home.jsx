@@ -7,7 +7,7 @@ import ReminderCard from "../common/ReminderContainer";
 
 const Home = () => {
   return (
-    <div className="homeBgColor">
+    <div className="bg-red-300 w-screen mt-16">
           <h1 className="custom-font-mavan-pro font-bold text-lg p-5 homeFontColor">
              Important Reminders
           </h1>

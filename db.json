@@ -1,124 +1,124 @@
 {
   "employees": [
     {
-      "id": 1,
       "name": "John Doe1",
       "image": "https://via.placeholder.com/150",
-      "department": "HR"
+      "department": "HR",
+      "empid": "1234",
+      "client": "One Inc",
+      "startDate": "01/01/2024",
+      "endDate": "01/01/2025",
+      "status": "Active"
     },
     {
-      "id": 2,
-      "name": "John Doe2",
+      "name": "Jane Smith",
       "image": "https://via.placeholder.com/150",
-      "department": "SE1"
+      "department": "Finance",
+      "empid": "1235",
+      "client": "Slide",
+      "startDate": "02/01/2024",
+      "endDate": "02/01/2025",
+      "status": "Inactive"
     },
     {
-      "id": 3,
-      "name": "John Doe2",
+      "name": "Alice Johnson",
       "image": "https://via.placeholder.com/150",
-      "department": "SE1"
+      "department": "IT",
+      "empid": "1236",
+      "client": "Metaz",
+      "startDate": "03/01/2024",
+      "endDate": "03/01/2025",
+      "status": "Active"
     },
     {
-      "id": 4,
-      "name": "John Doe2",
+      "name": "Bob Brown",
       "image": "https://via.placeholder.com/150",
-      "department": "SE1"
+      "department": "HR",
+      "empid": "1237",
+      "client": "One Inc",
+      "startDate": "04/01/2024",
+      "endDate": "04/01/2025",
+      "status": "Relieved"
     },
     {
-      "id": 5,
-      "name": "John Doe2",
+      "name": "Charlie Davis",
       "image": "https://via.placeholder.com/150",
-      "department": "SE1"
+      "department": "Marketing",
+      "empid": "1238",
+      "client": "Slide",
+      "startDate": "05/01/2024",
+      "endDate": "05/01/2025",
+      "status": "Active"
     },
     {
-      "id": 6,
-      "name": "John Doe2",
+      "name": "Eve White",
       "image": "https://via.placeholder.com/150",
-      "department": "SE1"
+      "department": "IT",
+      "empid": "1239",
+      "client": "Metaz",
+      "startDate": "06/01/2024",
+      "endDate": "06/01/2025",
+      "status": "Inactive"
     },
     {
-      "id": 7,
-      "name": "John Doe2",
+      "name": "Frank Green",
       "image": "https://via.placeholder.com/150",
-      "department": "SE1"
+      "department": "Finance",
+      "empid": "1240",
+      "client": "One Inc",
+      "startDate": "07/01/2024",
+      "endDate": "07/01/2025",
+      "status": "Active"
     },
     {
-      "id": 8,
-      "name": "John Doe2",
+      "name": "Grace Black",
       "image": "https://via.placeholder.com/150",
-      "department": "SE1"
+      "department": "HR",
+      "empid": "1241",
+      "client": "Slide",
+      "startDate": "08/01/2024",
+      "endDate": "08/01/2025",
+      "status": "Relieved"
     },
     {
-      "id": 9,
-      "name": "John Doe2",
+      "name": "Hank Yellow",
       "image": "https://via.placeholder.com/150",
-      "department": "SE1"
+      "department": "Marketing",
+      "empid": "1242",
+      "client": "Metaz",
+      "startDate": "09/01/2024",
+      "endDate": "09/01/2025",
+      "status": "Inactive"
     },
     {
-      "id": 10,
-      "name": "John Doe2",
+      "name": "Ivy Purple",
       "image": "https://via.placeholder.com/150",
-      "department": "SE1"
+      "department": "IT",
+      "empid": "1243",
+      "client": "One Inc",
+      "startDate": "10/01/2024",
+      "endDate": "10/01/2025",
+      "status": "Active"
     },
     {
-      "id": 11,
-      "name": "John Doe2",
+      "name": "Jack Orange",
       "image": "https://via.placeholder.com/150",
-      "department": "SE1"
+      "department": "Finance",
+      "empid": "1244",
+      "client": "Slide",
+      "startDate": "11/01/2024",
+      "endDate": "11/01/2025",
+      "status": "Inactive"
     },
     {
-      "id": 12,
-      "name": "John Doe2",
+      "name": "Kim Blue",
       "image": "https://via.placeholder.com/150",
-      "department": "SE1"
-    },
-    {
-      "id": 13,
-      "name": "John Doe2",
-      "image": "https://via.placeholder.com/150",
-      "department": "SE1"
-    },
-    {
-      "id": 14,
-      "name": "John Doe2",
-      "image": "https://via.placeholder.com/150",
-      "department": "SE1"
-    },
-    {
-      "id": 15,
-      "name": "John Doe2",
-      "image": "https://via.placeholder.com/150",
-      "department": "SE1"
-    },
-    {
-      "id": 16,
-      "name": "John Doe2",
-      "image": "https://via.placeholder.com/150",
-      "department": "SE1"
-    },
-    {
-      "id": 17,
-      "name": "John Doe2",
-      "image": "https://via.placeholder.com/150",
-      "department": "SE1"
-    },
-    {
-      "id": 18,
-      "name": "John Doe2",
-      "image": "https://via.placeholder.com/150",
-      "department": "SE1"
-    },
-    {
-      "id": 19,
-      "name": "John Doe2",
-      "image": "https://via.placeholder.com/150",
-      "department": "SE1"
-    },
-    {
-      "id": 1178,
-      "name": "Nakul",
-      "image": "https://via.placeholder.com/150",
-      "department": "SE1"
+      "department": "HR",
+      "empid": "1245",
+      "client": "Metaz",
+      "startDate": "12/01/2024",
+      "endDate": "12/01/2025",
+      "status": "Active"
     }
   ]
 }
