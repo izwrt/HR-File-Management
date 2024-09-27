@@ -19,7 +19,7 @@ function CustomOutlate() {
     setMenuTransition(false);
     setTimeout(() => {
       setOpenMenu(false);
-    }, 300);
+    }, 500);
   };
 
   const menuHandler = (e) => {
@@ -46,11 +46,11 @@ function CustomOutlate() {
         ) : (
           <div>
             <div 
-              className={`fixed top-0 left-0 bg-opacity-20 h-screen w-screen z-50 md:bg-black md:bg-opacity-50  overflow-hidden transition-opacity duration-100 ${openMenu ? 'md:w-screen md:overflow-auto ' : 'md:w-0 md:opacity-0'} ${menuTransition ? 'md:opacity-100':'md:opacity-0'}`}
+              className={`fixed top-0 left-0 bg-opacity-20 h-screen w-screen z-20 md:bg-black md:bg-opacity-50 overflow-hidden transition-opacity ease-in-out duration-300 ${openMenu ? 'md:w-screen' : 'md:w-0'} ${menuTransition ? 'md:opacity-100':'md:opacity-0'}`}
               ref={popMenu}
               onClick={menuHandler}
-            >
-              <div className={`w-[220px] transition-all  duration-300 ${menuTransition ? 'md:left-0' : 'md:-left-56'} h-screen flex flex-col pl-0 comobo-header overflow-hidden md:absolute `}>
+            ></div>
+              <div className={`w-[220px] fixed left-0 right-0 z-20 transition-all ease-in-out duration-300 ${menuTransition ? 'md:left-0' : 'md:-left-56'} h-screen flex flex-col pl-0 comobo-header overflow-hidden md:absolute `}>
               <div className="border-b-2 border-white border-opacity-15 pl-4 w-full">
                 <Logo />
               </div>
@@ -58,7 +58,7 @@ function CustomOutlate() {
               <DashboardHeader />
               </div>
             </div>
-          </div>
+          
               
             </div>
           
