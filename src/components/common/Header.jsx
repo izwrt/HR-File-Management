@@ -4,12 +4,9 @@ import Bellicon from "../../assets/images/bellicon.jsx";
 import HomeLogo from "../../assets/images/HomeLogo.jsx";
 import { RxHamburgerMenu } from "react-icons/rx";
 
-const Header = ({openMenu,setOpenMenu}) => {
+const Header = ({openMenu,setOpenMenu,menuOpen}) => {
   const [empImg, setEmpImg] = useState("N");
  
-  const menu = () => {
-    setOpenMenu(!openMenu);
-  }
 
   useEffect(() => {
     (async () => {
@@ -32,7 +29,7 @@ const Header = ({openMenu,setOpenMenu}) => {
       
       <div className="flex items-center w-full justify-between" >
         <div className="flex justify-center items-center gap-4">
-          <RxHamburgerMenu size={25} className="opacity-70" onClick={menu}/>
+          <RxHamburgerMenu size={25} className="opacity-70" onClick={menuOpen}/>
         </div>
         <div className="flex items-center  gap-8 ">
           <ul className="text-black custom-font-mavan-pro font-medium text-[16px] flex items-center justify-center gap-8">
