@@ -64,7 +64,7 @@ export default function BusinessUnit() {
         <CountContainer smallText={`Relieved`} largeNumber={`999`} />
       </div>
 
-      <div className="xl:h-[35rem] 2xl:h-[44rem] pl-8 pr-12 pb-5 md:bg-red-400 md:px-4">
+      <div className="xl:h-[35rem] 2xl:h-[44rem] pl-8 pr-12 pb-5 md:bg-red-400 md:px-4 md:h-full">
         <div className="bg-white rounded-lg px-5 py-4 flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 overflow-y-auto">
           <div className="flex justify-between items-center">
             <span className="text-black font-medium text-base 2xl:text-base custom-font-mavan-pro opacity-80">Employees</span>
@@ -77,7 +77,7 @@ export default function BusinessUnit() {
             </span>
           </div>
 
-          <div className="flex flex-col gap-3 h-full overflow-auto overflow scroll-smooth">
+          <div className="flex flex-col gap-3 h-full overflow-auto overflow-emp scroll-smooth">
             <div className="sticky top-0 z-10 backdrop-blur-sm md:w-[1000px]">
               <EmployeeBusinessLog
                 employeeName="Employee Name"

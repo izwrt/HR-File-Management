@@ -124,8 +124,29 @@
   margin-top: 50px;
 }
 
-
 .overflow::-webkit-scrollbar-thumb {
+  background: #21212146; 
+  border-radius: 10px; 
+}
+
+/* businessunit employe conatiner */
+
+.overflow-emp{
+  scroll-behavior: smooth;
+}
+
+.overflow-emp::-webkit-scrollbar {
+  width: 8px; 
+  height: 8px;
+}
+
+.overflow-emp::-webkit-scrollbar-track {
+  background: transparent; 
+  border: none; 
+  margin-top: 50px;
+}
+
+.overflow-emp::-webkit-scrollbar-thumb {
   background: #21212146; 
   border-radius: 10px; 
 }
@@ -160,6 +181,6 @@
 }
 
 .menu-open-css{
-  animation: fadeIn 2.5s forwards;
+  animation: fadeIn 4s forwards;
 }
 
