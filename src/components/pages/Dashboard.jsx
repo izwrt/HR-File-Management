@@ -40,18 +40,20 @@ function Dashboard() {
   }, [employees]);
 
   return (
-    <div className="flex flex-col">
+    <div className=" flex flex-col pr-12 mt-16 ml-[220px]  bg-emerald-800 ">
       <div className="flex flex-row">
-        <div className="flex flex-col w-[65%]">
-          <div className="m-6 flex sm:flex-col md:flex-row gap-8">
-            <div className="w-full md:w-1/2 lg:w-[50%]">
-              <CountContainer />
-            </div>
-            <div className="w-full md:w-1/2 lg:w-[50%]">
-              <CountContainer />
-            </div>
+        <div className="flex flex-col w-[60%]">
+          <div className="p-8 pr-12 flex gap-[12%] 2xl:h-[220px] bg-red-70">
+            <CountContainer
+              smallText={`Active Employees`}
+              largeNumber={`999`}
+            />
+            <CountContainer
+              smallText={`Inactive Employees`}
+              largeNumber={`999`}
+            />
           </div>
-          <div className="p-6 ml-6 mr-6 bg-white shadow-lg rounded-lg h-[calc(100vh-21rem)] overflow-auto">
+          <div className="p-6 ml-8 mr-10 bg-white shadow-lg rounded-lg h-[calc(100vh-18rem)] overflow-auto">
             <div className="flex items-center justify-between">
               <div className="font-bold mb-4 text-xl">Employees</div>
               <label className="flex space-x-4 mb-6 relative">
@@ -78,7 +80,7 @@ function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="mt-6 mr-6 bg-white shadow-lg w-[35%] sm:w-[10%] rounded-lg">
+        <div className="mt-12 mr-6 bg-white shadow-lg w-[35%] sm:w-[10%] rounded-lg">
           <div className="relative">
             <div className="font-bold ml-4 mt-10 text-lg">Admins</div>
             <div className="ml-4 mt-2 absolute w-11/12 border-b-2 border-black"></div>

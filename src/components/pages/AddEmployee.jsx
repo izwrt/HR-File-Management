@@ -3,8 +3,8 @@ import InputField from "../common/InputField";
 
 function AddEmployee() {
   return (
-    <>
-      <div className="font-bold text-xl ml-6 mt-10">Add Employee</div>
+    <div className="ml-[220px]">
+      <div className="font-bold text-xl mt-20 ml-6">Add Employee</div>
       <div className=" h-full shadow-lg rounded-lg my-4 mx-6 overflow-auto">
         <div className="flex items-start justify-between ">
           <div className="flex flex-col items-center p-10">
@@ -146,7 +146,7 @@ function AddEmployee() {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
