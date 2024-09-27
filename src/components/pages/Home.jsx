@@ -6,7 +6,6 @@ import UnitsStatus from "../common/UnitsStatus";
 import UnitsNav from "../common/UnitsNav";
 import SeeAll from "../common/SeeAll";
 
-
 const Home = () => {
   return (
     <div className=" w-screen mt-16">
@@ -32,6 +31,7 @@ const Home = () => {
 };
 
 export default Home;
+
 
 // import React from "react";
 // import Footer from "../common/Footer";

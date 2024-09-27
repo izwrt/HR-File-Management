@@ -1,11 +1,11 @@
 import debounce from "lodash.debounce";
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from "react";
 import { CiFilter, CiSearch } from "react-icons/ci";
-import apiFecthEmployees from '../../../api/apiFecthEmployees';
+import apiFecthEmployees from "../../../api/apiFecthEmployees";
 import BusinessunitPopup from "../common/BusinessunitPopup";
 import CountContainer from "../common/CountContainer";
-import EmployeeBusinessLog from '../common/EmployeeBusinessLog';
-import NodataFound from '../common/NodataFound';
+import EmployeeBusinessLog from "../common/EmployeeBusinessLog";
+import NodataFound from "../common/NodataFound";
 
 export default function BusinessUnit() {
   const employeeDetails = apiFecthEmployees();
@@ -25,30 +25,32 @@ export default function BusinessUnit() {
   }, []);
 
   const filteredEmployeeDetails = useMemo(() => {
-    return employeeDetails.filter(emp => {
-      const searchMatch = searchEmployee === "" || 
+    return employeeDetails.filter((emp) => {
+      const searchMatch =
+        searchEmployee === "" ||
         emp.name.toLowerCase().includes(searchEmployee.toLowerCase()) ||
         emp.empid.toString().includes(searchEmployee);
-      
-      const clientMatch = selectedClients.length === 0 || selectedClients.includes(emp.client);
-      const statusMatch = selectedStatuses.length === 0 || selectedStatuses.includes(emp.status);
-      
+
+      const clientMatch =
+        selectedClients.length === 0 || selectedClients.includes(emp.client);
+      const statusMatch =
+        selectedStatuses.length === 0 || selectedStatuses.includes(emp.status);
+
       return searchMatch && clientMatch && statusMatch;
     });
   }, [employeeDetails, searchEmployee, selectedClients, selectedStatuses]);
 
   const onOpen = () => {
-      setPopUp(true);
-    setIsExiting(true)
+    setPopUp(true);
+    setIsExiting(true);
   };
 
   const onClose = () => {
-    setTimeout(() =>{
+    setTimeout(() => {
       setPopUp(false);
-    },300)
-    setIsExiting(false)
+    }, 300);
+    setIsExiting(false);
   };
-
 
   const handleApplyFilters = (clients, statuses) => {
     setSelectedClients(clients);
@@ -67,11 +69,22 @@ export default function BusinessUnit() {
       <div className="xl:h-[35rem] 2xl:h-[44rem] pl-8 pr-12 pb-5 md:bg-red-400 md:px-4">
         <div className="bg-white rounded-lg px-5 py-4 flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 overflow-y-auto">
           <div className="flex justify-between items-center">
-            <span className="text-black font-medium text-base 2xl:text-base custom-font-mavan-pro opacity-80">Employees</span>
+            <span className="text-black font-medium text-base 2xl:text-base custom-font-mavan-pro opacity-80">
+              Employees
+            </span>
             <span className="flex gap-1 items-center">
-              <label htmlFor="search" className="border border-slate-200 flex w-[200px] items-center rounded-lg p-[2px] px-[6px] gap-1.5 textbox-color">
+              <label
+                htmlFor="search"
+                className="border border-slate-200 flex w-[200px] items-center rounded-lg p-[2px] px-[6px] gap-1.5 textbox-color"
+              >
                 <CiSearch className="size-5 stroke-1 h-fit opacity-40" />
-                <input type="text" name="search" className="w-full focus:outline-none textbox-color custom-font-mavan-pro opacity-80" placeholder="Search" onChange={debouncedHandleChange} />
+                <input
+                  type="text"
+                  name="search"
+                  className="w-full focus:outline-none textbox-color custom-font-mavan-pro opacity-80"
+                  placeholder="Search"
+                  onChange={debouncedHandleChange}
+                />
               </label>
               <CiFilter onClick={onOpen} className="size-7 opacity-40" />
             </span>
@@ -115,7 +128,12 @@ export default function BusinessUnit() {
       </div>
 
       {popUp && (
-        <BusinessunitPopup onClose={onClose} popupRef={popupRef} handleApplyFilters={handleApplyFilters} isExiting={isExiting}/>
+        <BusinessunitPopup
+          onClose={onClose}
+          popupRef={popupRef}
+          handleApplyFilters={handleApplyFilters}
+          isExiting={isExiting}
+        />
       )}
     </div>
   );

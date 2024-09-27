@@ -9,7 +9,7 @@ import { CiSearch } from "react-icons/ci";
 function Dashboard() {
   const [employees, setEmployees] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
+  
   const handleSearchChange = useCallback(
     debounce((term) => {
       setSearchTerm(term);
