@@ -292,7 +292,6 @@ const SettingsPopup = ({ onClose }) => {
   }, [onClose]);
 
   const handleToggle = (id) => {
-    // Add logic to handle toggling, like updating the state or making an API call
     console.log("Toggled user with ID:", id);
   };
 
@@ -301,16 +300,14 @@ const SettingsPopup = ({ onClose }) => {
       <div ref={popupRef} className="bg-white p-6 rounded-md shadow-lg w-[700px] flex">
         <div className="flex flex-col gap-4 w-1/4 pr-4 border-r border-gray-200">
           <h2 className="text-xl font-semibold mb-2">Settings</h2>
-
-          {/* Tabs on the left side */}
           <button
-            className={`text-left py-2 px-2 rounded-md ${activeTab === "Admin Privileges" ? "bg-blue-500 text-white" : "text-gray-700 hover:bg-gray-100"}`}
+            className={`text-left py-2 px-2 rounded-md ${activeTab === "Admin Privileges" ? "selectedTab  text-white" : "text-gray-700 hover:bg-gray-100"}`}
             onClick={() => setActiveTab("Admin Privileges")}
           >
             Admin Privileges
           </button>
           <button
-            className={`text-left py-2 px-2 rounded-md ${activeTab === "Time Format" ? "bg-blue-500 text-white" : "text-gray-700 hover:bg-gray-100"}`}
+            className={`text-left py-2 px-2 rounded-md ${activeTab === "Time Format" ? "selectedTab  text-white" : "text-gray-700 hover:bg-gray-100"}`}
             onClick={() => setActiveTab("Time Format")}
           >
             Time Format

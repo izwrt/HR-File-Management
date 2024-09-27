@@ -60,7 +60,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Bellicon from "../../assets/images/bellicon.jsx";
 import { RxHamburgerMenu } from "react-icons/rx";
-import SettingsPopup from "./SettingsPopup"; // Import your new popup component
+import SettingsPopup from "./SettingsPopup";
 
 const Header = ({ openMenu, setOpenMenu, menuOpen }) => {
   const [empImg, setEmpImg] = useState("N");
