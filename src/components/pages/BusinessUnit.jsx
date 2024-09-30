@@ -6,6 +6,7 @@ import BusinessunitPopup from "../common/BusinessunitPopup";
 import CountContainer from "../common/CountContainer";
 import EmployeeBusinessLog from '../common/EmployeeBusinessLog';
 import NodataFound from '../common/NodataFound';
+import { useParams } from "react-router-dom";
 
 export default function BusinessUnit() {
   const employeeDetails = apiFecthEmployees();
@@ -15,6 +16,9 @@ export default function BusinessUnit() {
   const [selectedStatuses, setSelectedStatuses] = useState([]);
   const [isExiting, setIsExiting] = useState(false);
   const popupRef = useRef(null);
+
+const {id} = useParams();
+console.log(id)
 
   const handleChange = (e) => {
     setSearchEmployee(e.target.value);
@@ -58,13 +62,13 @@ export default function BusinessUnit() {
 
   return (
     <div className="relative mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit">
-      <div className="p-8 pr-12 flex gap-[12%] 2xl:h-[220px] md:bg-green-400 md:px-4">
+      <div className="grid grid-flow-col justify-between md:grid-rows-2 gap-10 p-9 pl-8 pr-12 ">
         <CountContainer smallText={`Active Employees`} largeNumber={`999`} />
         <CountContainer smallText={`Inactive Employees`} largeNumber={`999`} />
         <CountContainer smallText={`Relieved`} largeNumber={`999`} />
       </div>
 
-      <div className="xl:h-[35rem] 2xl:h-[44rem] pl-8 pr-12 pb-5 md:bg-red-400 md:px-4 md:h-full">
+      <div className="xl:h-[35rem] 2xl:h-[44rem] pl-8 pr-12 pb-5 md:px-4 md:h-[900px]">
         <div className="bg-white rounded-lg px-5 py-4 flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 overflow-y-auto">
           <div className="flex justify-between items-center">
             <span className="text-black font-semibold text-base 2xl:text-base custom-font-mavan-pro opacity-80">Employees</span>
