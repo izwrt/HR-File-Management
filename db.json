@@ -109,16 +109,6 @@
       "startDate": "11/01/2024",
       "endDate": "11/01/2025",
       "status": "Inactive"
-    },
-    {
-      "name": "Kim Blue",
-      "image": "https://via.placeholder.com/150",
-      "department": "HR",
-      "empid": "1245",
-      "client": "Metaz",
-      "startDate": "12/01/2024",
-      "endDate": "12/01/2025",
-      "status": "Active"
     }
   ]
 }

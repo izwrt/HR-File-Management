@@ -129,6 +129,26 @@
   border-radius: 10px;
 }
 
+.overflow-emp {
+  scroll-behavior: smooth;
+}
+
+.overflow-emp::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.overflow-emp::-webkit-scrollbar-track {
+  background: transparent;
+  border: none;
+  margin-top: 50px;
+}
+
+.overflow-emp::-webkit-scrollbar-thumb {
+  background: #21212146;
+  border-radius: 10px;
+}
+
 /* ----------------------------------------------animations------------------------------------------ */
 
 @keyframes fadeIn {

@@ -15,6 +15,8 @@ export default function BusinessUnit() {
   const [selectedStatuses, setSelectedStatuses] = useState([]);
   const [isExiting, setIsExiting] = useState(false);
   const popupRef = useRef(null);
+  const clients = ["One Inc", "Slide", "Metaz"];
+  const statuses = ["Active", "Inactive", "Relieved"];
 
   const handleChange = (e) => {
     setSearchEmployee(e.target.value);
@@ -52,15 +54,15 @@ export default function BusinessUnit() {
     setIsExiting(false);
   };
 
-  const handleApplyFilters = (clients, statuses) => {
+  const handleApplyFiltersBusinessUnit = (clients, statuses) => {
     setSelectedClients(clients);
     setSelectedStatuses(statuses);
     onClose();
   };
 
   return (
-    <div className="relative mt-16 ml-[220px] md:ml-0 h-fit bg-slate-700">
-      <div className="p-8 pr-12 flex gap-[12%] 2xl:h-[220px] bg-red-700 md:bg-green-400 md:px-4">
+    <div className="relative mt-16 ml-[220px] md:ml-0 h-fit ">
+      <div className="p-8 pr-12 flex gap-[12%] 2xl:h-[220px]  md:bg-green-400 md:px-4">
         <CountContainer smallText={`Active Employees`} largeNumber={`999`} />
         <CountContainer smallText={`Inactive Employees`} largeNumber={`999`} />
         <CountContainer smallText={`Relieved`} largeNumber={`999`} />
@@ -131,8 +133,10 @@ export default function BusinessUnit() {
         <BusinessunitPopup
           onClose={onClose}
           popupRef={popupRef}
-          handleApplyFilters={handleApplyFilters}
+          handleApplyFiltersBusinessUnit={handleApplyFiltersBusinessUnit}
           isExiting={isExiting}
+          clients={clients}
+          statuses={statuses}
         />
       )}
     </div>
