@@ -55,7 +55,6 @@
 // export default Header;
 
 
-// Header.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Bellicon from "../../assets/images/bellicon.jsx";
