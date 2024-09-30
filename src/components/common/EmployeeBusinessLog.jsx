@@ -10,7 +10,7 @@ const EmployeeBusinessLog = ({employeeName,client,startDate,endDate,status,actio
               <span className="opacity-60 w-[100px]">{startDate} </span>
               <span className="opacity-60 w-[100px]">{endDate} </span>
               <span className="opacity-60 w-[100px]">{status} </span>
-              <Link to={`/emp/${id}`}>
+              <Link to={`/viewemployee/${id}`}>
                 <span className="opacity-60 w-[100px] flex justify-center">{action} </span>
               </Link>
             </div>
