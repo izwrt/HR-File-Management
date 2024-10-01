@@ -26,8 +26,8 @@
   font-optical-sizing: auto;
 }
 .custom-font-mavan-pro {
-  font-family: "Poppins", sans-serif;
-
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
   font-style: normal;
 }
 
@@ -151,26 +151,6 @@
   border-radius: 10px;
 }
 
-.overflow-emp {
-  scroll-behavior: smooth;
-}
-
-.overflow-emp::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-.overflow-emp::-webkit-scrollbar-track {
-  background: transparent;
-  border: none;
-  margin-top: 50px;
-}
-
-.overflow-emp::-webkit-scrollbar-thumb {
-  background: #21212146;
-  border-radius: 10px;
-}
-
 /* ----------------------------------------------animations------------------------------------------ */
 
 @keyframes fadeIn {
@@ -199,6 +179,23 @@
   animation: fadeOut 0.3s forwards; /* Fade out */
 }
 
-.menu-open-css {
-  animation: fadeIn 2.5s forwards;
+/*----------------------------------------------Settings popup---------------------------------------------*/
+
+.selectedTab {
+  background-color: #c1dce2;
+}
+
+/* Default link styles */
+.fruit-link {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  padding: 5px;
+}
+
+/* Style for active link */
+.active {
+  color: black;
+  text-decoration: none; /* Remove default underline */
+  box-shadow: 0 3px 0 black;
 }

@@ -24,6 +24,15 @@ export default function BusinessUnit() {
     return debounce(handleChange, 300);
   }, []);
 
+  const activeEmployeesCount = employeeDetails.filter(
+    (emp) => emp.status === "Active"
+  ).length;
+  const inactiveEmployeesCount = employeeDetails.filter(
+    (emp) => emp.status === "Inactive"
+  ).length;
+  const relievedEmployeesCount = employeeDetails.filter(
+    (emp) => emp.status === "Relieved"
+  ).length;
   const filteredEmployeeDetails = useMemo(() => {
     return employeeDetails.filter((emp) => {
       const searchMatch =
@@ -52,24 +61,33 @@ export default function BusinessUnit() {
     setIsExiting(false);
   };
 
-  const handleApplyFiltersBusinessUnit = (clients, statuses) => {
+  const handleApplyFilters = (clients, statuses) => {
     setSelectedClients(clients);
     setSelectedStatuses(statuses);
     onClose();
   };
 
   return (
-    <div className="relative mt-16 ml-[220px] md:ml-0 h-fit">
-      <div className="p-8 pr-12 flex gap-[12%] 2xl:h-[220px] md:bg-green-400 md:px-4">
-        <CountContainer smallText={`Active Employees`} largeNumber={`999`} />
-        <CountContainer smallText={`Inactive Employees`} largeNumber={`999`} />
-        <CountContainer smallText={`Relieved`} largeNumber={`999`} />
+    <div className="relative mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit">
+      <div className="grid grid-flow-col justify-between md:grid-rows-2 gap-10 p-9 pl-8 pr-12 bg-red-500 ">
+        <CountContainer
+          smallText={`Active Employees`}
+          largeNumber={activeEmployeesCount}
+        />
+        <CountContainer
+          smallText={`Inactive Employees`}
+          largeNumber={inactiveEmployeesCount}
+        />
+        <CountContainer
+          smallText={`Relieved`}
+          largeNumber={relievedEmployeesCount}
+        />
       </div>
 
       <div className="xl:h-[35rem] 2xl:h-[44rem] pl-8 pr-12 pb-5 md:px-4 md:h-[900px]">
         <div className="bg-white rounded-lg px-5 py-4 flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 overflow-y-auto">
           <div className="flex justify-between items-center">
-            <span className="text-black font-medium text-base 2xl:text-base custom-font-mavan-pro opacity-80">
+            <span className="text-black font-semibold text-base 2xl:text-base custom-font-mavan-pro opacity-80">
               Employees
             </span>
             <span className="flex gap-1 items-center">
@@ -131,10 +149,8 @@ export default function BusinessUnit() {
         <BusinessunitPopup
           onClose={onClose}
           popupRef={popupRef}
-          handleApplyFiltersBusinessUnit={handleApplyFiltersBusinessUnit}
+          handleApplyFilters={handleApplyFilters}
           isExiting={isExiting}
-          clients={clients}
-          statuses={statuses}
         />
       )}
     </div>

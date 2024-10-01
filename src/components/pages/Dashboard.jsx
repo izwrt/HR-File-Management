@@ -70,10 +70,10 @@ function Dashboard() {
   }, [employeeDetails, searchEmployee, selectedUnits, selectedDepartment]);
 
   return (
-    <div className="flex flex-col pr-12 mt-16 ml-[220px] md:ml-0 ">
+    <div className="flex flex-col pr-12 mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 ">
       <div className="flex flex-row md:flex-col gap-8 2xl:gap-20 max-h-[800px] 2xl:max-h-[970px] mb-10">
         <div className="flex flex-col w-[70%] 2xl:w-[80%]">
-          <div className="p-8 flex gap-[17%] 2xl:gap-[22%] 2xl:h-[220px] bg-red-70">
+          <div className="p-9 pl-8 flex 2xl:h-[220px] justify-between">
             <CountContainer
               smallText={`Active Employees`}
               largeNumber={`999`}
