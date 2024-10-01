@@ -1,12 +1,11 @@
 import debounce from "lodash.debounce";
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from "react";
 import { CiFilter, CiSearch } from "react-icons/ci";
-import apiFecthEmployees from '../../../api/apiFecthEmployees';
+import apiFecthEmployees from "../../../api/apiFecthEmployees";
 import BusinessunitPopup from "../common/BusinessunitPopup";
 import CountContainer from "../common/CountContainer";
-import EmployeeBusinessLog from '../common/EmployeeBusinessLog';
-import NodataFound from '../common/NodataFound';
-import { useParams } from "react-router-dom";
+import EmployeeBusinessLog from "../common/EmployeeBusinessLog";
+import NodataFound from "../common/NodataFound";
 
 export default function BusinessUnit() {
   const employeeDetails = apiFecthEmployees();
@@ -17,9 +16,6 @@ export default function BusinessUnit() {
   const [isExiting, setIsExiting] = useState(false);
   const popupRef = useRef(null);
 
-const {id} = useParams();
-console.log(id)
-
   const handleChange = (e) => {
     setSearchEmployee(e.target.value);
   };
@@ -28,31 +24,42 @@ console.log(id)
     return debounce(handleChange, 300);
   }, []);
 
+  const activeEmployeesCount = employeeDetails.filter(
+    (emp) => emp.status === "Active"
+  ).length;
+  const inactiveEmployeesCount = employeeDetails.filter(
+    (emp) => emp.status === "Inactive"
+  ).length;
+  const relievedEmployeesCount = employeeDetails.filter(
+    (emp) => emp.status === "Relieved"
+  ).length;
   const filteredEmployeeDetails = useMemo(() => {
-    return employeeDetails.filter(emp => {
-      const searchMatch = searchEmployee === "" || 
+    return employeeDetails.filter((emp) => {
+      const searchMatch =
+        searchEmployee === "" ||
         emp.name.toLowerCase().includes(searchEmployee.toLowerCase()) ||
         emp.empid.toString().includes(searchEmployee);
-      
-      const clientMatch = selectedClients.length === 0 || selectedClients.includes(emp.client);
-      const statusMatch = selectedStatuses.length === 0 || selectedStatuses.includes(emp.status);
-      
+
+      const clientMatch =
+        selectedClients.length === 0 || selectedClients.includes(emp.client);
+      const statusMatch =
+        selectedStatuses.length === 0 || selectedStatuses.includes(emp.status);
+
       return searchMatch && clientMatch && statusMatch;
     });
   }, [employeeDetails, searchEmployee, selectedClients, selectedStatuses]);
 
   const onOpen = () => {
-      setPopUp(true);
-    setIsExiting(true)
+    setPopUp(true);
+    setIsExiting(true);
   };
 
   const onClose = () => {
-    setTimeout(() =>{
+    setTimeout(() => {
       setPopUp(false);
-    },300)
-    setIsExiting(false)
+    }, 300);
+    setIsExiting(false);
   };
-
 
   const handleApplyFilters = (clients, statuses) => {
     setSelectedClients(clients);
@@ -63,9 +70,18 @@ console.log(id)
   return (
     <div className="relative mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit">
       <div className="grid grid-flow-col justify-between md:grid-rows-2 gap-10 p-9 pl-8 pr-12 ">
-        <CountContainer smallText={`Active Employees`} largeNumber={`999`} />
-        <CountContainer smallText={`Inactive Employees`} largeNumber={`999`} />
-        <CountContainer smallText={`Relieved`} largeNumber={`999`} />
+        <CountContainer
+          smallText={`Active Employees`}
+          largeNumber={activeEmployeesCount}
+        />
+        <CountContainer
+          smallText={`Inactive Employees`}
+          largeNumber={inactiveEmployeesCount}
+        />
+        <CountContainer
+          smallText={`Relieved`}
+          largeNumber={relievedEmployeesCount}
+        />
       </div>
 
       <div className="xl:h-[35rem] 2xl:h-[44rem] pl-8 pr-12 pb-5 md:px-4 md:h-[900px]">
