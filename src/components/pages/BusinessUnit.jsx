@@ -87,23 +87,12 @@ export default function BusinessUnit() {
       <div className="xl:h-[35rem] 2xl:h-[44rem] pl-8 pr-12 pb-5 md:px-4 md:h-[900px]">
         <div className="bg-white rounded-lg px-5 py-4 flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 overflow-y-auto">
           <div className="flex justify-between items-center">
-            <span className="text-black font-medium text-base 2xl:text-base custom-font-mavan-pro opacity-80">
-              Employees
-            </span>
+            <span className="text-black font-semibold text-base 2xl:text-base custom-font-mavan-pro opacity-80">Employees</span>
             <span className="flex gap-1 items-center">
-              <label
-                htmlFor="search"
-                className="border border-slate-200 flex w-[200px] items-center rounded-lg p-[2px] px-[6px] gap-1.5 textbox-color"
-              >
+              <label htmlFor="search" className="border border-slate-200 flex w-[200px] items-center rounded-lg p-[2px] px-[6px] gap-1.5 textbox-color">
                 <CiSearch className="size-5 stroke-1 h-fit opacity-40" />
-                <input
-                  type="text"
-                  name="search"
-                  className="w-full focus:outline-none textbox-color custom-font-mavan-pro opacity-80"
-                  placeholder="Search"
-                  onChange={debouncedHandleChange}
-                />
-              </label>{" "}
+                <input type="text" name="search" className="w-full focus:outline-none textbox-color custom-font-mavan-pro opacity-80" placeholder="Search" onChange={debouncedHandleChange} />
+              </label>
               <CiFilter onClick={onOpen} className="size-7 opacity-40" />
             </span>
           </div>
@@ -146,12 +135,7 @@ export default function BusinessUnit() {
       </div>
 
       {popUp && (
-        <BusinessunitPopup
-          onClose={onClose}
-          popupRef={popupRef}
-          handleApplyFilters={handleApplyFilters}
-          isExiting={isExiting}
-        />
+        <BusinessunitPopup onClose={onClose} popupRef={popupRef} handleApplyFilters={handleApplyFilters} isExiting={isExiting}/>
       )}
     </div>
   );
