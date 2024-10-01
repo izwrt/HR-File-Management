@@ -16,12 +16,14 @@ import Home from "./components/pages/Home";
 import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
 import DashboardHeader from "./components/common/DashboardHeader";
 import CustomOutlate from "./components/common/CustomOutlate";
-
 import ChangePassword from "./components/auth/ChangePassword";
 import PasswordRecovery from "./components/auth/PasswordRecovery";
 import Dashboard from "./components/pages/Dashboard";
 import AddEmployee from "./components/pages/AddEmployee";
+import Dummy from "./components/pages/Dummy";
+import DummyOne from "./components/common/DummyOne";
 import ViewEmployeeDetails from "./components/pages/ViewEmployeeDetails";
+
 // const AppLoyout = () => {
 
 //   const navigate = useNavigate();
@@ -139,7 +141,17 @@ const router = createBrowserRouter([
       {
         path: "/viewemployee/:id",
         element: <ViewEmployeeDetails/>
-      }
+      },
+      {
+        path: "/dummy",
+        element: <Dummy />,
+        children: [
+          {
+            path:"dummyone",
+            element:<DummyOne/>
+          }
+        ]
+      },
     ],
   },
 ]);
