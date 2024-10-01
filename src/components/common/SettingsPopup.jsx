@@ -29,10 +29,6 @@ const SettingsPopup = ({ onClose }) => {
         onClose();
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
   }, [onClose]);
 
   const handleToggle = (id) => {
@@ -43,15 +39,23 @@ const SettingsPopup = ({ onClose }) => {
     <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-30">
       <div
         ref={popupRef}
-        className="bg-white p-6 rounded-md shadow-lg w-[800px] h-[600px] flex"
+        className="bg-white p-6 rounded-md shadow-lg w-[800px] h-[600px] flex relative"
       >
         <div className="w-1/4 pr-4">
-          <h2 className="text-xl font-semibold pb-4">Settings</h2>
+          <div className="flex flex-row gap-4 p-11 mt-4">
+            <h2 className="text-xl font-semibold pb-4 footer-font">Setting</h2>
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4  hover:text-gray-700 "
+            >
+              X
+            </button>
+          </div>
           <div className="flex flex-col gap-2 mt-4">
             <button
-              className={`text-left py-2 px-2 rounded-md ${
+              className={`text-left py-2 px-2 rounded-md custom-font-mavan-pro ${
                 activeTab === "Admin Privileges"
-                  ? "selectedTab  text-gray-700"
+                  ? "  text-gray-700 selectedTab"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
               onClick={() => setActiveTab("Admin Privileges")}
@@ -59,9 +63,9 @@ const SettingsPopup = ({ onClose }) => {
               Admin Privileges
             </button>
             <button
-              className={`text-left py-2 px-2 rounded-md ${
+              className={`text-left py-2 px-2 rounded-md custom-font-mavan-pro  ${
                 activeTab === "Time Format"
-                  ? "selectedTab  text-gray-700"
+                  ? "  text-gray-700 selectedTab "
                   : "text-gray-700 hover:bg-gray-100"
               }`}
               onClick={() => setActiveTab("Time Format")}
@@ -70,7 +74,6 @@ const SettingsPopup = ({ onClose }) => {
             </button>
           </div>
         </div>
-
         <div className="w-3/4 pl-6 overflow-y-auto">
           {activeTab === "Admin Privileges" && (
             <div className="flex flex-col gap-3">
@@ -93,16 +96,10 @@ const SettingsPopup = ({ onClose }) => {
 
           {activeTab === "Time Format" && (
             <div>
-              <p className="text-gray-600">Time Format settings go here.</p>
+              <p className="text-gray-600 ">Time Format settings go here.</p>
             </div>
           )}
         </div>
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-        >
-          &times;
-        </button>
       </div>
     </div>
   );

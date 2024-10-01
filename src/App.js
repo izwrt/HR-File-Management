@@ -21,6 +21,9 @@ import ChangePassword from "./components/auth/ChangePassword";
 import PasswordRecovery from "./components/auth/PasswordRecovery";
 import Dashboard from "./components/pages/Dashboard";
 import AddEmployee from "./components/pages/AddEmployee";
+import Dummy from "./components/pages/Dummy";
+import DummyOne from "./components/common/DummyOne";
+
 // const AppLoyout = () => {
 
 //   const navigate = useNavigate();
@@ -134,6 +137,16 @@ const router = createBrowserRouter([
       {
         path: "/addEmployee",
         element: <AddEmployee />,
+      },
+      {
+        path: "/dummy",
+        element: <Dummy />,
+        children: [
+          {
+            path:"dummyone",
+            element:<DummyOne/>
+          }
+        ]
       },
     ],
   },

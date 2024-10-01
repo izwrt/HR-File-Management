@@ -27,7 +27,7 @@
 }
 .custom-font-mavan-pro {
   font-family: "Poppins", sans-serif;
-  
+
   font-style: normal;
 }
 
@@ -174,8 +174,6 @@
   }
 }
 
-
-
 .popup {
   animation: fadeIn 0.3s forwards; /* Fade in */
 }
@@ -184,13 +182,32 @@
   animation: fadeOut 0.3s forwards; /* Fade out */
 }
 
-.menu-open-css{
+.menu-open-css {
   animation: fadeInMenu 1s forwards;
 }
 
-.menu-close-css{
+.menu-close-css {
   animation: fadeOutMenu 4s forwards;
 }
 
+/*----------------------------------------------Settings popup---------------------------------------------*/
+
+.selectedTab {
+  background-color: #c1dce2;
+}
 
 
+/* Default link styles */
+.fruit-link {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  padding: 5px;
+}
+
+/* Style for active link */
+.active {
+  color: black;
+  text-decoration: none; /* Remove default underline */
+  box-shadow: 0 3px 0 black;
+}
