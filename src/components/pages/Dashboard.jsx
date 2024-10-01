@@ -70,8 +70,8 @@ function Dashboard() {
   }, [employeeDetails, searchEmployee, selectedUnits, selectedDepartment]);
 
   return (
-    <div className=" flex flex-col pr-12 mt-16 ml-[220px] ">
-      <div className="flex flex-row gap-8 2xl:gap-20 max-h-[800px] 2xl:max-h-[970px] mb-10">
+    <div className="flex flex-col pr-12 mt-16 ml-[220px] md:ml-0 ">
+      <div className="flex flex-row md:flex-col gap-8 2xl:gap-20 max-h-[800px] 2xl:max-h-[970px] mb-10">
         <div className="flex flex-col w-[70%] 2xl:w-[80%]">
           <div className="p-8 flex gap-[17%] 2xl:gap-[22%] 2xl:h-[220px] bg-red-70">
             <CountContainer
@@ -83,9 +83,9 @@ function Dashboard() {
               largeNumber={`999`}
             />
           </div>
-          <div className=" px-7 ml-8 mr-8 bg-white shadow-lg rounded-lg h-[800px] 2xl:h-[970px] overflow-auto overflow scroll-smooth">
-            <div className="bg-gray-50 backdrop-blur-sm bg-opacity-30 z-15 absolute rounded-lg w-[672px] 2xl:w-[1167px]">
-              <div className="flex items-center justify-between">
+          <div className=" px-7 ml-8 mr-8 bg-white shadow-lg rounded-lg md:h-32 h-[800px] 2xl:h-[970px] overflow-auto overflow scroll-smooth">
+            <div className="bg-gray-50 backdrop-blur-sm bg-opacity-30 z-15 sticky top-0 rounded-lg">
+              <div className="flex items-center justify-between flex-grow">
                 <div className="font-bold mb-4 pt-4 text-xl">Employees</div>
                 <span className="flex gap-1 items-center">
                   <label
@@ -106,7 +106,7 @@ function Dashboard() {
               </div>
             </div>
 
-            <div className="grid mt-24 sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-x-10 2xl:gap-x-12 gap-y-4 ">
+            <div className="grid mt-8 sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-x-10 2xl:gap-x-12 gap-y-4 ">
               {filteredEmployeeDetails.length !== 0 ? (
                 filteredEmployeeDetails.map((employee) => (
                   <EmployeeCard
@@ -126,14 +126,14 @@ function Dashboard() {
           </div>
         </div>
         <div className=" mr-6 mt-8 bg-white shadow-lg w-[35%] 2xl:w-[30%] sm:w-[30%] rounded-lg overflow-auto overflow scroll-smooth">
-          <div className="absolute z-10 bg-green-50 backdrop-blur-sm bg-opacity-10">
-            <div className="font-bold ml-4 mt-10 text-lg pr-[308px] 2xl:pr-[393px]">
+          <div className="sticky top-0 z-10 bg-green-50 backdrop-blur-sm bg-opacity-10">
+            <div className="font-bold ml-4 text-lg pr-[308px] 2xl:pr-[393px] pt-4">
               Admins
             </div>
             <div className="ml-4 mt-2 absolute w-11/12 border-b-2 border-black"></div>
           </div>
           <div className="relative">
-            <div className="flex flex-col ml-4 mt-24 gap-4">
+            <div className="flex flex-col ml-4 mt-8 gap-4">
               <AdminCard />
               <AdminCard />
               <AdminCard />

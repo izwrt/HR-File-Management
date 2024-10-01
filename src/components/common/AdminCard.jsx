@@ -7,8 +7,8 @@ function AdminCard({ image, name, id, department }) {
           alt={`${name}'s profile`}
           className="w-16 h-16 rounded-full object-cover mr-8"
         />
-        <div className="">
-          <p className="text-lg font-semibold">Nakul</p>
+        <div className="flex-1 min-w-0">
+          <p className="text-lg font-semibold truncate">Nakul V Kamath</p>
           <p className="text-gray-500">1178</p>
           <p className="text-gray-500">SE1</p>
         </div>
