@@ -1,23 +1,19 @@
-//
-
 import React, { useState, useEffect } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import axios from "axios"; // Import Axios
+import axios from "axios";
 import rightarrow from "../../assets/images/rightarrow.png";
 import leftarrow from "../../assets/images/leftarrow.png";
 
 const CustomPrevArrow = ({ onClick }) => (
-  <div
+  <button
     onClick={onClick}
-    className=""
     style={{
-      position: "absolute",
-      left: "10px",
-      top: "50%",
-      transform: "translateY(-50%)",
+      position: "fixed",
+      left: "20px",
       background: "transparent",
       border: "none",
+      zIndex: 10,
     }}
   >
     <img
@@ -25,19 +21,18 @@ const CustomPrevArrow = ({ onClick }) => (
       alt="Previous"
       style={{ width: "30px", height: "30px" }}
     />
-  </div>
+  </button>
 );
 
 const CustomNextArrow = ({ onClick }) => (
   <button
     onClick={onClick}
     style={{
-      position: "absolute",
-      right: "10px",
-      top: "50%",
-      transform: "translateY(-50%)",
+      position: "fixed",
+      right: "20px",
       background: "transparent",
       border: "none",
+      zIndex: 10,
     }}
   >
     <img
@@ -49,20 +44,19 @@ const CustomNextArrow = ({ onClick }) => (
 );
 
 const Cards = () => {
-  const [data, setData] = useState([]); // State to store API data
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch data from API on component mount
   useEffect(() => {
     axios
-      .get("http://localhost:8000/employees") // Ensure this URL is correct
+      .get("http://localhost:8000/employees")
       .then((response) => {
-        console.log("API response:", response.data); // Debugging: log the API response
-        setData(response.data.slice(0, 10)); // Store the first 10 items
-        setLoading(false); // Set loading to false
+        console.log("API response:", response.data);
+        setData(response.data.slice(0, 10));
+        setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error); // Debugging: log any errors
+        console.error("Error fetching data:", error);
         setLoading(false);
       });
   }, []);
@@ -85,34 +79,49 @@ const Cards = () => {
       items: 1,
     },
   };
+  const settings = {
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    transitionDuration: 500,
+    customLeftArrow: <CustomPrevArrow />,
+    customRightArrow: <CustomNextArrow />,
+  };
 
   return (
-    <div className="w-3/4 h-auto m-auto relative">
+    <div className="w-full h-auto m-auto relative flex justify-center px-10">
       {loading ? (
         <div>Loading...</div>
       ) : (
         <Carousel
+          className=" w-full py-4 flex"
           responsive={responsive}
-          customLeftArrow={<CustomPrevArrow />}
-          customRightArrow={<CustomNextArrow />}
+          infinite={settings.infinite}
+          showDots={settings.dots}
+          transitionDuration={settings.transitionDuration}
+          customLeftArrow={settings.customLeftArrow}
+          customRightArrow={settings.customRightArrow}
+          // customLeftArrow={<CustomPrevArrow />}
+          // customRightArrow={<CustomNextArrow />}
         >
           {data.map((d) => (
             <div
               key={d.id}
-              className="bg-customBlue h-[150px] text-black rounded-xl p-2 flex mx-2 flex-col justify-between"
+              className="bg-customBlue h-[180px] rounded-xl p-2 mx-4 flex flex-col justify-between"
             >
-              <div className="text-white text-[18px] custom-font-mavan-pro text-center font-bold p-2">
+              <div className="text-white text-[25px] p-4 custom-font-mavan-pro text-center font-semibold ">
                 {d.empReminder}
               </div>
-              <div className="flex items-center pb-10 gap-2">
-                <div className="w-[60px] h-[50px] flex items-center justify-center p-2">
+              <div className="flex items-center pb-9 gap-4">
+                <div className="w-[60px] h-[50px] flex items-center gap-2 p-1 ">
                   <img
                     src={d.empImg}
                     alt={d.empName}
                     className="w-[85px] h-[50px] object-cover rounded-full"
                   />
                 </div>
-                <div className="text-xs custom-font-mavan-pro flex items-center text-white font-semibold flex-col">
+                <div className="text-xs custom-font-mavan-pro flex  text-white font-semibold flex-col gap-1">
                   <p className="text-sm">{d.empName}</p>
                   <p className="text-sm">Department</p>
                   <p>{d.empDepartMent}</p>
@@ -127,127 +136,3 @@ const Cards = () => {
 };
 
 export default Cards;
-
-// import React, { useState, useEffect } from "react";
-// import Carousel from "react-multi-carousel";
-// import "react-multi-carousel/lib/styles.css";
-// import axios from "axios";
-// import rightarrow from "../../assets/images/rightarrow.png";
-// import leftarrow from "../../assets/images/leftarrow.png";
-
-// const CustomPrevArrow = ({ className, style, onClick }) => (
-//   <div
-//     className={className}
-//     style={{
-//       ...style,
-//       display: "flex",
-//       alignItems: "center",
-//       justifyContent: "left",
-//       height: "100px",
-//       background: "transparent",
-//     }}
-//     onClick={onClick}
-//   >
-//     <img
-//       src={leftarrow}
-//       alt="Previous"
-//       style={{ width: "24px", height: "24px" }}
-//     />
-//   </div>
-// );
-
-// const CustomNextArrow = ({ className, style, onClick }) => (
-//   <div
-//     className={className}
-//     style={{
-//       ...style,
-//       display: "flex",
-//       alignItems: "center",
-//       justifyContent: "right",
-//       height: "100px",
-//     }}
-//     onClick={onClick}
-//   >
-//     <img
-//       src={rightarrow}
-//       alt="Next"
-//       style={{ width: "24px", height: "24px", backgroundColor: "pink" }}
-//     />
-//   </div>
-// );
-
-// const Cards = () => {
-//   const [data, setData] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     axios
-//       .get("http://localhost:8000/employees")
-//       .then((response) => {
-//         console.log("API response:", response.data);
-//         setData(response.data.slice(0, 10));
-//         setLoading(false);
-//       })
-//       .catch((error) => {
-//         console.error("Error fetching data:", error);
-//         setLoading(false);
-//       });
-//   }, []);
-
-//   const responsive = {
-//     superLargeDesktop: {
-//       breakpoint: { max: 4000, min: 1024 },
-//       items: 5,
-//     },
-//     desktop: {
-//       breakpoint: { max: 3000, min: 800 },
-//       items: 3,
-//     },
-//     tablet: {
-//       breakpoint: { max: 800, min: 464 },
-//       items: 2,
-//     },
-//     mobile: {
-//       breakpoint: { max: 464, min: 0 },
-//       items: 1,
-//     },
-//   };
-
-//   return (
-//     <div className="w-3/4 h-auto m-auto">
-//       <div>
-//         {loading ? (
-//           <div>Loading...</div>
-//         ) : (
-//           <Carousel responsive={responsive}>
-//             {data.map((d) => (
-//               <div
-//                 key={d.id}
-//                 className="bg-customBlue h-[150px] text-black rounded-xl p-2 flex mx-2 flex-col justify-between"
-//               >
-//                 <div className="text-white text-[18px] custom-font-mavan-pro text-center font-bold p-2">
-//                   {d.empReminder}
-//                 </div>
-//                 <div className="flex items-center pb-10 gap-2">
-//                   <div className="w-[60px] h-[50px] flex  items-center justify-center p-2">
-//                     <img
-//                       src={d.empImg}
-//                       alt={d.empName}
-//                       className="w-[85px] h-[50px] object-cover rounded-full"
-//                     />
-//                   </div>
-//                   <div className="text-xs custom-font-mavan-pro flex items-center text-white font-semibold flex-col">
-//                     <p className="text-sm">{d.empName}</p>
-//                     <p className="text-sm">Department</p>
-//                     <p>{d.empDepartMent}</p>
-//                   </div>
-//                 </div>
-//               </div>
-//             ))}
-//           </Carousel>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-// export default Cards;

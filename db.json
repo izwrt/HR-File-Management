@@ -1,6 +1,7 @@
 {
   "employees": [
     {
+      "id": "1",
       "name": "John Doe1",
       "image": "https://via.placeholder.com/150",
       "department": "HR",
@@ -8,9 +9,11 @@
       "client": "One Inc",
       "startDate": "01/01/2024",
       "endDate": "01/01/2025",
-      "status": "Active"
+      "status": "Active",
+      "empImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNXxW7xzVeNw99d1VItOeBzpPiQxFqaryR1Q&s"
     },
     {
+      "id": "2",
       "name": "Jane Smith",
       "image": "https://via.placeholder.com/150",
       "department": "Finance",
@@ -18,9 +21,11 @@
       "client": "Slide",
       "startDate": "02/01/2024",
       "endDate": "02/01/2025",
-      "status": "Inactive"
+      "status": "Inactive",
+      "empImg": "https://plus.unsplash.com/premium_photo-1689551670902-19b441a6afde?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww"
     },
     {
+      "id": "3",
       "name": "Alice Johnson",
       "image": "https://via.placeholder.com/150",
       "department": "IT",
@@ -28,9 +33,11 @@
       "client": "Metaz",
       "startDate": "03/01/2024",
       "endDate": "03/01/2025",
-      "status": "Active"
+      "status": "Active",
+      "empImg": "https://media.istockphoto.com/id/1503232125/photo/happy-smile-and-portrait-of-business-man-in-city-for-professional-corporate-and-pride.jpg?s=612x612&w=0&k=20&c=uPu3GKHW507ruenLY8xwsB3OgOSwLSWjE3fBpy20Hac="
     },
     {
+      "id": "4",
       "name": "Bob Brown",
       "image": "https://via.placeholder.com/150",
       "department": "HR",
@@ -38,9 +45,11 @@
       "client": "One Inc",
       "startDate": "04/01/2024",
       "endDate": "04/01/2025",
-      "status": "Relieved"
+      "status": "Relieved",
+      "empImg": "https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2016/02/Headshot-on-Black-Background_1.jpg?ssl=1"
     },
     {
+      "id": "5",
       "name": "Charlie Davis",
       "image": "https://via.placeholder.com/150",
       "department": "Marketing",
@@ -48,9 +57,11 @@
       "client": "Slide",
       "startDate": "05/01/2024",
       "endDate": "05/01/2025",
-      "status": "Active"
+      "status": "Active",
+      "empImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-ZW0WhZG-hsWvMWxT39_HAjgFTXzCvuo2ZQ&s"
     },
     {
+      "id": "6",
       "name": "Eve White",
       "image": "https://via.placeholder.com/150",
       "department": "IT",
@@ -58,9 +69,11 @@
       "client": "Metaz",
       "startDate": "06/01/2024",
       "endDate": "06/01/2025",
-      "status": "Inactive"
+      "status": "Inactive",
+      "empImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4Tpioj613iF4Hg3t-2vWvSr-nwDpid6jvHg&s"
     },
     {
+      "id": "7",
       "name": "Frank Green",
       "image": "https://via.placeholder.com/150",
       "department": "Finance",
@@ -68,9 +81,11 @@
       "client": "One Inc",
       "startDate": "07/01/2024",
       "endDate": "07/01/2025",
-      "status": "Active"
+      "status": "Active",
+      "empImg": "https://image7.photobiz.com/6588/28_20190415064950_5454035_large.jpg"
     },
     {
+      "id": "8",
       "name": "Grace Black",
       "image": "https://via.placeholder.com/150",
       "department": "HR",
@@ -78,9 +93,11 @@
       "client": "Slide",
       "startDate": "08/01/2024",
       "endDate": "08/01/2025",
-      "status": "Relieved"
+      "status": "Relieved",
+      "empImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8twwEHj7I-euKEDeOJ31r4AOoiFktA7g9wQ&s"
     },
     {
+      "id": "9",
       "name": "Hank Yellow",
       "image": "https://via.placeholder.com/150",
       "department": "Marketing",
@@ -88,9 +105,11 @@
       "client": "Metaz",
       "startDate": "09/01/2024",
       "endDate": "09/01/2025",
-      "status": "Inactive"
+      "status": "Inactive",
+      "empImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRznTzwwWTYIkv_fzdcrTl1Nctg9gLxMQ6Isg&s"
     },
     {
+      "id": "10",
       "name": "Ivy Purple",
       "image": "https://via.placeholder.com/150",
       "department": "IT",
@@ -98,9 +117,11 @@
       "client": "One Inc",
       "startDate": "10/01/2024",
       "endDate": "10/01/2025",
-      "status": "Active"
+      "status": "Active",
+      "empImg": "https://data.ipic.ai/images/YbKhQrGQY2nJXVX_1712121324.png"
     },
     {
+      "id": "11",
       "name": "Jack Orange",
       "image": "https://via.placeholder.com/150",
       "department": "Finance",
@@ -108,9 +129,11 @@
       "client": "Slide",
       "startDate": "11/01/2024",
       "endDate": "11/01/2025",
-      "status": "Inactive"
+      "status": "Inactive",
+      "empImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGXWir8F_w14ji_QzewhjM0CS8SxMQ5fxJgQ&s"
     },
     {
+      "id": "12",
       "name": "Kim Blue",
       "image": "https://via.placeholder.com/150",
       "department": "HR",
@@ -118,7 +141,8 @@
       "client": "Metaz",
       "startDate": "12/01/2024",
       "endDate": "12/01/2025",
-      "status": "Active"
+      "status": "Active",
+      "empImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ241q-X_7aEyjykBOHSrMkE-kdu1QL2Xb-Kg&s"
     }
   ]
 }

@@ -1,0 +1,29 @@
+/* Position the left arrow */
+.react-multiple-carousel__arrow--left {
+  left: -0px; /* Move it to the left */
+  top: 50%; /* Vertically center the arrow */
+  transform: translateY(-50%);
+}
+
+/* Position the right arrow */
+.react-multiple-carousel__arrow--right {
+  right: -10px; /* Move it to the right */
+  top: 50%; /* Vertically center the arrow */
+  transform: translateY(-50%);
+}
+
+/* Optional: Adjust the arrow size and background color if needed */
+.react-multiple-carousel__arrow {
+  background-color: black; /* Keep the background black */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Optional: Customize hover state */
+.react-multiple-carousel__arrow:hover {
+  background-color: #333; /* Darker background on hover */
+}

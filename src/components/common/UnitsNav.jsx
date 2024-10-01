@@ -1,4 +1,7 @@
+//
+
 import React, { useState } from "react";
+import BelowCards from "./BelowCards";
 
 const UnitsNav = () => {
   const [selectedUnit, setSelectedUnit] = useState(null);
@@ -14,20 +17,28 @@ const UnitsNav = () => {
   };
 
   return (
-    <div className="flex justify-start gap-5 pl-10">
-      {businessUnitsStatus.map((unit, index) => (
-        <div
-          key={index}
-          onClick={() => handleCardClick(index)}
-          className={`w-40 h-9 rounded-3xl drop-shadow flex items-center justify-center cursor-pointer ${
-            selectedUnit === index
-              ? "homeUnitNavSelected homeUnitsFont"
-              : "homeUnitNavUnSelected homeUnitsFont"
-          }`}
-        >
-          <h2 className="font-normal text-sm">{unit.name}</h2>
-        </div>
-      ))}
+    <div className="pl-10">
+      {/* Unit Navigation Cards */}
+      <div className="flex justify-start gap-5">
+        {businessUnitsStatus.map((unit, index) => (
+          <div
+            key={index}
+            onClick={() => handleCardClick(index)}
+            className={`w-40 h-9 rounded-3xl drop-shadow flex items-center justify-center cursor-pointer ${
+              selectedUnit === index
+                ? "homeUnitNavSelected homeUnitsFont"
+                : "homeUnitNavUnSelected homeUnitsFont"
+            }`}
+          >
+            <h2 className="font-normal text-sm">{unit.name}</h2>
+          </div>
+        ))}
+      </div>
+
+      {/* BelowCards Component */}
+      <div className="mt-6 mb-6  ">
+        <BelowCards />
+      </div>
     </div>
   );
 };
