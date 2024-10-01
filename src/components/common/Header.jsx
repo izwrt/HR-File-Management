@@ -24,7 +24,7 @@ const Header = ({ openMenu, setOpenMenu, menuOpen }) => {
   };
 
   return (
-    <nav className="h-16 w-full flex items-center justify-end bg-white gap-[60%] pr-5 p-2 md:p-5 nav-container fixed z-20">
+    <nav className="h-16 w-full flex items-center justify-end bg-white gap-[60%] pr-5 p-2 md:p-5 nav-container fixed z-20 ">
       <div className="flex items-center w-full justify-between">
         <div className="flex justify-center items-center gap-4">
           <RxHamburgerMenu
@@ -34,7 +34,7 @@ const Header = ({ openMenu, setOpenMenu, menuOpen }) => {
           />
         </div>
         <div className="flex items-center  gap-8 ">
-          <ul className="text-black custom-font-mavan-pro font-sm text-[16px] flex items-center justify-center gap-8">
+          <ul className="text-black custom-font-mavan-pro font-sm text-[16px] text-opacity-70 flex items-center justify-center gap-8">
             <li className="nav-hover">Home</li>
             <li className="nav-hover">Dashboard</li>
             <li className="nav-hover">Settings</li>

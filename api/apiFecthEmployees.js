@@ -7,7 +7,7 @@ export default function apiFecthEmployees() {
 
     useEffect(() => {
         axios
-          .get("http://localhost:8000/employees")
+          .get("http://localhost:5000/api/employees")
           .then((response) => {
             setEmployees(response.data);
           })

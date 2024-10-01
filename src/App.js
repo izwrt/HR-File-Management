@@ -21,6 +21,7 @@ import ChangePassword from "./components/auth/ChangePassword";
 import PasswordRecovery from "./components/auth/PasswordRecovery";
 import Dashboard from "./components/pages/Dashboard";
 import AddEmployee from "./components/pages/AddEmployee";
+import ViewEmployeeDetails from "./components/pages/ViewEmployeeDetails";
 // const AppLoyout = () => {
 
 //   const navigate = useNavigate();
@@ -135,6 +136,10 @@ const router = createBrowserRouter([
         path: "/addEmployee",
         element: <AddEmployee />,
       },
+      {
+        path: "/viewemployee/:id",
+        element: <ViewEmployeeDetails/>
+      }
     ],
   },
 ]);

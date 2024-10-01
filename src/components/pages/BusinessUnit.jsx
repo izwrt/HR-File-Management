@@ -15,8 +15,6 @@ export default function BusinessUnit() {
   const [selectedStatuses, setSelectedStatuses] = useState([]);
   const [isExiting, setIsExiting] = useState(false);
   const popupRef = useRef(null);
-  const clients = ["One Inc", "Slide", "Metaz"];
-  const statuses = ["Active", "Inactive", "Relieved"];
 
   const handleChange = (e) => {
     setSearchEmployee(e.target.value);
@@ -61,14 +59,14 @@ export default function BusinessUnit() {
   };
 
   return (
-    <div className="relative mt-16 ml-[220px] md:ml-0 h-fit ">
-      <div className="p-8 pr-12 flex gap-[12%] 2xl:h-[220px]  md:bg-green-400 md:px-4">
+    <div className="relative mt-16 ml-[220px] md:ml-0 h-fit">
+      <div className="p-8 pr-12 flex gap-[12%] 2xl:h-[220px] md:bg-green-400 md:px-4">
         <CountContainer smallText={`Active Employees`} largeNumber={`999`} />
         <CountContainer smallText={`Inactive Employees`} largeNumber={`999`} />
         <CountContainer smallText={`Relieved`} largeNumber={`999`} />
       </div>
 
-      <div className="xl:h-[35rem] 2xl:h-[44rem] pl-8 pr-12 pb-5 md:bg-red-400 md:px-4">
+      <div className="xl:h-[35rem] 2xl:h-[44rem] pl-8 pr-12 pb-5 md:px-4 md:h-[900px]">
         <div className="bg-white rounded-lg px-5 py-4 flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 overflow-y-auto">
           <div className="flex justify-between items-center">
             <span className="text-black font-medium text-base 2xl:text-base custom-font-mavan-pro opacity-80">
@@ -92,7 +90,7 @@ export default function BusinessUnit() {
             </span>
           </div>
 
-          <div className="flex flex-col gap-3 h-full overflow-auto overflow scroll-smooth">
+          <div className="flex flex-col gap-3 h-full overflow-auto overflow-emp scroll-smooth">
             <div className="sticky top-0 z-10 backdrop-blur-sm md:w-[1000px]">
               <EmployeeBusinessLog
                 employeeName="Employee Name"
@@ -102,7 +100,7 @@ export default function BusinessUnit() {
                 status={"Status"}
                 action={"Action"}
                 color="customColorBlue-lite"
-                fontWeight={"font-medium"}
+                fontWeight={"font-semibold"}
                 id={"Employee Id"}
               />
             </div>
@@ -118,7 +116,7 @@ export default function BusinessUnit() {
                   status={emp.status}
                   action={"Action"}
                   color="textbox-color"
-                  fontWeight={"font-sm"}
+                  fontWeight={"font-medium"}
                   id={emp.empid}
                 />
               ))
