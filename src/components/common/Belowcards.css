@@ -7,7 +7,7 @@
 
 /* Position the right arrow */
 .react-multiple-carousel__arrow--right {
-  right: -10px; /* Move it to the right */
+  right: -0px; /* Move it to the right */
   top: 50%; /* Vertically center the arrow */
   transform: translateY(-50%);
 }
