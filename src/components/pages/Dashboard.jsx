@@ -70,23 +70,22 @@ function Dashboard() {
   }, [employeeDetails, searchEmployee, selectedUnits, selectedDepartment]);
 
   return (
-    <div className="flex flex-col pr-12 mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 ">
-      <div className="flex flex-row md:flex-col gap-8 2xl:gap-20 max-h-[800px] 2xl:max-h-[970px] mb-10">
-        <div className="flex flex-col w-[70%] 2xl:w-[80%]">
-          <div className="p-9 pl-8 flex 2xl:h-[220px] justify-between">
-            <CountContainer
-              smallText={`Active Employees`}
-              largeNumber={`999`}
-            />
-            <CountContainer
-              smallText={`Inactive Employees`}
-              largeNumber={`999`}
-            />
-          </div>
-          <div className=" px-7 ml-8 mr-8 bg-white shadow-lg rounded-lg md:h-32 h-[800px] 2xl:h-[970px] overflow-auto overflow scroll-smooth">
-            <div className="bg-gray-50 backdrop-blur-sm bg-opacity-30 z-15 sticky top-0 rounded-lg">
-              <div className="flex items-center justify-between flex-grow">
-                <div className="font-bold mb-4 pt-4 text-xl">Employees</div>
+    <div className="flex flex-row relative mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit pl-8 pr-12 md:pl-5 md:pr-6 gap-8">
+      <div className="flex flex-col md:w-full w-[70%] 2xl:w-full 2xl:h-full ">
+        <div className="grid grid-flow-col justify-between md:grid-rows-1 gap-10 py-9">
+          <CountContainer smallText={`Active Employees`} largeNumber={`999`} />
+          <CountContainer
+            smallText={`Inactive Employees`}
+            largeNumber={`999`}
+          />
+        </div>
+        <div className="xl:h-[35rem] 2xl:h-[44rem] pb-5 md:h-[900px]  w-full ">
+          <div className="bg-white rounded-lg  flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 overflow-y-auto overflow scroll-smooth w-full scroll-padding">
+            <div className="bg-white backdrop-blur-sm  z-10 sticky top-0 rounded-lg">
+              <div className="flex items-center justify-between flex-grow px-5">
+                <div className="font-semibold mb-4 pt-4 text-base custom-font-mavan-pro opacity-80">
+                  Employees
+                </div>
                 <span className="flex gap-1 items-center">
                   <label
                     htmlFor="search"
@@ -106,34 +105,36 @@ function Dashboard() {
               </div>
             </div>
 
-            <div className="grid mt-8 sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-x-10 2xl:gap-x-12 gap-y-4 ">
+            <div className="w-full h-full px-5 ">
               {filteredEmployeeDetails.length !== 0 ? (
-                filteredEmployeeDetails.map((employee) => (
-                  <EmployeeCard
-                    key={employee.id}
-                    image={employee.image}
-                    name={employee.name}
-                    id={employee.id}
-                    department={employee.department}
-                  />
-                ))
-              ) : (
-                <div className="flex items-center justify-center min-w-[700px] min-h-[400px] 2xl:min-w-[1167px] 2xl:min-h-[600px] ">
-                  <NodataFound />
+                <div className=" grid sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-5 pb-5">
+                  {filteredEmployeeDetails.map((employee) => (
+                    <EmployeeCard
+                      key={employee.id}
+                      image={employee.image}
+                      name={employee.name}
+                      id={employee.id}
+                      department={employee.department}
+                    />
+                  ))}
                 </div>
+              ) : (
+                <NodataFound />
               )}
             </div>
           </div>
         </div>
-        <div className=" mr-6 mt-8 bg-white shadow-lg w-[35%] 2xl:w-[30%] sm:w-[30%] rounded-lg overflow-auto overflow scroll-smooth">
-          <div className="sticky top-0 z-10 bg-green-50 backdrop-blur-sm bg-opacity-10">
-            <div className="font-bold ml-4 text-lg pr-[308px] 2xl:pr-[393px] pt-4">
-              Admins
+      </div>
+      <div className=" w-[700px]  xl:h-[766px] 2xl:h-[924px] pb-5 md:hidden flex items-center justify-center py-9 ">
+        <div className=" bg-white w-full rounded-lg overflow-y-auto  overflow scroll-smooth h-full scroll-padding pb-5 shadow-sm border-solid border border-slate-100 shadow-gray-20">
+          <div className="sticky top-0 z-10 px-5 p-5 bg-white backdrop-blur-sm">
+            <div className="font-semibold  text-base   custom-font-mavan-pro opactiy-80">
+              <div>Admins</div>
+              <div className="border-b border-black"></div>
             </div>
-            <div className="ml-4 mt-2 absolute w-11/12 border-b-2 border-black"></div>
           </div>
-          <div className="relative">
-            <div className="flex flex-col ml-4 mt-8 gap-4">
+          <div className="relative px-5">
+            <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8 gap-4">
               <AdminCard />
               <AdminCard />
               <AdminCard />

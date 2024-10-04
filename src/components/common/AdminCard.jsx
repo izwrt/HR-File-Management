@@ -1,16 +1,16 @@
 function AdminCard({ image, name, id, department }) {
   return (
-    <div className="">
-      <div className="flex items-center p-2 bg-gray-100 shadow-lg rounded-lg w-[95%]">
+    <div>
+      <div className="flex items-center p-2 bg-gray-100 card-shadow rounded-lg custom-font-mavan-pro ">
         <img
           src={image}
           alt={`${name}'s profile`}
           className="w-16 h-16 rounded-full object-cover mr-8"
         />
-        <div className="flex-1 min-w-0">
-          <p className="text-lg font-semibold truncate">Nakul V Kamath</p>
-          <p className="text-gray-500">1178</p>
-          <p className="text-gray-500">SE1</p>
+        <div className="flex flex-col overflow-hidden">
+          <p className="text-sm font-medium truncate">Nakul V Kamath</p>
+          <p className="text-sm opacity-70">1178</p>
+          <p className="text-sm opacity-70">SE1</p>
         </div>
         <div className="ml-auto">
           <label class="inline-flex items-center cursor-pointer">
