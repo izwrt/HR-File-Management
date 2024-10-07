@@ -15,6 +15,8 @@ export default function BusinessUnit() {
   const [selectedStatuses, setSelectedStatuses] = useState([]);
   const [isExiting, setIsExiting] = useState(false);
   const popupRef = useRef(null);
+  const clients = ["One Inc", "Slide", "Metaz"];
+  const statuses = ["Active", "Inactive", "Relieved"];
 
   const handleChange = (e) => {
     setSearchEmployee(e.target.value);
@@ -61,15 +63,15 @@ export default function BusinessUnit() {
     setIsExiting(false);
   };
 
-  const handleApplyFilters = (clients, statuses) => {
+  const handleApplyFiltersBusinessUnit = (clients, statuses) => {
     setSelectedClients(clients);
     setSelectedStatuses(statuses);
     onClose();
   };
 
   return (
-    <div className="relative mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit">
-      <div className="grid grid-flow-col justify-between md:grid-rows-2 gap-10 p-9 pl-8 pr-12 ">
+    <div className="relative mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit pl-8 pr-12 md:pl-5 md:pr-6">
+      <div className="grid grid-flow-col justify-between md:grid-rows-2 gap-10 py-9 ">
         <CountContainer
           smallText={`Active Employees`}
           largeNumber={activeEmployeesCount}
@@ -84,14 +86,25 @@ export default function BusinessUnit() {
         />
       </div>
 
-      <div className="xl:h-[35rem] 2xl:h-[44rem] pl-8 pr-12 pb-5 md:px-4 md:h-[900px]">
+      <div className="xl:h-[35rem] 2xl:h-[44rem] md:h-[900px] pb-5">
         <div className="bg-white rounded-lg px-5 py-4 flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 overflow-y-auto">
           <div className="flex justify-between items-center">
-            <span className="text-black font-semibold text-base 2xl:text-base custom-font-mavan-pro opacity-80">Employees</span>
+            <span className="text-black font-semibold text-base 2xl:text-base custom-font-mavan-pro opacity-80">
+              Employees
+            </span>
             <span className="flex gap-1 items-center">
-              <label htmlFor="search" className="border border-slate-200 flex w-[200px] items-center rounded-lg p-[2px] px-[6px] gap-1.5 textbox-color">
+              <label
+                htmlFor="search"
+                className="border border-slate-200 flex w-[200px] items-center rounded-lg p-[2px] px-[6px] gap-1.5 textbox-color"
+              >
                 <CiSearch className="size-5 stroke-1 h-fit opacity-40" />
-                <input type="text" name="search" className="w-full focus:outline-none textbox-color custom-font-mavan-pro opacity-80" placeholder="Search" onChange={debouncedHandleChange} />
+                <input
+                  type="text"
+                  name="search"
+                  className="w-full focus:outline-none textbox-color custom-font-mavan-pro opacity-80"
+                  placeholder="Search"
+                  onChange={debouncedHandleChange}
+                />
               </label>
               <CiFilter onClick={onOpen} className="size-7 opacity-40" />
             </span>
@@ -135,7 +148,14 @@ export default function BusinessUnit() {
       </div>
 
       {popUp && (
-        <BusinessunitPopup onClose={onClose} popupRef={popupRef} handleApplyFilters={handleApplyFilters} isExiting={isExiting}/>
+        <BusinessunitPopup
+          onClose={onClose}
+          popupRef={popupRef}
+          handleApplyFiltersBusinessUnit={handleApplyFiltersBusinessUnit}
+          isExiting={isExiting}
+          clients={clients}
+          statuses={statuses}
+        />
       )}
     </div>
   );

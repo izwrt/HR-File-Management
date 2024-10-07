@@ -26,9 +26,17 @@ const ViewEmployeeDetails = () => {
         empData === null ? (<div className="mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 bg-red-400">loading</div>) 
         :
     ( <section className="mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 bg-red-400 h-full">
-                <div className="bg-green-500 ">
-                    <div className="w-[200px] h-[200px] rounded-full overflow-hidden bg-yellow-500 flex justify-center ">
-                        <img className="object-center " src={empData.empImg}/>
+                <div className="bg-green-500 flex items-center gap-5 text-4xl">
+                    <div className="w-[300px] h-[300px] rounded-full overflow-hidden bg-yellow-500 flex justify-center items-center">
+                        <img className="object-cover h-[300px] w-[300px] " src={empData.empImg}/>
+                    </div>
+                    <div className="flex flex-col">
+                        <div>
+                            {empData.empid}
+                        </div>
+                        <div>
+                            {empData.name}
+                        </div>
                     </div>
                 </div>
         </section>)

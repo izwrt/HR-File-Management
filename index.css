@@ -151,6 +151,10 @@
   border-radius: 10px;
 }
 
+.scroll-padding {
+  scroll-padding: 20px;
+}
+
 /* ----------------------------------------------animations------------------------------------------ */
 
 @keyframes fadeIn {
@@ -218,4 +222,8 @@
   text-decoration: underline;
   color: #000; /* You can change the color as needed */
   font-weight: bold;
+}
+
+.card-shadow {
+  box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
