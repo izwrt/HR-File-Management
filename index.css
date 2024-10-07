@@ -151,6 +151,10 @@
   border-radius: 10px;
 }
 
+.scroll-padding {
+  scroll-padding: 20px;
+}
+
 /* ----------------------------------------------animations------------------------------------------ */
 
 @keyframes fadeIn {
@@ -198,4 +202,8 @@
   color: black;
   text-decoration: none; /* Remove default underline */
   box-shadow: 0 3px 0 black;
+}
+
+.card-shadow {
+  box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.12);
 }

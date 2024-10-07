@@ -122,7 +122,6 @@
       "status": "Inactive"
     },
     {
-      "id": "12",
       "name": "Kim Blue",
       "image": "https://via.placeholder.com/150",
       "department": "HR",
@@ -133,5 +132,4 @@
       "status": "Active"
     }
   ]
-  
 }
