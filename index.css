@@ -196,6 +196,26 @@
 /* Style for active link */
 .active {
   color: black;
-  text-decoration: none; /* Remove default underline */
-  box-shadow: 0 3px 0 black;
+}
+
+
+
+/* --------------------------------------------------------see all------------------------------------------------ */
+
+.seeallfont{
+  color:#fe555d;
+}
+
+
+/* Styles for normal NavLink */
+.fruit-link {
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Styles for active NavLink (with underline) */
+.active-link {
+  text-decoration: underline;
+  color: #000; /* You can change the color as needed */
+  font-weight: bold;
 }

@@ -7,6 +7,8 @@ const SettingsPopup = ({ onClose }) => {
   const [activeTab, setActiveTab] = useState("Admin Privileges");
   const [adminUsers, setAdminUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+
 
   useEffect(() => {
     const fetchAdminUsers = async () => {
@@ -19,7 +21,6 @@ const SettingsPopup = ({ onClose }) => {
         setLoading(false);
       }
     };
-
     fetchAdminUsers();
   }, []);
 
@@ -35,38 +36,42 @@ const SettingsPopup = ({ onClose }) => {
     console.log("Toggled user with ID:", id);
   };
 
+  const filteredUsers = adminUsers.filter((user) =>
+    user.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-30">
       <div
         ref={popupRef}
-        className="bg-white p-6 rounded-md shadow-lg w-[800px] h-[600px] flex relative"
+        className="homeBgColor p-6 rounded-md shadow-lg w-[800px] h-[600px] flex relative"
       >
-        <div className="w-1/4 pr-4">
-          <div className="flex flex-row gap-4 p-11 mt-4">
-            <h2 className="text-xl font-semibold pb-4 footer-font">Setting</h2>
+        <div className="absolute top-0 left-0 w-full flex justify-between items-center p-4 pt-6 z-20 bg-yellow-300">
+          <h2 className="text-xl font-semibold pl-5 footer-font">Settings</h2>
+          <button
+            onClick={onClose}
+            className="text-gray-600 hover:text-gray-800 text-2xl pr-5"
+          >
+            &times;
+          </button>
+        </div>
+        <div className="w-1/4 pt-16 pr-4">
+          <div className="flex flex-col gap-2">
             <button
-              onClick={onClose}
-              className="absolute top-4 right-4  hover:text-gray-700 "
-            >
-              X
-            </button>
-          </div>
-          <div className="flex flex-col gap-2 mt-4">
-            <button
-              className={`text-left py-2 px-2 rounded-md custom-font-mavan-pro ${
+              className={` py-2 px-2 rounded-md text-left   homeFontColor custom-font-mavan-pro ${
                 activeTab === "Admin Privileges"
-                  ? "  text-gray-700 selectedTab"
-                  : "text-gray-700 hover:bg-gray-100"
+                  ? "text-left selectedTab"
+                  : " hover:bg-gray-100"
               }`}
               onClick={() => setActiveTab("Admin Privileges")}
             >
               Admin Privileges
             </button>
             <button
-              className={`text-left py-2 px-2 rounded-md custom-font-mavan-pro  ${
+              className={` py-2 px-2 rounded-md  text-left  homeFontColor custom-font-mavan-pro  ${
                 activeTab === "Time Format"
-                  ? "  text-gray-700 selectedTab "
-                  : "text-gray-700 hover:bg-gray-100"
+                  ? " text-left selectedTab"
+                  : " hover:bg-gray-100"
               }`}
               onClick={() => setActiveTab("Time Format")}
             >
@@ -74,31 +79,40 @@ const SettingsPopup = ({ onClose }) => {
             </button>
           </div>
         </div>
-        <div className="w-3/4 pl-6 overflow-y-auto">
+        <div className="w-3/4 pl-6 pt-16 custom-font-mavan-pro bg-red-300 overflow-y-auto">
           {activeTab === "Admin Privileges" && (
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-10 bg-slate-300 ">
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="p-4 border rounded-md h-7 w-52"
+              />
               {loading ? (
                 <p>Loading...</p>
-              ) : (
-                adminUsers.map((user) => (
-                  <AdminCard
-                    key={user.id}
-                    name={user.name}
-                    empId={user.empId}
-                    department={user.department}
-                    enabled={user.enabled}
-                    onToggle={() => handleToggle(user.id)}
-                  />
-                ))
+              ) : ( 
+                <div className="flex flex-col gap-4">
+                  {filteredUsers.map((user) => (
+                    <AdminCard
+                      key={user.id}
+                      name={user.name}
+                      empId={user.empId}
+                      department={user.department}
+                      enabled={user.enabled}
+                      onToggle={() => handleToggle(user.id)}
+                    />
+                  ))}
+                </div>
               )}
             </div>
           )}
-
           {activeTab === "Time Format" && (
             <div>
-              <p className="text-gray-600 ">Time Format settings go here.</p>
+              <p className="text-gray-600">hihi</p>
             </div>
           )}
+
         </div>
       </div>
     </div>
