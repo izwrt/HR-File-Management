@@ -15,6 +15,7 @@ import { CiSearch } from "react-icons/ci";
 import { CiFilter, CiSearch } from "react-icons/ci";
 import NodataFound from "../common/NodataFound";
 import BusinessunitPopup from "../common/BusinessunitPopup";
+import Add_Admin from "../../assets/images/Add_Admin";
 
 function Dashboard() {
   const employeeDetails = apiFecthEmployees();
@@ -127,13 +128,15 @@ function Dashboard() {
       </div>
       <div className=" w-[700px]  xl:h-[766px] 2xl:h-[924px] pb-5 md:hidden flex items-center justify-center py-9 ">
         <div className=" bg-white w-full rounded-lg overflow-y-auto  overflow scroll-smooth h-full scroll-padding pb-5 shadow-sm border-solid border border-slate-100 shadow-gray-20">
-          <div className="sticky top-0 z-10 px-5 p-5 bg-white backdrop-blur-sm">
+          <div className="sticky top-0 z-10 px-5 bg-white">
             <div className="font-semibold  text-base   custom-font-mavan-pro opactiy-80">
-              <div>Admins</div>
-              <div className="border-b border-black"></div>
+              <div className="flex flex-row gap-6 items-center  py-4 border-b border-black ">
+                <div>Admins</div>
+                <Add_Admin />
+              </div>
             </div>
           </div>
-          <div className="relative px-5">
+          <div className="relative px-5 py-4">
             <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8 gap-4">
               <AdminCard />
               <AdminCard />

@@ -3,6 +3,7 @@ import { RiImageAddFill } from "react-icons/ri";
 import InputField from "../common/InputField";
 import { useRef } from "react";
 import { MdUploadFile } from "react-icons/md";
+import Setting_Employee from "../../assets/images/Setting_Employee";
 
 function AddEmployee() {
   const inputRef = useRef(null);
@@ -32,16 +33,9 @@ function AddEmployee() {
               className=" flex items-center justify-center cursor-pointer relative "
               onClick={callRef}
             >
-              <BsPersonCircle
-                className="size-24 relative opacity-90 "
-                color="grey"
-              />
-              <RiImageAddFill
-                className="size-7 absolute top-16 left-16  opacity-100"
-                color="grey"
-              />
+              <Setting_Employee />
             </div>
-            <div className="flex flex-col items-center gap-10">
+            <div className="flex flex-col items-center gap-5">
               <p className="font-color">Active Status</p>
               <label class="inline-flex items-center cursor-pointer">
                 <input type="checkbox" value="" class="sr-only peer" />
@@ -135,7 +129,7 @@ function AddEmployee() {
           <div className="font-bold text-lg ml-8 mt-6">
             Professional details
           </div>
-          <div className="grid grid-cols-2 p-10 gap-10">
+          <div className="grid grid-cols-2 p-8 gap-10">
             <div className="flex flex-col">
               <label className="font-normal">Upload Resume</label>
               <div
@@ -175,7 +169,7 @@ function AddEmployee() {
               </select>
             </div>
             <div className="flex flex-col">
-              <label className="font-bold">Clients</label>
+              <label className="font-normal">Clients</label>
               <select className="mt-2 px-2 py-3.5 rounded-lg border-2 border-gray-500">
                 <option value="option1">Option1</option>
                 <option value="option2">Option2</option>
@@ -185,14 +179,14 @@ function AddEmployee() {
             <div className="flex flex-col">
               <div className="flex justify-start gap-5">
                 <div className="flex flex-col">
-                  <label className="font-bold">Start Date</label>
+                  <label className="font-normal">Start Date</label>
                   <input
                     type="date"
                     className="mt-2 px-2 py-2.5 rounded-lg border-2 border-gray-500 w-[100%]"
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="font-bold">End Date</label>
+                  <label className="font-normal">End Date</label>
                   <input
                     type="date"
                     className="mt-2 px-2 py-2.5 rounded-lg border-2 border-gray-500 w-[100%]"
