@@ -132,7 +132,7 @@ function Dashboard() {
               </div>
             </div>
           </div>
-          <div className="relative px-5 py-4 bg-red-400 ">
+          <div className="relative px-5 py-4">
             <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8 gap-4">
               <AdminCard />
               <AdminCard />
