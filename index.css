@@ -210,11 +210,12 @@
 
 
 .snap-scroll {
-  scroll-snap-type: y proximity;
-  scroll-padding-top:75px;
-  scroll-padding-bottom: 75px;
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 75px;
+
 }
 
 .scroll-cards{
   scroll-snap-align:start;
+  scroll-snap-stop: always;
 }
