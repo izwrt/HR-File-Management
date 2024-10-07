@@ -1,7 +1,7 @@
 function AdminCard({ image, name, id, department }) {
   return (
-    <div>
-      <div className="flex items-center p-2 bg-gray-100 card-shadow rounded-lg custom-font-mavan-pro ">
+   
+      <div className="flex items-center p-2 bg-gray-100 card-shadow rounded-lg custom-font-mavan-pro scroll-cards bg-">
         <img
           src={image}
           alt={`${name}'s profile`}
@@ -19,7 +19,7 @@ function AdminCard({ image, name, id, department }) {
           </label>
         </div>
       </div>
-    </div>
+  
   );
 }
 

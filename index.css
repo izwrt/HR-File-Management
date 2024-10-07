@@ -207,3 +207,14 @@
 .card-shadow {
   box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
+
+
+.snap-scroll {
+  scroll-snap-type: y proximity;
+  scroll-padding-top:75px;
+  scroll-padding-bottom: 75px;
+}
+
+.scroll-cards{
+  scroll-snap-align:start;
+}
