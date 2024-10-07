@@ -3,9 +3,14 @@ import Filter from "./Filters";
 
 const BusinessunitPopup = ({
   popupRef,
-  handleApplyFilters,
+  handleApplyFiltersBusinessUnit,
+  handleApplyFiltersDashboard,
   onClose,
   isExiting,
+  clients = [],
+  statuses = [],
+  units = [],
+  departments = [],
 }) => {
   const popClose = (e) => {
     if (popupRef.current === e.target) {
@@ -22,7 +27,15 @@ const BusinessunitPopup = ({
       onClick={popClose}
     >
       <div className="bg-white h-fit w-fit rounded-lg">
-        <Filter onClose={onClose} onApply={handleApplyFilters} />
+        <Filter
+          onClose={onClose}
+          onApplyBusinessUnit={handleApplyFiltersBusinessUnit}
+          onApplyDashboard={handleApplyFiltersDashboard}
+          clients={clients}
+          statuses={statuses}
+          units={units}
+          departments={departments}
+        />
       </div>
     </div>
   );
