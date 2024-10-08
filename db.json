@@ -9,7 +9,8 @@
       "client": "One Inc",
       "startDate": "01/01/2024",
       "endDate": "01/01/2025",
-      "status": "Active"
+      "status": "Active",
+      "empImg": "https://img.freepik.com/free-photo/confident-professional-businesswoman-cross-arms-chest-looking-selfassured-camera-smiling-standing-white-background_176420-48895.jpg"
     },
     {
       "id": "2",
@@ -20,7 +21,8 @@
       "client": "Slide",
       "startDate": "02/01/2024",
       "endDate": "02/01/2025",
-      "status": "Inactive"
+      "status": "Inactive",
+      "empImg": "https://images.pexels.com/photos/10376002/pexels-photo-10376002.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
     {
       "id": "3",
@@ -31,7 +33,8 @@
       "client": "Metaz",
       "startDate": "03/01/2024",
       "endDate": "03/01/2025",
-      "status": "Active"
+      "status": "Active",
+      "empImg": "https://media.istockphoto.com/id/1503232125/photo/happy-smile-and-portrait-of-business-man-in-city-for-professional-corporate-and-pride.jpg?s=612x612&w=0&k=20&c=uPu3GKHW507ruenLY8xwsB3OgOSwLSWjE3fBpy20Hac="
     },
     {
       "id": "4",
@@ -42,7 +45,8 @@
       "client": "One Inc",
       "startDate": "04/01/2024",
       "endDate": "04/01/2025",
-      "status": "Relieved"
+      "status": "Relieved",
+      "empImg": "https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2016/02/Headshot-on-Black-Background_1.jpg?ssl=1"
     },
     {
       "id": "5",
@@ -53,7 +57,8 @@
       "client": "Slide",
       "startDate": "05/01/2024",
       "endDate": "05/01/2025",
-      "status": "Active"
+      "status": "Active",
+      "empImg": "https://images.pexels.com/photos/10376002/pexels-photo-10376002.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
     {
       "id": "6",
@@ -64,7 +69,8 @@
       "client": "Metaz",
       "startDate": "06/01/2024",
       "endDate": "06/01/2025",
-      "status": "Inactive"
+      "status": "Inactive",
+      "empImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2fOqlIewFF8e2C1xYi0WE3Ste__XZ_bWQHg&s"
     },
     {
       "id": "7",
@@ -75,7 +81,8 @@
       "client": "One Inc",
       "startDate": "07/01/2024",
       "endDate": "07/01/2025",
-      "status": "Active"
+      "status": "Active",
+      "empImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbayBZorAmJ-MiQ0Mqc0X-qez3teWl9vhMyg&s"
     },
     {
       "id": "8",
@@ -86,7 +93,8 @@
       "client": "Slide",
       "startDate": "08/01/2024",
       "endDate": "08/01/2025",
-      "status": "Relieved"
+      "status": "Relieved",
+      "empImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8twwEHj7I-euKEDeOJ31r4AOoiFktA7g9wQ&s"
     },
     {
       "id": "9",
@@ -97,7 +105,8 @@
       "client": "Metaz",
       "startDate": "09/01/2024",
       "endDate": "09/01/2025",
-      "status": "Inactive"
+      "status": "Inactive",
+      "empImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTshu0TlC6jM0YzTh_y88XsECzUc2j2_4froQ&s"
     },
     {
       "id": "10",
@@ -108,7 +117,8 @@
       "client": "One Inc",
       "startDate": "10/01/2024",
       "endDate": "10/01/2025",
-      "status": "Active"
+      "status": "Active",
+      "empImg": "https://data.ipic.ai/images/YbKhQrGQY2nJXVX_1712121324.png"
     },
     {
       "id": "11",
@@ -119,7 +129,8 @@
       "client": "Slide",
       "startDate": "11/01/2024",
       "endDate": "11/01/2025",
-      "status": "Inactive"
+      "status": "Inactive",
+      "empImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9TnfwxnCpXEMjkKvHhfiFOZD1lsgKWaKvVw&s"
     },
     {
       "name": "Kim Blue",
@@ -129,7 +140,8 @@
       "client": "Metaz",
       "startDate": "12/01/2024",
       "endDate": "12/01/2025",
-      "status": "Active"
+      "status": "Active",
+      "empImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs6mobxay_KlbubNsuXGIBXBfmOp9tFCu0eg&s"
     }
   ]
 }
