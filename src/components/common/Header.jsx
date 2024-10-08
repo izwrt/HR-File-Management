@@ -121,7 +121,6 @@ const Header = ({ openMenu, setOpenMenu, menuOpen }) => {
           </div>
         </div>
       </div>
-
       {isSettingsPopupOpen && <SettingsPopup onClose={closePopup} />}
     </nav>
   );

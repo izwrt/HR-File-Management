@@ -46,7 +46,7 @@ const SettingsPopup = ({ onClose }) => {
         ref={popupRef}
         className="homeBgColor p-6 rounded-md shadow-lg w-[800px] h-[600px] flex relative"
       >
-        <div className="absolute top-0 left-0 w-full flex justify-between items-center p-4 pt-6 z-20 bg-yellow-300">
+        <div className="absolute top-0 left-0 w-full flex justify-between items-center p-4 pt-6 z-20 homeBgColor ">
           <h2 className="text-xl font-semibold pl-5 footer-font">Settings</h2>
           <button
             onClick={onClose}
@@ -79,9 +79,9 @@ const SettingsPopup = ({ onClose }) => {
             </button>
           </div>
         </div>
-        <div className="w-3/4 pl-6 pt-16 custom-font-mavan-pro bg-red-300 overflow-y-auto">
+        <div className="w-3/4 pl-6 pt-16 custom-font-mavan-pro  overflow-y-auto">
           {activeTab === "Admin Privileges" && (
-            <div className="flex flex-col gap-10 bg-slate-300 ">
+            <div className="flex flex-col gap-10 ">
               <input
                 type="text"
                 placeholder="Search"

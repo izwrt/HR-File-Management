@@ -244,6 +244,7 @@ import { NavLink, Outlet } from "react-router-dom"; // Import NavLink and Outlet
 import AddComment from "../common/AddComment";
 import BlueButton from "../common/BlueButton";
 import SampleImage from "../../assets/images/UploadFile.png";
+import NewUpload from "../../assets/images/NewUpload";
 
 const props = ["Certifications"];
 
@@ -274,11 +275,13 @@ const PopupComponent = ({ heading = "Default Header" }) => {
         </div>
         <div className="flex justify-center w-full">
           <div className="border-2 w-96 flex flex-col shadow h-56 border-dotted border-gray-600 rounded-lg justify-center items-center">
-            <img
+            {/* <img
               src={SampleImage}
               alt="Popup"
               className="flex w-24 h-24 object-cover"
             />
+             */}
+             <NewUpload/>
             <div className="flex  justify-center p-2 items-center gap-x-2">
               <h2 className="font-semibold custom-font-mavan-pro text-gray-500 text-xl">
                 Drag and Drop file or
