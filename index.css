@@ -202,14 +202,11 @@
   color: black;
 }
 
-
-
 /* --------------------------------------------------------see all------------------------------------------------ */
 
-.seeallfont{
-  color:#fe555d;
+.seeallfont {
+  color: #fe555d;
 }
-
 
 /* Styles for normal NavLink */
 .fruit-link {
@@ -225,17 +222,23 @@
 }
 
 .card-shadow {
-  box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 3px 2px rgba(0, 0, 0, 0.082);
 }
 
+.card-color {
+  background-color: #f4f4f4;
+}
 
 .snap-scroll {
   scroll-snap-type: y mandatory;
   scroll-padding-top: 75px;
-
 }
 
-.scroll-cards{
-  scroll-snap-align:start;
+.scroll-cards {
+  scroll-snap-align: start;
   scroll-snap-stop: always;
+}
+
+.text-size {
+  font-size: 13px;
 }

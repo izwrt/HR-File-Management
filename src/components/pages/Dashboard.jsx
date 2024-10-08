@@ -1,9 +1,5 @@
 import debounce from "lodash.debounce";
-import React, {
-  useMemo,
-  useRef,
-  useState
-} from "react";
+import React, { useMemo, useRef, useState } from "react";
 import { CiFilter, CiSearch } from "react-icons/ci";
 import apiFecthEmployees from "../../../api/apiFecthEmployees";
 import Add_Admin from "../../assets/images/Add_Admin";
@@ -123,7 +119,7 @@ function Dashboard() {
         </div>
       </div>
       <div className=" w-[700px]  xl:h-[766px] 2xl:h-[924px] pb-5 md:hidden flex items-center justify-center py-9 ">
-        <div className=" bg-white w-full rounded-lg overflow-y-auto  overflow h-full snap-scroll shadow-sm border-solid border border-slate-100 shadow-gray-20 pb-5 xl:pb-14">
+        <div className=" bg-white w-full rounded-lg overflow-y-auto  overflow h-full snap-scroll shadow-sm border-solid border border-slate-100 shadow-gray-20 pb-10 xl:pb-24">
           <div className="sticky top-0 z-10 px-5 bg-white">
             <div className="font-semibold  text-base   custom-font-mavan-pro opactiy-80">
               <div className="flex flex-row gap-6 items-center  py-4 border-b border-black ">
@@ -133,7 +129,7 @@ function Dashboard() {
             </div>
           </div>
           <div className="relative px-5 py-4">
-            <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
               <AdminCard />
               <AdminCard />
               <AdminCard />
