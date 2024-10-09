@@ -92,11 +92,7 @@ const Header = ({ openMenu, setOpenMenu, menuOpen }) => {
     <nav className="h-16 w-full flex items-center justify-end bg-white gap-[60%] pr-5 p-2 md:p-5 nav-container fixed z-20">
       <div className="flex items-center w-full justify-between">
         <div className="flex justify-center items-center gap-4">
-          <RxHamburgerMenu
-            size={25}
-            className="opacity-70 md:opacity-70"
-            onClick={menuOpen}
-          />
+
           <RxHamburgerMenu
             size={25}
             className="opacity-70 md:opacity-70"
