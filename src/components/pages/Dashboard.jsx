@@ -1,9 +1,5 @@
 import debounce from "lodash.debounce";
-import React, {
-  useMemo,
-  useRef,
-  useState
-} from "react";
+import React, { useMemo, useRef, useState } from "react";
 import { CiFilter, CiSearch } from "react-icons/ci";
 import apiFecthEmployees from "../../../api/apiFecthEmployees";
 import Add_Admin from "../../assets/images/Add_Admin";
@@ -77,7 +73,7 @@ function Dashboard() {
           />
         </div>
         <div className="xl:h-[35rem] 2xl:h-[44rem] pb-5 md:h-[900px]  w-full ">
-          <div className="bg-white rounded-lg  flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 overflow-y-auto overflow scroll-smooth w-full scroll-padding">
+          <div className="bg-white rounded-lg  flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 snap-scroll-employee-section overflow-y-auto overflow scroll-smooth w-full scroll-padding">
             <div className="bg-white backdrop-blur-sm  z-10 sticky top-0 rounded-lg">
               <div className="flex items-center justify-between flex-grow px-5">
                 <div className="font-semibold mb-4 pt-4 text-base custom-font-mavan-pro opacity-80">
@@ -108,9 +104,9 @@ function Dashboard() {
                   {filteredEmployeeDetails.map((employee) => (
                     <EmployeeCard
                       key={employee.id}
-                      image={employee.image}
+                      image={employee.empImg}
                       name={employee.name}
-                      id={employee.id}
+                      id={employee.empid}
                       department={employee.department}
                     />
                   ))}
@@ -132,7 +128,7 @@ function Dashboard() {
               </div>
             </div>
           </div>
-          <div className="relative px-5 py-4 bg-red-400 ">
+          <div className="relative px-5 py-4 ">
             <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8 gap-4">
               <AdminCard />
               <AdminCard />
