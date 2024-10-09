@@ -1,30 +1,17 @@
-import React, { useRef, useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { CiSearch } from "react-icons/ci";
+import apiFecthEmployees from "../../../api/apiFecthEmployees";
 import AdminCard from "../common/AdminCard";
 
 const SettingAdminPrivileges = () => {
-  const [loading, setLoading] = useState(true); // Set to true initially
-  const [adminUsers, setAdminUsers] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(""); // Move state here
 
-  const filteredUsers = adminUsers.filter((user) =>
-    user.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const [searchTerm, setSearchTerm] = useState(""); 
 
-  useEffect(() => {
-    const fetchAdminUsers = async () => {
-      try {
-        const response = await axios.get("http://localhost:8000/employees");
-        setAdminUsers(response.data);
-      } catch (error) {
-        console.error("Error fetching admin users:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchAdminUsers();
-  }, []);
+  const {adminUsers} = apiFecthEmployees();
+  const {employees} = apiFecthEmployees();
+
+  console.log(employees[1]);
+  console.log(adminUsers)
 
   const handleToggle = (id) => {
     // Define what happens when toggling admin privileges
@@ -42,28 +29,31 @@ const SettingAdminPrivileges = () => {
           <input
             type="text"
             name="search"
+            autoComplete="off"
             value={searchTerm} // Make it a controlled input
             onChange={(e) => setSearchTerm(e.target.value)} // Update state on change
             className="w-full focus:outline-none textbox-color custom-font-mavan-pro opacity-80"
             placeholder="Search"
           />
         </label>
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <div className="flex flex-col gap-7">
-            {filteredUsers.map((user) => (
+        {adminUsers == null ? (
+          <p>No Data Found</p>
+        ) : adminUsers.length === 0 ? (<p>Loading</p>) :
+        (
+          <div className="flex flex-col gap-7 ">
+            {employees.map((user) => (
               <AdminCard
-                key={user.id}
+                key={user.empid}
                 name={user.name}
-                empId={user.empId}
+                empid={user.empid}
                 department={user.department}
-                enabled={user.enabled}
-                onToggle={() => handleToggle(user.id)}
+                enabled={user.admin}
+                empImg = {user.empImg}
               />
             ))}
           </div>
-        )}
+        )
+        }
       </div>
     </div>
   );

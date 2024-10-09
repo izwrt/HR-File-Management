@@ -53,16 +53,18 @@
 
 // export default Header;
 
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Bellicon from "../../assets/images/bellicon.jsx";
+import React, { useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
+import Bellicon from "../../assets/images/bellicon.jsx";
 import SettingsPopup from "./SettingsPopup";
 
 const Header = ({ openMenu, setOpenMenu, menuOpen }) => {
 
+  const [isExiting, setIsExiting] = useState(false);
+  const [popUp, setPopUp] = useState(false);
+
   const [empImg, setEmpImg] = useState("N");
-  const [isSettingsPopupOpen, setIsSettingsPopupOpen] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -80,12 +82,16 @@ const Header = ({ openMenu, setOpenMenu, menuOpen }) => {
     window.location.href = "https://puginarug.com/";
   };
 
-  const handleSettingsClick = () => {
-    setIsSettingsPopupOpen(true);
+  const onOpen = () => {
+    setPopUp(true);
+    setIsExiting(true);
   };
 
-  const closePopup = () => {
-    setIsSettingsPopupOpen(false);
+  const onClose = () => {
+    setTimeout(() => {
+      setPopUp(false);
+    }, 300);
+    setIsExiting(false);
   };
 
   return (
@@ -103,7 +109,7 @@ const Header = ({ openMenu, setOpenMenu, menuOpen }) => {
           <ul className="text-black custom-font-mavan-pro font-sm text-[16px] flex items-center justify-center gap-8">
             <li className="nav-hover">Home</li>
             <li className="nav-hover">Dashboard</li>
-            <li className="nav-hover" onClick={handleSettingsClick}>
+            <li className="nav-hover" onClick={onOpen}>
               Settings
             </li>
             <Bellicon />
@@ -117,7 +123,7 @@ const Header = ({ openMenu, setOpenMenu, menuOpen }) => {
           </div>
         </div>
       </div>
-      {isSettingsPopupOpen && <SettingsPopup onClose={closePopup} />}
+      {popUp && <SettingsPopup onClose={onClose} isExiting={isExiting} popUp={popUp}/>}
     </nav>
   );
 };

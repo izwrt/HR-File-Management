@@ -1,24 +1,23 @@
-import React from 'react';
-import { NavLink,Outlet } from "react-router-dom";
+import { default as React, default as React, useState } from 'react';
 
 const fruits =[
     "dummyone", "Orange", "Banana", "Grapes"
 ];
 
 const Dummy = () => {
+  const [count, setCount] = useState(0);
+
+  const logMessage = (() => {
+    console.log("hy");
+  }); // Immediately invoked, not a function reference
+
   return (
-    <div className=' mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 flex gap-10'>
-      {fruits.map(f => <NavLink 
-                          to={f}
-                        className="fruit-link"
-                        activeClassName="active">
-                          {f}
-                        </NavLink>)}
-
-                        <Outlet/>
+    <div className='m-72'>
+      <button onClick={logMessage}>Click Me (Direct Invoke)</button>
+      <button onClick={() => setCount(count + 1)}>Increment Count: {count}</button>
     </div>
+  );
+};
 
-  )
-}
 
 export default Dummy

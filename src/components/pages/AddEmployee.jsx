@@ -1,9 +1,7 @@
-import { BsPersonCircle } from "react-icons/bs";
-import { RiImageAddFill } from "react-icons/ri";
-import InputField from "../common/InputField";
 import { useRef } from "react";
 import { MdUploadFile } from "react-icons/md";
 import Setting_Employee from "../../assets/images/Setting_Employee";
+import InputField from "../common/InputField";
 
 function AddEmployee() {
   const inputRef = useRef(null);
@@ -37,9 +35,9 @@ function AddEmployee() {
             </div>
             <div className="flex flex-col items-center gap-5">
               <p className="font-color">Active Status</p>
-              <label class="inline-flex items-center cursor-pointer">
-                <input type="checkbox" value="" class="sr-only peer" />
-                <div class="relative w-16 h-8 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[1px] after:left-[1px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-7 after:w-7 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+              <label className="inline-flex items-center cursor-pointer">
+                <input type="checkbox" value="" className="sr-only peer" />
+                <div className="relative w-16 h-8 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[1px] after:left-[1px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-7 after:w-7 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
               </label>
             </div>
           </div>
