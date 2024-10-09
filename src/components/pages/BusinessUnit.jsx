@@ -8,7 +8,7 @@ import EmployeeBusinessLog from "../common/EmployeeBusinessLog";
 import NodataFound from "../common/NodataFound";
 
 export default function BusinessUnit() {
-  const employeeDetails = apiFecthEmployees();
+  const {employees} = apiFecthEmployees();
   const [searchEmployee, setSearchEmployee] = useState("");
   const [popUp, setPopUp] = useState(false);
   const [selectedClients, setSelectedClients] = useState([]);
@@ -26,17 +26,17 @@ export default function BusinessUnit() {
     return debounce(handleChange, 300);
   }, []);
 
-  const activeEmployeesCount = employeeDetails.filter(
+  const activeEmployeesCount = employees.filter(
     (emp) => emp.status === "Active"
   ).length;
-  const inactiveEmployeesCount = employeeDetails.filter(
+  const inactiveEmployeesCount = employees.filter(
     (emp) => emp.status === "Inactive"
   ).length;
-  const relievedEmployeesCount = employeeDetails.filter(
+  const relievedEmployeesCount = employees.filter(
     (emp) => emp.status === "Relieved"
   ).length;
-  const filteredEmployeeDetails = useMemo(() => {
-    return employeeDetails.filter((emp) => {
+  const filteredemployees = useMemo(() => {
+    return employees.filter((emp) => {
       const searchMatch =
         searchEmployee === "" ||
         emp.name.toLowerCase().includes(searchEmployee.toLowerCase()) ||
@@ -49,7 +49,7 @@ export default function BusinessUnit() {
 
       return searchMatch && clientMatch && statusMatch;
     });
-  }, [employeeDetails, searchEmployee, selectedClients, selectedStatuses]);
+  }, [employees, searchEmployee, selectedClients, selectedStatuses]);
 
   const onOpen = () => {
     setPopUp(true);
@@ -125,8 +125,8 @@ export default function BusinessUnit() {
               />
             </div>
 
-            {filteredEmployeeDetails.length !== 0 ? (
-              filteredEmployeeDetails.map((emp) => (
+            {filteredemployees.length !== 0 ? (
+              filteredemployees.map((emp) => (
                 <EmployeeBusinessLog
                   key={emp.empid}
                   employeeName={emp.name}
@@ -160,3 +160,5 @@ export default function BusinessUnit() {
     </div>
   );
 }
+
+// {seetings}

@@ -10,7 +10,7 @@ import EmployeeCard from "../common/EmployeeCard";
 import NodataFound from "../common/NodataFound";
 
 function Dashboard() {
-  const employeeDetails = apiFecthEmployees();
+  const { employees } = apiFecthEmployees();
   const [searchEmployee, setSearchEmployee] = useState("");
   const [selectedUnits, setSelectedUnits] = useState([]);
   const [selectedDepartment, setSelectedDepartment] = useState([]);
@@ -45,8 +45,8 @@ function Dashboard() {
     return debounce(handleChange, 300);
   }, []);
 
-  const filteredEmployeeDetails = useMemo(() => {
-    return employeeDetails.filter((emp) => {
+  const filteredemployees = useMemo(() => {
+    return employees.filter((emp) => {
       const searchMatch =
         searchEmployee === "" ||
         emp.name.toLowerCase().includes(searchEmployee.toLowerCase()) ||
@@ -60,7 +60,7 @@ function Dashboard() {
 
       return searchMatch && unitMatch && departmentMatch;
     });
-  }, [employeeDetails, searchEmployee, selectedUnits, selectedDepartment]);
+  }, [employees, searchEmployee, selectedUnits, selectedDepartment]);
 
   return (
     <div className="flex flex-row relative mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit pl-8 pr-12 md:pl-5 md:pr-6 gap-8">
@@ -99,9 +99,9 @@ function Dashboard() {
             </div>
 
             <div className="w-full h-full px-5 ">
-              {filteredEmployeeDetails.length !== 0 ? (
+              {filteredemployees.length !== 0 ? (
                 <div className=" grid sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-5 pb-5">
-                  {filteredEmployeeDetails.map((employee) => (
+                  {filteredemployees.map((employee) => (
                     <EmployeeCard
                       key={employee.id}
                       image={employee.empImg}
@@ -119,7 +119,7 @@ function Dashboard() {
         </div>
       </div>
       <div className=" w-[700px]  xl:h-[766px] 2xl:h-[924px] pb-5 md:hidden flex items-center justify-center py-9 ">
-        <div className=" bg-white w-full rounded-lg overflow-y-auto  overflow h-full snap-scroll shadow-sm border-solid border border-slate-100 shadow-gray-20 pb-5 xl:pb-14">
+        <div className=" bg-white w-full rounded-lg overflow-y-auto  overflow h-full snap-scroll shadow-sm border-solid border border-slate-100 shadow-gray-20 2xl:pb-10 xl:pb-32">
           <div className="sticky top-0 z-10 px-5 bg-white">
             <div className="font-semibold  text-base   custom-font-mavan-pro opactiy-80">
               <div className="flex flex-row gap-6 items-center  py-4 border-b border-black ">

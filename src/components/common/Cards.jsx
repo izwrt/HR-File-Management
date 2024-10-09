@@ -1,9 +1,7 @@
-//
-
 import React, { useState, useEffect } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import axios from "axios"; // Import Axios
+import axios from "axios"; 
 import rightarrow from "../../assets/images/rightarrow.png";
 import leftarrow from "../../assets/images/leftarrow.png";
 

@@ -23,6 +23,7 @@ import AddEmployee from "./components/pages/AddEmployee";
 import Dummy from "./components/pages/Dummy";
 import DummyOne from "./components/common/DummyOne";
 import ViewEmployeeDetails from "./components/pages/ViewEmployeeDetails";
+import PopupComponent from "./components/pages/PopupComponent";
 
 // const AppLoyout = () => {
 
@@ -141,7 +142,10 @@ const router = createBrowserRouter([
       {
         path: "/viewemployee/:id",
         element: <ViewEmployeeDetails/>
-      },
+      },{
+      path: "/popupcomponent",
+      element: <PopupComponent/>
+    },
       {
         path: "/dummy",
         element: <Dummy />,

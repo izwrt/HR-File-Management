@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         customBlue: "#3D91A3",
+        selectedTab:"#c1dce2",
       },
     },
     screens: {
