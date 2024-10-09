@@ -1,4 +1,4 @@
-function AdminCard({ image, name, empid, department, empImg }) {
+function AdminCard({ name, empid, department, empImg }) {
   return (
     <div className="flex items-center px-3 py-2 card-color card-shadow rounded-lg custom-font-mavan-pro scroll-cards">
       <div className="w-14 h-14 rounded-full bg-white flex overflow-hidden">

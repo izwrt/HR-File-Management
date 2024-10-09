@@ -130,16 +130,18 @@ function Dashboard() {
           </div>
           <div className="relative px-5 py-4 ">
             <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8 gap-4">
-              <AdminCard />
-              <AdminCard />
-              <AdminCard />
-              <AdminCard />
-              <AdminCard />
-              <AdminCard />
-              <AdminCard />
-              <AdminCard />
-              <AdminCard />
-              <AdminCard />
+              {employees.map(
+                (employee) =>
+                  employee.admin && (
+                    <AdminCard
+                      key={employee.empid}
+                      name={employee.name}
+                      empid={employee.empid}
+                      department={employee.department}
+                      empImg={employee.empImg}
+                    />
+                  )
+              )}
             </div>
           </div>
         </div>
