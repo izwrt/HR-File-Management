@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import debounce from 'lodash.debounce';
+import React, { useEffect, useMemo, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import apiFecthEmployees from "../../../api/apiFecthEmployees";
 import AdminCard from "../common/AdminCard";
@@ -7,16 +8,32 @@ const SettingAdminPrivileges = () => {
 
   const [searchTerm, setSearchTerm] = useState(""); 
 
-  const {adminUsers} = apiFecthEmployees();
-  const {employees} = apiFecthEmployees();
+  const {adminUsers,employees} = apiFecthEmployees();
 
-  console.log(employees[1]);
-  console.log(adminUsers)
 
-  const handleToggle = (id) => {
-    // Define what happens when toggling admin privileges
-    console.log(`Toggled user with id: ${id}`);
+
+
+  const searchHandler = (e) => {
+    setSearchTerm(e.target.value);
+  }
+
+  const filteredEmployees = employees
+  .filter((emp) => emp.department === "HR" && (
+    emp.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    emp.empid.includes(searchTerm)
+  ))
+  .sort((a, b) => (b.admin ? 1 : 0) - (a.admin ? 1 : 0));
+
+  console.log("searched : ", filteredEmployees);
+
+const searchDebounce = useMemo(() => debounce(searchHandler, 200), []);
+
+useEffect(() => {
+  return () => {
+    searchDebounce.cancel();
   };
+}, [searchDebounce]);
+
 
   return (
     <div className="w-3/4 pl-6 custom-font-mavan-pro">
@@ -30,8 +47,8 @@ const SettingAdminPrivileges = () => {
             type="text"
             name="search"
             autoComplete="off"
-            value={searchTerm} // Make it a controlled input
-            onChange={(e) => setSearchTerm(e.target.value)} // Update state on change
+            
+            onChange={searchDebounce} 
             className="w-full focus:outline-none textbox-color custom-font-mavan-pro opacity-80"
             placeholder="Search"
           />
@@ -41,7 +58,7 @@ const SettingAdminPrivileges = () => {
         ) : adminUsers.length === 0 ? (<p>Loading</p>) :
         (
           <div className="flex flex-col gap-7 ">
-            {employees.map((user) => (
+            {filteredEmployees.map((user) => (
               <AdminCard
                 key={user.empid}
                 name={user.name}
