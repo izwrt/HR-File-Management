@@ -18,6 +18,8 @@ export default function BusinessUnit() {
   const clients = ["One Inc", "Slide", "Metaz"];
   const statuses = ["Active", "Inactive", "Relieved"];
 
+  console.log(selectedStatuses)
+
   const handleChange = (e) => {
     setSearchEmployee(e.target.value);
   };
@@ -155,6 +157,10 @@ export default function BusinessUnit() {
           isExiting={isExiting}
           clients={clients}
           statuses={statuses}
+          selectedClients={selectedClients}
+          setSelectedClients={setSelectedClients}
+          selectedStatuses={selectedStatuses}
+          setSelectedStatuses={setSelectedStatuses}
         />
       )}
     </div>

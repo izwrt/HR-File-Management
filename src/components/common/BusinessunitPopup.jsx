@@ -11,6 +11,10 @@ const BusinessunitPopup = ({
   statuses = [],
   units = [],
   departments = [],
+  selectedClients,
+  setSelectedClients,
+  selectedStatuses,
+  setSelectedStatuses,
 }) => {
   const popClose = (e) => {
     if (popupRef.current === e.target) {
@@ -35,6 +39,10 @@ const BusinessunitPopup = ({
           statuses={statuses}
           units={units}
           departments={departments}
+          selectedClients={selectedClients}
+          setSelectedClients={setSelectedClients}
+          selectedStatuses={selectedStatuses}
+          setSelectedStatuses={setSelectedStatuses}
         />
       </div>
     </div>
