@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Close from "../../assets/images/close.png";
+import { useLocation } from "react-router-dom";
 
 const Filter = ({
   onClose,
@@ -12,13 +13,15 @@ const Filter = ({
   selectedClients,
   setSelectedClients,
   selectedStatuses,
-  setSelectedStatuses
+  setSelectedStatuses,
+  setSelectedDepartment,
+  setSelectedUnits,
+  selectedDepartment,
+  selectedUnits,
 }) => {
+  const location = useLocation();
 
-  const [selectedUnits, setSelectedUnits] = useState([]);
-  const [selectedDepartments, setSelectedDepartments] = useState([]);
-
- 
+  console.log(location.pathname);
 
   const handleClientChange = (client) => {
     setSelectedClients((prev) =>
@@ -43,16 +46,21 @@ const Filter = ({
   };
 
   const handleDepartmentsChange = (department) => {
-    setSelectedDepartments((prev) =>
+    setSelectedDepartment((prev) =>
       prev.includes(department)
         ? prev.filter((d) => d !== department)
         : [...prev, department]
     );
   };
 
-  const applyFilters = () => {
-    setSelectedClients([]);
-    setSelectedStatuses([]);
+  const clearButtonFilter = () => {
+    if (location.pathname === "/dashboard") {
+      setSelectedDepartment([]);
+      setSelectedUnits([]);
+    } else {
+      setSelectedClients([]);
+      setSelectedStatuses([]);
+    }
   };
 
   return (
@@ -154,14 +162,14 @@ const Filter = ({
                   <label
                     key={department}
                     className={`custom-font-mavan-pro text-base  ${
-                      selectedDepartments.includes(department)
+                      selectedDepartment.includes(department)
                         ? "opacity-90 "
                         : "opacity-70"
                     }`}
                   >
                     <input
                       type="checkbox"
-                      checked={selectedDepartments.includes(department)}
+                      checked={selectedDepartment.includes(department)}
                       onChange={() => handleDepartmentsChange(department)}
                       className="mr-2 custom-font-mavan-pro"
                     />
@@ -173,12 +181,20 @@ const Filter = ({
           </div>
         </span>
       </div>
-      <button
-        className="text-black customColorBlue-lite h-fit rounded-lg cursor-pointer px-4 py-2 w-fit custom-font-mavan-pro self-center mt-2 text-opacity-80 hover:opacity-70 hover:scale-95 transition-all duration-100"
-        onClick={applyFilters}
-      >
-        Clear
-      </button>
+      <div className="flex flex-row gap-14 items-center justify-center">
+        <button
+          className="text-black customColorBlue-lite h-fit rounded-lg cursor-pointer px-4 py-2 w-fit custom-font-mavan-pro self-center mt-2 text-opacity-80 hover:opacity-70 hover:scale-95 transition-all duration-100"
+          onClick={clearButtonFilter}
+        >
+          Clear
+        </button>
+        <button
+          className="text-black customColorBlue-lite h-fit rounded-lg cursor-pointer px-4 py-2 w-fit custom-font-mavan-pro self-center mt-2 text-opacity-80 hover:opacity-70 hover:scale-95 transition-all duration-100"
+          onClick={onClose}
+        >
+          Apply
+        </button>
+      </div>
     </div>
   );
 };

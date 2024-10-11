@@ -1,9 +1,11 @@
 import React from 'react'
 
+
 const Salary = () => {
   return (
     <div>
-      hii    </div>
+      hii    
+      </div>
   )
 }
 
