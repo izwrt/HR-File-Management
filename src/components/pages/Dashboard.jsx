@@ -8,12 +8,15 @@ import BusinessunitPopup from "../common/BusinessunitPopup";
 import CountContainer from "../common/CountContainer";
 import EmployeeCard from "../common/EmployeeCard";
 import NodataFound from "../common/NodataFound";
+import SettingsPopup from "../common/SettingsPopup";
 
 function Dashboard() {
-  const {employees} = apiFecthEmployees();
+  const { employees } = apiFecthEmployees();
   const [searchEmployee, setSearchEmployee] = useState("");
   const [selectedUnits, setSelectedUnits] = useState([]);
   const [selectedDepartment, setSelectedDepartment] = useState([]);
+  const [popUpSettings, setPopUpSettings] = useState(false);
+  const [isExitingSettings, setIsExitingSettings] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
   const [popUp, setPopUp] = useState(false);
   const popUpRef = useRef(null);
@@ -62,6 +65,17 @@ function Dashboard() {
     });
   }, [employees, searchEmployee, selectedUnits, selectedDepartment]);
 
+  const openSettings = () => {
+    setPopUpSettings(true);
+    setIsExitingSettings(true);
+  };
+
+  const onCloseSettings = () => {
+    setTimeout(() => {
+      setPopUpSettings(false);
+    }, 300);
+    setIsExitingSettings(false);
+  };
   return (
     <div className="flex flex-row relative mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit pl-8 pr-12 md:pl-5 md:pr-6 gap-8">
       <div className="flex flex-col md:w-full w-[70%] 2xl:w-full 2xl:h-full ">
@@ -73,7 +87,7 @@ function Dashboard() {
           />
         </div>
         <div className="xl:h-[35rem] 2xl:h-[44rem] pb-5 md:h-[900px]  w-full ">
-          <div className="bg-white rounded-lg  flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 overflow-y-auto overflow scroll-smooth w-full scroll-padding">
+          <div className="bg-white rounded-lg  flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 snap-scroll-employee-section overflow-y-auto overflow scroll-smooth w-full scroll-padding">
             <div className="bg-white backdrop-blur-sm  z-10 sticky top-0 rounded-lg">
               <div className="flex items-center justify-between flex-grow px-5">
                 <div className="font-semibold mb-4 pt-4 text-base custom-font-mavan-pro opacity-80">
@@ -104,9 +118,9 @@ function Dashboard() {
                   {filteredemployees.map((employee) => (
                     <EmployeeCard
                       key={employee.id}
-                      image={employee.image}
+                      image={employee.empImg}
                       name={employee.name}
-                      id={employee.id}
+                      id={employee.empid}
                       department={employee.department}
                     />
                   ))}
@@ -124,22 +138,27 @@ function Dashboard() {
             <div className="font-semibold  text-base   custom-font-mavan-pro opactiy-80">
               <div className="flex flex-row gap-6 items-center  py-4 border-b border-black ">
                 <div>Admins</div>
-                <Add_Admin />
+                <div onClick={openSettings} className="cursor-pointer">
+                  <Add_Admin />
+                </div>
               </div>
             </div>
           </div>
-          <div className="relative px-5 py-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
-              <AdminCard />
-              <AdminCard />
-              <AdminCard />
-              <AdminCard />
-              <AdminCard />
-              <AdminCard />
-              <AdminCard />
-              <AdminCard />
-              <AdminCard />
-              <AdminCard />
+          <div className="relative px-5 py-4 ">
+            <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8 gap-4">
+              {employees.map(
+                (employee) =>
+                  employee.admin && (
+                    <AdminCard
+                      key={employee.empid}
+                      name={employee.name}
+                      empid={employee.empid}
+                      department={employee.department}
+                      empImg={employee.empImg}
+                      admin={employee.admin}
+                    />
+                  )
+              )}
             </div>
           </div>
         </div>
@@ -153,6 +172,13 @@ function Dashboard() {
           isExiting={isExiting}
           units={units}
           departments={departments}
+        />
+      )}
+      {popUpSettings && (
+        <SettingsPopup
+          isExiting={isExitingSettings}
+          onClose={onCloseSettings}
+          popUp={popUpSettings}
         />
       )}
     </div>
