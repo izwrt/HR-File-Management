@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Close from "../../assets/images/close.png";
+import { useLocation } from "react-router-dom";
 
 const Filter = ({
   onClose,
@@ -18,6 +19,10 @@ const Filter = ({
   selectedDepartment,
   selectedUnits,
 }) => {
+  const location = useLocation();
+
+  console.log(location.pathname);
+
   const handleClientChange = (client) => {
     setSelectedClients((prev) =>
       prev.includes(client)
@@ -48,9 +53,14 @@ const Filter = ({
     );
   };
 
-  const applyFilters = () => {
-    setSelectedClients([]);
-    setSelectedStatuses([]);
+  const clearButtonFilter = () => {
+    if (location.pathname === "/dashboard") {
+      setSelectedDepartment([]);
+      setSelectedUnits([]);
+    } else {
+      setSelectedClients([]);
+      setSelectedStatuses([]);
+    }
   };
 
   return (
@@ -171,10 +181,10 @@ const Filter = ({
           </div>
         </span>
       </div>
-      <div className="flex flex-row gap-2 items-center justify-center">
+      <div className="flex flex-row gap-14 items-center justify-center">
         <button
           className="text-black customColorBlue-lite h-fit rounded-lg cursor-pointer px-4 py-2 w-fit custom-font-mavan-pro self-center mt-2 text-opacity-80 hover:opacity-70 hover:scale-95 transition-all duration-100"
-          onClick={applyFilters}
+          onClick={clearButtonFilter}
         >
           Clear
         </button>
