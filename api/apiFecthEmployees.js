@@ -1,9 +1,10 @@
-import React,{useEffect,useState} from 'react'
 import axios from "axios";
+import { useEffect, useState } from 'react';
 
 export default function apiFecthEmployees() {
 
     const [employees, setEmployees] = useState([]);
+    const [adminUsers, setAdminUsers] = useState("hy");
 
     useEffect(() => {
         axios
@@ -15,8 +16,9 @@ export default function apiFecthEmployees() {
             console.error(
               `There was a error fetching the employees ${error}`
             );
+            setAdminUsers(null);
           });
       },[]);
     
-  return employees;
+    return { employees, adminUsers };
 }
