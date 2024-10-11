@@ -9,11 +9,16 @@ const Filter = ({
   statuses = [],
   units = [],
   departments = [],
+  selectedClients,
+  setSelectedClients,
+  selectedStatuses,
+  setSelectedStatuses
 }) => {
-  const [selectedClients, setSelectedClients] = useState([]);
-  const [selectedStatuses, setSelectedStatuses] = useState([]);
+
   const [selectedUnits, setSelectedUnits] = useState([]);
   const [selectedDepartments, setSelectedDepartments] = useState([]);
+
+ 
 
   const handleClientChange = (client) => {
     setSelectedClients((prev) =>
@@ -46,12 +51,8 @@ const Filter = ({
   };
 
   const applyFilters = () => {
-    if (clients.length !== 0 && statuses.length !== 0) {
-      onApplyBusinessUnit(selectedClients, selectedStatuses);
-    } else if (units.length !== 0 && departments.length !== 0) {
-      onApplyDashboard(selectedUnits, selectedDepartments);
-    }
-    onClose();
+    setSelectedClients([]);
+    setSelectedStatuses([]);
   };
 
   return (
@@ -176,7 +177,7 @@ const Filter = ({
         className="text-black customColorBlue-lite h-fit rounded-lg cursor-pointer px-4 py-2 w-fit custom-font-mavan-pro self-center mt-2 text-opacity-80 hover:opacity-70 hover:scale-95 transition-all duration-100"
         onClick={applyFilters}
       >
-        Apply
+        Clear
       </button>
     </div>
   );
