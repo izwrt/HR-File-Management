@@ -7,7 +7,7 @@ import NewUpload from "../../assets/images/NewUpload";
 const PopupComponent = ({ heading = "Default Header", onClose, props }) => {
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-30">
-      <div className="homeBgColor rounded-md gap-6 shadow-lg w-[600px] h-[600px] flex flex-col relative overflow-y-scroll">
+      <div className="homeBgColor rounded-md gap-6 shadow-lg w-[600px] h-[600px] flex flex-col relative">
         <div className="sticky top-0 w-full flex justify-between items-center px-6 pb-2 pt-6 z-20 bg-inherit border-b ">
           <h2 className="text-lg font-semibold custom-font-mavan-pro opacity-70 footer-font">
             {heading}
