@@ -172,6 +172,10 @@ function Dashboard() {
           isExiting={isExiting}
           units={units}
           departments={departments}
+          setSelectedDepartment={setSelectedDepartment}
+          setSelectedUnits={setSelectedUnits}
+          selectedDepartment={selectedDepartment}
+          selectedUnits={selectedUnits}
         />
       )}
       {popUpSettings && (
