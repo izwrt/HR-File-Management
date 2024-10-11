@@ -34,7 +34,7 @@ const PopupComponent = ({ heading = "Default Header", onClose, props }) => {
             <div className="flex justify-center p-2 items-center gap-x-2 ">
               <h2 className="font-semibold custom-font-mavan-pro text-gray-500 text-xl">
                 Drag and Drop file or
-              </h2>
+              </h2>div
               <BlueButton label="Browse" />
             </div>
           </div>
