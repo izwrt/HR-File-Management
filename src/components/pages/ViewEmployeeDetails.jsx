@@ -57,55 +57,55 @@ const ViewEmployeeDetails = () => {
                         }}>
                             Salary Slip
                         </NavLink>
-                        <NavLink to="abc" className={({isActive}) =>{
+                        <NavLink to="salarydiscussion" className={({isActive}) =>{
                            return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Salary Discussion
                         </NavLink>
-                        <NavLink to="abc" className={({isActive}) =>{
+                        <NavLink to="offerconfirmation" className={({isActive}) =>{
                            return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Offer Confirmation
                         </NavLink>
-                        <NavLink to="abc" className={({isActive}) =>{
+                        <NavLink to="offerletter" className={({isActive}) =>{
                            return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Offer Letter
                         </NavLink>
-                        <NavLink to="abc" className={({isActive}) =>{
+                        <NavLink to="onboarding" className={({isActive}) =>{
                            return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Onboarding
                         </NavLink>
-                        <NavLink to="abc" className={({isActive}) =>{
+                        <NavLink to="verifybackground" className={({isActive}) =>{
                            return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Verify Background
                         </NavLink>
-                        <NavLink to="abc" className={({isActive}) =>{
+                        <NavLink to="performanceappraisal" className={({isActive}) =>{
                            return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Performance Appraisal
                         </NavLink>
-                        <NavLink to="abc" className={({isActive}) =>{
+                        <NavLink to="certification" className={({isActive}) =>{
                            return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
-                            certification
+                            Certification
                         </NavLink>
-                        <NavLink to="abc" className={({isActive}) =>{
+                        <NavLink to="hrscreening" className={({isActive}) =>{
                            return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             HR Screening
                         </NavLink>
-                        <NavLink to="abc" className={({isActive}) =>{
+                        <NavLink to="exitformalities" className={({isActive}) =>{
                            return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Exit Formalities
                         </NavLink>
-                        <NavLink to="abc" className={({isActive}) =>{
+                        <NavLink to="clienthistory" className={({isActive}) =>{
                            return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
-                            client History
+                            Client History
                         </NavLink>
 
                     </nav>

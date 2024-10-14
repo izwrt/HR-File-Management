@@ -24,10 +24,19 @@ import Dummy from "./components/pages/Dummy";
 import DummyOne from "./components/common/DummyOne";
 import ViewEmployeeDetails from "./components/pages/ViewEmployeeDetails";
 import PopupComponent from "./components/pages/PopupComponent";
-import SalaryDiscussion from "./components/common/SalaryDiscussion";
 import About from "./components/common/ViewEmpSubPages/About";
 import Interview from "./components/common/ViewEmpSubPages/Interview";
 import SalarySlip from "./components/common/ViewEmpSubPages/SalarySlip";
+import SalaryDiscussion from "./components/common/ViewEmpSubPages/SalaryDiscussion.jsx";
+import OfferConfirmation from "./components/common/ViewEmpSubPages/OfferConfirmation.jsx"
+import OnBoarding from "./components/common/ViewEmpSubPages/OnBoarding.jsx";
+import VerifyBackground from "./components/common/ViewEmpSubPages/VerifyBackground.jsx";
+import PerformanceAppraisal from "./components/common/ViewEmpSubPages/PerformanceAppraisal.jsx";
+import Certification from "./components/common/ViewEmpSubPages/Certifiaction.jsx";
+import HrScreening from "./components/common/ViewEmpSubPages/HrScreening.jsx"
+import ExitFormalities from "./components/common/ViewEmpSubPages/ExitFormalities.jsx";
+import ClientHistory from "./components/common/ViewEmpSubPages/ClientHistory.jsx";
+import OfferLetter from "./components/common/ViewEmpSubPages/OfferLetter.jsx";
 
 
 // const AppLoyout = () => {
@@ -161,7 +170,45 @@ const router = createBrowserRouter([
             element: <SalarySlip/>
           },
           {
-            path: "salarydiscussion"
+            path: "salarydiscussion",
+            element: <SalaryDiscussion/>
+          },
+          {
+            path: "offerconfirmation",
+            element:<OfferConfirmation/>
+          },
+          {
+            path: "offerletter",
+            element:<OfferLetter/>
+          },
+          {
+            path: "onboarding",
+            element:<OnBoarding/>
+          },
+          {
+            path: "verifybackground",
+            element:<VerifyBackground/>
+          },
+          {
+            path: "performanceappraisal",
+            element:<PerformanceAppraisal/>
+          },
+          {
+            path: "certification",
+            element:<Certification/>
+          },
+          {
+            path: "hrscreening",
+            element:<HrScreening/>
+          },
+          ,
+          {
+            path: "exitformalities",
+            element:<ExitFormalities/>
+          },
+          {
+            path: "clienthistory",
+            element:<ClientHistory/>
           }
         ]
       },
