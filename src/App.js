@@ -2,41 +2,35 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
-  Outlet,
   RouterProvider,
-  useLocation,
+  useLocation
 } from "react-router-dom";
-import HomeLogo from "./assets/images/HomeLogo";
-import Logo from "./assets/images/logo";
-import Login from "./components/auth/Login";
-import SetPassword from "./components/auth/SetPassword";
-import Header from "./components/common/Header";
-import BusinessUnit from "./components/pages/BusinessUnit";
-import Home from "./components/pages/Home";
-import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
-import DashboardHeader from "./components/common/DashboardHeader";
-import CustomOutlate from "./components/common/CustomOutlate";
 import ChangePassword from "./components/auth/ChangePassword";
+import Login from "./components/auth/Login";
 import PasswordRecovery from "./components/auth/PasswordRecovery";
-import Dashboard from "./components/pages/Dashboard";
-import AddEmployee from "./components/pages/AddEmployee";
-import Dummy from "./components/pages/Dummy";
+import SetPassword from "./components/auth/SetPassword";
+import CustomOutlate from "./components/common/CustomOutlate";
 import DummyOne from "./components/common/DummyOne";
-import ViewEmployeeDetails from "./components/pages/ViewEmployeeDetails";
-import PopupComponent from "./components/pages/PopupComponent";
 import About from "./components/common/ViewEmpSubPages/About";
-import Interview from "./components/common/ViewEmpSubPages/Interview";
-import SalarySlip from "./components/common/ViewEmpSubPages/SalarySlip";
-import SalaryDiscussion from "./components/common/ViewEmpSubPages/SalaryDiscussion.jsx";
-import OfferConfirmation from "./components/common/ViewEmpSubPages/OfferConfirmation.jsx"
-import OnBoarding from "./components/common/ViewEmpSubPages/OnBoarding.jsx";
-import VerifyBackground from "./components/common/ViewEmpSubPages/VerifyBackground.jsx";
-import PerformanceAppraisal from "./components/common/ViewEmpSubPages/PerformanceAppraisal.jsx";
 import Certification from "./components/common/ViewEmpSubPages/Certifiaction.jsx";
-import HrScreening from "./components/common/ViewEmpSubPages/HrScreening.jsx"
-import ExitFormalities from "./components/common/ViewEmpSubPages/ExitFormalities.jsx";
 import ClientHistory from "./components/common/ViewEmpSubPages/ClientHistory.jsx";
+import ExitFormalities from "./components/common/ViewEmpSubPages/ExitFormalities.jsx";
+import HrScreening from "./components/common/ViewEmpSubPages/HrScreening.jsx";
+import Interview from "./components/common/ViewEmpSubPages/Interview";
+import OfferConfirmation from "./components/common/ViewEmpSubPages/OfferConfirmation.jsx";
 import OfferLetter from "./components/common/ViewEmpSubPages/OfferLetter.jsx";
+import OnBoarding from "./components/common/ViewEmpSubPages/OnBoarding.jsx";
+import PerformanceAppraisal from "./components/common/ViewEmpSubPages/PerformanceAppraisal.jsx";
+import SalaryDiscussion from "./components/common/ViewEmpSubPages/SalaryDiscussion.jsx";
+import SalarySlip from "./components/common/ViewEmpSubPages/SalarySlip";
+import VerifyBackground from "./components/common/ViewEmpSubPages/VerifyBackground.jsx";
+import AddEmployee from "./components/pages/AddEmployee";
+import BusinessUnit from "./components/pages/BusinessUnit";
+import Dashboard from "./components/pages/Dashboard";
+import Dummy from "./components/pages/Dummy";
+import Home from "./components/pages/Home";
+import ViewEmployeeDetails from "./components/pages/ViewEmployeeDetails";
+import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
 
 
 // const AppLoyout = () => {
