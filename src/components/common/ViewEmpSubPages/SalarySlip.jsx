@@ -1,10 +1,9 @@
 import React from 'react'
+import PopupComponent from '../PopupComponent'
 
 const SalarySlip = () => {
   return (
-    <div>
-      Salary Slip Page
-    </div>
+    <PopupComponent/>
   )
 }
 
