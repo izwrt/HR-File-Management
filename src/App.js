@@ -27,6 +27,7 @@ import PopupComponent from "./components/pages/PopupComponent";
 import SalaryDiscussion from "./components/common/SalaryDiscussion";
 import SalarySlip from "./components/common/SalarySlip";
 import Salary from "./components/common/Salary";
+import About from "./components/common/ViewEmpSubPages/About";
 
 
 // const AppLoyout = () => {
@@ -146,6 +147,12 @@ const router = createBrowserRouter([
       {
         path: "/viewemployee/:id",
         element: <ViewEmployeeDetails />,
+        children: [
+          {
+            path: "about",
+            element: <About/>
+          }
+        ]
       },
       {
         path: "/popupcomponent",
