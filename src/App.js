@@ -25,9 +25,9 @@ import DummyOne from "./components/common/DummyOne";
 import ViewEmployeeDetails from "./components/pages/ViewEmployeeDetails";
 import PopupComponent from "./components/pages/PopupComponent";
 import SalaryDiscussion from "./components/common/SalaryDiscussion";
-import SalarySlip from "./components/common/SalarySlip";
-import Salary from "./components/common/Salary";
 import About from "./components/common/ViewEmpSubPages/About";
+import Interview from "./components/common/ViewEmpSubPages/Interview";
+import SalarySlip from "./components/common/ViewEmpSubPages/SalarySlip";
 
 
 // const AppLoyout = () => {
@@ -151,12 +151,19 @@ const router = createBrowserRouter([
           {
             path: "about",
             element: <About/>
+          },
+          {
+            path: "interview",
+            element: <Interview/>
+          },
+          {
+            path: "salaryslip",
+            element: <SalarySlip/>
+          },
+          {
+            path: "salarydiscussion"
           }
         ]
-      },
-      {
-        path: "/popupcomponent",
-        element: <PopupComponent />,
       },
       {
         path: "/dummy",
@@ -165,11 +172,7 @@ const router = createBrowserRouter([
           {
             path: "dummyone",
             element: <DummyOne />,
-          }, {
-            path: "salary",
-            element: <Salary />,
           },
-        
         ],
       },
     ],

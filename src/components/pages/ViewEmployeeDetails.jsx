@@ -40,77 +40,77 @@ const ViewEmployeeDetails = () => {
                     </div>
                 </section>
 
-                <section className='w-full'>
+                <section className='w-full '>
                     <nav className='flex flex-wrap gap-3 gap-x-8 custom-font-mavan-pro text-sm font-medium opacity-85 '>
                         <NavLink to="about" className={({isActive}) =>{
-                           return (isActive ? 'pb-2 border-b-2 border-customBlue' : 'pb-2')
+                           return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             About
                         </NavLink>
-                        <NavLink to="abc" className={({isActive}) =>{
-                           return (isActive ? 'pb-2 border-b-2 border-customBlue' : 'pb-2')
+                        <NavLink to="interview" className={({isActive}) =>{
+                           return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Interviews
                         </NavLink>
-                        <NavLink to="abc" className={({isActive}) =>{
-                           return (isActive ? 'pb-2 border-b-2 border-customBlue' : 'pb-2')
+                        <NavLink to="salaryslip" className={({isActive}) =>{
+                           return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Salary Slip
                         </NavLink>
                         <NavLink to="abc" className={({isActive}) =>{
-                           return (isActive ? 'pb-2 border-b-2 border-customBlue' : 'pb-2')
+                           return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Salary Discussion
                         </NavLink>
                         <NavLink to="abc" className={({isActive}) =>{
-                           return (isActive ? 'pb-2 border-b-2 border-customBlue' : 'pb-2')
+                           return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Offer Confirmation
                         </NavLink>
                         <NavLink to="abc" className={({isActive}) =>{
-                           return (isActive ? 'pb-2 border-b-2 border-customBlue' : 'pb-2')
+                           return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Offer Letter
                         </NavLink>
                         <NavLink to="abc" className={({isActive}) =>{
-                           return (isActive ? 'pb-2 border-b-2 border-customBlue' : 'pb-2')
+                           return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Onboarding
                         </NavLink>
                         <NavLink to="abc" className={({isActive}) =>{
-                           return (isActive ? 'pb-2 border-b-2 border-customBlue' : 'pb-2')
+                           return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Verify Background
                         </NavLink>
                         <NavLink to="abc" className={({isActive}) =>{
-                           return (isActive ? 'pb-2 border-b-2 border-customBlue' : 'pb-2')
+                           return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Performance Appraisal
                         </NavLink>
                         <NavLink to="abc" className={({isActive}) =>{
-                           return (isActive ? 'pb-2 border-b-2 border-customBlue' : 'pb-2')
+                           return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             certification
                         </NavLink>
                         <NavLink to="abc" className={({isActive}) =>{
-                           return (isActive ? 'pb-2 border-b-2 border-customBlue' : 'pb-2')
+                           return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             HR Screening
                         </NavLink>
                         <NavLink to="abc" className={({isActive}) =>{
-                           return (isActive ? 'pb-2 border-b-2 border-customBlue' : 'pb-2')
+                           return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Exit Formalities
                         </NavLink>
                         <NavLink to="abc" className={({isActive}) =>{
-                           return (isActive ? 'pb-2 border-b-2 border-customBlue' : 'pb-2')
+                           return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             client History
                         </NavLink>
 
                     </nav>
                 </section>
-                <section>
+                <section className='py-6'>
                     <Outlet/>
                 </section>
         </div>)
