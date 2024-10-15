@@ -1,13 +1,13 @@
 /* Position the left arrow */
 .react-multiple-carousel__arrow--left {
-  left: -0px; /* Move it to the left */
+  left: 0px; /* Move it to the left */
   top: 50%; /* Vertically center the arrow */
   transform: translateY(-50%);
 }
 
 /* Position the right arrow */
 .react-multiple-carousel__arrow--right {
-  right: -0px; /* Move it to the right */
+  right: 0px; /* Move it to the right */
   top: 50%; /* Vertically center the arrow */
   transform: translateY(-50%);
 }

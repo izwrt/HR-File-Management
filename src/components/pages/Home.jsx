@@ -8,7 +8,7 @@ import SeeAll from "../common/SeeAll";
 
 const Home = () => {
   return (
-    <div className=" w-screen mt-16">
+    <div className="relative w-screen mt-16">
       <h1 className="custom-font-mavan-pro font-bold text-lg p-5 homeFontColor">
         Important Reminders
       </h1>

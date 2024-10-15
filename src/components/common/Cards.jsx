@@ -110,18 +110,18 @@ const Cards = () => {
               key={d.id}
               className="bg-customBlue h-[180px] rounded-xl p-2 mx-4 flex flex-col justify-between"
             >
-              <div className="text-white text-[25px] p-4 custom-font-mavan-pro text-center font-semibold ">
+              <div className="text-white text-[22px] p-4 custom-font-mavan-pro text-center font-semibold ">
                 {d.empReminder}
               </div>
-              <div className="flex items-center pb-9 gap-4">
-                <div className="w-[60px] h-[50px] flex items-center gap-2 p-1 ">
+              <div className="flex items-center h-full pb-9 pl-[10%] gap-6">
+                <div className="w-[70px] h-[70px] flex  items-center gap-2 p-1 ">
                   <img
                     src={d.empImg}
                     alt={d.empName}
-                    className="w-[85px] h-[50px] object-cover rounded-full"
+                    className="w-full h-full object-cover rounded-full"
                   />
                 </div>
-                <div className="text-xs custom-font-mavan-pro flex  text-white font-semibold flex-col gap-1">
+                <div className="text-sm custom-font-mavan-pro flex  text-white font-semibold flex-col gap-1">
                   <p className="text-sm">{d.empName}</p>
                   <p className="text-sm">Department</p>
                   <p>{d.empDepartMent}</p>
