@@ -8,7 +8,16 @@ import BlueButton from "./BlueButton";
 const PopupComponent = ({ heading = "Default Header", onClose }) => {
 
   const ref = useRef(null);
-  
+
+  const  onDragEnter = () => {
+    return ref.current.classList.add('opacity-70')
+  }
+
+  const onDragLeave = () => ref.current.classList.add('opacity-100');
+
+  // onDragOver={handleDragOver}
+  //           onDrop={handleDrop}
+
   const list = ["one","two"]
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-30">
@@ -36,7 +45,9 @@ const PopupComponent = ({ heading = "Default Header", onClose }) => {
         </div>
         <div className="flex justify-center  py-5">
           <div className="border-2 w-96 flex flex-col shadow h-52 border-dotted border-gray-400 rounded-lg justify-center items-center gap-y-6 relative hover:opacity-70 "
-           onDragEnter={handleDragEnter}
+          ref={ref}
+           onDragEnter={onDragEnter}
+           onDragLeave={onDragLeave}
            >
             <NewUpload />
             <div className="flex justify-center items-center gap-x-4 ">
