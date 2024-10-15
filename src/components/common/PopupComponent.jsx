@@ -1,10 +1,14 @@
-import React from "react";
+import React,{useRef} from "react";
 import { NavLink } from "react-router-dom";
 import NewUpload from "../../assets/images/NewUpload";
 import AddComment from "./AddComment";
 import BlueButton from "./BlueButton";
 
+
 const PopupComponent = ({ heading = "Default Header", onClose }) => {
+
+  const ref = useRef(null);
+  
   const list = ["one","two"]
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-30">
@@ -31,10 +35,15 @@ const PopupComponent = ({ heading = "Default Header", onClose }) => {
           ))}
         </div>
         <div className="flex justify-center  py-5">
-          <div className="border-2 w-96 flex flex-col shadow h-52 border-dotted border-gray-400 rounded-lg justify-center items-center gap-y-6 ">
+          <div className="border-2 w-96 flex flex-col shadow h-52 border-dotted border-gray-400 rounded-lg justify-center items-center gap-y-6 relative hover:opacity-70 "
+           onDragEnter={handleDragEnter}
+           >
             <NewUpload />
             <div className="flex justify-center items-center gap-x-4 ">
-              <input type="file" text="" className="custom-font-mavan-pro homeUnitsFont py-2 font-semibold text-base px-8 rounded-lg "/>
+              <h2 className="font-semibold custom-font-mavan-pro opacity-50 text-lg">
+                Drag and Drop file or Browse
+              </h2>
+              <input type="file" className="absolute top-0 h-full w-full bg-red-400 opacity-0 cursor-pointer"/>
             </div>
           </div>
         </div>
