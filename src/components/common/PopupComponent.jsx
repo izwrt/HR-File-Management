@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Close from "../../assets/images/close.png";
 import NewUpload from "../../assets/images/NewUpload";
 import pdf from "../../assets/images/pdf.png";
@@ -12,7 +12,10 @@ const PopupComponent = ({ heading = "Default Header", onClose }) => {
 
   const [fileList, setFileList] = useState([]);
 
+  const navigate = useNavigate();
+
   const ref = useRef(null);
+  const fileRemoveRef = useRef(null);
 
   const ImgConfig = {
     pdf : pdf,
@@ -39,9 +42,12 @@ const PopupComponent = ({ heading = "Default Header", onClose }) => {
   }
 
   const removeFile = (file) => {
-    const updatedFiles = [...fileList];
-    updatedFiles.splice(fileList.indexOf(file),1);
-    setFileList(updatedFiles);
+
+    setTimeout(()=>{
+      const updatedFiles = [...fileList];
+      updatedFiles.splice(fileList.indexOf(file),1);
+      setFileList(updatedFiles);
+    },100)
   }
 
   const list = ["one","two"]
@@ -53,7 +59,8 @@ const PopupComponent = ({ heading = "Default Header", onClose }) => {
             {heading}
           </h2>
         <button
-          className="cursor-pointer w-5 h-fit rounded-full overflow-hidden transition-all ease-in-out  duration-300 hover:scale-90 hover:opacity-60 focus:bg-slate-200">
+          className="cursor-pointer w-5 h-fit rounded-full overflow-hidden transition-all ease-in-out  duration-300 hover:scale-90 hover:opacity-60 focus:bg-slate-200"
+          onClick={navigate('/about')}>
           <img src={Close} alt="" />
         </button>
         </div>
@@ -90,8 +97,8 @@ const PopupComponent = ({ heading = "Default Header", onClose }) => {
           fileList.length > 0 && (fileList.map((file,index) => {
            
             return (
-            <div key={index} className={`mb-3 flex justify-between py-2 px-4 rounded-lg items-center bg-selectedTab bg-opacity-40 transition-opacity duration-1000`}>
-              <div className="flex items-center gap-3">
+            <div key={index} className={`mb-3 flex justify-between py-2 px-4 rounded-lg items-center bg-selectedTab bg-opacity-40 transition-opacity duration-1000`} ref={fileRemoveRef}>
+              <div className="flex items-center gap-3 popup">
                 <img className="h-8 w-8" src= {ImgConfig[file.name.split(".")[1]]}></img>
                 <div className="text-customBlue font-medium">{file.name}</div>
               </div>
