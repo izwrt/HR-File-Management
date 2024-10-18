@@ -3,7 +3,8 @@ import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
-  useLocation
+  useLocation,
+  Navigate
 } from "react-router-dom";
 import ChangePassword from "./components/auth/ChangePassword";
 import Login from "./components/auth/Login";
@@ -31,6 +32,8 @@ import Dummy from "./components/pages/Dummy";
 import Home from "./components/pages/Home";
 import ViewEmployeeDetails from "./components/pages/ViewEmployeeDetails";
 import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
+import PopContent from "./components/common/ViewEmpSubPages/PopContent.jsx";
+
 
 
 // const AppLoyout = () => {
@@ -152,6 +155,10 @@ const router = createBrowserRouter([
         element: <ViewEmployeeDetails />,
         children: [
           {
+            index: true,
+            element: <Navigate to="about"/>
+          },
+          {
             path: "about",
             element: <About/>
           },
@@ -161,7 +168,21 @@ const router = createBrowserRouter([
           },
           {
             path: "salaryslip",
-            element: <SalarySlip/>
+            element: <SalarySlip/>,
+            children:[
+              {
+                index:true,
+                element: <Navigate to="Month One"/>
+              },
+              {
+                path:"Month One",
+                element: <PopContent/>
+              },
+              {
+                path:"Month Two",
+                element: <PopContent/>
+              }
+            ]
           },
           {
             path: "salarydiscussion",
