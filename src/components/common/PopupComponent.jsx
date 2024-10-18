@@ -1,12 +1,24 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import Close from "../../assets/images/close.png";
-import NavContext,{NavContextProvide} from "../../utils/useContext/NavContext"
+import Cloud from "../../assets/images/cloud-file.gif";
+import NavContext from "../../utils/useContext/NavContext";
 
 const PopupComponent = ({ heading = "Default Header", popNavs ,setPopUp}) => {
 
   const navigate = useNavigate();
+  
 
+  const {fileList,runAnimation,fileUploaded,setFileUploaded} = useContext(NavContext);
+
+  console.log("parent page ",fileList);
+
+  const handleNavigation = (e) => {
+    if (fileList.length > 0) {
+      alert("Cannot navigate while files are present!");
+      e.preventDefault()
+    }
+  }
 
   const handleBack = () => {
     setPopUp(false);
@@ -28,20 +40,29 @@ const PopupComponent = ({ heading = "Default Header", popNavs ,setPopUp}) => {
         </div>
           <div className="px-6 pb-6">
           <div className="flex justify-between text-sm font-semibold w-full py-3">
-          {popNavs.map((f) => (
+          {popNavs.map((nav) => (
             <NavLink
-              to={f}
-              key={f}
+              to={nav}
+              key={nav}
               className={({isActive}) => { return(isActive ? 'border-b-2 border-customBlue footer-font text-gray-500' : 'footer-font text-gray-500')}}
-              activeclassname="active-link"
+              onClick={(e) => {
+                handleNavigation(e);
+              }}
             >
-              {f}
+              {nav}
             </NavLink>
           ))}
         </div>
-        <NavContextProvide>
-          <Outlet/>
-        </NavContextProvide>
+          {
+            fileUploaded && (<div>Files has been Uploaded</div>)
+          }
+
+        {runAnimation &&  (<div className=" bg-white  absolute z-10 w-full h-full top-0 left-0 flex justify-center items-center flex-col">
+          <img className="bg-blend-overlay w-28" src={Cloud}></img>
+        </div>)}
+
+
+         <Outlet/>
             
           </div>
       </div>

@@ -33,6 +33,7 @@ import Home from "./components/pages/Home";
 import ViewEmployeeDetails from "./components/pages/ViewEmployeeDetails";
 import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
 import PopContent from "./components/common/ViewEmpSubPages/PopContent.jsx";
+import NavContext,{NavContextProvide} from "./utils/useContext/NavContext"
 
 
 
@@ -168,7 +169,7 @@ const router = createBrowserRouter([
           },
           {
             path: "salaryslip",
-            element: <SalarySlip/>,
+            element: (<NavContextProvide><SalarySlip/></NavContextProvide>),
             children:[
               {
                 index:true,

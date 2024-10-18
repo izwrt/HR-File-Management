@@ -22,7 +22,18 @@ const PopContent = () => {
     default: file
   }
 
-  const {fileList,setFileList} = useContext(NavContext);
+  const {fileList,setFileList,runAnimation,setRunAnimation,fileUploaded,setFileUploaded} = useContext(NavContext);
+
+  const saveHandle = () => {
+    setRunAnimation(true);
+    setFileUploaded(true)
+    setTimeout(()=>{
+      setRunAnimation(false)
+    },3000);
+    setTimeout(()=>{
+      setFileUploaded(false)
+    },5000);
+  }
 
   const onDragEnter = () => {
     return ref.current.classList.add('opacity-70');
@@ -36,7 +47,6 @@ const PopContent = () => {
       const updatedFiles = [...fileList, newFile];
       setFileList(updatedFiles);
     }
-    console.log(newFile);
   }
 
   const removeFile = (file) => {
@@ -87,7 +97,7 @@ const PopContent = () => {
           <AddComment />
         </div>
         <div className="flex justify-end ">
-          <BlueButton label="Save" />
+          <BlueButton saveHandle={saveHandle} label="Save" />
         </div>
       </div>
     </form>
