@@ -151,6 +151,10 @@ const router = createBrowserRouter([
         element: <ViewEmployeeDetails />,
         children: [
           {
+            index: true,
+            element: <Navigate to="about" />,
+          },
+          {
             path: "about",
             element: <About />,
           },
