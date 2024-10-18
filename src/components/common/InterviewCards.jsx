@@ -1,13 +1,24 @@
 import React from "react";
 import Education from "../../assets/images/Education";
 
-const InterviewCards = () => {
+const InterviewCards = ({
+  heading = "Default Header",
+  onClose,
+  props,
+  image,
+}) => {
   return (
-    <div className="bg-orange-200 w-1/2 h-20 mt-5 rounded-md">
-      <div className="flex flex-row gap-3 p-2 items-center ">
+    <div className="card-color h-fit p-2 ">
+      <div className="flex flex-row   w-fit h-fit gap-5 items-center px-2 custom-font-mavan-pro ">
         {" "}
-        <Education />
-        <div className="flex flex-col gap-3">Education<div>hbrfgrvh</div></div>
+        {image}
+        <div className="flex flex-col gap-1 font-semibold  ">
+          <h3 className="interview-font-head">{heading}</h3>
+
+          <div>
+            <p className="interview-font-para font-normal">get from api</p>
+          </div>
+        </div>
       </div>{" "}
     </div>
   );

@@ -30,10 +30,8 @@ import Dashboard from "./components/pages/Dashboard";
 import Dummy from "./components/pages/Dummy";
 import Home from "./components/pages/Home";
 import ViewEmployeeDetails from "./components/pages/ViewEmployeeDetails";
-import PopupComponent from "./components/pages/PopupComponent";
-import SalaryDiscussion from "./components/common/SalaryDiscussion";
-import SalarySlip from "./components/common/SalarySlip";
-import Salary from "./components/common/Salary";
+import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
+import CandidateInterview from "./components/pages/CandidateInterview.jsx";
 
 
 // const AppLoyout = () => {
@@ -143,10 +141,6 @@ const router = createBrowserRouter([
         element: <BusinessUnit />,
       },
       {
-        path: "/candidateinterview",
-        element: <CandidateInterview/>,
-      },
-      {
         path: "/dashboard",
         element: <Dashboard />,
       },
@@ -155,12 +149,68 @@ const router = createBrowserRouter([
         element: <AddEmployee />,
       },
       {
-        path: "/viewemployee/:id",
-        element: <ViewEmployeeDetails />,
+        path: "candidateinterview",
+        element:<CandidateInterview/>
       },
       {
-        path: "/popupcomponent",
-        element: <PopupComponent />,
+        path: "/viewemployee/:id",
+        element: <ViewEmployeeDetails />,
+        children: [
+          {
+            path: "about",
+            element: <About/>
+          },
+          {
+            path: "interview",
+            element: <Interview/>
+          },
+          {
+            path: "salaryslip",
+            element: <SalarySlip/>
+          },
+          {
+            path: "salarydiscussion",
+            element: <SalaryDiscussion/>
+          },
+          {
+            path: "offerconfirmation",
+            element:<OfferConfirmation/>
+          },
+          {
+            path: "offerletter",
+            element:<OfferLetter/>
+          },
+          {
+            path: "onboarding",
+            element:<OnBoarding/>
+          },
+          {
+            path: "verifybackground",
+            element:<VerifyBackground/>
+          },
+          {
+            path: "performanceappraisal",
+            element:<PerformanceAppraisal/>
+          },
+          {
+            path: "certification",
+            element:<Certification/>
+          },
+          {
+            path: "hrscreening",
+            element:<HrScreening/>
+          },
+          ,
+          {
+            path: "exitformalities",
+            element:<ExitFormalities/>
+          },
+        
+          {
+            path: "clienthistory",
+            element:<ClientHistory/>
+          }
+        ]
       },
       {
         path: "/dummy",
@@ -169,9 +219,6 @@ const router = createBrowserRouter([
           {
             path: "dummyone",
             element: <DummyOne />,
-          }, {
-            path: "salary",
-            element: <Salary />,
           },
         ],
       },

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PopupComponent from "../pages/PopupComponent";
+import PopupComponent from "../common/PopupComponent";
 
 const Salary = () => {
   const [isPopupVisible, setPopupVisible] = useState(true);
