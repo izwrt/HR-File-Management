@@ -73,7 +73,7 @@ export default function BusinessUnit() {
 
   return (
     <div className="relative mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit pl-8 pr-12 md:pl-5 md:pr-6">
-      <div className="grid grid-flow-col justify-between md:grid-rows-2 gap-10 py-9 ">
+      <div className="grid grid-flow-col justify-between md:grid-rows-2 gap-10 py-6 ">
         <CountContainer
           smallText={`Active Employees`}
           largeNumber={activeEmployeesCount}

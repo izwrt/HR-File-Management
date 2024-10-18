@@ -245,5 +245,5 @@
 
 /* ---------------------------image--------------------------------------------------------- */
 .image-container {
-  filter: blur(0.5px); /* Adjust the blur value as needed */
+  filter: blur(0.5px);
 }
