@@ -247,3 +247,10 @@
 .image-container {
   filter: blur(0.5px);
 }
+
+.interview-font-head {
+  color: #626262;
+}
+.interview-font-para {
+  color: #7a7a7a;
+}
