@@ -3,7 +3,8 @@ import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
-  useLocation
+  useLocation,
+  Navigate,
 } from "react-router-dom";
 import ChangePassword from "./components/auth/ChangePassword";
 import Login from "./components/auth/Login";
@@ -31,8 +32,9 @@ import Dummy from "./components/pages/Dummy";
 import Home from "./components/pages/Home";
 import ViewEmployeeDetails from "./components/pages/ViewEmployeeDetails";
 import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
-import CandidateInterview from "./components/pages/CandidateInterview.jsx";
+import PopContent from "./components/common/ViewEmpSubPages/PopContent.jsx";
 
+import CandidateInterview from "./components/pages/CandidateInterview.jsx";
 
 // const AppLoyout = () => {
 
@@ -150,67 +152,85 @@ const router = createBrowserRouter([
       },
       {
         path: "candidateinterview",
-        element:<CandidateInterview/>
+        element: <CandidateInterview />,
       },
       {
         path: "/viewemployee/:id",
         element: <ViewEmployeeDetails />,
         children: [
           {
+            index: true,
+            element: <Navigate to="about" />,
+          },
+          {
             path: "about",
-            element: <About/>
+            element: <About />,
           },
           {
             path: "interview",
-            element: <Interview/>
+            element: <Interview />,
           },
           {
             path: "salaryslip",
-            element: <SalarySlip/>
+            element: <SalarySlip />,
+            children: [
+              {
+                index: true,
+                element: <Navigate to="Month One" />,
+              },
+              {
+                path: "Month One",
+                element: <PopContent />,
+              },
+              {
+                path: "Month Two",
+                element: <PopContent />,
+              },
+            ],
           },
           {
             path: "salarydiscussion",
-            element: <SalaryDiscussion/>
+            element: <SalaryDiscussion />,
           },
           {
             path: "offerconfirmation",
-            element:<OfferConfirmation/>
+            element: <OfferConfirmation />,
           },
           {
             path: "offerletter",
-            element:<OfferLetter/>
+            element: <OfferLetter />,
           },
           {
             path: "onboarding",
-            element:<OnBoarding/>
+            element: <OnBoarding />,
           },
           {
             path: "verifybackground",
-            element:<VerifyBackground/>
+            element: <VerifyBackground />,
           },
           {
             path: "performanceappraisal",
-            element:<PerformanceAppraisal/>
+            element: <PerformanceAppraisal />,
           },
           {
             path: "certification",
-            element:<Certification/>
+            element: <Certification />,
           },
           {
             path: "hrscreening",
-            element:<HrScreening/>
+            element: <HrScreening />,
           },
           ,
           {
             path: "exitformalities",
-            element:<ExitFormalities/>
+            element: <ExitFormalities />,
           },
-        
+
           {
             path: "clienthistory",
-            element:<ClientHistory/>
-          }
-        ]
+            element: <ClientHistory />,
+          },
+        ],
       },
       {
         path: "/dummy",

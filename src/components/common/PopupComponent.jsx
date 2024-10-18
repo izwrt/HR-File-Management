@@ -1,49 +1,51 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import AddComment from "../common/AddComment";
-import BlueButton from "../common/BlueButton";
-import NewUpload from "../../assets/images/NewUpload";
+import React, { useRef, useState } from "react";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import Close from "../../assets/images/close.png";
+import NavContext, {
+  NavContextProvide,
+} from "../../utils/useContext/NavContext";
 
-const PopupComponent = ({ heading = "Default Header", onClose, props }) => {
+const PopupComponent = ({ heading = "Default Header", popNavs, setPopUp }) => {
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    setPopUp(false);
+  };
+
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-30">
-      <div className="homeBgColor rounded-md gap-6 shadow-lg w-[600px] h-[600px] flex flex-col relative">
-        <div className="sticky top-0 w-full flex justify-between items-center px-6 pb-2 pt-6 z-20 bg-inherit border-b ">
+      <div className="homeBgColor rounded-lg shadow-lg w-[600px] h-[600px] flex flex-col relative overflow-y-scroll overflow">
+        <div className="sticky top-0 w-full flex justify-between items-center px-6 pb-2 pt-6 z-20 border-b homeBgColor">
           <h2 className="text-lg font-semibold custom-font-mavan-pro opacity-70 footer-font">
             {heading}
           </h2>
-          <button onClick={onClose} className="hover:text-gray-800 text-2xl">
-            &times;
+          <button
+            className="cursor-pointer w-5 h-fit rounded-full overflow-hidden transition-all ease-in-out  duration-300 hover:scale-90 hover:opacity-60 focus:bg-slate-200"
+            onClick={handleBack}
+          >
+            <img src={Close} alt="" />
           </button>
         </div>
-        <div className="flex justify-start pl-6 w-full gap-x-10">
-          {props.map((f) => (
-            <NavLink
-              to={f}
-              key={f}
-              className="font-semibold footer-font text-gray-500 text-md"
-              activeClassName="active-link"
-            >
-              {f}
-            </NavLink>
-          ))}
-        </div>
-        <div className="flex justify-center">
-          <div className="border-2 w-96 flex flex-col shadow h-52 border-dotted border-gray-600 rounded-lg justify-center items-center gap-y-4">
-            <NewUpload />
-            <div className="flex justify-center p-2 items-center gap-x-2 ">
-              <h2 className="font-semibold custom-font-mavan-pro text-gray-500 text-xl">
-                Drag and Drop file or
-              </h2>div
-              <BlueButton label="Browse" />
-            </div>
+        <div className="px-6 pb-6">
+          <div className="flex justify-between text-sm font-semibold w-full py-3">
+            {popNavs.map((f) => (
+              <NavLink
+                to={f}
+                key={f}
+                className={({ isActive }) => {
+                  return isActive
+                    ? "border-b-2 border-customBlue footer-font text-gray-500"
+                    : "footer-font text-gray-500";
+                }}
+                activeclassname="active-link"
+              >
+                {f}
+              </NavLink>
+            ))}
           </div>
-        </div>
-        <div className="flex w-full px-14 h-26 items-center">
-          <AddComment />
-        </div>
-        <div className="flex justify-end px-14">
-          <BlueButton label="Save" />
+          <NavContextProvide>
+            <Outlet />
+          </NavContextProvide>
         </div>
       </div>
     </div>

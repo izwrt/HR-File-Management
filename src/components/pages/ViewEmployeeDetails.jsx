@@ -4,7 +4,7 @@ import { NavLink, Outlet, useParams } from 'react-router-dom';
 
 const ViewEmployeeDetails = () => {
     const [empData, setEmpData] = useState(null);
-    console.log(empData);
+
     const {id} = useParams();
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const ViewEmployeeDetails = () => {
         })
     }, []);
 
-    console.log(empData);
+
 
     return(
         empData === null ? (<div className="mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 bg-red-400">loading</div>) 
