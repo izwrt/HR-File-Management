@@ -4,7 +4,6 @@ import {
   createBrowserRouter,
   RouterProvider,
   useLocation,
-  Navigate,
 } from "react-router-dom";
 import ChangePassword from "./components/auth/ChangePassword";
 import Login from "./components/auth/Login";
@@ -32,8 +31,6 @@ import Dummy from "./components/pages/Dummy";
 import Home from "./components/pages/Home";
 import ViewEmployeeDetails from "./components/pages/ViewEmployeeDetails";
 import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
-import PopContent from "./components/common/ViewEmpSubPages/PopContent.jsx";
-
 import CandidateInterview from "./components/pages/CandidateInterview.jsx";
 
 // const AppLoyout = () => {
@@ -159,10 +156,6 @@ const router = createBrowserRouter([
         element: <ViewEmployeeDetails />,
         children: [
           {
-            index: true,
-            element: <Navigate to="about" />,
-          },
-          {
             path: "about",
             element: <About />,
           },
@@ -173,20 +166,6 @@ const router = createBrowserRouter([
           {
             path: "salaryslip",
             element: <SalarySlip />,
-            children: [
-              {
-                index: true,
-                element: <Navigate to="Month One" />,
-              },
-              {
-                path: "Month One",
-                element: <PopContent />,
-              },
-              {
-                path: "Month Two",
-                element: <PopContent />,
-              },
-            ],
           },
           {
             path: "salarydiscussion",
@@ -220,7 +199,7 @@ const router = createBrowserRouter([
             path: "hrscreening",
             element: <HrScreening />,
           },
-          ,
+
           {
             path: "exitformalities",
             element: <ExitFormalities />,
