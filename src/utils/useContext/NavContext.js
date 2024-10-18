@@ -8,7 +8,7 @@ export const NavContextProvide = ({children}) => {
     const [fileUploaded,setFileUploaded] = useState(false)
 
     return(
-        <NavContext.Provider value={{fileList,setFileList,runAnimation,setRunAnimation}}>
+        <NavContext.Provider value={{fileList,setFileList,runAnimation,setRunAnimation,fileUploaded,setFileUploaded}}>
             {children}
         </NavContext.Provider>
     )
