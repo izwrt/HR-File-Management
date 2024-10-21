@@ -3,7 +3,7 @@ import apiFecthFiles from '../../../../api/apiFetchFiles';
 import PopupComponent from '../PopupComponent';
 
 
-///salary
+///salary slip datas are repeating
 
 const SalarySlip = () => {
 
