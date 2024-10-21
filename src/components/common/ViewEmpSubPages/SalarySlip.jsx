@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import apiFecthFiles from '../../../../api/apiFetchFiles';
 import PopupComponent from '../PopupComponent';
 
+
+///salary
+
 const SalarySlip = () => {
 
   const filesData = apiFecthFiles();
