@@ -57,7 +57,7 @@ const PopupComponent = ({ heading = "Default Header", popNavs ,setPopUp}) => {
             fileUploaded && (<div>Files has been Uploaded</div>)
           }
 
-        {runAnimation &&  (<div className=" bg-white  absolute z-10 w-full h-full top-0 left-0 flex justify-center items-center flex-col">
+        {runAnimation &&  (<div className=" bg-white  absolute z-10 w-full h-[100%] top-0 left-0 flex justify-center items-center flex-col">
           <img className="bg-blend-overlay w-28" src={Cloud}></img>
         </div>)}
 

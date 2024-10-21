@@ -26,7 +26,8 @@ const PopContent = () => {
 
   const saveHandle = () => {
     setRunAnimation(true);
-    setFileUploaded(true)
+    setFileUploaded(true);
+    setFileList([]);
     setTimeout(()=>{
       setRunAnimation(false)
     },3000);

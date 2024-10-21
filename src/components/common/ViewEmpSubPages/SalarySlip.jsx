@@ -1,7 +1,18 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import apiFecthFiles from '../../../../api/apiFetchFiles';
 import PopupComponent from '../PopupComponent';
 
 const SalarySlip = () => {
+
+  const filesData = apiFecthFiles();
+  
+  const DescendingData = filesData.sort((a, b) => {
+    const dateA = new Date(a.date.split('/').reverse().join('-'));
+    const dateB = new Date(b.date.split('/').reverse().join('-'));
+    return dateB - dateA;
+  });
+
+  console.log(DescendingData);
 
   const [popUp, setPopUp] = useState(false);
 
@@ -11,14 +22,30 @@ const SalarySlip = () => {
     setPopUp(true);
   } 
   return (
-    <div className='flex justify-between bg-red-400'>
+    <div>
+      <section className='flex justify-between'>
       salary Slip
       <button onClick={handClick}>
         Add Files
       </button>
       {popUp === true && <PopupComponent setPopUp={setPopUp} popNavs={popNavs}/>}
+      </section>
+      <section className='flex flex-col gap-10 bg-slate-500'>
+        {DescendingData.map((file) => (
+          <div key={file.id}>
+              <div className='flex w-full justify-center bg-white'>
+                {file.date}
+                
+              </div>
+              {DescendingData
+                  .filter(filteredFile => filteredFile.date === file.date)
+                  .map(filteredFile => 
+                      <div key={filteredFile.id}>{filteredFile.fileName}</div>
+                 )}
+          </div>
+           ))}
+      </section>
     </div>
-   
   )
 }
 
