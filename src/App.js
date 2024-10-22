@@ -33,6 +33,7 @@ import ViewEmployeeDetails from "./components/pages/ViewEmployeeDetails";
 import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
 import PopContent from "./components/common/ViewEmpSubPages/PopContent.jsx";
 import NavContext, { NavContextProvide } from "./utils/useContext/NavContext";
+import { Navigate } from "react-router-dom";
 
 // const AppLoyout = () => {
 
