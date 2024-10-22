@@ -1,31 +1,23 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-
-const fruits = ["dummyone", "salary", "Banana", "Grapes"];
+import apiFecthFiles from "../../../api/apiFetchFiles";
 
 const Dummy = () => {
+  const files = apiFecthFiles()
+  console.log("orginal files " ,files);
 
-  const closePopup = () => {
-    setPopupVisible(false);
-  };
+  const filtered = files.filter((file, index, self) => 
+    index === self.findIndex(f => f.date === file.date)
+  )
+
+  console.log(filtered);
   
-  return (
-    <div className="mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 flex gap-10 ">
-      {fruits.map((f) => (
-        <NavLink
-          to={f}
-          className="fruit-link"
-          activeClassName="active"
-          onClick={() => handleLinkClick(f)}
-          key={f}
-        >
-          {f}
-        </NavLink>
-      ))}
-
-      <Outlet />
+  return(
+    <div className="m-[300px]">
+      helloworld
     </div>
-  );
+  )
+  
 };
 
 export default Dummy;

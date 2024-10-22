@@ -34,19 +34,22 @@ const SalarySlip = () => {
       {popUp === true && <PopupComponent setPopUp={setPopUp} popNavs={popNavs}/>}
       </section>
       <section className='flex flex-col gap-10 bg-slate-500'>
-        {DescendingData.map((file) => (
+          {DescendingData
+        .filter((file, index, self) => 
+          index === self.findIndex(f => f.date === file.date)
+        )
+        .map(file => (
           <div key={file.id}>
-              <div className='flex w-full justify-center bg-white'>
-                {file.date}
-                
-              </div>
-              {DescendingData
-                  .filter(filteredFile => filteredFile.date === file.date)
-                  .map(filteredFile => 
-                      <div key={filteredFile.id}>{filteredFile.fileName}</div>
-                 )}
+            <div className='flex w-full justify-center bg-white'>
+              {file.date}
+            </div>
+            {DescendingData
+              .filter(filteredFile => filteredFile.date === file.date)
+              .map(filteredFile => 
+                <div key={filteredFile.id}>{filteredFile.fileName}</div>
+              )}
           </div>
-           ))}
+        ))}
       </section>
     </div>
   )
