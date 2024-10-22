@@ -183,6 +183,31 @@
   animation: fadeOut 0.3s forwards; /* Fade out */
 }
 
+
+
+@keyframes fadeOut-file {
+  0% {
+    opacity: 1;
+    height: 35px;
+    padding: 8px;
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    height: 0px;
+    padding: 0px;
+  }
+}
+
+.file-uploaded {
+  animation: fadeOut-file 0.5s ease-in-out forwards; /* Adjust duration as needed */
+  animation-delay: 2s; /* Delay before starting the fade-in */
+}
+
+
+
 /*----------------------------------------------Settings popup---------------------------------------------*/
 
 .selectedTab {
