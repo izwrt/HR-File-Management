@@ -155,6 +155,17 @@
   scroll-padding: 20px;
 }
 
+.snap-scroll {
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 75px;
+}
+
+.scroll-cards {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+
 /* ----------------------------------------------animations------------------------------------------ */
 
 @keyframes fadeIn {
@@ -254,15 +265,7 @@
   background-color: #f4f4f4;
 }
 
-.snap-scroll {
-  scroll-snap-type: y mandatory;
-  scroll-padding-top: 75px;
-}
 
-.scroll-cards {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
 
 .text-size {
   font-size: 13px;

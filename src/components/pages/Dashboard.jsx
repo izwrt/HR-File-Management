@@ -114,7 +114,7 @@ function Dashboard() {
 
             <div className="w-full h-full px-5 ">
               {filteredemployees.length !== 0 ? (
-                <div className=" grid sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-5 pb-5">
+                <div className=" grid sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-y-8 gap-x-5 pb-5">
                   {filteredemployees.map((employee) => (
                     <EmployeeCard
                       key={employee.id}
@@ -133,7 +133,7 @@ function Dashboard() {
         </div>
       </div>
       <div className=" w-[700px]  xl:h-[766px] 2xl:h-[924px] pb-5 md:hidden flex items-center justify-center py-9 ">
-        <div className=" bg-white w-full rounded-lg overflow-y-auto  overflow h-full snap-scroll shadow-sm border-solid border border-slate-100 shadow-gray-20 2xl:pb-10 xl:pb-32">
+        <div className=" bg-white w-full rounded-lg overflow-y-auto overflow h-full snap-scroll shadow-sm border-solid border border-slate-100 shadow-gray-20 2xl:pb-10 xl:pb-28">
           <div className="sticky top-0 z-10 px-5 bg-white">
             <div className="font-semibold  text-base   custom-font-mavan-pro opactiy-80">
               <div className="flex flex-row gap-6 items-center  py-4 border-b border-black ">
@@ -145,23 +145,19 @@ function Dashboard() {
             </div>
           </div>
           <div className="relative px-5 py-4 ">
-            <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8 gap-4">
-              {employees.length !== 0 ? (
-                employees.map(
-                  (employee) =>
-                    employee.admin && (
-                      <AdminCard
-                        key={employee.empid}
-                        name={employee.name}
-                        empid={employee.empid}
-                        department={employee.department}
-                        empImg={employee.empImg}
-                        admin={employee.admin}
-                      />
-                    )
-                )
-              ) : (
-                <NodataFound />
+            <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8 gap-y-8 ">
+              {employees.map(
+                (employee) =>
+                  employee.admin && (
+                    <AdminCard
+                      key={employee.empid}
+                      name={employee.name}
+                      empid={employee.empid}
+                      department={employee.department}
+                      empImg={employee.empImg}
+                      admin={employee.admin}
+                    />
+                  )
               )}
             </div>
           </div>

@@ -22,7 +22,7 @@ const PopContent = () => {
     default: file
   }
 
-  const {fileList,setFileList,runAnimation,setRunAnimation,fileUploaded,setFileUploaded,setFilePracent} = useContext(NavContext);
+  const {fileList,setFileList,setRunAnimation,setFileUploaded,setFilePracent} = useContext(NavContext);
 
   const saveHandle = () => {
     if(fileList.length >0)
