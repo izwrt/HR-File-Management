@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import apiFecthFiles from '../../../../api/apiFetchFiles';
 import PopupComponent from '../PopupComponent';
+import BlueButton from '../BlueButton';
 
 
 ///salary slip datas are repeating
@@ -26,22 +27,23 @@ const SalarySlip = () => {
   } 
   return (
     <div>
-      <section className='flex justify-between'>
-      salary Slip
-      <button onClick={handClick}>
+      <section className='flex justify-end'>
+      <BlueButton onClick={handClick}>
         Add Files
-      </button>
+      </BlueButton>
       {popUp === true && <PopupComponent setPopUp={setPopUp} popNavs={popNavs}/>}
       </section>
-      <section className='flex flex-col gap-10 bg-slate-500'>
+      <section className='flex flex-col gap-10 '>
           {DescendingData
         .filter((file, index, self) => 
           index === self.findIndex(f => f.date === file.date)
         )
         .map(file => (
           <div key={file.id}>
-            <div className='flex w-full justify-center bg-white'>
+            <div className='flex w-full justify-center  items-center gap-2'>
+            <hr className='w-full border-t border-gray-400' />
               {file.date}
+              <hr className='w-full border-t border-gray-400' />
             </div>
             {DescendingData
               .filter(filteredFile => filteredFile.date === file.date)

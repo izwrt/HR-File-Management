@@ -22,18 +22,28 @@ const PopContent = () => {
     default: file
   }
 
-  const {fileList,setFileList,runAnimation,setRunAnimation,fileUploaded,setFileUploaded} = useContext(NavContext);
+  const {fileList,setFileList,runAnimation,setRunAnimation,fileUploaded,setFileUploaded,setFilePracent} = useContext(NavContext);
 
   const saveHandle = () => {
+    if(fileList.length >0)
+    {
     setRunAnimation(true);
-    setFileUploaded(true);
     setFileList([]);
     setTimeout(()=>{
       setRunAnimation(false)
+      setFileUploaded(true);
     },3000);
     setTimeout(()=>{
       setFileUploaded(false)
-    },5000);
+    },6000);
+  }
+  else{
+    setFilePracent(true);
+    setTimeout(()=>{
+      setFilePracent(false);
+    },2000)
+  }
+
   }
 
   const onDragEnter = () => {
@@ -94,11 +104,11 @@ const PopContent = () => {
             );
           }))
         }
-        <div className="flex w-full h-26 items-center py-5">
+        <div className="flex w-full h-26 items-center py-5 ">
           <AddComment />
         </div>
-        <div className="flex justify-end ">
-          <BlueButton saveHandle={saveHandle} label="Save" />
+        <div className="flex justify-end mt-3">
+          <BlueButton onClick={saveHandle} label="Save" />
         </div>
       </div>
     </form>

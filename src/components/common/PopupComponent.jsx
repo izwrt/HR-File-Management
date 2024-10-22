@@ -1,17 +1,16 @@
-import React, { useContext, useState } from "react";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import React, { useState,useContext } from "react";
+import { NavLink, Outlet } from "react-router-dom";
 import Close from "../../assets/images/close.png";
 import Cloud from "../../assets/images/cloud-file.gif";
 import NavContext from "../../utils/useContext/NavContext";
 
 const PopupComponent = ({ heading = "Default Header", popNavs ,setPopUp}) => {
 
-  const navigate = useNavigate();
-  
 
-  const {fileList,runAnimation,fileUploaded,setFileUploaded} = useContext(NavContext);
 
-  console.log("parent page ",fileList);
+  const {fileList,runAnimation,fileUploaded,setFileUploaded,filePracent} = useContext(NavContext);
+
+  console.log("parent page ",filePracent);
 
   const handleNavigation = (e) => {
     if (fileList.length > 0) {
@@ -38,7 +37,7 @@ const PopupComponent = ({ heading = "Default Header", popNavs ,setPopUp}) => {
           <img src={Close} alt="" />
         </button>
         </div>
-          <div className="px-6 pb-6">
+          <div className="px-6 pb-6 relative">
           <div className="flex justify-between text-sm font-semibold w-full py-3">
           {popNavs.map((nav) => (
             <NavLink
@@ -54,7 +53,10 @@ const PopupComponent = ({ heading = "Default Header", popNavs ,setPopUp}) => {
           ))}
         </div>
           {
-            fileUploaded && (<div>Files has been Uploaded</div>)
+            fileUploaded && (<div className={`custom-font-mavan-pro text-sm font p-2 font-medium text-customBlue bg-customBlue bg-opacity-20 file-uploaded slide-down `}>Files has been Uploaded</div>)
+          }
+          {
+             filePracent && (<div className="absolute w-full top-10 custom-font-mavan-pro text-base font-medium text-red-600 text-opacity-70">No file is Added</div>) 
           }
 
         {runAnimation &&  (<div className=" bg-white  absolute z-10 w-full h-[100%] top-0 left-0 flex justify-center items-center flex-col">
