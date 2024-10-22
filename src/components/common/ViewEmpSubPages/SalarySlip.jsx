@@ -8,6 +8,7 @@ import BlueButton from '../BlueButton';
 
 const SalarySlip = () => {
 
+ const [isExiting, setIsExiting] = useState(false);
   const filesData = apiFecthFiles();
   
   const DescendingData = filesData.sort((a, b) => {
@@ -16,22 +17,31 @@ const SalarySlip = () => {
     return dateB - dateA;
   });
 
+  const onOpen = () => {
+    setPopUp(true);
+    setIsExiting(true);
+  };
+
+  const onClose = () => {
+    setTimeout(() => {
+      setPopUp(false);
+    }, 300);
+    setIsExiting(false);
+  };
+
   console.log(DescendingData);
 
   const [popUp, setPopUp] = useState(false);
 
   const popNavs = ["Month One", "Month Two","Month Three","Form","Bank Statement"];
 
-  const handClick = () =>{
-    setPopUp(true);
-  } 
   return (
     <div>
       <section className='flex justify-end'>
-      <BlueButton onClick={handClick}>
+      <BlueButton onClick={onOpen}>
         Add Files
       </BlueButton>
-      {popUp === true && <PopupComponent setPopUp={setPopUp} popNavs={popNavs}/>}
+      {popUp === true && <PopupComponent setPopUp={onClose} isExiting={isExiting} popNavs={popNavs}/>}
       </section>
       <section className='flex flex-col gap-10 '>
           {DescendingData
@@ -39,8 +49,8 @@ const SalarySlip = () => {
           index === self.findIndex(f => f.date === file.date)
         )
         .map(file => (
-          <div key={file.id}>
-            <div className='flex w-full justify-center  items-center gap-2'>
+          <div className='custom-font-mavan-pro text-sm' key={file.id}>
+            <div className='flex w-full justify-center  items-center gap-2 font-semibold text-sm text-gray-700'>
             <hr className='w-full border-t border-gray-400' />
               {file.date}
               <hr className='w-full border-t border-gray-400' />
