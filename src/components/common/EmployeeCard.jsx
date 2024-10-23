@@ -1,7 +1,7 @@
 function EmployeeCard({ image, name, id, department }) {
   return (
     <div className="">
-      <div className="flex items-center p-2 bg-gray-100 card-shadow rounded-lg custom-font-mavan-pro scroll-cards-employee">
+      <div className="flex items-center p-2 bg-gray-100 card-shadow rounded-lg custom-font-mavan-pro scroll-cards-d">
         <img
           src={image}
           alt={`${name}'s profile`}

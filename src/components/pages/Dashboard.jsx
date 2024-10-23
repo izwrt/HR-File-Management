@@ -87,7 +87,7 @@ function Dashboard() {
           />
         </div>
         <div className="xl:h-[35rem] 2xl:h-[44rem] pb-5 md:h-[900px]  w-full ">
-          <div className="bg-white rounded-lg  flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 snap-scroll-employee-section overflow-y-auto overflow scroll-smooth w-full scroll-padding">
+          <div className="bg-white rounded-lg  flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 snap-scroll-d overflow-y-auto overflow scroll-smooth w-full scroll-padding">
             <div className="bg-white backdrop-blur-sm  z-10 sticky top-0 rounded-lg">
               <div className="flex items-center justify-between flex-grow px-5">
                 <div className="font-semibold mb-4 pt-4 text-base custom-font-mavan-pro opacity-80">
@@ -114,7 +114,7 @@ function Dashboard() {
 
             <div className="w-full h-full px-5 ">
               {filteredemployees.length !== 0 ? (
-                <div className=" grid sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-y-8 gap-x-5 pb-5">
+                <div className=" grid sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-y-8 gap-x-5 pb-14">
                   {filteredemployees.map((employee) => (
                     <EmployeeCard
                       key={employee.id}

@@ -165,6 +165,25 @@
   scroll-snap-stop: always;
 }
 
+.snap-scroll-d {
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 75px;
+}
+
+.scroll-cards-d {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.snap-scroll-b {
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 10px;
+}
+
+.scroll-cards-b {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
 
 /* ----------------------------------------------animations------------------------------------------ */
 
@@ -194,8 +213,6 @@
   animation: fadeOut 0.3s forwards; /* Fade out */
 }
 
-
-
 @keyframes fadeOut-file {
   0% {
     opacity: 1;
@@ -216,8 +233,6 @@
   animation: fadeOut-file 0.5s ease-in-out forwards; /* Adjust duration as needed */
   animation-delay: 2s; /* Delay before starting the fade-in */
 }
-
-
 
 /*----------------------------------------------Settings popup---------------------------------------------*/
 
@@ -264,8 +279,6 @@
 .card-color {
   background-color: #f4f4f4;
 }
-
-
 
 .text-size {
   font-size: 13px;
