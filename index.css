@@ -214,7 +214,7 @@
 
 .file-uploaded {
   animation: fadeOut-file 0.5s cubic-bezier(0.50, 0, 0.37, 0.94) forwards; /* Adjust duration as needed */
-  animation-delay: 1.5s; /* Delay before starting the fade-in */
+  animation-delay: 1.8s; /* Delay before starting the fade-in */
   
 }
 

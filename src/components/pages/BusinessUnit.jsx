@@ -6,6 +6,7 @@ import BusinessunitPopup from "../common/BusinessunitPopup";
 import CountContainer from "../common/CountContainer";
 import EmployeeBusinessLog from "../common/EmployeeBusinessLog";
 import NodataFound from "../common/NodataFound";
+import apiFecthFiles from "../../../api/apiFetchFiles";
 
 export default function BusinessUnit() {
   const {employees} = apiFecthEmployees();
@@ -18,7 +19,6 @@ export default function BusinessUnit() {
   const clients = ["One Inc", "Slide", "Metaz"];
   const statuses = ["Active", "Inactive", "Relieved"];
 
-  console.log(selectedStatuses)
 
   const handleChange = (e) => {
     setSearchEmployee(e.target.value);

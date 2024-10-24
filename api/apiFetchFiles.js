@@ -4,12 +4,14 @@ import { useEffect, useState } from 'react';
 export default function apiFecthFiles() {
 
     const [files, setFiles] = useState([]);
+    const [comments, setComments] = useState([])
 
     useEffect(() => {
         axios
           .get("http://localhost:5000/api/files")
           .then((response) => {
-            setFiles(response.data);
+            setFiles(response.data.file);
+            setComments(response.data.comments);
           })
           .catch((error) => {
             console.error(
@@ -18,5 +20,5 @@ export default function apiFecthFiles() {
           });
       },[]);
     
-    return files;
+    return {files,comments};
 }
