@@ -8,7 +8,7 @@ import EmployeeBusinessLog from "../common/EmployeeBusinessLog";
 import NodataFound from "../common/NodataFound";
 
 export default function BusinessUnit() {
-  const {employees} = apiFecthEmployees();
+  const { employees } = apiFecthEmployees();
   const [searchEmployee, setSearchEmployee] = useState("");
   const [popUp, setPopUp] = useState(false);
   const [selectedClients, setSelectedClients] = useState([]);
@@ -18,7 +18,7 @@ export default function BusinessUnit() {
   const clients = ["One Inc", "Slide", "Metaz"];
   const statuses = ["Active", "Inactive", "Relieved"];
 
-  console.log(selectedStatuses)
+  console.log(selectedStatuses);
 
   const handleChange = (e) => {
     setSearchEmployee(e.target.value);
@@ -89,7 +89,7 @@ export default function BusinessUnit() {
       </div>
 
       <div className="xl:h-[35rem] 2xl:h-[44rem] md:h-[900px] pb-5">
-        <div className="bg-white rounded-lg px-5 py-4 flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 overflow-y-auto">
+        <div className="bg-white rounded-lg px-5 py-4 flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200">
           <div className="flex justify-between items-center">
             <span className="text-black font-semibold text-base 2xl:text-base custom-font-mavan-pro opacity-80">
               Employees
@@ -112,7 +112,7 @@ export default function BusinessUnit() {
             </span>
           </div>
 
-          <div className="flex flex-col gap-3 h-full overflow-auto overflow-emp scroll-smooth">
+          <div className="flex flex-col gap-3 h-full overflow-auto overflow-emp scroll-smooth snap-scroll-b pb-7">
             <div className="sticky top-0 z-10 backdrop-blur-sm md:w-[1000px]">
               <EmployeeBusinessLog
                 employeeName="Employee Name"

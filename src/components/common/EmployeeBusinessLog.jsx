@@ -13,7 +13,7 @@ const EmployeeBusinessLog = ({
   id,
 }) => {
   return (
-    <div>
+    <div className="scroll-cards-b">
       <div
         className={`text-black ${fontWeight} text-sm p-3 pr-12 custom-font-mavan-pro ${color} ${position} flex justify-between md:w-[1000px]`}
       >
