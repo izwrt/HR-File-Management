@@ -5,6 +5,7 @@ import pdf from "../../../assets/images/pdf.png";
 import photo from "../../../assets/images/photo.png";
 import word from "../../../assets/images/word.png";
 import BlueButton from '../BlueButton';
+import PopupComponent from '../../common/PopupComponent';
 
 ///salary slip datas are repeating
 
@@ -20,16 +21,13 @@ const SalarySlip = () => {
   }
 
  const [isExiting, setIsExiting] = useState(false);
-  const filesData = apiFecthFiles();
+  const {files,comments} = apiFecthFiles();
 
-const DescendingData = filesData.sort((a, b) => {
+const DescendingData = files.sort((a, b) => {
     const dateA = new Date(a.fieldId);
     const dateB = new Date(b.fieldId);
     return dateA - dateB; 
 });
-
-console.log(DescendingData)
-
   
   const onOpen = () => {
     setPopUp(true);
@@ -67,12 +65,14 @@ console.log(DescendingData)
                 <p className='text-black text-opacity-70 whitespace-nowrap capitalize'>{file.field}</p>
                 <hr className='w-full border-t border-gray-400' />
             </div>
+            {comments.filter(com => com.fieldId === file.fieldId )
+            .map(com => <div className='text-customBlue p-3 rounded-lg border'>{com.comment}</div>)}
             {
-            <div className='flex flex-wrap gap-14 px-4 mt-4'>
+            <div className='flex flex-wrap gap-14 px-4 mt-8'>
             {DescendingData
               .filter(filteredFile => filteredFile.date === file.date)
               .map(filteredFile => 
-                <div className='flex flex-col gap-4 transition-transform delay-100 ease-out hover:scale-110'>
+                <div key={filteredFile.id} className='flex flex-col gap-4 transition-transform delay-100 ease-out hover:scale-110'>
                   <div className='flex flex-col items-center w-16 '>
                     <img className="h-12 w-12" src={ImgConfig[filteredFile.fileName.split(".")[1]] || ImgConfig.default} alt={file.name} />
                     <p className='text-sm max-w-full break-words overflow-hidden text-center'>{filteredFile.fileName}</p>

@@ -1,4 +1,4 @@
-import React, { useState,useContext } from "react";
+import React, { useContext } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import Close from "../../assets/images/close.png";
 import Cloud from "../../assets/images/cloud-file.gif";
@@ -25,7 +25,7 @@ const PopupComponent = ({ heading = "Default Header", popNavs ,setPopUp,isExitin
   
 
   return (
-    <div className={`fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-30 ${
+    <div className={`fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-30 backdrop-blur-sm  ${
       isExiting ? "popup" : "popup-exit"}`}>
       <div className="homeBgColor rounded-lg shadow-lg w-[600px] h-[600px] flex flex-col relative overflow-y-scroll overflow">
         <div className="sticky top-0 w-full flex justify-between items-center px-6 pb-2 pt-6 z-20 border-b homeBgColor">
