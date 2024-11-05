@@ -1,11 +1,13 @@
 import debounce from "lodash.debounce";
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { CiFilter, CiSearch } from "react-icons/ci";
 import apiFecthEmployees from "../../../api/apiFecthEmployees";
 import BusinessunitPopup from "../common/BusinessunitPopup";
 import CountContainer from "../common/CountContainer";
 import EmployeeBusinessLog from "../common/EmployeeBusinessLog";
 import NodataFound from "../common/NodataFound";
+import BusinessUnitShimmer from "../common/SImmerComponents/BusinessUnitShimmer";
+import CountContainerShimmer from "../common/SImmerComponents/CountContainerShimmer";
 
 export default function BusinessUnit() {
   const { employees } = apiFecthEmployees();
@@ -15,10 +17,18 @@ export default function BusinessUnit() {
   const [selectedStatuses, setSelectedStatuses] = useState([]);
   const [isExiting, setIsExiting] = useState(false);
   const popupRef = useRef(null);
+  const [cardShimmer, setCardShimmer] = useState(true);
   const clients = ["One Inc", "Slide", "Metaz"];
   const statuses = ["Active", "Inactive", "Relieved"];
 
-  console.log(selectedStatuses);
+  useEffect(() => {
+    const fetchEmployees = () => {
+      setTimeout(() => {
+        setCardShimmer(false);
+      }, 3000);
+    };
+    fetchEmployees();
+  }, []);
 
   const handleChange = (e) => {
     setSearchEmployee(e.target.value);
@@ -73,20 +83,28 @@ export default function BusinessUnit() {
 
   return (
     <div className="relative mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit pl-8 pr-12 md:pl-5 md:pr-6">
-      <div className="grid grid-flow-col justify-between md:grid-rows-2 gap-10 py-6 ">
-        <CountContainer
-          smallText={`Active Employees`}
-          largeNumber={activeEmployeesCount}
-        />
-        <CountContainer
-          smallText={`Inactive Employees`}
-          largeNumber={inactiveEmployeesCount}
-        />
-        <CountContainer
-          smallText={`Relieved`}
-          largeNumber={relievedEmployeesCount}
-        />
-      </div>
+      {employees.length !== 0 ? (
+        <div className="grid grid-flow-col justify-between md:grid-rows-2 gap-10 py-6 ">
+          <CountContainer
+            smallText={`Active Employees`}
+            largeNumber={activeEmployeesCount}
+          />
+          <CountContainer
+            smallText={`Inactive Employees`}
+            largeNumber={inactiveEmployeesCount}
+          />
+          <CountContainer
+            smallText={`Relieved`}
+            largeNumber={relievedEmployeesCount}
+          />
+        </div>
+      ) : (
+        <div className="grid grid-flow-col justify-between md:grid-rows-2 gap-10 py-6 ">
+          <CountContainerShimmer />
+          <CountContainerShimmer />
+          <CountContainerShimmer />
+        </div>
+      )}
 
       <div className="xl:h-[35rem] 2xl:h-[44rem] md:h-[900px] pb-5">
         <div className="bg-white rounded-lg px-5 py-4 flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200">
@@ -112,7 +130,11 @@ export default function BusinessUnit() {
             </span>
           </div>
 
-          <div className="flex flex-col gap-3 h-full overflow-auto overflow-emp scroll-smooth snap-scroll-b pb-7">
+          <div
+            className={`flex flex-col gap-3 h-full overflow-auto overflow-emp ${
+              cardShimmer && "overflow-hidden"
+            } scroll-smooth snap-scroll-b pb-7`}
+          >
             <div className="sticky top-0 z-10 backdrop-blur-sm md:w-[1000px]">
               <EmployeeBusinessLog
                 employeeName="Employee Name"
@@ -143,7 +165,11 @@ export default function BusinessUnit() {
                 />
               ))
             ) : (
-              <NodataFound />
+              <div className="flex flex-col gap-3">
+                {Array.from({ length: 10 }).map((_, index) => {
+                  return <BusinessUnitShimmer key={index} />;
+                })}
+              </div>
             )}
           </div>
         </div>

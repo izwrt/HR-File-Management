@@ -1,37 +1,30 @@
-import { useEffect, useState ,useContext} from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "../api/axios";
 import CustomReducerContext from "./utils/useContext/CustomReducerContext";
 
-
-
 const Authontications = () => {
-    const { state, dispatch } = useContext(CustomReducerContext);
-    CHECK_URL = "/api/v1/user/get-me";
+  const { state, dispatch } = useContext(CustomReducerContext);
+  CHECK_URL = "/api/v1/user/get-me";
 
-   
-
-    useEffect(() => {
-    
+  useEffect(() => {
     const checkAuth = async () => {
-        try {
+      try {
         const response = await axios.get(CHECK_URL, {
-            withCredentials: true, 
+          withCredentials: true,
         });
         dispatch({
-            type: "tokenAuth",
-            payload: true
-        })
-        } catch (err) {
-            dispatch({
-                type: "tokenAuth",
-                payload: false
-            })
-        }
+          type: "tokenAuth",
+          payload: true,
+        });
+      } catch (err) {
+        dispatch({
+          type: "tokenAuth",
+          payload: false,
+        });
+      }
     };
-    checkAuth(); // Call the async function
-    }, []);
-    }
+    checkAuth();
+  }, []);
+};
 
-    
-
-export default Authontications
+export default Authontications;

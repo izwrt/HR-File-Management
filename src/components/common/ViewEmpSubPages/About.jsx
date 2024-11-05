@@ -34,7 +34,7 @@ const About = () => {
   return (
     <div className="flex gap-10 w-full custom-font-mavan-pro">
       <div className="w-[50%] bg-white rounded-lg h-[50%]">
-        <div className="p-6 font-semibold flex justify-between items-center h-[70px]">
+        <div className="p-4 font-semibold flex justify-between items-center h-[70px]">
           <div>Personal details</div>
           <div onClick={handlePersonalDetails}>
             {personalDetailsAction ? <BlueButton label="Save" /> : <Edit />}
@@ -45,47 +45,47 @@ const About = () => {
           <InterviewCards
             image={<Messages />}
             heading="Personal Email"
-            personalDetailsAction={personalDetailsAction}
+            onClick1={personalDetailsAction}
           />
           <InterviewCards
             heading="Phone Number"
             image={<PhoneAbout />}
-            personalDetailsAction={personalDetailsAction}
+            onClick1={personalDetailsAction}
           />
           <InterviewCards
             heading="Work Email"
             image={<Messages />}
-            personalDetailsAction={personalDetailsAction}
+            onClick1={personalDetailsAction}
           />
           <InterviewCards
             heading="Emergency Contact"
             image={<EmergencyContact />}
-            personalDetailsAction={personalDetailsAction}
+            onClick1={personalDetailsAction}
           />
           <InterviewCards
             heading="Blood Group"
             image={<BloodGroup />}
-            personalDetailsAction={personalDetailsAction}
+            onClick1={personalDetailsAction}
           />
           <InterviewCards
             heading="T-Shirt Size"
             image={<TShirtSize />}
-            personalDetailsAction={personalDetailsAction}
+            onClick1={personalDetailsAction}
           />
           <InterviewCards
             heading="Permanent Address"
             image={<PermanentAddress />}
-            personalDetailsAction={personalDetailsAction}
+            onClick1={personalDetailsAction}
           />
           <InterviewCards
             heading="Current Address"
             image={<CurrentAddress />}
-            personalDetailsAction={personalDetailsAction}
+            onClick1={personalDetailsAction}
           />
         </form>
       </div>
       <div className="w-[50%] bg-white rounded-lg h-[70%]">
-        <div className="p-6 font-semibold flex justify-between items-center h-[70px]">
+        <div className="p-4 font-semibold flex justify-between items-center h-[70px]">
           <div>Professional Details</div>
           <div onClick={handleProfessionalDetails}>
             {professionalDetailsAction ? <BlueButton label="Save" /> : <Edit />}
@@ -95,42 +95,42 @@ const About = () => {
           <InterviewCards
             heading="Job Position"
             image={<JobPosition />}
-            professionalDetailsAction={professionalDetailsAction}
+            onClick2={professionalDetailsAction}
           />
           <InterviewCards
             heading="Job Description"
             image={<JobDescription />}
-            professionalDetailsAction={professionalDetailsAction}
+            onClick2={professionalDetailsAction}
           />
           <InterviewCards
             heading="Reporting Manager"
             image={<ReportingManager />}
-            professionalDetailsAction={professionalDetailsAction}
+            onClick2={professionalDetailsAction}
           />
           <InterviewCards
             heading="Team Lead"
             image={<TeamLead />}
-            professionalDetailsAction={professionalDetailsAction}
+            onClick2={professionalDetailsAction}
           />
           <InterviewCards
             heading="Date of Birth"
             image={<DateOfBirth />}
-            professionalDetailsAction={professionalDetailsAction}
+            onClick2={professionalDetailsAction}
           />
           <InterviewCards
             heading="Business Units"
             image={<BusinessUnits />}
-            professionalDetailsAction={professionalDetailsAction}
+            onClick2={professionalDetailsAction}
           />
           <InterviewCards
             heading="Resume"
             image={<Resume />}
-            professionalDetailsAction={professionalDetailsAction}
+            onClick2={professionalDetailsAction}
           />
           <InterviewCards
             heading="Current Client"
             image={<CurrentClient />}
-            professionalDetailsAction={professionalDetailsAction}
+            onClick2={professionalDetailsAction}
           />
         </form>
       </div>

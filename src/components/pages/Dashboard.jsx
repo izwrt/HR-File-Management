@@ -1,5 +1,5 @@
 import debounce from "lodash.debounce";
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { CiFilter, CiSearch } from "react-icons/ci";
 import apiFecthEmployees from "../../../api/apiFecthEmployees";
 import Add_Admin from "../../assets/images/Add_Admin";
@@ -9,6 +9,8 @@ import CountContainer from "../common/CountContainer";
 import EmployeeCard from "../common/EmployeeCard";
 import NodataFound from "../common/NodataFound";
 import SettingsPopup from "../common/SettingsPopup";
+import EmployeeCardShimmer from "../common/SImmerComponents/EmployeeCardShimmer";
+import CountContainerShimmer from "../common/SImmerComponents/CountContainerShimmer";
 
 function Dashboard() {
   const { employees } = apiFecthEmployees();
@@ -20,13 +22,31 @@ function Dashboard() {
   const [isExiting, setIsExiting] = useState(false);
   const [popUp, setPopUp] = useState(false);
   const popUpRef = useRef(null);
+  const [cardShimmer, setCardShimmer] = useState(false);
   const units = ["Invenger Technologies", "Invenger Solutions", "Instarack"];
   const departments = ["HR", "Finance", "IT"];
+
+  useEffect(() => {
+    const fetchEmployees = () => {
+      setTimeout(() => {
+        setCardShimmer(true);
+      }, 3000);
+    };
+    fetchEmployees();
+  }, []);
 
   const openPopUp = () => {
     setPopUp(true);
     setIsExiting(true);
   };
+
+  const activeEmployeesCount = employees.filter((emp) => {
+    return emp.status === "Active";
+  }).length;
+
+  const inActiveEmployeesCount = employees.filter((emp) => {
+    return emp.status === "Inactive";
+  }).length;
 
   const closePopUp = () => {
     setTimeout(() => {
@@ -79,15 +99,29 @@ function Dashboard() {
   return (
     <div className="flex flex-row relative mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit pl-8 pr-12 md:pl-5 md:pr-6 gap-8">
       <div className="flex flex-col md:w-full w-[70%] 2xl:w-full 2xl:h-full ">
-        <div className="grid grid-flow-col justify-between md:grid-rows-1 gap-10 py-9">
-          <CountContainer smallText={`Active Employees`} largeNumber={`999`} />
-          <CountContainer
-            smallText={`Inactive Employees`}
-            largeNumber={`999`}
-          />
-        </div>
+        {employees.length !== 0 ? (
+          <div className="grid grid-flow-col justify-between md:grid-rows-1 gap-10 py-9">
+            <CountContainer
+              smallText={`Active Employees`}
+              largeNumber={activeEmployeesCount}
+            />
+            <CountContainer
+              smallText={`Inactive Employees`}
+              largeNumber={inActiveEmployeesCount}
+            />
+          </div>
+        ) : (
+          <div className="grid grid-flow-col justify-between md:grid-rows-1 gap-10 py-9">
+            <CountContainerShimmer />
+            <CountContainerShimmer />
+          </div>
+        )}
         <div className="xl:h-[35rem] 2xl:h-[44rem] pb-5 md:h-[900px]  w-full ">
-          <div className="bg-white rounded-lg  flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 snap-scroll-d overflow-y-auto overflow scroll-smooth w-full scroll-padding">
+          <div
+            className={`bg-white rounded-lg  flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 snap-scroll-d overflow-y-auto ${
+              !cardShimmer && "xl:overflow-hidden"
+            } overflow scroll-smooth w-full scroll-padding`}
+          >
             <div className="bg-white backdrop-blur-sm  z-10 sticky top-0 rounded-lg">
               <div className="flex items-center justify-between flex-grow px-5">
                 <div className="font-semibold mb-4 pt-4 text-base custom-font-mavan-pro opacity-80">
@@ -126,14 +160,22 @@ function Dashboard() {
                   ))}
                 </div>
               ) : (
-                <NodataFound />
+                <div className="grid sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-y-8 gap-x-5 pb-14">
+                  {Array.from({ length: 15 }).map((_, index) => (
+                    <EmployeeCardShimmer key={index} />
+                  ))}
+                </div>
               )}
             </div>
           </div>
         </div>
       </div>
       <div className=" w-[700px]  xl:h-[766px] 2xl:h-[924px] pb-5 md:hidden flex items-center justify-center py-9 ">
-        <div className=" bg-white w-full rounded-lg overflow-y-auto overflow h-full snap-scroll shadow-sm border-solid border border-slate-100 shadow-gray-20 2xl:pb-10 xl:pb-28">
+        <div
+          className={` bg-white w-full rounded-lg overflow-y-auto overflow h-full snap-scroll shadow-sm border-solid border ${
+            !cardShimmer && "xl:overflow-hidden"
+          } border-slate-100 shadow-gray-20 2xl:pb-10 xl:pb-28`}
+        >
           <div className="sticky top-0 z-10 px-5 bg-white">
             <div className="font-semibold  text-base   custom-font-mavan-pro opactiy-80">
               <div className="flex flex-row gap-6 items-center  py-4 border-b border-black ">
@@ -145,21 +187,29 @@ function Dashboard() {
             </div>
           </div>
           <div className="relative px-5 py-4 ">
-            <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8 gap-y-8 ">
-              {employees.map(
-                (employee) =>
-                  employee.admin && (
-                    <AdminCard
-                      key={employee.empid}
-                      name={employee.name}
-                      empid={employee.empid}
-                      department={employee.department}
-                      empImg={employee.empImg}
-                      admin={employee.admin}
-                    />
-                  )
-              )}
-            </div>
+            {employees.length !== 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8 gap-y-8 ">
+                {employees.map(
+                  (employee) =>
+                    employee.admin && (
+                      <AdminCard
+                        key={employee.empid}
+                        name={employee.name}
+                        empid={employee.empid}
+                        department={employee.department}
+                        empImg={employee.empImg}
+                        admin={employee.admin}
+                      />
+                    )
+                )}
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8 gap-y-8">
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <EmployeeCardShimmer key={index} />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

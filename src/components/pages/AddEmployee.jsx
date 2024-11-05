@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { MdUploadFile } from "react-icons/md";
 import Setting_Employee from "../../assets/images/Setting_Employee";
 import InputField from "../common/InputField";
+import BlueButton from "../common/BlueButton";
 
 function AddEmployee() {
   const inputRef = useRef(null);
@@ -28,7 +29,7 @@ function AddEmployee() {
           <div className="flex items-start justify-between p-8 ">
             <input type="file" className="hidden" ref={inputRef} />
             <div
-              className=" flex items-center justify-center cursor-pointer relative "
+              className="flex items-center justify-center cursor-pointer relative "
               onClick={callRef}
             >
               <Setting_Employee />
@@ -45,7 +46,7 @@ function AddEmployee() {
             </div>
           </div>
           <div className="font-semibold text-lg pl-8">Personal details</div>
-          <div className="grid grid-cols-2 p-8 gap-y-10 gap-x-14">
+          <div className="grid grid-cols-2 2xl:grid-cols-3 p-8 gap-y-10 gap-x-14">
             <InputField fieldName="First Name" idName="firstName" type="text" />
             <div className="flex flex-col">
               <label className="font-normal">Date of Birth</label>
@@ -130,7 +131,7 @@ function AddEmployee() {
           <div className="font-bold text-lg ml-8 mt-6">
             Professional details
           </div>
-          <div className="grid grid-cols-2 p-8 gap-10">
+          <div className="grid grid-cols-2 2xl:grid-cols-3 p-8 gap-10">
             <div className="flex flex-col">
               <label className="font-normal">Upload Resume</label>
               <div
@@ -196,13 +197,9 @@ function AddEmployee() {
               </div>
             </div>
           </div>
-          <div className="flex flex-row justify-center gap-4 pb-10">
-            <button className="px-8 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
-              Save
-            </button>
-            <button className="px-8 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
-              Cancel
-            </button>
+          <div className="flex flex-row justify-center gap-10 pb-10">
+            <BlueButton label={"Save"} />
+            <BlueButton label={"Cancel"} />
           </div>
         </div>
       </div>

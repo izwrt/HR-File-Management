@@ -5,30 +5,30 @@ const InterviewCards = ({
   onClose,
   props,
   image,
-  personalDetailsAction,
-  professionalDetailsAction,
+  onClick1,
+  onClick2,
 }) => {
   return (
-    <div className="card-color p-2 m-6">
+    <div className="card-color p-2 mb-4 ml-4 mr-4">
       <div className="flex flex-row gap-5 items-center px-2 h-14 custom-font-mavan-pro ">
         {image}
         <div className="flex flex-col font-semibold h-12 ">
           <h3 className="interview-font-head">{heading}</h3>
           <div>
-            {personalDetailsAction && (
+            {onClick1 && (
               <input
                 type="text"
-                className="card-color border-2 border-card-color rounded-md focus:outline-none focus:border-card-color font-light text-card-color"
+                className="card-color px-1 border-2 border-card-color rounded-md focus:outline-none focus:border-card-color font-light text-card-color"
               />
             )}
-            {professionalDetailsAction && (
+            {onClick2 && (
               <input
                 type="text"
                 className="card-color border-2 border-card-color rounded-md focus:outline-none focus:border-card-color font-light text-card-color"
               />
             )}
             <div>
-              {!professionalDetailsAction && !personalDetailsAction && (
+              {!onClick2 && !onClick1 && (
                 <p className="interview-font-para font-normal">get from api</p>
               )}
             </div>
