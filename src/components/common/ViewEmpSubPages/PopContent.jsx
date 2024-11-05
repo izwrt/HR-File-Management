@@ -80,7 +80,7 @@ const PopContent = () => {
           >
             <NewUpload />
             <div className="flex justify-center items-center gap-x-4 ">
-              <h2 className="font-semibold custom-font-mavan-pro opacity-50 text-lg">
+              <h2 className="font-semibold custom-font-mavan-pro opacity-50 text-base">
                 Drag and Drop file or Browse
               </h2>
               <input type="file" onChange={onFileDrop} className="absolute top-0 h-full w-full bg-red-400 opacity-0 cursor-pointer" />
