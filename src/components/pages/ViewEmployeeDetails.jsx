@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate, useParams } from 'react-router-dom';
 
 const ViewEmployeeDetails = () => {
     const [empData, setEmpData] = useState(null);
+    const navigate = useNavigate();
 
     const {id} = useParams();
 
@@ -18,7 +19,13 @@ const ViewEmployeeDetails = () => {
               `There was a error fetching the employees ${error}`
             );
         })
-    }, []);
+    }, [id]);
+
+    useEffect(() => {
+        if(empData){
+            navigate(`about`,{ state: { empData}})
+        }
+    },[empData])
 
 
 
@@ -42,22 +49,22 @@ const ViewEmployeeDetails = () => {
 
                 <section className='w-full '>
                     <nav className='flex flex-wrap gap-3 gap-x-8 custom-font-mavan-pro text-sm font-medium opacity-85 '>
-                        <NavLink to="about" className={({isActive}) =>{
+                        <NavLink to="about" state={{empData}} className={({isActive}) =>{
                            return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             About
                         </NavLink>
-                        <NavLink to="interview" className={({isActive}) =>{
+                        <NavLink to="interview" state={{empData}} className={({isActive}) =>{
                            return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Interviews
                         </NavLink>
-                        <NavLink to="salaryslip" className={({isActive}) =>{
+                        <NavLink to="salaryslip" state={{empData}} className={({isActive}) =>{
                            return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Salary Slip
                         </NavLink>
-                        <NavLink to="salarydiscussion" className={({isActive}) =>{
+                        <NavLink to="salarydiscussion" state={{empData}} className={({isActive}) =>{
                            return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             Salary Discussion

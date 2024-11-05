@@ -155,10 +155,10 @@ const router = createBrowserRouter([
         path: "/viewemployee/:id",
         element: <ViewEmployeeDetails />,
         children: [
-          {
-            index: true,
-            element: <Navigate to="about"/>
-          },
+          // {
+          //   index: true,
+          //   element: <Navigate to="about"/>
+          // },
           {
             path: "about",
             element: <About/>

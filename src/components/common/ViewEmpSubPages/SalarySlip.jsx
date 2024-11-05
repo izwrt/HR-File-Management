@@ -6,6 +6,7 @@ import photo from "../../../assets/images/photo.png";
 import word from "../../../assets/images/word.png";
 import BlueButton from '../BlueButton';
 import PopupComponent from '../../common/PopupComponent';
+import { useLocation } from 'react-router-dom';
 
 ///salary slip datas are repeating
 
@@ -20,10 +21,11 @@ const SalarySlip = () => {
     default: defaultFile
   }
 
- const [isExiting, setIsExiting] = useState(false);
-  const {files,comments} = apiFecthFiles();
-
-const DescendingData = files.sort((a, b) => {
+  const {state} = useLocation()
+  const [isExiting, setIsExiting] = useState(false);
+  const {file,comments} = state.empData.files
+  console.log(file)
+const DescendingData = file.sort((a, b) => {
     const dateA = new Date(a.fieldId);
     const dateB = new Date(b.fieldId);
     return dateA - dateB; 
