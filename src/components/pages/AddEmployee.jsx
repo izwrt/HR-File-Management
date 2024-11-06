@@ -1,13 +1,30 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { MdUploadFile } from "react-icons/md";
 import Setting_Employee from "../../assets/images/Setting_Employee";
 import InputField from "../common/InputField";
 import BlueButton from "../common/BlueButton";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function AddEmployee() {
+  const [dateOfBirth, setDateOfBirth] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   const inputRef = useRef(null);
   const photoRef = useRef(null);
   const resumeRef = useRef(null);
+
+  const handleChangeDateOfBirth = (date) => {
+    setDateOfBirth(date);
+  };
+
+  const handleChangeStartDate = (date) => {
+    setStartDate(date);
+  };
+
+  const handleChangeEndDate = (date) => {
+    setEndDate(date);
+  };
 
   const callRef = () => {
     inputRef.current.click();
@@ -24,7 +41,7 @@ function AddEmployee() {
   return (
     <div className="mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit pl-8 pr-12 md:pl-5 md:pr-6 gap-8 custom-font-mavan-pro">
       <div className="my-9">
-        <div className="font-bold text-base">Add Employee</div>
+        <div className="font-bold text-md">Add Employee</div>
         <div className="rounded-lg bg-white shadow-sm border-solid border border-slate-100 shadow-gray-20 mt-2 overflow-auto">
           <div className="flex items-start justify-between p-8 ">
             <input type="file" className="hidden" ref={inputRef} />
@@ -45,15 +62,16 @@ function AddEmployee() {
               </label>
             </div>
           </div>
-          <div className="font-semibold text-lg pl-8">Personal details</div>
+          <div className="font-light text-md ml-8">Personal details</div>
           <div className="grid grid-cols-2 2xl:grid-cols-3 p-8 gap-y-10 gap-x-14">
             <InputField fieldName="First Name" idName="firstName" type="text" />
             <div className="flex flex-col">
-              <label className="font-normal">Date of Birth</label>
-              <input
-                type="date"
-                className="mt-2 px-2 py-3  rounded-lg border-2 border-gray-500 "
-                placeholder="Select a Date"
+              <label className="text-sm font-light">Date of Birth</label>
+              <DatePicker
+                className="border-2 px-2 pt-2 pb-2  focus:outline-none mt-2 rounded-lg border-[#D9D9D9] w-[100%]"
+                selected={dateOfBirth}
+                onChange={handleChangeDateOfBirth}
+                dateFormat="dd/MM/yyyy"
               />
             </div>
             <InputField fieldName="Last Name" idName="lastName" type="text" />
@@ -108,15 +126,13 @@ function AddEmployee() {
               type="text"
             />
             <div className="flex flex-col">
-              <label className="font-normal">Passport Size Photo</label>
+              <label className="text-sm font-light">Passport Size Photo</label>
               <div
-                className="mt-2 flex items-center justify-center cursor-pointer px-2 py-3 rounded-lg border-2 border-gray-500"
+                className="mt-2 flex items-center justify-center cursor-pointer px-2 py-2 rounded-lg border-2 border-[#D9D9D9]"
                 onClick={callInputElement}
               >
                 <MdUploadFile size="24" color="gray" />
-                <span className="font-normal text-gray-500 pl-1">
-                  Upload Photo
-                </span>
+                <span className="text-sm text-gray-500 pl-1">Upload Photo</span>
                 <input
                   type="file"
                   id="passportSizePhoto"
@@ -127,25 +143,25 @@ function AddEmployee() {
             </div>
           </div>
 
-          <div className="h-0.5 bg-gradient-to-l from-transparent via-black to-transparent mx-8"></div>
+          <div className="h-0.5 bg-gradient-to-l from-transparent via-slate-400 to-transparent mx-8"></div>
           <div className="font-bold text-lg ml-8 mt-6">
             Professional details
           </div>
           <div className="grid grid-cols-2 2xl:grid-cols-3 p-8 gap-10">
             <div className="flex flex-col">
-              <label className="font-normal">Upload Resume</label>
+              <label className="text-sm font-light">Upload Resume</label>
               <div
-                className="mt-2 flex items-center justify-center cursor-pointer px-2 py-3 rounded-lg border-2 border-gray-500"
+                className="mt-2 flex items-center justify-center cursor-pointer px-2 py-2 rounded-lg border-2 border-[#D9D9D9]"
                 onClick={callResumeInput}
               >
                 <MdUploadFile size="24" color="gray" />
-                <span className="font-normal text-gray-500 pl-1">
+                <span className="text-sm text-gray-500 pl-1">
                   Upload Resume
                 </span>
                 <input
                   type="file"
                   id="resumePhoto"
-                  className="hidden"
+                  className="hidden "
                   ref={resumeRef}
                 />
               </div>
@@ -163,35 +179,39 @@ function AddEmployee() {
             <InputField fieldName="Team Lead" idName="teamLead" type="text" />
             <InputField fieldName="Work Email" idName="workEmail" type="text" />
             <div className="flex flex-col">
-              <label className="font-normal">Business Units</label>
-              <select className=" mt-2 px-2 py-3.5 rounded-lg border-2 border-gray-500">
+              <label className="text-sm font-light">Business Units</label>
+              <select className=" mt-2 px-2 pt-2.5 pb-3 rounded-lg  border-2 border-[#D9D9D9] focus:outline-none text-sm">
                 <option value="option1">Option1</option>
                 <option value="option2">Option2</option>
                 <option value="option3">Option3</option>
               </select>
             </div>
             <div className="flex flex-col">
-              <label className="font-normal">Clients</label>
-              <select className="mt-2 px-2 py-3.5 rounded-lg border-2 border-gray-500">
+              <label className="text-sm font-light">Clients</label>
+              <select className="mt-2 px-2 pt-2.5 pb-3 rounded-lg border-2 border-[#D9D9D9] focus:outline-none text-sm">
                 <option value="option1">Option1</option>
                 <option value="option2">Option2</option>
                 <option value="option3">Option3</option>
               </select>
             </div>
             <div className="flex flex-col">
-              <div className="flex justify-start gap-5">
+              <div className="flex justify-start gap-12 2xl:gap-14">
                 <div className="flex flex-col">
-                  <label className="font-normal">Start Date</label>
-                  <input
-                    type="date"
-                    className="mt-2 px-2 py-2.5 rounded-lg border-2 border-gray-500 w-[100%]"
+                  <label className="text-sm font-light">Start Date</label>
+                  <DatePicker
+                    className="border-2 px-2 pt-2 pb-2  focus:outline-none mt-2 rounded-lg border-[#D9D9D9]"
+                    selected={startDate}
+                    onChange={handleChangeStartDate}
+                    dateFormat="dd/MM/yyyy"
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="font-normal">End Date</label>
-                  <input
-                    type="date"
-                    className="mt-2 px-2 py-2.5 rounded-lg border-2 border-gray-500 w-[100%]"
+                  <label className="text-sm font-light">End Date</label>
+                  <DatePicker
+                    className="border-2 px-2 pt-2 pb-2  focus:outline-none mt-2 rounded-lg border-[#D9D9D9]"
+                    selected={endDate}
+                    onChange={handleChangeEndDate}
+                    dateFormat="dd/MM/yyyy"
                   />
                 </div>
               </div>
