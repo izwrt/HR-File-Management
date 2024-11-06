@@ -43,6 +43,7 @@ const PopupComponent = ({ heading = "Default Header", popNavs ,setPopUp,isExitin
           {popNavs.map((nav) => (
             <NavLink
               to={nav}
+              state={nav === "Month One" ? {fieldId:1,field:"month one"} : nav === "Month Two" ? {fieldId:2,field:"month two"} : ""}
               key={nav}
               className={({isActive}) => { return(isActive ? 'border-b-2 border-customBlue footer-font text-gray-500' : 'footer-font text-gray-500')}}
               onClick={(e) => {

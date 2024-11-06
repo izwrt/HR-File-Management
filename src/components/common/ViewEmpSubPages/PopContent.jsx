@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import NewUpload from "../../../assets/images/NewUpload";
 import Close from "../../../assets/images/close.png";
 import file from "../../../assets/images/file.png";
@@ -8,8 +8,15 @@ import word from "../../../assets/images/word.png";
 import AddComment from "../AddComment";
 import BlueButton from "../BlueButton";
 import NavContext from '../../../utils/useContext/NavContext';
+import axios from '../../../../api/axios';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 
 const PopContent = () => {
+
+  const {state} = useLocation();
+  const {fieldId,field} = state
+  console.log(state)
 
   const fileRemoveRef = useRef(null);
   const ref = useRef(null);
@@ -22,13 +29,26 @@ const PopContent = () => {
     default: file
   }
 
+  const [fileMetadata, setFileMetadata] = useState('')
+
+useEffect(()=>{
+  setFileMetadata({
+    id: 69,               // Pre-fill with an example file ID
+    fileName: 'ishwar.pdf', // Pre-fill with an example file name
+    field: field,     // Pre-fill with an example field
+    fieldId: fieldId         // Pre-fill with an example fieldId
+  })
+},[fieldId,field])
+
+  console.log("state",fileMetadata)
+
   const {fileList,setFileList,setRunAnimation,setFileUploaded,setFilePracent} = useContext(NavContext);
+
 
   const saveHandle = () => {
     if(fileList.length >0)
     {
     setRunAnimation(true);
-    setFileList([]);
     setTimeout(()=>{
       setRunAnimation(false)
       setFileUploaded(true);
@@ -68,8 +88,37 @@ const PopContent = () => {
     }, 100);
   }
 
+  const formHandle = async (e) => {
+    e.preventDefault();
+    const { id, fileName, field, fieldId } = fileMetadata;
+
+    if (!id || !fileName || !field || !fieldId) {
+      alert('Please fill out all fields.');
+      return;
+    }
+
+    try {
+      const empid = '1234';  // Use the actual employee ID from your context or data
+      const response = await axios.put(`http://localhost:5000/api/employees/${empid}/files/file`,  // Updated endpoint
+        {
+          id,
+          fileName,
+          field,
+          fieldId
+        }
+      );
+  
+      console.log('File metadata uploaded:', response.data);
+      alert('File metadata uploaded successfully!');
+    } catch (error) {
+      console.error('Error uploading file metadata:', error);
+      alert('Error uploading file metadata.');
+    }
+}
+
+
   return (
-    <form onSubmit={(e) => { e.preventDefault(); /* handle form submission */ }}>
+    <form onSubmit={formHandle}>
       <div>
         <div className="flex justify-center py-5">
           <div className="border-2 w-96 flex flex-col shadow h-52 border-dotted border-gray-400 rounded-lg justify-center items-center gap-y-6 relative hover:opacity-70"

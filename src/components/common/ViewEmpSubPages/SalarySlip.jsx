@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import apiFecthFiles from '../../../../api/apiFetchFiles';
+import { useLocation, useNavigate } from 'react-router-dom';
 import defaultFile from "../../../assets/images/file.png";
 import pdf from "../../../assets/images/pdf.png";
 import photo from "../../../assets/images/photo.png";
 import word from "../../../assets/images/word.png";
-import BlueButton from '../BlueButton';
 import PopupComponent from '../../common/PopupComponent';
-import { useLocation } from 'react-router-dom';
+import BlueButton from '../BlueButton';
 
 ///salary slip datas are repeating
 
 const SalarySlip = () => {
+  const navigate = useNavigate();
 
   const ImgConfig = {
     pdf: pdf,
@@ -21,17 +21,15 @@ const SalarySlip = () => {
     default: defaultFile
   }
 
-  const {state} = useLocation()
+  const {state} = useLocation();
+  const [empData, setEmpData] = useState(state);
   const [isExiting, setIsExiting] = useState(false);
-  const {file,comments} = state.empData.files
-  console.log(file)
-const DescendingData = file.sort((a, b) => {
-    const dateA = new Date(a.fieldId);
-    const dateB = new Date(b.fieldId);
-    return dateA - dateB; 
-});
-  
   const onOpen = () => {
+    navigate('Month One', {
+      state: { 
+        fieldId: 1,
+      }
+    });
     setPopUp(true);
     setIsExiting(true);
   };
@@ -47,6 +45,14 @@ const DescendingData = file.sort((a, b) => {
 
   const popNavs = ["Month One", "Month Two","Month Three","Form","Bank Statement"];
 
+  const {file,comments} = empData.empData.files;
+
+  const DescendingData = file.sort((a, b) => {
+    const dateA = new Date(a.fieldId);
+    const dateB = new Date(b.fieldId);
+    return dateA - dateB; 
+});
+
   return (
     <div>
       <section className='flex justify-end'>
@@ -60,7 +66,7 @@ const DescendingData = file.sort((a, b) => {
         .filter((file, index, self) => 
           index === self.findIndex(f => f.fieldId === file.fieldId)
         )
-        .map(file => (
+        .map((file) => (
           <div className='custom-font-mavan-pro text-sm' key={file.id}>
             <div className='flex justify-center items-center gap-2 font-semibold text-sm py-4'>
                 <hr className='w-full border-t border-gray-400' />
@@ -68,11 +74,11 @@ const DescendingData = file.sort((a, b) => {
                 <hr className='w-full border-t border-gray-400' />
             </div>
             {comments.filter(com => com.fieldId === file.fieldId )
-            .map(com => <div className='text-customBlue p-3 rounded-lg border'>{com.comment}</div>)}
+            .map((com,id) => <div key={id} className='text-customBlue p-3 rounded-lg border'>{com.comment}</div>)}
             {
             <div className='flex flex-wrap gap-14 px-4 mt-8'>
             {DescendingData
-              .filter(filteredFile => filteredFile.date === file.date)
+              .filter(filteredFile => filteredFile.fieldId === file.fieldId)
               .map(filteredFile => 
                 <div key={filteredFile.id} className='flex flex-col gap-4 transition-transform delay-100 ease-out hover:scale-110'>
                   <div className='flex flex-col items-center w-16 '>
