@@ -16,16 +16,16 @@ const SalarySlip = () => {
   const { empData,fetchEmpData} = useContext(ApiContext);
   const [file, setFile] = useState([]);
   const [comments, setComments] = useState([]);
+  const [popUp, setPopUp] = useState(false);
 
   useEffect(() => {
-    if(!empData) {
       fetchEmpData(id);
-    }
-    else{
-      setFile(empData.files.file)
-      setComments(empData.files?.comments); 
-    }
-  },[empData,fetchEmpData]);
+      if(empData){
+        setFile(empData.files.file)
+        setComments(empData.files?.comments); 
+      }
+  },[empData]);
+
 
   const DescendingData = file.sort((a, b) => {
     const dateA = new Date(a.fieldId);
@@ -45,10 +45,12 @@ const SalarySlip = () => {
 
 
   const [isExiting, setIsExiting] = useState(false);
+  
   const onOpen = () => {
     navigate('Month One', {
       state: { 
         fieldId: 1,
+        field: "month one"
       }
     });
     setPopUp(true);
@@ -62,7 +64,6 @@ const SalarySlip = () => {
     setIsExiting(false);
   };
 
-  const [popUp, setPopUp] = useState(false);
 
   const popNavs = ["Month One", "Month Two","Month Three","Form","Bank Statement"];
 

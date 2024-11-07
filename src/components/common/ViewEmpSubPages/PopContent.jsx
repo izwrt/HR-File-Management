@@ -16,7 +16,6 @@ const PopContent = () => {
 
   const {state} = useLocation();
   const {fieldId,field} = state
-  console.log(state)
 
   const fileRemoveRef = useRef(null);
   const ref = useRef(null);
@@ -31,19 +30,19 @@ const PopContent = () => {
 
   const [fileMetadata, setFileMetadata] = useState('')
 
-useEffect(()=>{
-  setFileMetadata({
-    id: 69,               // Pre-fill with an example file ID
-    fileName: 'ishwar.pdf', // Pre-fill with an example file name
-    field: field,     // Pre-fill with an example field
-    fieldId: fieldId         // Pre-fill with an example fieldId
-  })
-},[fieldId,field])
-
-  console.log("state",fileMetadata)
-
   const {fileList,setFileList,setRunAnimation,setFileUploaded,setFilePracent} = useContext(NavContext);
 
+
+
+  useEffect(() => {
+    setFileMetadata(fileList.map((file) => ({
+      fileName: file.name, // Example file name
+      field: field,        // Dynamic field value
+      fieldId: fieldId     // Dynamic fieldId value
+    })));
+  }, [fieldId, field, fileList]);
+
+    console.log("state",fileMetadata)
 
   const saveHandle = () => {
     if(fileList.length >0)
@@ -80,7 +79,8 @@ useEffect(()=>{
     }
   }
 
-  const removeFile = (file) => {
+  const removeFile = (file,e) => {
+    e.preventDefault();
     setTimeout(() => {
       const updatedFiles = [...fileList];
       updatedFiles.splice(fileList.indexOf(file), 1);
@@ -90,18 +90,18 @@ useEffect(()=>{
 
   const formHandle = async (e) => {
     e.preventDefault();
-    const { id, fileName, field, fieldId } = fileMetadata;
 
-    if (!id || !fileName || !field || !fieldId) {
+    if (!fileMetadata) {
       alert('Please fill out all fields.');
       return;
     }
 
     try {
       const empid = '1234';  
+      for (const file of fileMetadata){
+        const { fileName, field, fieldId } = file;
       const response = await axios.put(`http://localhost:5000/api/employees/${empid}/files/file`,
         {
-          id,
           fileName,
           field,
           fieldId
@@ -110,6 +110,7 @@ useEffect(()=>{
   
       console.log('File metadata uploaded:', response.data);
       alert('File metadata uploaded successfully!');
+    }
     } catch (error) {
       console.error('Error uploading file metadata:', error);
       alert('Error uploading file metadata.');
@@ -146,7 +147,7 @@ useEffect(()=>{
                 </div>
                 <button
                   className="cursor-pointer w-6 h-6 rounded-full overflow-hidden transition-all ease-in-out duration-300 hover:scale-90 hover:opacity-60 focus:bg-slate-200 flex justify-center items-center"
-                  onClick={() => removeFile(file)}>
+                  onClick={(e) => removeFile(file,e)}>
                   <img className="w-3 h-3" src={Close} alt="" />
                 </button>
               </div>

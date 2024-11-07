@@ -17,7 +17,7 @@ const PopupComponent = ({ heading = "Default Header", popNavs ,setPopUp,isExitin
     }
   }
 
-  const handleBack = () => {
+  const handleBack = (e) => {
     setPopUp(false);
   };
   
