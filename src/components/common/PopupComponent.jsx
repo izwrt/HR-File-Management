@@ -6,8 +6,6 @@ import NavContext from "../../utils/useContext/NavContext";
 
 const PopupComponent = ({ heading = "Default Header", popNavs ,setPopUp,isExiting}) => {
 
-
-
   const {fileList,runAnimation,fileUploaded,setFileUploaded,filePracent} = useContext(NavContext);
 
   console.log("parent page ",filePracent);

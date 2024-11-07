@@ -1,16 +1,38 @@
-import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import defaultFile from "../../../assets/images/file.png";
 import pdf from "../../../assets/images/pdf.png";
 import photo from "../../../assets/images/photo.png";
 import word from "../../../assets/images/word.png";
+import { ApiContext } from '../../../utils/useContext/ApiContext';
 import PopupComponent from '../../common/PopupComponent';
 import BlueButton from '../BlueButton';
 
 ///salary slip datas are repeating
 
 const SalarySlip = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
+  const { id } = useParams();
+  const { empData,fetchEmpData} = useContext(ApiContext);
+  const [file, setFile] = useState([]);
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    if(!empData) {
+      fetchEmpData(id);
+    }
+    else{
+      setFile(empData.files.file)
+      setComments(empData.files?.comments); 
+    }
+  },[empData,fetchEmpData]);
+
+  const DescendingData = file.sort((a, b) => {
+    const dateA = new Date(a.fieldId);
+    const dateB = new Date(b.fieldId);
+    return dateA - dateB; 
+});
+
 
   const ImgConfig = {
     pdf: pdf,
@@ -21,8 +43,7 @@ const SalarySlip = () => {
     default: defaultFile
   }
 
-  const {state} = useLocation();
-  const [empData, setEmpData] = useState(state);
+
   const [isExiting, setIsExiting] = useState(false);
   const onOpen = () => {
     navigate('Month One', {
@@ -45,13 +66,6 @@ const SalarySlip = () => {
 
   const popNavs = ["Month One", "Month Two","Month Three","Form","Bank Statement"];
 
-  const {file,comments} = empData.empData.files;
-
-  const DescendingData = file.sort((a, b) => {
-    const dateA = new Date(a.fieldId);
-    const dateB = new Date(b.fieldId);
-    return dateA - dateB; 
-});
 
   return (
     <div>
@@ -74,7 +88,7 @@ const SalarySlip = () => {
                 <hr className='w-full border-t border-gray-400' />
             </div>
             {comments.filter(com => com.fieldId === file.fieldId )
-            .map((com,id) => <div key={id} className='text-customBlue p-3 rounded-lg border'>{com.comment}</div>)}
+            .map((com) => <div key={com.field} className='text-customBlue p-3 rounded-lg border'>{com.comment}</div>)}
             {
             <div className='flex flex-wrap gap-14 px-4 mt-8'>
             {DescendingData

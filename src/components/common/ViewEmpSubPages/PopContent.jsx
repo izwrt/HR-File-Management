@@ -98,8 +98,8 @@ useEffect(()=>{
     }
 
     try {
-      const empid = '1234';  // Use the actual employee ID from your context or data
-      const response = await axios.put(`http://localhost:5000/api/employees/${empid}/files/file`,  // Updated endpoint
+      const empid = '1234';  
+      const response = await axios.put(`http://localhost:5000/api/employees/${empid}/files/file`,
         {
           id,
           fileName,
