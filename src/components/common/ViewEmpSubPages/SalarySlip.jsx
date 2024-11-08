@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import defaultFile from "../../../assets/images/file.png";
 import pdf from "../../../assets/images/pdf.png";
 import photo from "../../../assets/images/photo.png";
@@ -17,22 +17,58 @@ const SalarySlip = () => {
   const [file, setFile] = useState([]);
   const [comments, setComments] = useState([]);
   const [popUp, setPopUp] = useState(false);
+  const location = useLocation();
+  const loc = location.pathname.split('/')[3];
+
+  if(loc === "salaryslip"){
+    popNavs = [
+      { fieldId: 1, field: "month one", navTo: "Month One" },
+      { fieldId: 2, field: "month two", navTo: "Month Two" },
+      { fieldId: 3, field: "month three", navTo: "Month Three" },
+      { fieldId: 4, field: "form15", navTo: "Form15" },
+      { fieldId: 5, field: "bank statement", navTo: "Bank Statement" }
+    ]
+ }
+ else if(loc === "salarydiscussion"){
+    popNavs = [
+      { fieldId: 6, field: "salary structure", navTo: "Salary Structure" },
+      { fieldId: 7, field: "email screenshot", navTo: "Email Screenshot" }
+    ]
+ }
+
+  // function findLocation (nav){
+  //   switch(loc) {
+  //     case "salaryslip" :
+  //       switch(nav) {
+  //         case "Month One":
+  //           return { fieldId: 1, field: "month one" };
+  //         case "Month Two":
+  //           return { fieldId: 2, field: "month two" };
+  //         default:
+  //           return "";
+  //       }
+  //     case "salarydiscussion" :
+  //   }
+  // }
 
   useEffect(() => {
       fetchEmpData(id);
       if(empData){
-        setFile(empData.files.file)
-        setComments(empData.files?.comments); 
+        if(loc === "salaryslip"){
+          const filteredFiles = empData.files.file.filter(file => file.fieldId >=0 && file.fieldId <=2)
+          setFile(filteredFiles)
+          setComments(empData.files?.comments); 
+        }
+        else  if(loc === "salarydiscussion"){
+          const filteredFiles = empData.files.file.filter(file => file.fieldId >=6 && file.fieldId <=7)
+          setFile(filteredFiles)
+          setComments(empData.files?.comments); 
+        }
       }
-  },[empData]);
+  },[loc]);
 
 
-  const DescendingData = file.sort((a, b) => {
-    const dateA = new Date(a.fieldId);
-    const dateB = new Date(b.fieldId);
-    return dateA - dateB; 
-});
-
+  const DescendingData = file.sort((a, b) => a.fieldId - b.fieldId);
 
   const ImgConfig = {
     pdf: pdf,
@@ -47,12 +83,14 @@ const SalarySlip = () => {
   const [isExiting, setIsExiting] = useState(false);
   
   const onOpen = () => {
-    navigate('Month One', {
-      state: { 
-        fieldId: 1,
-        field: "month one"
-      }
-    });
+    if (popNavs.length > 0) {
+      navigate(popNavs[0].navTo, {
+        state: { 
+          fieldId: popNavs[0].fieldId,
+          field: popNavs[0].field
+        }
+      });
+    }
     setPopUp(true);
     setIsExiting(true);
   };
@@ -65,7 +103,6 @@ const SalarySlip = () => {
   };
 
 
-  const popNavs = ["Month One", "Month Two","Month Three","Form","Bank Statement"];
 
 
   return (
@@ -74,7 +111,11 @@ const SalarySlip = () => {
       <BlueButton onClick={onOpen}>
         Add Files
       </BlueButton>
-      {popUp === true && <PopupComponent setPopUp={onClose} isExiting={isExiting} popNavs={popNavs}/>}
+      {popUp === true && <PopupComponent 
+      setPopUp={onClose} 
+      isExiting={isExiting} 
+      popNavs={popNavs}
+      />}
       </section>
       <section className='flex flex-col gap-10 '>
           {DescendingData

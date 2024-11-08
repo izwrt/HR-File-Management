@@ -16,7 +16,7 @@ export default function apiFecthEmployees() {
           console.error(`There was a error fetching the employees ${error}`);
           setAdminUsers(null);
         });
-    }, 1000);
+    },1000);
 
     return () => clearTimeout(timer);
   }, []);

@@ -4,9 +4,13 @@ import Close from "../../assets/images/close.png";
 import Cloud from "../../assets/images/cloud-file.gif";
 import NavContext from "../../utils/useContext/NavContext";
 
-const PopupComponent = ({ heading = "Default Header", popNavs ,setPopUp,isExiting}) => {
+const PopupComponent = ({ heading = "Default Header" ,setPopUp,isExiting,findLocation,popNavs}) => {
 
   const {fileList,runAnimation,fileUploaded,setFileUploaded,filePracent} = useContext(NavContext);
+  // const location = useLocation();
+  // const loc = location.pathname.split('/')[3];
+  // let popNavs = ["Salary Structure", "Email Screenshot"]
+
 
   console.log("parent page ",filePracent);
 
@@ -37,18 +41,18 @@ const PopupComponent = ({ heading = "Default Header", popNavs ,setPopUp,isExitin
         </button>
         </div>
           <div className="px-6 pb-6 relative">
-          <div className="flex justify-between text-sm font-semibold w-full py-3">
+          <div className="flex gap-8 text-sm font-semibold w-full py-3">
           {popNavs.map((nav) => (
             <NavLink
-              to={nav}
-              state={nav === "Month One" ? {fieldId:1,field:"month one"} : nav === "Month Two" ? {fieldId:2,field:"month two"} : ""}
-              key={nav}
+              to={nav.navTo}
+              state={nav}
+              key={nav.fieldId}
               className={({isActive}) => { return(isActive ? 'border-b-2 border-customBlue footer-font text-gray-500' : 'footer-font text-gray-500')}}
               onClick={(e) => {
                 handleNavigation(e);
               }}
             >
-              {nav}
+              {nav.navTo}
             </NavLink>
           ))}
         </div>

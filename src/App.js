@@ -30,9 +30,9 @@ import BusinessUnit from "./components/pages/BusinessUnit";
 import Dashboard from "./components/pages/Dashboard";
 import Home from "./components/pages/Home";
 import ViewEmployeeDetails from "./components/pages/ViewEmployeeDetails";
+import { ApiProvider } from "./utils/useContext/ApiContext";
 import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
 import { NavContextProvide } from "./utils/useContext/NavContext";
-import { ApiProvider} from "./utils/useContext/ApiContext";
 
 // const AppLoyout = () => {
 
@@ -150,7 +150,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/viewemployee/:id",
-        element: <ViewEmployeeDetails />,
+        element: (
+        <NavContextProvide>
+        <ViewEmployeeDetails />
+        </NavContextProvide>
+        ),
         children: [
           // {
           //   index: true,
@@ -166,11 +170,7 @@ const router = createBrowserRouter([
           },
           {
             path: "salaryslip",
-            element: (
-              <NavContextProvide>
-                <SalarySlip />
-              </NavContextProvide>
-            ),
+            element: <SalarySlip />,
             children: [
               {
                 index: true,
@@ -182,6 +182,24 @@ const router = createBrowserRouter([
               },
               {
                 path: "Month Two",
+                element: <PopContent />,
+              },
+            ],
+          },
+          {
+            path: "salarydiscussion",
+            element: <SalarySlip />,
+            children: [
+              {
+                index: true,
+                element: <Navigate to="Salary Structure" />,
+              },
+              {
+                path: "Salary Structure",
+                element: <PopContent />,
+              },
+              {
+                path: "Email Screenshot",
                 element: <PopContent />,
               },
             ],

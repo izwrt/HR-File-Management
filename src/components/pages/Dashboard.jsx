@@ -7,10 +7,9 @@ import AdminCard from "../common/AdminCard";
 import BusinessunitPopup from "../common/BusinessunitPopup";
 import CountContainer from "../common/CountContainer";
 import EmployeeCard from "../common/EmployeeCard";
-import NodataFound from "../common/NodataFound";
 import SettingsPopup from "../common/SettingsPopup";
-import EmployeeCardShimmer from "../common/SImmerComponents/EmployeeCardShimmer";
 import CountContainerShimmer from "../common/SImmerComponents/CountContainerShimmer";
+import EmployeeCardShimmer from "../common/SImmerComponents/EmployeeCardShimmer";
 
 function Dashboard() {
   const { employees } = apiFecthEmployees();
@@ -170,7 +169,7 @@ function Dashboard() {
           </div>
         </div>
       </div>
-      <div className=" w-[700px]  xl:h-[766px] 2xl:h-[924px] pb-5 md:hidden flex items-center justify-center py-9 ">
+      <div className="w-full 2xl:w-[700px]  xl:h-[766px] 2xl:h-[924px] pb-5 md:hidden flex items-center justify-center py-9 ">
         <div
           className={` bg-white w-full rounded-lg overflow-y-auto overflow h-full snap-scroll shadow-sm border-solid border ${
             !cardShimmer && "xl:overflow-hidden"

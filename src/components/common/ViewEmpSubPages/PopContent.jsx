@@ -15,7 +15,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const PopContent = () => {
 
   const {state} = useLocation();
-  const {fieldId,field} = state
+  const {fieldId,field} = state || {}
 
   const fileRemoveRef = useRef(null);
   const ref = useRef(null);
@@ -40,7 +40,7 @@ const PopContent = () => {
       field: field,        // Dynamic field value
       fieldId: fieldId     // Dynamic fieldId value
     })));
-  }, [fieldId, field, fileList]);
+  }, [fieldId, field, fileList,state]);
 
     console.log("state",fileMetadata)
 
