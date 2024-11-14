@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import axios from "axios"; 
+import axios from "axios";
 import rightarrow from "../../assets/images/rightarrow.png";
 import leftarrow from "../../assets/images/leftarrow.png";
 
@@ -44,23 +44,24 @@ const CustomNextArrow = ({ onClick }) => (
 );
 
 const Cards = () => {
-  const [data, setData] = useState([]); // State to store API data
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch data from API on component mount
   useEffect(() => {
     axios
-      .get("http://localhost:8000/employees") // Ensure this URL is correct
+      .get("http://localhost:9000/employees")
       .then((response) => {
-        console.log("API response:", response.data); // Debugging: log the API response
-        setData(response.data.slice(0, 10)); // Store the first 10 items
-        setLoading(false); // Set loading to false
+        console.log("API response:", response.data);
+        setData(response.data.slice(0, 10));
+        setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error); // Debugging: log any errors
+        console.error("Error fetching data:", error);
         setLoading(false);
       });
   }, []);
+
+  console.log(data[0]);
 
   const responsive = {
     superLargeDesktop: {
@@ -86,37 +87,53 @@ const Cards = () => {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <Carousel
-          className=" w-full py-4 flex"
-          responsive={responsive}
-          customLeftArrow={<CustomPrevArrow />}
-          customRightArrow={<CustomNextArrow />}
-        >
-          {data.map((d) => (
-            <div
-              key={d.id}
-              className="bg-customBlue h-[180px] text-black rounded-xl p-2 mx-4 flex flex-col justify-between"
-            >
-              <div className="text-white text-[18px] custom-font-mavan-pro text-center font-bold p-2">
-                {d.empReminder}
-              </div>
-              <div className="flex items-center pb-10 gap-2">
-                <div className="w-[60px] h-[50px] flex items-center justify-center p-2">
-                  <img
-                    src={d.empImg}
-                    alt={d.empName}
-                    className="w-[85px] h-[50px] object-cover rounded-full"
-                  />
+        <>
+          <Carousel
+            className="w-full py-4 flex"
+            responsive={responsive}
+            customLeftArrow={<CustomPrevArrow />}
+            customRightArrow={<CustomNextArrow />}
+            showDots={true}
+          >
+            {data.map((d) => {
+              const reminderCount = Object.keys(d.empReminder).length - 1;
+              return (
+                <div
+                  key={d.id}
+                  className="bg-customBlue h-[200px] text-black rounded-3xl px-8 mx-4 pt-4 mb-4  drop-shadow-xl"
+                >
+                  <div className="flex items-center justify-between gap-1">
+                    <span className="custom-font-mavan-pro text-white text-2xl overflow-hidden whitespace-nowrap text-ellipsis">
+                      {d.empReminder.reminder1}
+                    </span>
+                    {reminderCount > 0 && (
+                      <div className="bg-white bg-opacity-20 rounded-full h-10 w-10 flex items-center justify-center">
+                        <span className="text-white text-sm custom-font-mavan-pro">
+                          {`+${reminderCount}`}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="flex items-center w-full pt-4 pb-10">
+                    <img
+                      src={d.empImg}
+                      alt={d.empName}
+                      className="w-20 h-20 rounded-full object-cover mr-4"
+                    />
+                    <div className="text-xs custom-font-mavan-pro flex text-white font-semibold flex-col">
+                      <p className="text-base font-semibold pb-2">
+                        {d.empName}
+                      </p>
+                      <p className="text-sm pb-0.5 ">Department</p>
+                      <p>{d.empDepartMent}</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="text-xs custom-font-mavan-pro flex items-center text-white font-semibold flex-col">
-                  <p className="text-sm">{d.empName}</p>
-                  <p className="text-sm">Department</p>
-                  <p>{d.empDepartMent}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </Carousel>
+              );
+            })}
+          </Carousel>
+        </>
       )}
     </div>
   );
