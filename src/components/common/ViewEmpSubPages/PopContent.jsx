@@ -11,7 +11,6 @@ import NavContext from '../../../utils/useContext/NavContext';
 import axios from '../../../../api/axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-
 const PopContent = () => {
 
   const {state} = useLocation();
@@ -30,17 +29,18 @@ const PopContent = () => {
 
   const [fileMetadata, setFileMetadata] = useState('')
 
-  const {fileList,setFileList,setRunAnimation,setFileUploaded,setFilePracent} = useContext(NavContext);
+  const {fileList,setFileList,setRunAnimation,setFileUploaded,setFilePracent,comment} = useContext(NavContext);
 
 
 
   useEffect(() => {
     setFileMetadata(fileList.map((file) => ({
-      fileName: file.name, // Example file name
-      field: field,        // Dynamic field value
-      fieldId: fieldId     // Dynamic fieldId value
+      fileName: file.name, 
+      field: field,        
+      fieldId: fieldId,
+      comment: comment, 
     })));
-  }, [fieldId, field, fileList,state]);
+  }, [fieldId, field, fileList,state,comment]);
 
     console.log("state",fileMetadata)
 
@@ -107,10 +107,18 @@ const PopContent = () => {
           fieldId
         }
       );
-  
       console.log('File metadata uploaded:', response.data);
       alert('File metadata uploaded successfully!');
     }
+    // After all file metadata uploads are successful, uploading the comment
+    const commentResponse = await axios.put(`http://localhost:5000/api/employees/${empid}/files/comments`, {
+      comment,
+      field,
+      fieldId
+    });
+    console.log('Comment uploaded:', commentResponse.data);
+    alert('Comment uploaded successfully!');
+
     } catch (error) {
       console.error('Error uploading file metadata:', error);
       alert('Error uploading file metadata.');

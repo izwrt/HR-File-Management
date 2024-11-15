@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import defaultFile from "../../../assets/images/file.png";
 import pdf from "../../../assets/images/pdf.png";
+import Pencil from '../../../assets/images/pencil.png';
 import photo from "../../../assets/images/photo.png";
 import word from "../../../assets/images/word.png";
 import { ApiContext } from '../../../utils/useContext/ApiContext';
@@ -19,6 +20,8 @@ const SalarySlip = () => {
   const [popUp, setPopUp] = useState(false);
   const location = useLocation();
   const loc = location.pathname.split('/')[3];
+  const [edit, setEdit] = useState(false)
+  const [editComment, setEditComment] = useState('')
 
   if(loc === "salaryslip"){
     popNavs = [
@@ -65,7 +68,7 @@ const SalarySlip = () => {
           setComments(empData.files?.comments); 
         }
       }
-  },[loc]);
+  },[loc,id,fetchEmpData]);
 
 
   const DescendingData = file.sort((a, b) => a.fieldId - b.fieldId);
@@ -102,7 +105,14 @@ const SalarySlip = () => {
     setIsExiting(false);
   };
 
+  function editCommentFunction(e,feildId,comment) {
+    setEdit(feildId);
+    setEditComment(comment)
+  } 
 
+  const handleChange = (e) => {
+    setEditComment(e.target.value)
+  };
 
 
   return (
@@ -130,7 +140,25 @@ const SalarySlip = () => {
                 <hr className='w-full border-t border-gray-400' />
             </div>
             {comments.filter(com => com.fieldId === file.fieldId )
-            .map((com) => <div key={com.field} className='text-customBlue p-3 rounded-lg border'>{com.comment}</div>)}
+            .map((com) => {
+              return edit === com.fieldId ? (
+                <div className='flex gap-4'>                <textarea
+                 key={com.fieldId}
+                  type="text"
+                  value={editComment}
+                  onChange={handleChange}
+                  className='p-3 rounded-lg border border-gray-500 focus:outline-none w-full resize-none'
+                />
+                <BlueButton h={9}>Save</BlueButton>
+                </div>
+
+              ) : (
+                <div key={com.fieldId}  className='text-customBlue p-3 rounded-lg border flex justify-between'>
+                  {com.comment}
+                  <img onClick={(e)=>editCommentFunction(e,com.fieldId,com.comment)} className='w-4 h-4 self-start' src={Pencil}></img>
+                </div>
+              );
+            })}
             {
             <div className='flex flex-wrap gap-14 px-4 mt-8'>
             {DescendingData
