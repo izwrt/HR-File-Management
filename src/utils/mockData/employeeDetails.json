@@ -3,14 +3,14 @@
     {
       "empName": "Anubhav",
       "empNo": "101",
-      "empImg": "https://static.vecteezy.com/system/resources/previews/007/486/093/non_2x/portrait-of-happy-redhaired-woman-employee-in-optical-glasses-has-satisfied-expression-works-with-modern-gadgets-waits-for-meeting-with-colleague-prepares-accounting-report-sits-in-own-cabinet-free-photo.jpg",
+      "empImg": "https://img.freepik.com/free-photo/young-business-woman-working-laptop-office_1303-22814.jpg",
       "empDepartMent": "Cloud",
       "empRole": "Manager",
       "jobPoistion": "intern",
       "reportingManger": "Ajay Mehra",
       "teamLead": "Sushant Rai",
       "DOB": "03-08-2002",
-      "businessUnit": "invenger Technology",
+      "businessUnit": "Invenger Technology",
       "resume": "NehaDesaicv.pdf",
       "empPersonalEmail": "abc@gmail.com",
       "phoneNo": "9999999999",
@@ -20,19 +20,22 @@
       "permanentAddress": "Ballalbag, Mangalore",
       "currentAddress": "Ballalbag, Mangalore",
       "currentClient": "One Inc",
-      "empReminder": "Marks not uploaded"
+      "empReminder": {
+        "reminder1": "Marks Card not uploaded",
+        "reminder2": "Passport not uploaded"
+      }
     },
     {
       "empName": "Swathi",
-      "empNo": "101",
-      "empImg": "https://static.vecteezy.com/system/resources/previews/007/486/093/non_2x/portrait-of-happy-redhaired-woman-employee-in-optical-glasses-has-satisfied-expression-works-with-modern-gadgets-waits-for-meeting-with-colleague-prepares-accounting-report-sits-in-own-cabinet-free-photo.jpg",
+      "empNo": "102",
+      "empImg": "https://images.pexels.com/photos/10376002/pexels-photo-10376002.jpeg?auto=compress&cs=tinysrgb&w=600",
       "empDepartMent": "Cloud",
       "empRole": "Manager",
       "jobPoistion": "intern",
       "reportingManger": "Ajay Mehra",
       "teamLead": "Sushant Rai",
       "DOB": "03-08-2002",
-      "businessUnit": "invenger Technology",
+      "businessUnit": "Invenger Technology",
       "resume": "NehaDesaicv.pdf",
       "empPersonalEmail": "abc@gmail.com",
       "phoneNo": "9999999999",
@@ -42,19 +45,23 @@
       "permanentAddress": "Ballalbag, Mangalore",
       "currentAddress": "Ballalbag, Mangalore",
       "currentClient": "One Inc",
-      "empReminder": "Marks not uploaded"
+      "empReminder": {
+        "reminder1": "Resume not uploaded",
+        "reminder2": "Passport not uploaded",
+        "reminder3": "Marks Card not uploaded"
+      }
     },
     {
-      "empName": "trishi",
-      "empNo": "101",
-      "empImg": "https://static.vecteezy.com/system/resources/previews/007/486/093/non_2x/portrait-of-happy-redhaired-woman-employee-in-optical-glasses-has-satisfied-expression-works-with-modern-gadgets-waits-for-meeting-with-colleague-prepares-accounting-report-sits-in-own-cabinet-free-photo.jpg",
+      "empName": "Trishi",
+      "empNo": "103",
+      "empImg": "https://media.istockphoto.com/id/1503232125/photo/happy-smile-and-portrait-of-business-man-in-city-for-professional-corporate-and-pride.jpg?s=612x612&w=0&k=20&c=uPu3GKHW507ruenLY8xwsB3OgOSwLSWjE3fBpy20Hac=",
       "empDepartMent": "Cloud",
       "empRole": "Manager",
       "jobPoistion": "intern",
       "reportingManger": "Ajay Mehra",
       "teamLead": "Sushant Rai",
       "DOB": "03-08-2002",
-      "businessUnit": "invenger Technology",
+      "businessUnit": "Invenger Technology",
       "resume": "NehaDesaicv.pdf",
       "empPersonalEmail": "abc@gmail.com",
       "phoneNo": "9999999999",
@@ -64,41 +71,21 @@
       "permanentAddress": "Ballalbag, Mangalore",
       "currentAddress": "Ballalbag, Mangalore",
       "currentClient": "One Inc",
-      "empReminder": "Marks not uploaded"
-    },
-    {
-      "empName": "Anubhav",
-      "empNo": "101",
-      "empImg": "https://static.vecteezy.com/system/resources/previews/007/486/093/non_2x/portrait-of-happy-redhaired-woman-employee-in-optical-glasses-has-satisfied-expression-works-with-modern-gadgets-waits-for-meeting-with-colleague-prepares-accounting-report-sits-in-own-cabinet-free-photo.jpg",
-      "empDepartMent": "Cloud",
-      "empRole": "Manager",
-      "jobPoistion": "intern",
-      "reportingManger": "Ajay Mehra",
-      "teamLead": "Sushant Rai",
-      "DOB": "03-08-2002",
-      "businessUnit": "invenger Technology",
-      "resume": "NehaDesaicv.pdf",
-      "empPersonalEmail": "abc@gmail.com",
-      "phoneNo": "9999999999",
-      "workEmail": "neha.desai@gmail.com",
-      "bloodGroup": "O +ve",
-      "TshitSize": "Medium",
-      "permanentAddress": "Ballalbag, Mangalore",
-      "currentAddress": "Ballalbag, Mangalore",
-      "currentClient": "One Inc",
-      "empReminder": "Marks not uploaded"
+      "empReminder": {
+        "reminder1": "Passport not uploaded"
+      }
     },
     {
       "empName": "Anubhav",
-      "empNo": "101",
-      "empImg": "https://static.vecteezy.com/system/resources/previews/007/486/093/non_2x/portrait-of-happy-redhaired-woman-employee-in-optical-glasses-has-satisfied-expression-works-with-modern-gadgets-waits-for-meeting-with-colleague-prepares-accounting-report-sits-in-own-cabinet-free-photo.jpg",
+      "empNo": "104",
+      "empImg": "https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2016/02/Headshot-on-Black-Background_1.jpg?ssl=1",
       "empDepartMent": "Cloud",
       "empRole": "Manager",
       "jobPoistion": "intern",
       "reportingManger": "Ajay Mehra",
       "teamLead": "Sushant Rai",
       "DOB": "03-08-2002",
-      "businessUnit": "invenger Technology",
+      "businessUnit": "Invenger Technology",
       "resume": "NehaDesaicv.pdf",
       "empPersonalEmail": "abc@gmail.com",
       "phoneNo": "9999999999",
@@ -108,7 +95,35 @@
       "permanentAddress": "Ballalbag, Mangalore",
       "currentAddress": "Ballalbag, Mangalore",
       "currentClient": "One Inc",
-      "empReminder": "Marks not uploaded"
+      "empReminder": {
+        "reminder1": "Marks Card not uploaded",
+        "reminder2": "Passport not uploaded"
+      }
+    },
+    {
+      "empName": "Anubhav",
+      "empNo": "105",
+      "empImg": "https://images.pexels.com/photos/10376002/pexels-photo-10376002.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "empDepartMent": "Cloud",
+      "empRole": "Manager",
+      "jobPoistion": "intern",
+      "reportingManger": "Ajay Mehra",
+      "teamLead": "Sushant Rai",
+      "DOB": "03-08-2002",
+      "businessUnit": "Invenger Technology",
+      "resume": "NehaDesaicv.pdf",
+      "empPersonalEmail": "abc@gmail.com",
+      "phoneNo": "9999999999",
+      "workEmail": "neha.desai@gmail.com",
+      "bloodGroup": "O +ve",
+      "TshitSize": "Medium",
+      "permanentAddress": "Ballalbag, Mangalore",
+      "currentAddress": "Ballalbag, Mangalore",
+      "currentClient": "One Inc",
+      "empReminder": {
+        "reminder1": "Marks Card not uploaded",
+        "reminder2": "Passport not uploaded"
+      }
     }
   ]
 }
