@@ -9,21 +9,21 @@ import SeeAll from "../common/SeeAll";
 const Home = () => {
   return (
     <div className=" w-screen mt-16">
-      <h1 className="custom-font-mavan-pro font-bold text-lg p-5 homeFontColor">
+      <h1 className="custom-font-mavan-pro font-bold text-lg p-5 pl-12 homeFontColor">
         Important Reminders
       </h1>
-     
+
       <ReminderCard />
-      <h1 className="custom-font-mavan-pro font-bold text-lg p-5 homeFontColor">
+      <h1 className="custom-font-mavan-pro font-bold text-lg pl-12 homeFontColor mt-6">
         Business Unit Status
       </h1>
-     <SeeAll/>
+      <SeeAll />
       <UnitsStatus />
-      <h1 className="custom-font-mavan-pro font-bold text-lg p-5 homeFontColor">
+      <h1 className="custom-font-mavan-pro font-bold text-lg pt-6 pl-12 homeFontColor">
         Business Units
       </h1>
-      <SeeAll/>
-   
+      <SeeAll />
+
       <UnitsNav />
       <Footer />
     </div>
@@ -31,9 +31,6 @@ const Home = () => {
 };
 
 export default Home;
-
-
-
 
 // import React from "react";
 // import Footer from "../common/Footer";

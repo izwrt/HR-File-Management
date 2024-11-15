@@ -19,8 +19,14 @@ import Edit from "../../../assets/images/AboutPageImages/Edit";
 
 const HrScreening = () => {
   const [hrScreening, setHrScreening] = useState(false);
+  const [rounds, setRounds] = useState([1]);
   const handleHrScreeningDetails = () => {
     setHrScreening((prev) => !prev);
+  };
+
+  const handleEducation = () => {
+    setRounds([...rounds, rounds.length + 1]);
+    console.log(rounds.length);
   };
   return (
     <div className=" rounded-lg custom-font-mavan-pro bg-white">
@@ -84,7 +90,11 @@ const HrScreening = () => {
       </div>
       <div className="p-6 font-semibold flex justify-between items-center h-[70px]">
         <div>Education</div>
-        {hrScreening ? <BlueButton label={"Add"} /> : ""}
+        {hrScreening && rounds.length < 3 ? (
+          <BlueButton label={"Add"} onClick={handleEducation} />
+        ) : (
+          ""
+        )}
       </div>
       <div className=" grid grid-cols-2 2xl:grid-cols-3">
         <InterviewCards
@@ -108,6 +118,55 @@ const HrScreening = () => {
           onClick1={hrScreening}
         />
       </div>
+      {rounds.length >= 2 && (
+        <div className="grid grid-cols-2 2xl:grid-cols-3">
+          <InterviewCards
+            image={<Degree />}
+            heading="12th Percentage"
+            onClick1={hrScreening}
+          />
+          <InterviewCards
+            image={<YearOfPassing />}
+            heading="Year Of Passing"
+            onClick1={hrScreening}
+          />
+          <InterviewCards
+            image={<College />}
+            heading="College"
+            onClick1={hrScreening}
+          />
+          <InterviewCards
+            image={<MarksCardUpload />}
+            heading="Marks Card Upload"
+            onClick1={hrScreening}
+          />
+        </div>
+      )}
+      {rounds.length === 3 && (
+        <div className="grid grid-cols-2 2xl:grid-cols-3">
+          <InterviewCards
+            image={<Degree />}
+            heading="10th Percentage"
+            onClick1={hrScreening}
+          />
+          <InterviewCards
+            image={<YearOfPassing />}
+            heading="Year Of Passing"
+            onClick1={hrScreening}
+          />
+          <InterviewCards
+            image={<College />}
+            heading="School"
+            onClick1={hrScreening}
+          />
+          <InterviewCards
+            image={<MarksCardUpload />}
+            heading="Marks Card Upload"
+            onClick1={hrScreening}
+          />
+        </div>
+      )}
+
       <div className="px-4 py-10">
         {hrScreening ? (
           <textarea
