@@ -29,9 +29,7 @@ const PopContent = () => {
 
   const [fileMetadata, setFileMetadata] = useState("");
 
-  const {fileList,setFileList,setRunAnimation,setFileUploaded,setFilePracent} = useContext(NavContext);
-
-
+  const {fileList,setFileList,setRunAnimation,setFileUploaded,setFilePracent,comment} = useContext(NavContext);
 
   useEffect(() => {
     setFileMetadata(fileList.map((file) => ({
@@ -106,7 +104,16 @@ const PopContent = () => {
   
       console.log('File metadata uploaded:', response.data);
       alert('File metadata uploaded successfully!');
-    }
+    }    
+    
+    // After all file metadata uploads are successful, uploading the comment
+    const commentResponse = await axios.put(`http://localhost:5000/api/employees/${empid}/files/comments`, {
+      comment,
+      field,
+      fieldId
+    });
+    console.log('Comment uploaded:', commentResponse.data);
+    alert('Comment uploaded successfully!');
     } catch (error) {
       console.error("Error uploading file metadata:", error);
       alert("Error uploading file metadata.");

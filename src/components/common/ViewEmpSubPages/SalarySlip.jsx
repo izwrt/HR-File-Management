@@ -8,20 +8,27 @@ import word from "../../../assets/images/word.png";
 import { ApiContext } from '../../../utils/useContext/ApiContext';
 import PopupComponent from '../../common/PopupComponent';
 import BlueButton from '../BlueButton';
+import AddComment from '../AddComment';
+import axios from '../../../../api/axios';
+import NavContext from '../../../utils/useContext/NavContext';
 
 ///salary slip datas are repeating
+
+
 
 const SalarySlip = () => {
   const navigate = useNavigate(); 
   const { id } = useParams();
-  const { empData,fetchEmpData} = useContext(ApiContext);
+  const {empData,fetchEmpData} = useContext(ApiContext);
+  // const [empData,setEmpData] = useState("");
   const [file, setFile] = useState([]);
   const [comments, setComments] = useState([]);
   const [popUp, setPopUp] = useState(false);
   const location = useLocation();
   const loc = location.pathname.split('/')[3];
   const [edit, setEdit] = useState(false)
-  const [editComment, setEditComment] = useState('')
+  const {comment} = useContext(NavContext)
+  const [editComment, setEditComment] = useState("");
 
   if(loc === "salaryslip"){
     popNavs = [
@@ -53,23 +60,25 @@ const SalarySlip = () => {
   //     case "salarydiscussion" :
   //   }
   // }
+  console.log(id)
+
+  useEffect(()=>{
+    fetchEmpData(id)
+  },[id,fetchEmpData])
 
   useEffect(() => {
-      fetchEmpData(id);
-      if(empData){
-        if(loc === "salaryslip"){
-          const filteredFiles = empData.files.file.filter(file => file.fieldId >=0 && file.fieldId <=2)
-          setFile(filteredFiles)
-          setComments(empData.files?.comments); 
-        }
-        else  if(loc === "salarydiscussion"){
-          const filteredFiles = empData.files.file.filter(file => file.fieldId >=6 && file.fieldId <=7)
-          setFile(filteredFiles)
-          setComments(empData.files?.comments); 
-        }
+    if (empData) {
+      if (loc === "salaryslip") {
+        const filteredFiles = empData.files.file.filter(file => file.fieldId >= 0 && file.fieldId <= 2);
+        setFile(filteredFiles);
+        setComments(empData.files?.comments);
+      } else if (loc === "salarydiscussion") {
+        const filteredFiles = empData.files.file.filter(file => file.fieldId >= 6 && file.fieldId <= 7);
+        setFile(filteredFiles);
+        setComments(empData.files?.comments);
       }
-  },[loc,id,fetchEmpData]);
-
+    }
+  }, [empData, loc]);
 
   const DescendingData = file.sort((a, b) => a.fieldId - b.fieldId);
 
@@ -84,8 +93,9 @@ const SalarySlip = () => {
 
 
   const [isExiting, setIsExiting] = useState(false);
-  
+
   const onOpen = () => {
+      setEdit(false);
     if (popNavs.length > 0) {
       navigate(popNavs[0].navTo, {
         state: { 
@@ -106,13 +116,35 @@ const SalarySlip = () => {
   };
 
   function editCommentFunction(e,feildId,comment) {
-    setEdit(feildId);
     setEditComment(comment)
+    e.preventDefault();
+    setEdit(feildId)
   } 
 
-  const handleChange = (e) => {
-    setEditComment(e.target.value)
-  };
+const handleChange = (e) =>{
+  setEditComment(e.target.value)
+}
+
+
+  async function saveComment(e,com){
+    const {fieldId,field} = com;
+    console.log(comment,fieldId,field,)
+    const empid = id
+    try{
+      const commentResponse = await axios.put(`http://localhost:5000/api/employees/${empid}/files/comments`, {
+        comment:editComment,
+        field,
+        fieldId
+      });
+      console.log('Comment uploaded:', commentResponse.data);
+      fetchEmpData(id)
+      setEdit(!edit)
+      
+      } catch (error) {
+        console.error("Error uploading file metadata:", error);
+        alert("Error uploading file metadata.");
+      }
+  }
 
 
   return (
@@ -142,19 +174,22 @@ const SalarySlip = () => {
             {comments.filter(com => com.fieldId === file.fieldId )
             .map((com) => {
               return edit === com.fieldId ? (
-                <div className='flex gap-4'>                <textarea
+                <div key={com.fieldId} className='flex gap-4'>                
+                <textarea
                  key={com.fieldId}
                   type="text"
                   value={editComment}
                   onChange={handleChange}
                   className='p-3 rounded-lg border border-gray-500 focus:outline-none w-full resize-none'
                 />
-                <BlueButton h={9}>Save</BlueButton>
+                {/* <AddComment editComment={com.comment}/> */}
+                <BlueButton onClick={(e) => saveComment(e,com)} h={9} color='transparent'>Save</BlueButton>
                 </div>
 
               ) : (
-                <div key={com.fieldId}  className='text-customBlue p-3 rounded-lg border flex justify-between'>
-                  {com.comment}
+                <div key={com.fieldId}  className='text-customBlue p-3 rounded-lg border flex justify-between h-fit '>
+                  <p className='break-words flex-1 w-[90%]'>{com.comment}</p>
+                  
                   <img onClick={(e)=>editCommentFunction(e,com.fieldId,com.comment)} className='w-4 h-4 self-start' src={Pencil}></img>
                 </div>
               );
