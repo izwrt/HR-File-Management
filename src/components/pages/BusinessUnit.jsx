@@ -192,5 +192,3 @@ export default function BusinessUnit() {
     </div>
   );
 }
-
-// {seetings}
