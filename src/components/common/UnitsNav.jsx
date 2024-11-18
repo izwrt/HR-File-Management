@@ -168,10 +168,13 @@ const businessUnits = [
   },
 ];
 
+console.log(businessUnits[0].employees[0].photo);
+
 const UnitsNav = () => {
   const [selectedUnit, setSelectedUnit] = useState(null);
   const [current, setCurrent] = useState(0);
   const length = businessUnits.length;
+  const cardWidth = 400;
 
   const isPrevDisabled = current <= 0;
   const isNextDisabled = current >= length - 3;
@@ -216,40 +219,51 @@ const UnitsNav = () => {
         ))}
       </div>
       <div className="flex flex-row relative justify-center items-center">
-        <div className="bg-slate-600 h-8 left-7 absolute z-20">
-          <FaChevronLeft
-            className={`cursor-pointer ${
-              isPrevDisabled ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-            onClick={prevSlide}
-            size={35}
-          />
+        <div className="h-8 left-7 absolute z-20">
+          <div
+            className="bg-black flex items-center justify-center rounded-full"
+            style={{ width: "45px", height: "45px" }}
+          >
+            <FaChevronLeft
+              className={`text-white cursor-pointer ${
+                isPrevDisabled ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              onClick={prevSlide}
+              size={35}
+            />
+          </div>
         </div>
 
-        <div className=" overflow-hidden h-full flex items-center justify-start mt-6 mx-12">
+        <div className="overflow-hidden h-full flex items-center justify-start mt-6 ml-[81px] mr-[85px]">
           <div className="flex">
             <div
-              className="carousel-container"
+              className="carousel-container flex transition-transform duration-500 ease-in-out"
               style={{
-                transform: `translateX(-${current * 11.5}%)`,
-                width: `${(length / 3) * 100}%`,
+                transform: `translateX(-${current * cardWidth}px)`,
               }}
             >
               {businessUnits.map((unit) => (
-                <BusinessUnitHomePageCards key={unit.id} unit={unit} />
+                <div className="w-[400px]" key={unit.id}>
+                  <BusinessUnitHomePageCards unit={unit} />
+                </div>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="bg-slate-600 h-8 absolute right-9">
-          <FaChevronRight
-            className={`w-7 cursor-pointer ${
-              isNextDisabled ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-            onClick={nextSlide}
-            size={35}
-          />
+        <div className="h-8 absolute right-9">
+          <div
+            className="bg-black flex items-center justify-center rounded-full"
+            style={{ width: "45px", height: "45px" }}
+          >
+            <FaChevronRight
+              className={` text-white w-7 cursor-pointer ${
+                isNextDisabled ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              onClick={nextSlide}
+              size={35}
+            />
+          </div>
         </div>
       </div>
     </>
