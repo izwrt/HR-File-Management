@@ -7,9 +7,10 @@ import photo from "../../../assets/images/photo.png";
 import word from "../../../assets/images/word.png";
 import AddComment from "../AddComment";
 import BlueButton from "../BlueButton";
-import NavContext from "../../../utils/useContext/NavContext";
-import axios from "../../../../api/axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import NavContext from '../../../utils/useContext/NavContext';
+import axios from '../../../../api/axios';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 
 const PopContent = () => {
   const { state } = useLocation();
@@ -28,23 +29,15 @@ const PopContent = () => {
 
   const [fileMetadata, setFileMetadata] = useState("");
 
-  const {
-    fileList,
-    setFileList,
-    setRunAnimation,
-    setFileUploaded,
-    setFilePracent,
-  } = useContext(NavContext);
+  const {fileList,setFileList,setRunAnimation,setFileUploaded,setFilePracent,comment} = useContext(NavContext);
 
   useEffect(() => {
-    setFileMetadata(
-      fileList.map((file) => ({
-        fileName: file.name, // Example file name
-        field: field, // Dynamic field value
-        fieldId: fieldId, // Dynamic fieldId value
-      }))
-    );
-  }, [fieldId, field, fileList, state]);
+    setFileMetadata(fileList.map((file) => ({
+      fileName: file.name, // Example file name
+      field: field,        // Dynamic field value
+      fieldId: fieldId     // Dynamic fieldId value
+    })));
+  }, [fieldId, field, fileList,state]);
 
   console.log("state", fileMetadata);
 
@@ -101,18 +94,26 @@ const PopContent = () => {
       const empid = "1234";
       for (const file of fileMetadata) {
         const { fileName, field, fieldId } = file;
-        const response = await axios.put(
-          `http://localhost:5000/api/employees/${empid}/files/file`,
-          {
-            fileName,
-            field,
-            fieldId,
-          }
-        );
-
-        console.log("File metadata uploaded:", response.data);
-        alert("File metadata uploaded successfully!");
-      }
+      const response = await axios.put(`http://localhost:5000/api/employees/${empid}/files/file`,
+        {
+          fileName,
+          field,
+          fieldId
+        }
+      );
+  
+      console.log('File metadata uploaded:', response.data);
+      alert('File metadata uploaded successfully!');
+    }    
+    
+    // After all file metadata uploads are successful, uploading the comment
+    const commentResponse = await axios.put(`http://localhost:5000/api/employees/${empid}/files/comments`, {
+      comment,
+      field,
+      fieldId
+    });
+    console.log('Comment uploaded:', commentResponse.data);
+    alert('Comment uploaded successfully!');
     } catch (error) {
       console.error("Error uploading file metadata:", error);
       alert("Error uploading file metadata.");
