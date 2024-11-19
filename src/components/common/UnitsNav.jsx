@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import BusinessUnitHomePageCards from "./BusinessUnitHomePageCards";
+import { set } from "date-fns";
 
 const businessUnits = [
   {
@@ -165,6 +166,194 @@ const businessUnits = [
         photo: "https://randomuser.me/api/portraits/men/20.jpg",
       },
     ],
+  },{
+    id: "b8",
+    name: "Legal",
+    manager: "Patricia Robinson",
+    description:
+      "Ensures compliance with legal regulations and manages contracts.",
+    employees: [
+      {
+        name: "Charles Evans",
+        photo: "https://randomuser.me/api/portraits/men/28.jpg",
+      },
+      {
+        name: "Hannah Baker",
+        photo: "https://randomuser.me/api/portraits/women/36.jpg",
+      },
+      {
+        name: "Ethan Wright",
+        photo: "https://randomuser.me/api/portraits/men/20.jpg",
+      },
+    ],
+  },
+  {
+    id: "b8",
+    name: "Legal",
+    manager: "Patricia Robinson",
+    description:
+      "Ensures compliance with legal regulations and manages contracts.",
+    employees: [
+      {
+        name: "Charles Evans",
+        photo: "https://randomuser.me/api/portraits/men/28.jpg",
+      },
+      {
+        name: "Hannah Baker",
+        photo: "https://randomuser.me/api/portraits/women/36.jpg",
+      },
+      {
+        name: "Ethan Wright",
+        photo: "https://randomuser.me/api/portraits/men/20.jpg",
+      },
+    ],
+  },
+  {
+    id: "b8",
+    name: "Legal",
+    manager: "Patricia Robinson",
+    description:
+      "Ensures compliance with legal regulations and manages contracts.",
+    employees: [
+      {
+        name: "Charles Evans",
+        photo: "https://randomuser.me/api/portraits/men/28.jpg",
+      },
+      {
+        name: "Hannah Baker",
+        photo: "https://randomuser.me/api/portraits/women/36.jpg",
+      },
+      {
+        name: "Ethan Wright",
+        photo: "https://randomuser.me/api/portraits/men/20.jpg",
+      },
+    ],
+  },
+  {
+    id: "b8",
+    name: "Legal",
+    manager: "Patricia Robinson",
+    description:
+      "Ensures compliance with legal regulations and manages contracts.",
+    employees: [
+      {
+        name: "Charles Evans",
+        photo: "https://randomuser.me/api/portraits/men/28.jpg",
+      },
+      {
+        name: "Hannah Baker",
+        photo: "https://randomuser.me/api/portraits/women/36.jpg",
+      },
+      {
+        name: "Ethan Wright",
+        photo: "https://randomuser.me/api/portraits/men/20.jpg",
+      },
+    ],
+  },
+    {
+    id: "b8",
+    name: "Legal",
+    manager: "Patricia Robinson",
+    description:
+      "Ensures compliance with legal regulations and manages contracts.",
+    employees: [
+      {
+        name: "Charles Evans",
+        photo: "https://randomuser.me/api/portraits/men/28.jpg",
+      },
+      {
+        name: "Hannah Baker",
+        photo: "https://randomuser.me/api/portraits/women/36.jpg",
+      },
+      {
+        name: "Ethan Wright",
+        photo: "https://randomuser.me/api/portraits/men/20.jpg",
+      },
+    ],
+  },
+  {
+    id: "b8",
+    name: "Legal",
+    manager: "Patricia Robinson",
+    description:
+      "Ensures compliance with legal regulations and manages contracts.",
+    employees: [
+      {
+        name: "Charles Evans",
+        photo: "https://randomuser.me/api/portraits/men/28.jpg",
+      },
+      {
+        name: "Hannah Baker",
+        photo: "https://randomuser.me/api/portraits/women/36.jpg",
+      },
+      {
+        name: "Ethan Wright",
+        photo: "https://randomuser.me/api/portraits/men/20.jpg",
+      },
+    ],
+  },
+  {
+    id: "b8",
+    name: "Legal",
+    manager: "Patricia Robinson",
+    description:
+      "Ensures compliance with legal regulations and manages contracts.",
+    employees: [
+      {
+        name: "Charles Evans",
+        photo: "https://randomuser.me/api/portraits/men/28.jpg",
+      },
+      {
+        name: "Hannah Baker",
+        photo: "https://randomuser.me/api/portraits/women/36.jpg",
+      },
+      {
+        name: "Ethan Wright",
+        photo: "https://randomuser.me/api/portraits/men/20.jpg",
+      },
+    ],
+  },
+  {
+    id: "b8",
+    name: "Legal",
+    manager: "Patricia Robinson",
+    description:
+      "Ensures compliance with legal regulations and manages contracts.",
+    employees: [
+      {
+        name: "Charles Evans",
+        photo: "https://randomuser.me/api/portraits/men/28.jpg",
+      },
+      {
+        name: "Hannah Baker",
+        photo: "https://randomuser.me/api/portraits/women/36.jpg",
+      },
+      {
+        name: "Ethan Wright",
+        photo: "https://randomuser.me/api/portraits/men/20.jpg",
+      },
+    ],
+  },
+  {
+    id: "b8",
+    name: "Legal",
+    manager: "Patricia Robinson",
+    description:
+      "Ensures compliance with legal regulations and manages contracts.",
+    employees: [
+      {
+        name: "Charles Evans",
+        photo: "https://randomuser.me/api/portraits/men/28.jpg",
+      },
+      {
+        name: "Hannah Baker",
+        photo: "https://randomuser.me/api/portraits/women/36.jpg",
+      },
+      {
+        name: "Ethan Wright",
+        photo: "https://randomuser.me/api/portraits/men/20.jpg",
+      },
+    ],
   },
 ];
 
@@ -172,17 +361,22 @@ console.log(businessUnits[0].employees[0].photo);
 
 const UnitsNav = () => {
   const [selectedUnit, setSelectedUnit] = useState(null);
-  const [current, setCurrent] = useState(0);
   const length = businessUnits.length;
+  const [current, setCurrent] = useState(0);
   const cardWidth = 400;
+
+  console.log(businessUnits.length);
 
   const isPrevDisabled = current <= 0;
   const isNextDisabled = current >= length - 3;
 
   const nextSlide = () => {
-    if (current < length - 3) {
+    // if(current - (length - 4) === -1)
+
+    if (current <= length - 4) {
       setCurrent((prev) => prev + 1);
     }
+    
   };
 
   const prevSlide = () => {
@@ -234,16 +428,16 @@ const UnitsNav = () => {
           </div>
         </div>
 
-        <div className="overflow-hidden h-full flex items-center justify-start mt-6 ml-[81px] mr-[85px]">
+        <div className="overflow-hidden h-full flex items-center justify-start mt-6 ml-[35px] mr-[51px]">
           <div className="flex">
             <div
               className="carousel-container flex transition-transform duration-500 ease-in-out"
               style={{
-                transform: `translateX(-${current * cardWidth}px)`,
+                transform: `translateX(-${current * 340}px)`,
               }}
             >
               {businessUnits.map((unit) => (
-                <div className="w-[400px]" key={unit.id}>
+                <div className="w-[340px]" key={unit.id}>
                   <BusinessUnitHomePageCards unit={unit} />
                 </div>
               ))}
