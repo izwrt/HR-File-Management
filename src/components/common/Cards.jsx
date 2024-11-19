@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import axios from "axios";
-import rightarrow from "../../assets/images/rightarrow.png";
 import leftarrow from "../../assets/images/leftarrow.png";
+import rightarrow from "../../assets/images/rightarrow.png";
 
 const CustomPrevArrow = ({ onClick }) => (
   <button
@@ -64,26 +64,25 @@ const Cards = () => {
   console.log(data[0]);
 
   const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 1024 },
-      items: 5,
-    },
     desktop: {
-      breakpoint: { max: 3000, min: 800 },
-      items: 3,
+      breakpoint: { max: 2000, min: 1800 },
+      items: 4,
+      slidesToSlide: 4
     },
     tablet: {
-      breakpoint: { max: 800, min: 464 },
-      items: 2,
+      breakpoint: { max: 1600, min: 464 },
+      items: 3,
+      slidesToSlide: 3
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 1,
-    },
+      slidesToSlide: 1
+    }
   };
 
   return (
-    <div className="w-full h-auto m-auto relative flex justify-center px-10">
+    <div className="w-full h-auto m-auto relative flex justify-center px-10 ">
       {loading ? (
         <div>Loading...</div>
       ) : (
@@ -100,7 +99,7 @@ const Cards = () => {
               return (
                 <div
                   key={d.id}
-                  className="bg-customBlue h-[200px] text-black rounded-3xl px-8 mx-4 pt-4 mb-4  drop-shadow-xl"
+                  className="bg-customBlue h-[200px] w-[360px] text-black rounded-3xl px-8 mx-4 pt-4 mb-4  drop-shadow-xl"
                 >
                   <div className="flex items-center justify-between gap-1">
                     <span className="custom-font-mavan-pro text-white text-2xl overflow-hidden whitespace-nowrap text-ellipsis">

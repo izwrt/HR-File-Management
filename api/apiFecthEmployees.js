@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 
 export default function apiFecthEmployees() {
   const [employees, setEmployees] = useState([]);
-  const [adminUsers, setAdminUsers] = useState("hy");
+  const [adminUsers, setAdminUsers] = useState("");
+  const [shimmerState,setShimmerState] = useState(true)
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -15,10 +16,13 @@ export default function apiFecthEmployees() {
         .catch((error) => {
           console.error(`There was a error fetching the employees ${error}`);
           setAdminUsers(null);
-        });
+        })
+        .finally(()=> {
+          setShimmerState(false)
+        })
     },1000);
 
     return () => clearTimeout(timer);
   }, []);
-  return { employees, adminUsers };
+  return { employees, adminUsers,shimmerState };
 }

@@ -25,14 +25,14 @@ function Dashboard() {
   const units = ["Invenger Technologies", "Invenger Solutions", "Instarack"];
   const departments = ["HR", "Finance", "IT"];
 
-  useEffect(() => {
-    const fetchEmployees = () => {
-      setTimeout(() => {
-        setCardShimmer(true);
-      }, 3000);
-    };
-    fetchEmployees();
-  }, []);
+  // useEffect(() => {
+  //   const fetchEmployees = () => {
+  //     setTimeout(() => {
+  //       setCardShimmer(true);
+  //     }, 3000);
+  //   };
+  //   fetchEmployees();
+  // }, []);
 
   const openPopUp = () => {
     setPopUp(true);
@@ -111,7 +111,6 @@ function Dashboard() {
           </div>
         ) : (
           <div className="grid grid-flow-col justify-between md:grid-rows-1 gap-10 py-9">
-            <CountContainerShimmer />
             <CountContainerShimmer />
           </div>
         )}
