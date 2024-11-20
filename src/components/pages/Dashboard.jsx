@@ -10,9 +10,10 @@ import EmployeeCard from "../common/EmployeeCard";
 import SettingsPopup from "../common/SettingsPopup";
 import CountContainerShimmer from "../common/SImmerComponents/CountContainerShimmer";
 import EmployeeCardShimmer from "../common/SImmerComponents/EmployeeCardShimmer";
+import NodataFound from "../common/NodataFound";
 
 function Dashboard() {
-  const { employees } = apiFecthEmployees();
+  const { employees,shimmerState } = apiFecthEmployees();
   const [searchEmployee, setSearchEmployee] = useState("");
   const [selectedUnits, setSelectedUnits] = useState([]);
   const [selectedDepartment, setSelectedDepartment] = useState([]);
@@ -39,6 +40,7 @@ function Dashboard() {
     setIsExiting(true);
   };
 
+  console.log(shimmerState)
   const activeEmployeesCount = employees.filter((emp) => {
     return emp.status === "Active";
   }).length;
@@ -145,7 +147,8 @@ function Dashboard() {
             </div>
 
             <div className="w-full h-full px-5 ">
-              {filteredemployees.length !== 0 ? (
+              {!shimmerState ? (
+                filteredemployees.length > 0 ? (
                 <div className=" grid sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-y-8 gap-x-5 pb-14">
                   {filteredemployees.map((employee) => (
                     <EmployeeCard
@@ -157,6 +160,10 @@ function Dashboard() {
                     />
                   ))}
                 </div>
+                ):(
+                  <NodataFound/>
+                )
+                
               ) : (
                 <div className="grid sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-y-8 gap-x-5 pb-14">
                   {Array.from({ length: 15 }).map((_, index) => (
