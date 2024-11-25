@@ -25,22 +25,12 @@ function Dashboard() {
   const [cardShimmer, setCardShimmer] = useState(false);
   const units = ["Invenger Technologies", "Invenger Solutions", "Instarack"];
   const departments = ["HR", "Finance", "IT"];
-
-  // useEffect(() => {
-  //   const fetchEmployees = () => {
-  //     setTimeout(() => {
-  //       setCardShimmer(true);
-  //     }, 3000);
-  //   };
-  //   fetchEmployees();
-  // }, []);
+  const [isLoading, setIsLoading] = useState(false);
 
   const openPopUp = () => {
     setPopUp(true);
     setIsExiting(true);
   };
-
-  console.log(shimmerState)
   const activeEmployeesCount = employees.filter((emp) => {
     return emp.status === "Active";
   }).length;
@@ -62,12 +52,23 @@ function Dashboard() {
   };
 
   const handleChange = (e) => {
+    setIsLoading(false);
     setSearchEmployee(e.target.value);
   };
 
   const debouncedHandleChange = useMemo(() => {
-    return debounce(handleChange, 300);
+    return debounce((event) => {
+      handleChange(event); 
+    }, 300);
   }, []);
+
+  const handleInputChange = (e) => {
+    setIsLoading(true);
+    debouncedHandleChange(e); 
+  };
+
+
+  console.log("isloading",isLoading)
 
   const filteredemployees = useMemo(() => {
     return employees.filter((emp) => {
@@ -116,13 +117,13 @@ function Dashboard() {
             <CountContainerShimmer />
           </div>
         )}
-        <div className="xl:h-[35rem] 2xl:h-[44rem] pb-5 md:h-[900px]  w-full ">
+        <div className="xl:h-[35rem] 2xl:h-[44rem] pb-5 md:h-[900px]  w-full">
           <div
-            className={`bg-white rounded-lg  flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 snap-scroll-d overflow-y-auto ${
+            className={`bg-white rounded-lg w-full flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 snap-scroll-d overflow-y-auto ${
               !cardShimmer && "xl:overflow-hidden"
             } overflow scroll-smooth w-full scroll-padding`}
           >
-            <div className="bg-white backdrop-blur-sm  z-10 sticky top-0 rounded-lg">
+            <div className="bg-white backdrop-blur-sm  z-10 sticky top-0 rounded-lg w-full">
               <div className="flex items-center justify-between flex-grow px-5">
                 <div className="font-semibold mb-4 pt-4 text-base custom-font-mavan-pro opacity-80">
                   Employees
@@ -138,7 +139,7 @@ function Dashboard() {
                       name="search"
                       className="w-full focus:outline-none textbox-color custom-font-mavan-pro opacity-80"
                       placeholder="Search"
-                      onChange={debouncedHandleChange}
+                      onChange={handleInputChange}
                     />
                   </label>
                   <CiFilter className="size-7 opacity-40" onClick={openPopUp} />
@@ -146,32 +147,30 @@ function Dashboard() {
               </div>
             </div>
 
-            <div className="w-full h-full px-5 ">
-              {!shimmerState ? (
-                filteredemployees.length > 0 ? (
-                <div className=" grid sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-y-8 gap-x-5 pb-14">
-                  {filteredemployees.map((employee) => (
-                    <EmployeeCard
-                      key={employee.id}
-                      image={employee.empImg}
-                      name={employee.name}
-                      id={employee.empid}
-                      department={employee.department}
-                    />
-                  ))}
-                </div>
-                ):(
-                  <NodataFound/>
-                )
-                
-              ) : (
-                <div className="grid sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-y-8 gap-x-5 pb-14">
-                  {Array.from({ length: 15 }).map((_, index) => (
-                    <EmployeeCardShimmer key={index} />
-                  ))}
-                </div>
-              )}
-            </div>
+            <div className="w-full h-full px-5">
+    {isLoading || shimmerState ? (
+      <div className="grid sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-y-8 gap-x-5 pb-14">
+        {Array.from({ length: 15 }).map((_, index) => (
+          <EmployeeCardShimmer key={index} />
+        ))}
+      </div>
+    ) : filteredemployees.length > 0 ? (
+      <div className="grid sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-y-8 gap-x-5 pb-14">
+        {filteredemployees.map((employee) => (
+          <EmployeeCard
+            key={employee.id}
+            image={employee.empImg}
+            name={employee.name}
+            id={employee.empid}
+            department={employee.department}
+          />
+        ))}
+      </div>
+    ) : (
+      <NodataFound />
+    )}
+</div>
+
           </div>
         </div>
       </div>
@@ -192,7 +191,7 @@ function Dashboard() {
             </div>
           </div>
           <div className="relative px-5 py-4 ">
-            {employees.length !== 0 ? (
+            {!shimmerState ? ( employees.length !== 0 ?(
               <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8 gap-y-8 ">
                 {employees.map(
                   (employee) =>
@@ -208,6 +207,9 @@ function Dashboard() {
                     )
                 )}
               </div>
+            ) : (
+              <div className="custom-font-mavan-pro text-3xl font-bold no-data-found-text">No admin Added</div>
+            )
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8 gap-y-8">
                 {Array.from({ length: 6 }).map((_, index) => (

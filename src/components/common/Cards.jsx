@@ -99,10 +99,10 @@ const Cards = () => {
               return (
                 <div
                   key={d.id}
-                  className="bg-customBlue h-[200px] w-[360px] text-black rounded-3xl px-8 mx-4 pt-4 mb-4  drop-shadow-xl"
+                  className="bg-customBlue h-[200px] w-[340px] text-black rounded-3xl px-8 mx-4 pt-4 mb-4  drop-shadow-xl"
                 >
                   <div className="flex items-center justify-between gap-1">
-                    <span className="custom-font-mavan-pro text-white text-2xl overflow-hidden whitespace-nowrap text-ellipsis">
+                    <span className="custom-font-mavan-pro w-[85%] text-white text-2xl overflow-hidden whitespace-nowrap text-ellipsis">
                       {d.empReminder.reminder1}
                     </span>
                     {reminderCount > 0 && (
