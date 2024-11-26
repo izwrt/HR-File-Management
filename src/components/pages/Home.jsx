@@ -8,23 +8,28 @@ import UnitsStatus from "../common/UnitsStatus";
 const Home = () => {
   return (
     <div className=" w-screen mt-16">
-      <h1 className="custom-font-mavan-pro font-bold text-lg p-3 mt-4 pl-12 homeFontColor opacity-70">
-        Important Reminders
-      </h1>
-      <ReminderCard />
-      <div className="flex mt-4 py-3">
-      <h1 className="custom-font-mavan-pro font-bold text-lg pl-12 homeFontColor  opacity-70 w-full">
-        Business Unit Status
-      </h1>
-      <SeeAll />
-      </div>
-      <UnitsStatus />
-      <h1 className="custom-font-mavan-pro font-bold text-lg pt-6 pl-12 homeFontColor">
-        Business Units
-      </h1>
-      <SeeAll />
+      <div className="2xl:px-32">
+        <h1 className="custom-font-mavan-pro font-bold text-lg p-3 mt-3 pl-12 homeFontColor opacity-70">
+          Important Reminders
+        </h1>
+        <ReminderCard />
+        <div className="flex mt-10 py-3">
+        <h1 className="custom-font-mavan-pro font-bold text-lg pl-12 homeFontColor  opacity-70 w-full">
+          Business Unit Status
+        </h1>
+        <SeeAll />
+        </div>
+        <UnitsStatus />
+        <div className="flex mt-10 py-3">
+        <h1 className="custom-font-mavan-pro font-bold text-lg pl-12 homeFontColor opacity-70 w-full">
+          Business Units
+        </h1>
 
-      <UnitsNav />
+        <SeeAll />
+        </div>
+        <UnitsNav />
+      </div>
+
       <Footer />
     </div>
   );

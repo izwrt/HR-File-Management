@@ -8,7 +8,7 @@ import Youtube from "../../assets/images/YouTube.png";
 
 const Footer = () => {
   return (
-    <footer className="footerBgColor flex  flex-col items-center justify-center gap-1 p-4 mt-2">
+    <footer className="footerBgColor flex  flex-col items-center justify-center gap-1 p-4 ">
       <img className=" h-10 mt-4" src={invenLogo} alt="Description" />
       <p className="footer-font text-center text-base mt-2 opacity-80">
         Invenger's array of Technology services, IT consultancy and outsourcing

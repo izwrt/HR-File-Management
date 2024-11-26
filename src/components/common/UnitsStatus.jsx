@@ -8,7 +8,7 @@ const UnitsStatus = () => {
   ];
 
   return (
-    <div className="flex justify-around gap-10 pl-10 pr-10">
+    <div className="flex justify-between pl-12 pr-12 mt-2">
       {businessUnitsStatus.map((unit, index) => (
         <div
           key={index}

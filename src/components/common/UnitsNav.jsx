@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import BusinessUnitHomePageCards from "./BusinessUnitHomePageCards";
-import { set } from "date-fns";
 
 const businessUnits = [
   {
@@ -415,11 +414,11 @@ const UnitsNav = () => {
       <div className="flex flex-row relative justify-center items-center">
         <div className="h-8 left-7 absolute z-20">
           <div
-            className="bg-black flex items-center justify-center rounded-full"
-            style={{ width: "45px", height: "45px" }}
+            className="bg-black opacity-50 flex items-center justify-center rounded-full"
+            style={{ width: "40px", height: "40px" }}
           >
             <FaChevronLeft
-              className={`text-white cursor-pointer ${
+              className={`text-white w-4 cursor-pointer ${
                 isPrevDisabled ? "opacity-50 cursor-not-allowed" : ""
               }`}
               onClick={prevSlide}
@@ -428,7 +427,7 @@ const UnitsNav = () => {
           </div>
         </div>
 
-        <div className="overflow-hidden h-full flex items-center justify-start mt-6 ml-[35px] mr-[51px]">
+        <div className="overflow-hidden h-full flex items-center justify-start ml-[35px] mr-[51px]">
           <div className="flex">
             <div
               className="carousel-container flex transition-transform duration-500 ease-in-out"
@@ -447,11 +446,11 @@ const UnitsNav = () => {
 
         <div className="h-8 absolute right-9">
           <div
-            className="bg-black flex items-center justify-center rounded-full"
-            style={{ width: "45px", height: "45px" }}
+            className="bg-black bg-opacity-50 flex items-center justify-center rounded-full"
+            style={{ width: "40px", height: "40px" }}
           >
             <FaChevronRight
-              className={` text-white w-7 cursor-pointer ${
+              className={` text-white w-4 cursor-pointer ${
                 isNextDisabled ? "opacity-50 cursor-not-allowed" : ""
               }`}
               onClick={nextSlide}
