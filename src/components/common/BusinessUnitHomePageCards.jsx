@@ -5,7 +5,7 @@ function BusinessUnitHomePageCards({ unit }) {
     <div className=" w-full py-4">
       <div
         key={unit.id}
-        className="bg-customBlue h-[180px] rounded-3xl mx-4 p-8 drop-shadow-xl"
+        className="bg-customBlue h-[180px] rounded-3xl mx-4 p-8"
       >
         <span className="custom-font-mavan-pro text-white text-4xl overflow-hidden whitespace-nowrap text-ellipsis">
           {first}
