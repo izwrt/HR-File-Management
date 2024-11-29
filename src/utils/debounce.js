@@ -1,4 +1,3 @@
-// source code for debouncing
 const debounce = (func, delay) => {
     let timeoutId;
 
