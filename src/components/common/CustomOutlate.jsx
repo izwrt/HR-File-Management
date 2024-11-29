@@ -35,7 +35,7 @@ function CustomOutlate() {
   return (
     <div className="flex flex-row w-full">
       <div className="flex flex-col w-full h-screen">
-        {!hideHeader && <Header openMenu={openMenu} setOpenMenu={setOpenMenu} menuOpen={menuOpen} />}
+        {!hideHeader && <Header location={location} openMenu={openMenu} setOpenMenu={setOpenMenu} menuOpen={menuOpen} />}
         <Outlet />
       </div>
       {!hideHeader && (

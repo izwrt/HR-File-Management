@@ -8,16 +8,16 @@ const UnitsStatus = () => {
   ];
 
   return (
-    <div className="flex justify-around gap-10 pl-10 pr-10 mt-2 ">
+    <div className="flex justify-between pl-12 pr-12 mt-2">
       {businessUnitsStatus.map((unit, index) => (
         <div
           key={index}
-          className=" customWhiteColor w-96 h-48 rounded-3xl drop-shadow text-center "
+          className="customWhiteColor w-[350px] rounded-3xl drop-shadow text-center "
         >
-          <h2 className="custom-font-raleway homeFontColor  font-normal text-2xl pt-8 p-4 text-center">
+          <h2 className="custom-font-raleway homeFontColor  font-normal text-xl pt-8 p-4 text-center">
             {unit.name}
           </h2>
-          <div className="flex justify-center gap-12  pb-8  font-semibold homeActiveColor text-2xl">
+          <div className="flex justify-center gap-12  pb-8  font-thin homeActiveColor text-lg">
             <div className="text-center custom-font-mavan-pro  ">
               <p>Active</p>
               <p>{unit.active}</p>

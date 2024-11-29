@@ -2,11 +2,11 @@ import noData from "../../assets/images/no-data.png";
 
 const NodataFound = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-full gap-7  w-full">
+    <div className="flex flex-col items-center justify-center h-full gap-6  w-full">
       <span>
-        <img className="w-28" src={noData}></img>
+        <img className="w-[50%] mx-auto" src={noData}></img>
       </span>
-      <span className="custom-font-mavan-pro text-xl font-bold no-data-found-text">
+      <span className="custom-font-mavan-pro text-3xl font-bold no-data-found-text">
         No Data Found
       </span>
     </div>
