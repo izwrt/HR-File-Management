@@ -33,6 +33,7 @@ import ViewEmployeeDetails from "./components/pages/ViewEmployeeDetails";
 import { ApiProvider } from "./utils/useContext/ApiContext";
 import { CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
 import { NavContextProvide } from "./utils/useContext/NavContext";
+import Notifications from "./components/pages/Notifications.jsx";
 
 // const AppLoyout = () => {
 
@@ -149,11 +150,15 @@ const router = createBrowserRouter([
         element: <AddEmployee />,
       },
       {
+        path: "/notifications",
+        element: <Notifications />,
+      },
+      {
         path: "/viewemployee/:id",
         element: (
-        <NavContextProvide>
-        <ViewEmployeeDetails />
-        </NavContextProvide>
+          <NavContextProvide>
+            <ViewEmployeeDetails />
+          </NavContextProvide>
         ),
         children: [
           // {
@@ -255,8 +260,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ApiProvider>
     <CustomReducerProvider>
-     <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </CustomReducerProvider>
   </ApiProvider>
-  
 );

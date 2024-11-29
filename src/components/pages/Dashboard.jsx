@@ -112,6 +112,7 @@ function Dashboard() {
         ) : (
           <div className="grid grid-flow-col justify-between md:grid-rows-1 gap-10 py-9">
             <CountContainerShimmer />
+            <CountContainerShimmer />
           </div>
         )}
         <div className="xl:h-[35rem] 2xl:h-[44rem] pb-5 md:h-[900px]  w-full ">
