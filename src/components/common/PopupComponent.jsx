@@ -4,6 +4,8 @@ import Close from "../../assets/images/close.png";
 import Cloud from "../../assets/images/cloud-file.gif";
 import NavContext from "../../utils/useContext/NavContext";
 
+//task 1 : File need to we uploaded to bacnked
+
 const PopupComponent = ({
   heading = "Default Header",
   setPopUp,
