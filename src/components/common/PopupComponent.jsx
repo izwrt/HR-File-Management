@@ -8,6 +8,7 @@ import NavContext from "../../utils/useContext/NavContext";
 //task 2 : File should be stored in state.
 //task 3 : There should be multiple files need to uploaded at a time
 //task 4 : Uploading multiple files at time in to the banked server
+//task 5 : Correcting all api and re-assigning the new api fetch and push
 
 const PopupComponent = ({
   heading = "Default Header",
