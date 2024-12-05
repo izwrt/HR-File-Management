@@ -6,6 +6,7 @@ import NavContext from "../../utils/useContext/NavContext";
 
 //task 1 : File need to we uploaded to bacnked.
 //task 2 : File should be stored in state.
+//task 3 : There should be multiple files need to uploaded at a time
 
 const PopupComponent = ({
   heading = "Default Header",
