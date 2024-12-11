@@ -13,6 +13,7 @@ function AddEmployee() {
   const inputRef = useRef(null);
   const photoRef = useRef(null);
   const resumeRef = useRef(null);
+  const [profilePhoto, setProfilePhoto] = useState();
 
   const handleChangeDateOfBirth = (date) => {
     setDateOfBirth(date);
@@ -38,19 +39,35 @@ function AddEmployee() {
     resumeRef.current.click();
   };
 
+  const handleProfilePhotoChange = (e) => {
+    console.log(e.target.files[0]);
+    setProfilePhoto(URL.createObjectURL(e.target.files[0]));
+  };
+
   return (
     <div className="mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit pl-8 pr-12 md:pl-5 md:pr-6 gap-8 custom-font-mavan-pro">
       <div className="my-9">
         <div className="font-bold text-md">Add Employee</div>
         <div className="rounded-lg bg-white shadow-sm border-solid border border-slate-100 shadow-gray-20 mt-2 overflow-auto">
           <div className="flex items-start justify-between p-8 ">
-            <input type="file" className="hidden" ref={inputRef} />
-            <div
-              className="flex items-center justify-center cursor-pointer relative "
-              onClick={callRef}
-            >
-              <Setting_Employee />
-            </div>
+            {profilePhoto ? (
+              <input src={profilePhoto} />
+            ) : (
+              <>
+                <input
+                  type="file"
+                  className="hidden"
+                  ref={inputRef}
+                  onChange={handleProfilePhotoChange}
+                />
+                <div
+                  className="flex items-center justify-center cursor-pointer relative "
+                  onClick={callRef}
+                >
+                  <Setting_Employee />
+                </div>
+              </>
+            )}
             <div className="flex flex-col items-center gap-5">
               <p className="font-color">Active Status</p>
               <label className="inline-flex items-center cursor-pointer">
