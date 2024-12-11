@@ -13,7 +13,7 @@ import EmployeeCardShimmer from "../common/SImmerComponents/EmployeeCardShimmer"
 import NodataFound from "../common/NodataFound";
 
 function Dashboard() {
-  const { employees,shimmerState } = apiFecthEmployees();
+  const { employees, shimmerState } = apiFecthEmployees();
   const [searchEmployee, setSearchEmployee] = useState("");
   const [selectedUnits, setSelectedUnits] = useState([]);
   const [selectedDepartment, setSelectedDepartment] = useState([]);
@@ -58,17 +58,16 @@ function Dashboard() {
 
   const debouncedHandleChange = useMemo(() => {
     return debounce((event) => {
-      handleChange(event); 
+      handleChange(event);
     }, 300);
   }, []);
 
   const handleInputChange = (e) => {
     setIsLoading(true);
-    debouncedHandleChange(e); 
+    debouncedHandleChange(e);
   };
 
-
-  console.log("isloading",isLoading)
+  console.log("isloading", isLoading);
 
   const filteredemployees = useMemo(() => {
     return employees.filter((emp) => {
@@ -120,9 +119,9 @@ function Dashboard() {
         )}
         <div className="xl:h-[35rem] 2xl:h-[44rem] pb-5 md:h-[900px]  w-full">
           <div
-            className={`bg-white rounded-lg w-full flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 snap-scroll-d overflow-y-auto ${
-              !cardShimmer && "xl:overflow-hidden"
-            } overflow scroll-smooth w-full scroll-padding`}
+            className={`bg-white rounded-lg w-full flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 snap-scroll-d overflow-y-auto overflow scroll-smooth scroll-padding ${
+              shimmerState && "xl:overflow-hidden"
+            }`}
           >
             <div className="bg-white backdrop-blur-sm  z-10 sticky top-0 rounded-lg w-full">
               <div className="flex items-center justify-between flex-grow px-5">
@@ -149,36 +148,35 @@ function Dashboard() {
             </div>
 
             <div className="w-full h-full px-5">
-    {isLoading || shimmerState ? (
-      <div className="grid sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-y-8 gap-x-5 pb-14">
-        {Array.from({ length: 15 }).map((_, index) => (
-          <EmployeeCardShimmer key={index} />
-        ))}
-      </div>
-    ) : filteredemployees.length > 0 ? (
-      <div className="grid sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-y-8 gap-x-5 pb-14">
-        {filteredemployees.map((employee) => (
-          <EmployeeCard
-            key={employee.id}
-            image={employee.empImg}
-            name={employee.name}
-            id={employee.empid}
-            department={employee.department}
-          />
-        ))}
-      </div>
-    ) : (
-      <NodataFound />
-    )}
-</div>
-
+              {isLoading || shimmerState ? (
+                <div className="grid sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-y-8 gap-x-5 pb-14">
+                  {Array.from({ length: 15 }).map((_, index) => (
+                    <EmployeeCardShimmer key={index} />
+                  ))}
+                </div>
+              ) : filteredemployees.length > 0 ? (
+                <div className="grid sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-y-8 gap-x-5 pb-14">
+                  {filteredemployees.map((employee) => (
+                    <EmployeeCard
+                      key={employee.id}
+                      image={employee.empImg}
+                      name={employee.name}
+                      id={employee.empid}
+                      department={employee.department}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <NodataFound />
+              )}
+            </div>
           </div>
         </div>
       </div>
       <div className="w-full 2xl:w-[700px]  xl:h-[766px] 2xl:h-[924px] pb-5 md:hidden flex items-center justify-center py-9 ">
         <div
           className={` bg-white w-full rounded-lg overflow-y-auto overflow h-full snap-scroll shadow-sm border-solid border ${
-            !cardShimmer && "xl:overflow-hidden"
+            shimmerState && "xl:overflow-hidden"
           } border-slate-100 shadow-gray-20 2xl:pb-10 xl:pb-28`}
         >
           <div className="sticky top-0 z-10 px-5 bg-white">
@@ -192,25 +190,28 @@ function Dashboard() {
             </div>
           </div>
           <div className="relative px-5 py-4 ">
-            {!shimmerState ? ( employees.length !== 0 ?(
-              <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8 gap-y-8 ">
-                {employees.map(
-                  (employee) =>
-                    employee.admin && (
-                      <AdminCard
-                        key={employee.empid}
-                        name={employee.name}
-                        empid={employee.empid}
-                        department={employee.department}
-                        empImg={employee.empImg}
-                        admin={employee.admin}
-                      />
-                    )
-                )}
-              </div>
-            ) : (
-              <div className="custom-font-mavan-pro text-3xl font-bold no-data-found-text">No admin Added</div>
-            )
+            {!shimmerState ? (
+              employees.length !== 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8 gap-y-8 ">
+                  {employees.map(
+                    (employee) =>
+                      employee.admin && (
+                        <AdminCard
+                          key={employee.empid}
+                          name={employee.name}
+                          empid={employee.empid}
+                          department={employee.department}
+                          empImg={employee.empImg}
+                          admin={employee.admin}
+                        />
+                      )
+                  )}
+                </div>
+              ) : (
+                <div className="custom-font-mavan-pro text-3xl font-bold no-data-found-text">
+                  No admin Added
+                </div>
+              )
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8 gap-y-8">
                 {Array.from({ length: 6 }).map((_, index) => (
