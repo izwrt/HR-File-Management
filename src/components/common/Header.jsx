@@ -61,6 +61,7 @@ import Bellicon from "../../assets/images/bellicon.jsx";
 import SettingsPopup from "./SettingsPopup";
 import { NavLink } from "react-router-dom";
 import apiFecthEmployees from "../../../api/apiFecthEmployees";
+import BlueButton from "./BlueButton.jsx";
 
 const Header = ({ openMenu, setOpenMenu, menuOpen, location }) => {
   const { employees, shimmerState } = apiFecthEmployees();
@@ -125,22 +126,45 @@ const Header = ({ openMenu, setOpenMenu, menuOpen, location }) => {
             <NavLink to="/notifications">
               <div className="group flex justify-center">
                 <Bellicon className="tooltip" />
-                <span class="absolute top-[60px] scale-0 rounded bg-gray-800 p-2 w-[400px] h-[500px] text-xs text-white group-hover:scale-100 overflow-y-hidden right-[10px]">
-                  <div className="p-2">
-                    <div className="text-base">Notifications</div>
-                    <div className="flex flex-col">
-                      <div className="mt-2 flex flex-col gap-4">
+                <span class="absolute top-[65px] bg-white shadow-2xl w-[400px] h-0 group-hover:h-[500px] text-xs text-black overflow-y-auto overflow scroll-smooth scroll-padding right-[23px] duration-500 ease-in-out">
+                  <div className="">
+                    <div className="px-5 py-4 flex flex-row items-center justify-between">
+                      <div className="text-base font-bold">Notifications</div>
+                      <button className="text-blue-500 hover:underline text-sm">
+                        {" "}
+                        Mark all as read
+                      </button>
+                    </div>
+                    <div className="h-[1px] bg-gray-200 w-full"></div>
+
+                    <div className="flex flex-col pt-2">
+                      <div className=" flex flex-col gap-2">
                         {employees.map((employee) => {
                           return (
                             <>
-                              <div className="flex flex-row gap-4 justify-start items-center">
-                                <img
-                                  src={employee.empImg}
-                                  className="h-[50px] w-[50px] rounded-full"
-                                ></img>
-                                <div>{employee.name}</div>
+                              <div className="flex flex-row items-center justify-between">
+                                <div className="flex flex-row gap-4 justify-start items-center py-3 px-5">
+                                  <img
+                                    src={employee.empImg}
+                                    className="h-[45px] w-[45px] rounded-full"
+                                  ></img>
+                                  <div className="font-semibold">
+                                    {employee.name}
+                                    <span className="font-normal">
+                                      {" "}
+                                      yet to submit
+                                    </span>
+                                    <div className="text-blue-500">
+                                      Aadhar Card
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="font-extralight text-gray-500 pr-5">
+                                  2 min ago
+                                </div>
                               </div>
-                              <div className="h-0.5 bg-gradient-to-l from-transparent via-slate-400 to-transparent mx-8"></div>
+
+                              <div className="h-[1px] bg-gray-200 w-full"></div>
                             </>
                           );
                         })}
