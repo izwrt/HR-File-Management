@@ -88,7 +88,7 @@ const PopupComponent = ({
             </div>
           )}
 
-          <Outlet />
+     
         </div>
       </div>
     </div>
