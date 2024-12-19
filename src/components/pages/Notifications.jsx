@@ -1,8 +1,7 @@
 import { useState } from "react";
-import BlueButton from "../common/BlueButton";
-import NotificationComponent from "../common/NotificationComponent";
 import { GrLinkPrevious } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
+import NotificationComponent from "../common/NotificationComponent";
 
 const employees = [
   {
@@ -62,15 +61,13 @@ const employees = [
 ];
 
 function Notifications() {
-  const [selectAll, setSelectAll] = useState(false);
+  const [empData, setEmpData] = useState([]);
   const navigate = useNavigate();
-  const handleSelectAll = () => {
-    setSelectAll((prev) => !prev);
-  };
 
   const handlePreviousPage = () => {
     navigate(-1);
   };
+
   return (
     <div className="relative mt-20 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit pl-8 pr-12 md:pl-5 md:pr-6">
       <GrLinkPrevious onClick={handlePreviousPage} className="cursor-pointer" />
@@ -86,7 +83,7 @@ function Notifications() {
         <div></div>
       </div>
       <div className="overflow-y-auto">
-        {employees.map((employee, index) => (
+        {empData.map((employee, index) => (
           <NotificationComponent
             key={index}
             employeeName={employee.employeeName}
