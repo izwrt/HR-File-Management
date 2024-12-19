@@ -1,22 +1,47 @@
-import { useState } from "react";
-
 function NotificationComponent({
+  empid,
   employeeName,
   department,
   documentsToBeUploaded,
   timePosted,
+  isSelected,
+  handleEmployeeSelection,
+  employeeImage,
+  employeeId,
+  setSelectAll,
 }) {
+  const selectEachEmployee = () => {
+    if (e.target.id === empid) {
+      setSelectAll();
+    }
+  };
   return (
     <>
-      <div className="customColorBlue-lite text-black w-full h-11 mt-4 grid grid-cols-[auto_1fr_1fr_1fr_1fr] items-center justify-start opacity-80">
+      <div className=" border-x-2 text-black w-full h-14 border-b-2 grid grid-cols-[auto_1fr_1fr_1fr_1fr_1fr] items-center justify-start opacity-80">
         <input
+          id={empid}
           type="checkbox"
-          className="w-6 h-6 mx-6 appearance-none checked:bg-green-500 border-2 border-gray-400 rounded-lg"
+          className="w-5 h-5 mx-6 appearance-none checked:bg-green-500 border-2 border-gray-400 rounded-lg"
+          //checked={}
+          onChange={(e) => {
+            selectEachEmployee(empid, e);
+          }}
         />
-        <div>{employeeName}</div>
-        <div>{department}</div>
-        <div>{documentsToBeUploaded}</div>
-        <div className="col-span-1 justify-self-center">{timePosted}</div>
+        <div className="font-semibold flex flex-row items-center gap-2">
+          <img
+            src={employeeImage}
+            className="h-[35px] w-[35px] rounded-full"
+          ></img>
+          <div>
+            {employeeName} ({employeeId})
+          </div>
+        </div>
+        <div></div>
+        <div className="font-semibold">{department}</div>
+        <div className="font-semibold">{documentsToBeUploaded}</div>
+        <div className="col-span-1 justify-self-end mr-10 text-sm">
+          {timePosted}
+        </div>
       </div>
     </>
   );

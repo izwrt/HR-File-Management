@@ -39,11 +39,6 @@ function AddEmployee() {
     resumeRef.current.click();
   };
 
-  const handleProfilePhotoChange = (e) => {
-    console.log(e.target.files[0]);
-    setProfilePhoto(URL.createObjectURL(e.target.files[0]));
-  };
-
   return (
     <div className="mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit pl-8 pr-12 md:pl-5 md:pr-6 gap-8 custom-font-mavan-pro">
       <div className="my-9">
@@ -54,12 +49,7 @@ function AddEmployee() {
               <input src={profilePhoto} />
             ) : (
               <>
-                <input
-                  type="file"
-                  className="hidden"
-                  ref={inputRef}
-                  onChange={handleProfilePhotoChange}
-                />
+                <input type="file" className="hidden" ref={inputRef} />
                 <div
                   className="flex items-center justify-center cursor-pointer relative "
                   onClick={callRef}
@@ -80,7 +70,7 @@ function AddEmployee() {
             </div>
           </div>
           <div className="font-light text-md ml-8">Personal details</div>
-          <div className="grid grid-cols-2 2xl:grid-cols-3 p-8 gap-y-10 gap-x-14">
+          <div className="grid grid-cols-2 2xl:grid-cols-3 p-8 gap-y-5 gap-x-14">
             <InputField fieldName="First Name" idName="firstName" type="text" />
             <div className="flex flex-col">
               <label className="text-sm font-light">Date of Birth</label>
@@ -164,7 +154,7 @@ function AddEmployee() {
           <div className="font-bold text-lg ml-8 mt-6">
             Professional details
           </div>
-          <div className="grid grid-cols-2 2xl:grid-cols-3 p-8 gap-10">
+          <div className="grid grid-cols-2 2xl:grid-cols-3 p-8 gap-y-5 gap-x-14">
             <div className="flex flex-col">
               <label className="text-sm font-light">Upload Resume</label>
               <div
