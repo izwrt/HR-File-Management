@@ -16,6 +16,7 @@ function NotificationComponent({
   //   }
   // };
 
+
   return (
     <>
       <div className=" border-x-2 text-black w-full h-14 border-b-2 grid grid-cols-[auto_1fr_1fr_1fr_1fr_1fr] items-center justify-start opacity-80">
@@ -23,9 +24,10 @@ function NotificationComponent({
           id={empid}
           type="checkbox"
           className="w-5 h-5 mx-6 appearance-none checked:bg-green-500 border-2 border-gray-400 rounded-lg"
-          checked={checked}
+          checked={checked || false}
+          name = {employeeName}
           onChange={(e) => {
-            selectEmployee(empid, e);
+            selectEmployee(e);
           }}
         />
         <div className="font-semibold flex flex-row items-center gap-2">

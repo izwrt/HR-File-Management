@@ -111,16 +111,16 @@ function Notifications() {
     navigate(-1);
   };
 
-  const selectEmployee = (e,emp) => {
-    setEmpData(empData.map(emp => ({
-      ...emp,checked: !emp.checked
-    })))
-
-      setEmpData(empData.map(emp => ( 
-        emp.id === emp ? {...emp,checked:false} : {...emp}
-      )))
+  const selectEmployee = (e) => {
+    const {id, checked} = e.target;
+    if(id === "SelectAllEmp") {
+      setEmpData(empData.map(emp => ({...emp, checked: checked})))
+    } else {
+      const tempEmployee = empData.map(emp => parseInt(id) === emp?.id ? {...emp, checked: checked} : {...emp});
+      setEmpData(tempEmployee);
     }
-  
+  }
+
 
 
   return (
@@ -131,6 +131,7 @@ function Notifications() {
           type="checkbox"
           className="w-5 h-5 mx-6 appearance-none checked:bg-green-500 border-2 border-gray-400 rounded-lg"
           onChange={selectEmployee}
+          id="SelectAllEmp"
         ></input>
         <div className="font-extralight">Employee Name / (id)</div>
         <div></div>
