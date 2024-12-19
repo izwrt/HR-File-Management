@@ -176,38 +176,11 @@ const router = createBrowserRouter([
           {
             path: "salaryslip",
             element: <SalarySlip />,
-            children: [
-              {
-                index: true,
-                element: <Navigate to="Month One" />,
-              },
-              {
-                path: "Month One",
-                element: <PopContent />,
-              },
-              {
-                path: "Month Two",
-                element: <PopContent />,
-              },
-            ],
+
           },
           {
             path: "salarydiscussion",
             element: <SalarySlip />,
-            children: [
-              {
-                index: true,
-                element: <Navigate to="Salary Structure" />,
-              },
-              {
-                path: "Salary Structure",
-                element: <PopContent />,
-              },
-              {
-                path: "Email Screenshot",
-                element: <PopContent />,
-              },
-            ],
           },
           {
             path: "salarydiscussion",

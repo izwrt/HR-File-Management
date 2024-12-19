@@ -47,10 +47,10 @@ const ViewEmployeeDetails = () => {
                     </div>
                 </section>
 
-                <section className='w-full '>
+                <section className='w-full relative'>
                     <nav className='flex flex-wrap gap-3 gap-x-8 custom-font-mavan-pro text-sm font-medium opacity-85 '>
                         <NavLink to="about" state={{empData}} className={({isActive}) =>{
-                           return (isActive ? 'pb-1 border-b-2 border-customBlue' : 'pb-1')
+                           return (isActive ? 'pb-3 border-b-2 border-customBlue' : 'pb-1')
                         }}>
                             About
                         </NavLink>

@@ -1,15 +1,15 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { useLocation } from 'react-router-dom';
+import axios from '../../../../api/axios';
 import NewUpload from "../../../assets/images/NewUpload";
 import Close from "../../../assets/images/close.png";
 import file from "../../../assets/images/file.png";
 import pdf from "../../../assets/images/pdf.png";
 import photo from "../../../assets/images/photo.png";
 import word from "../../../assets/images/word.png";
+import NavContext from '../../../utils/useContext/NavContext';
 import AddComment from "../AddComment";
 import BlueButton from "../BlueButton";
-import NavContext from '../../../utils/useContext/NavContext';
-import axios from '../../../../api/axios';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const PopContent = () => {
@@ -39,7 +39,7 @@ const PopContent = () => {
     })));
   }, [fieldId, field, fileList,state]);
 
-  console.log("state", fileMetadata);
+  console.log("state", fileMetadata,);
 
   const saveHandle = () => {
     if (fileList.length > 0) {
@@ -101,9 +101,8 @@ const PopContent = () => {
           fieldId
         }
       );
-  
       console.log('File metadata uploaded:', response.data);
-      alert('File metadata uploaded successfully!');
+      setFileMetadata("");
     }    
     
     // After all file metadata uploads are successful, uploading the comment
@@ -113,10 +112,9 @@ const PopContent = () => {
       fieldId
     });
     console.log('Comment uploaded:', commentResponse.data);
-    alert('Comment uploaded successfully!');
     } catch (error) {
       console.error("Error uploading file metadata:", error);
-      alert("Error uploading file metadata.");
+   
     }
   };
 
