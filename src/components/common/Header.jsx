@@ -200,7 +200,7 @@ const Header = ({ openMenu, setOpenMenu, menuOpen, location }) => {
               <NavLink to="/notifications">
                 <Bellicon className="tooltip" />
               </NavLink>
-              <span class="absolute top-[65px] bg-white shadow-2xl w-[400px] h-0 group-hover:h-[500px] text-xs text-black overflow-y-auto overflow scroll-smooth scroll-padding right-[23px] duration-500 ease-in-out">
+              <span className="absolute top-[65px] bg-white shadow-2xl w-[400px] h-0 group-hover:h-[500px] text-xs text-black overflow-y-auto overflow scroll-smooth scroll-padding right-[23px] duration-500 ease-in-out">
                 <div className="">
                   <div className="px-5 py-4 flex flex-row items-center justify-between">
                     <div className="text-base font-bold">Notifications</div>
@@ -214,9 +214,9 @@ const Header = ({ openMenu, setOpenMenu, menuOpen, location }) => {
 
                   <div className="flex flex-col pt-2">
                     <div className=" flex flex-col gap-2">
-                      {employees.map((employee) => {
+                      {employees.map((employee, index) => {
                         return (
-                          <>
+                          <div key={index}>
                             <div className="flex flex-row items-center justify-between">
                               <div className="flex flex-row gap-4 justify-start items-center py-3 px-5">
                                 <img
@@ -240,7 +240,7 @@ const Header = ({ openMenu, setOpenMenu, menuOpen, location }) => {
                             </div>
 
                             <div className="h-[1px] bg-gray-200 w-full"></div>
-                          </>
+                          </div>
                         );
                       })}
                     </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BlueButton from "../common/BlueButton";
 import NotificationComponent from "../common/NotificationComponent";
 import { GrLinkPrevious } from "react-icons/gr";
@@ -99,15 +99,29 @@ const employees = [
 ];
 
 function Notifications() {
-  const [selectAll, setSelectAll] = useState(false);
+  const [empData, setEmpData] = useState([]);
+
+  useEffect(() => {
+    setEmpData(employees.map((emp) => ({ ...emp, checked: false })));
+  },[])
+
   const navigate = useNavigate();
-  const handleSelectAll = () => {
-    setSelectAll((prev) => !prev);
-  };
 
   const handlePreviousPage = () => {
     navigate(-1);
   };
+
+  const selectEmployee = (e,emp) => {
+    setEmpData(empData.map(emp => ({
+      ...emp,checked: !emp.checked
+    })))
+
+      setEmpData(empData.map(emp => ( 
+        emp.id === emp ? {...emp,checked:false} : {...emp}
+      )))
+    }
+  
+
 
   return (
     <div className="relative mt-20 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit pl-8 pr-12 md:pl-5 md:pr-6">
@@ -116,8 +130,7 @@ function Notifications() {
         <input
           type="checkbox"
           className="w-5 h-5 mx-6 appearance-none checked:bg-green-500 border-2 border-gray-400 rounded-lg"
-          onChange={handleSelectAll}
-          checked={isAllSelected}
+          onChange={selectEmployee}
         ></input>
         <div className="font-extralight">Employee Name / (id)</div>
         <div></div>
@@ -125,7 +138,7 @@ function Notifications() {
         <div className="font-extralight">Documents Yet To Be Uploaded</div>
       </div>
       <div className="overflow-y-auto">
-        {empData.map((employee, index) => (
+        {empData.map(( employee ) => (
           <NotificationComponent
             key={employee.id}
             empid={employee.id}
@@ -133,14 +146,15 @@ function Notifications() {
             department={employee.department}
             documentsToBeUploaded={employee.documentsToBeUploaded}
             timePosted={employee.timePosted}
-            isSelected={selectedEmployee[employee.id] || false}
-            handleEmployeeSelection={handleEmployeeSelection}
             employeeImage={employee.employeeImage}
             employeeId={employee.employeeId}
-            setSelectAll={setSelectAll}
+            checked={employee.checked}
+            selectEmployee={selectEmployee}
           />
         ))}
       </div>
     </div>
   );
 }
+
+export default Notifications;
