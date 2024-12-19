@@ -131,6 +131,7 @@ function Notifications() {
           type="checkbox"
           className="w-5 h-5 mx-6 appearance-none checked:bg-green-500 border-2 border-gray-400 rounded-lg"
           onChange={selectEmployee}
+          checked = { empData.every(emp => emp?.checked )}
           id="SelectAllEmp"
         ></input>
         <div className="font-extralight">Employee Name / (id)</div>
