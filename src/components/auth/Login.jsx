@@ -3,16 +3,24 @@ import { loginApi } from "../../../api/loginApi";
 import CustomReducerContext from "../../utils/useContext/CustomReducerContext";
 import LoginTextBox from "../common/LoginTextBox";
 import LoginButton from "../common/LoginButton";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { state, dispatch } = useContext(CustomReducerContext);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { success, data } = await loginApi(state.email, state.password);
     dispatch({ type: "isAuthoticated", payload: success });
+
+    if (success) {
+      navigate('/');
+    }
+    console.log(data);
   };
+
+  
 
   return (
     <div className="w-screen h-screen flex justify-center p-20">

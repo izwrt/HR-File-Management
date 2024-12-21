@@ -47,9 +47,16 @@ function reducer(state, action) {
         ...state,
         currentPassword: action.payload,
       };
+
+      case "token":  // Adding token action
+  return {
+    ...state,
+    token: action.payload,
+  };
+
     default:
       return state;
-  }
+  };
 }
 
 const initialValue = {
@@ -61,7 +68,7 @@ const initialValue = {
   confirmPassword: null,
   currentPassword: null,
   code:null,
-  token: false,
+  token: '',
 };
 
 const CustomReducerContext = createContext();

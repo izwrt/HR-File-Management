@@ -356,7 +356,6 @@ const businessUnits = [
   },
 ];
 
-console.log(businessUnits[0].employees[0].photo);
 
 const UnitsNav = () => {
   const [selectedUnit, setSelectedUnit] = useState(null);
@@ -364,7 +363,6 @@ const UnitsNav = () => {
   const [current, setCurrent] = useState(0);
   const cardWidth = 400;
 
-  console.log(businessUnits.length);
 
   const isPrevDisabled = current <= 0;
   const isNextDisabled = current >= length - 3;
