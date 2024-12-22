@@ -1,11 +1,10 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState,useCallback} from "react";
 import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   Navigate,
   RouterProvider,
-  useLocation,
-  Outlet
+  Outlet,
 } from "react-router-dom";
 import ChangePassword from "./components/auth/ChangePassword";
 import Login from "./components/auth/Login";
@@ -37,215 +36,210 @@ import { NavContextProvide } from "./utils/useContext/NavContext";
 import Notifications from "./components/pages/Notifications.jsx";
 import { useNavigate } from "react-router-dom";
 import axios from '../api/axios.js';
+import HelperLogin from "./utils/Helperlogin.jsx";
 
+const AppLoyout = () => {
 
+  const { state, dispatch } = useContext(CustomReducerContext);
+  const getMe = HelperLogin();
+  const [loading, setLoading] = useState(true); 
+  const Navigate = useNavigate();
 
-// const AppLoyout = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      await getMe();
+      setLoading(false); 
+    };
+    fetchData();
+  }, [getMe]);
 
+  if (loading) {
+    return <div>loading</div>; 
+  }
 
+  return(
+        <div className="app">
+          <Outlet/>  
+         </div>
+)
+}
 
-//   const navigate = useNavigate();
-
-//   const CHECK_URL = "/api/v1/user/get-me";
-
-//   useEffect(() => {
-
-//     const checkAuth = async () => {
-//       try {
-//         const response = await axios.get(CHECK_URL, {
-//           withCredentials: true,
-//         });
-//         console.log('User data:', response.data);
-//         navigate('/');
-//       } catch (err) {
-//         console.error('Error:', err);
-//         navigate('/login');
-//       }
-//     };
-    
-//     checkAuth();
-//   }, []);
-
-//   return(
-//         <div className="app">
-//           <CustomReducerProvider>
-//              <Outlet/>
-//           </CustomReducerProvider>
-//          </div>
-// )
-
-// }
-
-//   const appRouter = createBrowserRouter([
-//     {
-//       path: '/',
-//       element: <AppLoyout/>,
+  const appRouter = createBrowserRouter([
+    {
+      path: '/',
+      element: <AppLoyout/>,
       
-//       children: [
-//         {
-//           path: 'login',
-//           element: <Login />,
-//         },
-//         {
-//           path: '/',
-//           element: <Home />,
-//         },
-//         {
-//           path: 'setpassword',
-//           element: <SetPassword />,
-//         },
-//         // {
-//         //   path: 'box',
-//         //   element: <MainDashboardCard />,
-//         // },
-//         // {
-//         //   path: 'auth',
-//         //   element: <Authontications />,
-//         // },
-//       ],
-//     },
-//   ]);
+      children: [
+        {
+          path: 'login',
+          element:<Login />,
+        },
+        {
+          path: '/',
+          element: <Home />,
+        },
+        {
+          path: 'setpassword',
+          element: <SetPassword />,
+        },
+        // {
+        //   path: 'box',
+        //   element: <MainDashboardCard />,
+        // },
+        // {
+        //   path: 'auth',
+        //   element: <Authontications />,
+        // },
+      ],
+    },
+  ]);
 
-// const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
-// root.render(<RouterProvider router={appRouter}/>);
+root.render(
+  <CustomReducerProvider>
+    <RouterProvider 
+      router={appRouter}
+    />
+  </CustomReducerProvider>
+);
 
 // --------------------------------------------------------------------------------
 
-const AppLoyout = () => {
-  const location = useLocation();
-  const hidePath = ["/login", "/setpassword"];
-  const hideHeader = hidePath.includes(location.pathname);
+// const AppLoyout = () => {
+//   const location = useLocation();
+//   const hidePath = ["/login", "/setpassword"];
+//   const hideHeader = hidePath.includes(location.pathname);
 
-  return (
-    <div className="flex w-screen">
-      <CustomOutlate />
-    </div>
-  );
-};
+//   return (
+//     <div className="flex w-screen">
+//       <CustomOutlate />
+//     </div>
+//   );
+// };
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <AppLoyout />,
-    children: [
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/setpassword",
-        element: <SetPassword />,
-      },
-      {
-        path: "/changepassword",
-        element: <ChangePassword />,
-      },
-      {
-        path: "/addrecovery",
-        element: <PasswordRecovery />,
-      },
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/businessunit",
-        element: <BusinessUnit />,
-      },
-      {
-        path: "/dashboard",
-        element: <Dashboard />,
-      },
-      {
-        path: "/addEmployee",
-        element: <AddEmployee />,
-      },
-      {
-        path: "/notifications",
-        element: <Notifications />,
-      },
-      {
-        path: "/viewemployee/:id",
-        element: (
-          <NavContextProvide>
-            <ViewEmployeeDetails />
-          </NavContextProvide>
-        ),
-        children: [
-          // {
-          //   index: true,
-          //   element: <Navigate to="about"/>
-          // },
-          {
-            path: "about",
-            element: <About />,
-          },
-          {
-            path: "interview",
-            element: <Interview />,
-          },
-          {
-            path: "salaryslip",
-            element: <SalarySlip />,
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <AppLoyout />,
+//     children: [
+//       {
+//         path: "/login",
+//         element: <Login />,
+//       },
+//       {
+//         path: "/setpassword",
+//         element: <SetPassword />,
+//       },
+//       {
+//         path: "/changepassword",
+//         element: <ChangePassword />,
+//       },
+//       {
+//         path: "/addrecovery",
+//         element: <PasswordRecovery />,
+//       },
+//       {
+//         path: "/",
+//         element: <Home />,
+//       },
+//       {
+//         path: "/businessunit",
+//         element: <BusinessUnit />,
+//       },
+//       {
+//         path: "/dashboard",
+//         element: <Dashboard />,
+//       },
+//       {
+//         path: "/addEmployee",
+//         element: <AddEmployee />,
+//       },
+//       {
+//         path: "/notifications",
+//         element: <Notifications />,
+//       },
+//       {
+//         path: "/viewemployee/:id",
+//         element: (
+//           <NavContextProvide>
+//             <ViewEmployeeDetails />
+//           </NavContextProvide>
+//         ),
+//         children: [
+//           // {
+//           //   index: true,
+//           //   element: <Navigate to="about"/>
+//           // },
+//           {
+//             path: "about",
+//             element: <About />,
+//           },
+//           {
+//             path: "interview",
+//             element: <Interview />,
+//           },
+//           {
+//             path: "salaryslip",
+//             element: <SalarySlip />,
 
-          },
-          {
-            path: "salarydiscussion",
-            element: <SalarySlip />,
-          },
-          {
-            path: "salarydiscussion",
-            element: <SalaryDiscussion />,
-          },
-          {
-            path: "offerconfirmation",
-            element: <OfferConfirmation />,
-          },
-          {
-            path: "offerletter",
-            element: <OfferLetter />,
-          },
-          {
-            path: "onboarding",
-            element: <OnBoarding />,
-          },
-          {
-            path: "verifybackground",
-            element: <VerifyBackground />,
-          },
-          {
-            path: "performanceappraisal",
-            element: <PerformanceAppraisal />,
-          },
-          {
-            path: "certification",
-            element: <Certification />,
-          },
-          {
-            path: "hrscreening",
-            element: <HrScreening />,
-          },
-          ,
-          {
-            path: "exitformalities",
-            element: <ExitFormalities />,
-          },
-          {
-            path: "clienthistory",
-            element: <ClientHistory />,
-          },
-        ],
-      },
-    ],
-  },
-]);
+//           },
+//           {
+//             path: "salarydiscussion",
+//             element: <SalarySlip />,
+//           },
+//           {
+//             path: "salarydiscussion",
+//             element: <SalaryDiscussion />,
+//           },
+//           {
+//             path: "offerconfirmation",
+//             element: <OfferConfirmation />,
+//           },
+//           {
+//             path: "offerletter",
+//             element: <OfferLetter />,
+//           },
+//           {
+//             path: "onboarding",
+//             element: <OnBoarding />,
+//           },
+//           {
+//             path: "verifybackground",
+//             element: <VerifyBackground />,
+//           },
+//           {
+//             path: "performanceappraisal",
+//             element: <PerformanceAppraisal />,
+//           },
+//           {
+//             path: "certification",
+//             element: <Certification />,
+//           },
+//           {
+//             path: "hrscreening",
+//             element: <HrScreening />,
+//           },
+//           ,
+//           {
+//             path: "exitformalities",
+//             element: <ExitFormalities />,
+//           },
+//           {
+//             path: "clienthistory",
+//             element: <ClientHistory />,
+//           },
+//         ],
+//       },
+//     ],
+//   },
+// ]);
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <ApiProvider>
-    <CustomReducerProvider>
-      <RouterProvider router={router} />
-    </CustomReducerProvider>
-  </ApiProvider>
-);
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(
+//   <ApiProvider>
+//     <CustomReducerProvider>
+//       <RouterProvider router={router} />
+//     </CustomReducerProvider>
+//   </ApiProvider>
+// );
