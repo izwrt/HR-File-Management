@@ -1,6 +1,5 @@
 function BusinessUnitHomePageCards({ unit }) {
   const first = unit.name.split(" ", 1);
-  console.log(first);
   return (
     <div className=" w-full py-4">
       <div

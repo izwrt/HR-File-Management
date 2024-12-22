@@ -1,11 +1,10 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState,useCallback} from "react";
 import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   Navigate,
   RouterProvider,
-  useLocation,
-  Outlet
+  Outlet,
 } from "react-router-dom";
 import ChangePassword from "./components/auth/ChangePassword";
 import Login from "./components/auth/Login";
@@ -37,40 +36,18 @@ import { NavContextProvide } from "./utils/useContext/NavContext";
 import Notifications from "./components/pages/Notifications.jsx";
 import { useNavigate } from "react-router-dom";
 import axios from '../api/axios.js';
-
-
+import HelperLogin from "./utils/Helperlogin.jsx";
 
 const AppLoyout = () => {
 
-
-
-  const navigate = useNavigate();
-
-  const CHECK_URL = "/api/v1/user/get-me";
-
+  const getMe = HelperLogin();
   useEffect(() => {
-
-    const checkAuth = async () => {
-      try {
-        const response = await axios.get(CHECK_URL, {
-          withCredentials: true,
-        });
-        console.log('User data:', response.data);
-        navigate('/');
-      } catch (err) {
-        console.error('Error:', err);
-        navigate('/login');
-      }
-    };
-    
-    checkAuth();
-  }, []);
+       getMe();
+  }, [getMe]); 
 
   return(
         <div className="app">
-          <CustomReducerProvider>
              <Outlet/>
-          </CustomReducerProvider>
          </div>
 )
 
@@ -108,7 +85,13 @@ const AppLoyout = () => {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(<RouterProvider router={appRouter}/>);
+root.render(
+  <CustomReducerProvider>
+    <RouterProvider 
+      router={appRouter}
+    />
+  </CustomReducerProvider>
+);
 
 // --------------------------------------------------------------------------------
 

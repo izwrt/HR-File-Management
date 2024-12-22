@@ -1,26 +1,27 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { loginApi } from "../../../api/loginApi";
 import CustomReducerContext from "../../utils/useContext/CustomReducerContext";
 import LoginTextBox from "../common/LoginTextBox";
 import LoginButton from "../common/LoginButton";
-import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import HelperLogin from "../../utils/Helperlogin";
 
-const Login = () => {
-  const { state, dispatch } = useContext(CustomReducerContext);
-  const navigate = useNavigate();
+  const Login = () => {
+    const { state, dispatch } = useContext(CustomReducerContext);
+    const Navigate = useNavigate();
+    const getMe = HelperLogin();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const { success, data } = await loginApi(state.email, state.password);
-    dispatch({ type: "isAuthoticated", payload: success });
+    console.log(getMe)
 
-    if (success) {
-      navigate('/');
-    }
-    console.log(data);
-  };
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      const { success } = await loginApi(state.email, state.password);
+      dispatch({ type: "isAuthoticated", payload: success });
 
-  
+      if (success) {
+        await getMe();
+      }
+    };
 
   return (
     <div className="w-screen h-screen flex justify-center p-20">

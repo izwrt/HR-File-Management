@@ -4,8 +4,13 @@ import ReminderCard from "../common/ReminderContainer";
 import SeeAll from "../common/SeeAll";
 import UnitsNav from "../common/UnitsNav";
 import UnitsStatus from "../common/UnitsStatus";
+import CustomReducerContext from "../../utils/useContext/CustomReducerContext";
+import { useContext } from "react";
 
 const Home = () => {
+  const { state, dispatch } = useContext(CustomReducerContext);
+
+  console.log(state);
   return (
     <div className=" w-screen mt-16">
       <div className="2xl:px-32">
