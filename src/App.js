@@ -40,8 +40,10 @@ import HelperLogin from "./utils/Helperlogin.jsx";
 
 const AppLoyout = () => {
 
+  const { state, dispatch } = useContext(CustomReducerContext);
   const getMe = HelperLogin();
-  const [loading, setLoading] = useState(true); // Local loading state
+  const [loading, setLoading] = useState(true); 
+  const Navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,13 +54,12 @@ const AppLoyout = () => {
   }, [getMe]);
 
   if (loading) {
-    return <div></div>; 
+    return <div>loading</div>; 
   }
-  
 
   return(
         <div className="app">
-             <Outlet/>
+          <Outlet/>  
          </div>
 )
 }
@@ -71,7 +72,7 @@ const AppLoyout = () => {
       children: [
         {
           path: 'login',
-          element: <Login />,
+          element:<Login />,
         },
         {
           path: '/',

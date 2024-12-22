@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect,useState } from "react";
 import { loginApi } from "../../../api/loginApi";
 import CustomReducerContext from "../../utils/useContext/CustomReducerContext";
 import LoginTextBox from "../common/LoginTextBox";
@@ -10,12 +10,17 @@ import HelperLogin from "../../utils/Helperlogin";
     const { state, dispatch } = useContext(CustomReducerContext);
     const navigate = useNavigate();
     const getMe = HelperLogin();
+    const [loading, setLoading] = useState(true);
 
-    if (state.token) {
-      navigate("/", { replace: true });
-      return null;
-    }
-    
+    useEffect(() => {
+      if (state.token) {
+        // If already logged in, redirect to home page
+        navigate("/", { replace: true });
+      } else {
+        setLoading(false); // Set loading to false when check is complete
+      }
+    }, [state.token, navigate]);
+
     const handleSubmit = async (e) => {
       e.preventDefault();
       const { success } = await loginApi(state.email, state.password);
@@ -25,6 +30,10 @@ import HelperLogin from "../../utils/Helperlogin";
         await getMe();
       }
     };
+
+    if (loading) {
+      return <div>Loading...</div>; // Or show a loading spinner
+    }
 
   return (
     <div className="w-screen h-screen flex justify-center p-20">
