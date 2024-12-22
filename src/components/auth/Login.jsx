@@ -14,10 +14,9 @@ import HelperLogin from "../../utils/Helperlogin";
 
     useEffect(() => {
       if (state.token) {
-        // If already logged in, redirect to home page
         navigate("/", { replace: true });
       } else {
-        setLoading(false); // Set loading to false when check is complete
+        setLoading(false); 
       }
     }, [state.token, navigate]);
 
@@ -32,7 +31,7 @@ import HelperLogin from "../../utils/Helperlogin";
     };
 
     if (loading) {
-      return <div>Loading...</div>; // Or show a loading spinner
+      return <div>Loading...</div>; 
     }
 
   return (
