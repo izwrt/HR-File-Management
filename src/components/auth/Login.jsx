@@ -8,11 +8,14 @@ import HelperLogin from "../../utils/Helperlogin";
 
   const Login = () => {
     const { state, dispatch } = useContext(CustomReducerContext);
-    const Navigate = useNavigate();
+    const navigate = useNavigate();
     const getMe = HelperLogin();
 
-    console.log(getMe)
-
+    if (state.token) {
+      navigate("/", { replace: true });
+      return null;
+    }
+    
     const handleSubmit = async (e) => {
       e.preventDefault();
       const { success } = await loginApi(state.email, state.password);

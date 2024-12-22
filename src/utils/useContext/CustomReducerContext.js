@@ -69,7 +69,7 @@ const initialValue = {
   confirmPassword: null,
   currentPassword: null,
   code:null,
-  token: '',
+  token: false,
 };
 
 const CustomReducerContext = createContext();

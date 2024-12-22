@@ -17,8 +17,7 @@ function HelperLogin () {
           const response = await axios.get(CHECK_URL, {
             withCredentials: true,
           });
-          dispatch({ type: "token", payload: response.data });
-          navigate("/", { replace: true });
+          dispatch({ type: "token", payload: true });
         } catch (err) {
           console.error("Error:", err);
           navigate("/login");

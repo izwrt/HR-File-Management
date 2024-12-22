@@ -41,16 +41,26 @@ import HelperLogin from "./utils/Helperlogin.jsx";
 const AppLoyout = () => {
 
   const getMe = HelperLogin();
+  const [loading, setLoading] = useState(true); // Local loading state
+
   useEffect(() => {
-       getMe();
-  }, [getMe]); 
+    const fetchData = async () => {
+      await getMe();
+      setLoading(false); 
+    };
+    fetchData();
+  }, [getMe]);
+
+  if (loading) {
+    return <div></div>; 
+  }
+  
 
   return(
         <div className="app">
              <Outlet/>
          </div>
 )
-
 }
 
   const appRouter = createBrowserRouter([
