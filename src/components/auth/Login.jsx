@@ -20,6 +20,8 @@ import HelperLogin from "../../utils/Helperlogin";
       }
     }, [state.token, navigate]);
 
+
+
     const handleSubmit = async (e) => {
       e.preventDefault();
       const { success } = await loginApi(state.email, state.password);
@@ -30,9 +32,13 @@ import HelperLogin from "../../utils/Helperlogin";
       }
     };
 
+
+
     if (loading) {
       return <div>Loading...</div>; 
     }
+
+    
 
   return (
     <div className="w-screen h-screen flex justify-center p-20">
