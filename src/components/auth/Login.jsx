@@ -1,18 +1,44 @@
-import { useContext } from "react";
+import { useContext, useEffect,useState } from "react";
 import { loginApi } from "../../../api/loginApi";
 import CustomReducerContext from "../../utils/useContext/CustomReducerContext";
 import LoginTextBox from "../common/LoginTextBox";
 import LoginButton from "../common/LoginButton";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import HelperLogin from "../../utils/Helperlogin";
 
-const Login = () => {
-  const { state, dispatch } = useContext(CustomReducerContext);
+  const Login = () => {
+    const { state, dispatch } = useContext(CustomReducerContext);
+    const navigate = useNavigate();
+    const getMe = HelperLogin();
+    const [loading, setLoading] = useState(true);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const { success, data } = await loginApi(state.email, state.password);
-    dispatch({ type: "isAuthoticated", payload: success });
-  };
+    useEffect(() => {
+      if (state.token) {
+        navigate("/", { replace: true });
+      } else {
+        setLoading(false); 
+      }
+    }, [state.token, navigate]);
+
+
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      const { success } = await loginApi(state.email, state.password);
+      dispatch({ type: "isAuthoticated", payload: success });
+
+      if (success) {
+        await getMe();
+      }
+    };
+
+
+
+    if (loading) {
+      return <div>Loading...</div>; 
+    }
+
+    
 
   return (
     <div className="w-screen h-screen flex justify-center p-20">

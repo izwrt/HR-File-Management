@@ -1,4 +1,5 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
+import axios from "../../../api/axios";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -47,9 +48,16 @@ function reducer(state, action) {
         ...state,
         currentPassword: action.payload,
       };
+
+      case "token":  // Adding token action
+  return {
+    ...state,
+    token: action.payload,
+  };
+
     default:
       return state;
-  }
+  };
 }
 
 const initialValue = {
@@ -68,9 +76,8 @@ const CustomReducerContext = createContext();
 
 export const CustomReducerProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialValue);
-
   return (
-    <CustomReducerContext.Provider value={{ state, dispatch }}>
+    <CustomReducerContext.Provider value={{ state, dispatch}}>
       {children}
     </CustomReducerContext.Provider>
   );
