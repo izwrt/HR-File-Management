@@ -147,6 +147,7 @@ function Notifications() {
             employeeName={employee.employeeName}
             department={employee.department}
             documentsToBeUploaded={employee.documentsToBeUploaded}
+
             timePosted={employee.timePosted}
             employeeImage={employee.employeeImage}
             employeeId={employee.employeeId}
