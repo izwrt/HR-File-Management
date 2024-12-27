@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState,useCallback} from "react";
+import React, { useContext, useEffect, useState, useCallback } from "react";
 import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
@@ -31,7 +31,9 @@ import Dashboard from "./components/pages/Dashboard";
 import Home from "./components/pages/Home";
 import ViewEmployeeDetails from "./components/pages/ViewEmployeeDetails";
 import { ApiProvider } from "./utils/useContext/ApiContext";
-import CustomReducerContext,{ CustomReducerProvider } from "./utils/useContext/CustomReducerContext";
+import CustomReducerContext, {
+  CustomReducerProvider,
+} from "./utils/useContext/CustomReducerContext";
 import { NavContextProvide } from "./utils/useContext/NavContext";
 import Notifications from "./components/pages/Notifications.jsx";
 import { useNavigate } from "react-router-dom";
@@ -39,68 +41,151 @@ import axios from '../api/axios.js';
 import HelperLogin from "./utils/HelperLogin.jsx"
 
 const AppLoyout = () => {
-
   const { state, dispatch } = useContext(CustomReducerContext);
   const getMe = HelperLogin();
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
   const Navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       await getMe();
-      setLoading(false); 
+      setLoading(false);
     };
     fetchData();
   }, [getMe]);
 
   if (loading) {
-    return <div>loading</div>; 
+    return <div>loading</div>;
   }
 
-  return(
-        <div className="app">
-          <Outlet/>  
-         </div>
-)
-}
+  return (
+    <div className="app flex w-screen">
+      <CustomOutlate />
+    </div>
+  );
+};
 
-  const appRouter = createBrowserRouter([
-    {
-      path: '/',
-      element: <AppLoyout/>,
-      
-      children: [
-        {
-          path: 'login',
-          element:<Login />,
-        },
-        {
-          path: '/',
-          element: <Home />,
-        },
-        {
-          path: 'setpassword',
-          element: <SetPassword />,
-        },
-        // {
-        //   path: 'box',
-        //   element: <MainDashboardCard />,
-        // },
-        // {
-        //   path: 'auth',
-        //   element: <Authontications />,
-        // },
-      ],
-    },
-  ]);
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLoyout />,
+    children: [
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/setpassword",
+        element: <SetPassword />,
+      },
+      {
+        path: "/changepassword",
+        element: <ChangePassword />,
+      },
+      {
+        path: "/addrecovery",
+        element: <PasswordRecovery />,
+      },
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/businessunit",
+        element: <BusinessUnit />,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "/addEmployee",
+        element: <AddEmployee />,
+      },
+      {
+        path: "/notifications",
+        element: <Notifications />,
+      },
+      {
+        path: "/viewemployee/:id",
+        element: (
+          <NavContextProvide>
+            <ViewEmployeeDetails />
+          </NavContextProvide>
+        ),
+        children: [
+          // {
+          //   index: true,
+          //   element: <Navigate to="about"/>
+          // },
+          {
+            path: "about",
+            element: <About />,
+          },
+          {
+            path: "interview",
+            element: <Interview />,
+          },
+          {
+            path: "salaryslip",
+            element: <SalarySlip />,
+          },
+          {
+            path: "salarydiscussion",
+            element: <SalarySlip />,
+          },
+          {
+            path: "salarydiscussion",
+            element: <SalaryDiscussion />,
+          },
+          {
+            path: "offerconfirmation",
+            element: <OfferConfirmation />,
+          },
+          {
+            path: "offerletter",
+            element: <OfferLetter />,
+          },
+          {
+            path: "onboarding",
+            element: <OnBoarding />,
+          },
+          {
+            path: "verifybackground",
+            element: <VerifyBackground />,
+          },
+          {
+            path: "performanceappraisal",
+            element: <PerformanceAppraisal />,
+          },
+          {
+            path: "certification",
+            element: <Certification />,
+          },
+          {
+            path: "hrscreening",
+            element: <HrScreening />,
+          },
+          ,
+          {
+            path: "exitformalities",
+            element: <ExitFormalities />,
+          },
+          {
+            path: "clienthistory",
+            element: <ClientHistory />,
+          },
+        ],
+      },
+    ],
+  },
+]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <CustomReducerProvider>
-    <RouterProvider 
-      router={appRouter}
-    />
+    <RouterProvider router={appRouter} />
   </CustomReducerProvider>
 );
 

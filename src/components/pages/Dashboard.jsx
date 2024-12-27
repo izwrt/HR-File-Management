@@ -11,9 +11,21 @@ import SettingsPopup from "../common/SettingsPopup";
 import CountContainerShimmer from "../common/SImmerComponents/CountContainerShimmer";
 import EmployeeCardShimmer from "../common/SImmerComponents/EmployeeCardShimmer";
 import NodataFound from "../common/NodataFound";
+import axios from "../../../api/axios";
 
 function Dashboard() {
-  const { employees, shimmerState } = apiFecthEmployees();
+  const [employees, setEmployees] = useState([]);
+  useEffect(() => {
+    const apiEmployees = async () => {
+      const response = await axios.get("/api/v1/employee/get-all-employees", {
+        withCredentials: true,
+      });
+      console.log(response.data);
+      setEmployees(response.data);
+    };
+    apiEmployees();
+  }, []);
+
   const [searchEmployee, setSearchEmployee] = useState("");
   const [selectedUnits, setSelectedUnits] = useState([]);
   const [selectedDepartment, setSelectedDepartment] = useState([]);
@@ -32,11 +44,11 @@ function Dashboard() {
     setIsExiting(true);
   };
   const activeEmployeesCount = employees.filter((emp) => {
-    return emp.status === "Active";
+    return emp.status === 1;
   }).length;
 
   const inActiveEmployeesCount = employees.filter((emp) => {
-    return emp.status === "Inactive";
+    return emp.status === 2;
   }).length;
 
   const closePopUp = () => {
@@ -73,8 +85,8 @@ function Dashboard() {
     return employees.filter((emp) => {
       const searchMatch =
         searchEmployee === "" ||
-        emp.name.toLowerCase().includes(searchEmployee.toLowerCase()) ||
-        emp.empid.toString().includes(searchEmployee);
+        emp.firstName.toLowerCase().includes(searchEmployee.toLowerCase()) ||
+        emp.employeeId.toString().includes(searchEmployee);
 
       const unitMatch =
         selectedUnits.length === 0 || selectedUnits.includes(emp.unit);
@@ -107,7 +119,7 @@ function Dashboard() {
               largeNumber={activeEmployeesCount}
             />
             <CountContainer
-              smallText={`Inactive Employees`}
+              smallText={`Active / Idle Employees`}
               largeNumber={inActiveEmployeesCount}
             />
           </div>
@@ -119,9 +131,7 @@ function Dashboard() {
         )}
         <div className="xl:h-[35rem] 2xl:h-[44rem] pb-5 md:h-[900px]  w-full">
           <div
-            className={`bg-white rounded-lg w-full flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 snap-scroll-d overflow-y-auto overflow scroll-smooth scroll-padding ${
-              shimmerState && "xl:overflow-hidden"
-            }`}
+            className={`bg-white rounded-lg w-full flex flex-col gap-3 h-full shadow-sm border-solid border border-slate-100 shadow-gray-200 snap-scroll-d overflow-y-auto overflow scroll-smooth scroll-padding`}
           >
             <div className="bg-white backdrop-blur-sm  z-10 sticky top-0 rounded-lg w-full">
               <div className="flex items-center justify-between flex-grow px-5">
@@ -140,6 +150,7 @@ function Dashboard() {
                       className="w-full focus:outline-none textbox-color custom-font-mavan-pro opacity-80"
                       placeholder="Search"
                       onChange={handleInputChange}
+                      autoComplete="off"
                     />
                   </label>
                   <CiFilter className="size-7 opacity-40" onClick={openPopUp} />
@@ -148,7 +159,7 @@ function Dashboard() {
             </div>
 
             <div className="w-full h-full px-5">
-              {isLoading || shimmerState ? (
+              {isLoading ? (
                 <div className="grid sm:grid-cols-1 grid-cols-2 2xl:grid-cols-3 gap-y-8 gap-x-5 pb-14">
                   {Array.from({ length: 15 }).map((_, index) => (
                     <EmployeeCardShimmer key={index} />
@@ -159,9 +170,10 @@ function Dashboard() {
                   {filteredemployees.map((employee) => (
                     <EmployeeCard
                       key={employee.id}
-                      image={employee.empImg}
-                      name={employee.name}
-                      id={employee.empid}
+                      image={employee.employeeImage}
+                      firstName={employee.firstName}
+                      lastName={employee.lastName}
+                      id={employee.employeeId}
                       department={employee.department}
                     />
                   ))}
@@ -175,9 +187,7 @@ function Dashboard() {
       </div>
       <div className="w-full 2xl:w-[700px]  xl:h-[766px] 2xl:h-[924px] pb-5 md:hidden flex items-center justify-center py-9 ">
         <div
-          className={` bg-white w-full rounded-lg overflow-y-auto overflow h-full snap-scroll shadow-sm border-solid border ${
-            shimmerState && "xl:overflow-hidden"
-          } border-slate-100 shadow-gray-20 2xl:pb-10 xl:pb-28`}
+          className={` bg-white w-full rounded-lg overflow-y-auto overflow h-full snap-scroll shadow-sm border-solid border border-slate-100 shadow-gray-20 2xl:pb-10 xl:pb-28`}
         >
           <div className="sticky top-0 z-10 px-5 bg-white">
             <div className="font-semibold  text-base   custom-font-mavan-pro opactiy-80">
@@ -190,18 +200,18 @@ function Dashboard() {
             </div>
           </div>
           <div className="relative px-5 py-4 ">
-            {!shimmerState ? (
-              employees.length !== 0 ? (
+            {true ? (
+              employees.length < 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8 gap-y-8 ">
                   {employees.map(
                     (employee) =>
                       employee.admin && (
                         <AdminCard
-                          key={employee.empid}
-                          name={employee.name}
-                          empid={employee.empid}
+                          key={employee.id}
+                          name={employee.firstName}
+                          empid={employee.employeeId}
                           department={employee.department}
-                          empImg={employee.empImg}
+                          empImg={employee.employeeImage}
                           admin={employee.admin}
                         />
                       )

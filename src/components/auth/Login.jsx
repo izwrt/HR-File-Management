@@ -1,4 +1,4 @@
-import { useContext, useEffect,useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { loginApi } from "../../../api/loginApi";
 import CustomReducerContext from "../../utils/useContext/CustomReducerContext";
 import LoginTextBox from "../common/LoginTextBox";
@@ -6,39 +6,36 @@ import LoginButton from "../common/LoginButton";
 import { NavLink, useNavigate } from "react-router-dom";
 import HelperLogin from "../../utils/HelperLogin"
 
-  const Login = () => {
-    const { state, dispatch } = useContext(CustomReducerContext);
-    const navigate = useNavigate();
-    const getMe = HelperLogin();
-    const [loading, setLoading] = useState(true);
+const Login = () => {
+  const { state, dispatch } = useContext(CustomReducerContext);
+  const navigate = useNavigate();
+  const getMe = HelperLogin();
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-      if (state.token) {
-        navigate("/", { replace: true });
-      } else {
-        setLoading(false); 
-      }
-    }, [state.token, navigate]);
-
-
-
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      const { success } = await loginApi(state.email, state.password);
-      dispatch({ type: "isAuthoticated", payload: success });
-
-      if (success) {
-        await getMe();
-      }
-    };
-
-
-
-    if (loading) {
-      return <div>Loading...</div>; 
+  useEffect(() => {
+    if (state.token) {
+      navigate("/", { replace: true });
+    } else {
+      setLoading(false);
     }
+  }, [state.token, navigate]);
 
-    
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { success, data } = await loginApi(state.email, state.password);
+    dispatch({ type: "isAuthoticated", payload: success });
+    dispatch({ type: "tokenData", payload: data });
+
+    if (success) {
+      await getMe();
+      dispatch({ type: "email", payload: "" });
+      dispatch({ type: "password", payload: "" });
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="w-screen h-screen flex justify-center p-20">
@@ -72,7 +69,7 @@ import HelperLogin from "../../utils/HelperLogin"
           <LoginButton>Login</LoginButton>
           <NavLink
             className="text-customBlue font-semibold text-lg"
-            to="/setpassword"
+            to="https://account.live.com/ResetPassword.aspx"
           >
             Forgot Password ?
           </NavLink>
