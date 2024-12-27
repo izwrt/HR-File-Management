@@ -124,6 +124,7 @@ export default function BusinessUnit() {
                   className="w-full focus:outline-none textbox-color custom-font-mavan-pro opacity-80"
                   placeholder="Search"
                   onChange={debouncedHandleChange}
+                  autoComplete="off"
                 />
               </label>
               <CiFilter onClick={onOpen} className="size-7 opacity-40" />

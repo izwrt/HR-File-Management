@@ -55,11 +55,13 @@
 // -----------------------------------------------------------------------------------------
 
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Bellicon from "../../assets/images/bellicon.jsx";
 import SettingsPopup from "./SettingsPopup";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate, useNavigation } from "react-router-dom";
+import { RiLogoutBoxRLine } from "react-icons/ri";
+import CustomReducerContext from "../../utils/useContext/CustomReducerContext.js";
 
 const employees = [
   {
@@ -139,8 +141,10 @@ const employees = [
 const Header = ({ openMenu, setOpenMenu, menuOpen, location }) => {
   const [isExiting, setIsExiting] = useState(false);
   const [popUp, setPopUp] = useState(false);
+  const { state, dispatch } = useContext(CustomReducerContext);
 
   const [empImg, setEmpImg] = useState("N");
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -168,6 +172,19 @@ const Header = ({ openMenu, setOpenMenu, menuOpen, location }) => {
       setPopUp(false);
     }, 300);
     setIsExiting(false);
+  };
+
+  const callLogoutApi = async () => {
+    const response = await axios.post(
+      "http://localhost:5000/api/v1/user/logout-user",
+      {},
+      { withCredentials: true }
+    );
+
+    if (response.status === 200) {
+      dispatch({ type: "token", payload: false });
+      navigate("/login");
+    }
   };
 
   const { pathname } = location;
@@ -248,6 +265,9 @@ const Header = ({ openMenu, setOpenMenu, menuOpen, location }) => {
                 </div>
               </span>
             </div>
+            <li className="nav-hover" onClick={callLogoutApi}>
+              <RiLogoutBoxRLine size={23} />
+            </li>
           </ul>
           <div className="h-12 w-12 overflow-hidden rounded-full border-[1.5px] transition ease-out delay-100 hover:scale-105 cursor-pointer">
             <img
