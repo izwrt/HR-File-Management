@@ -31,6 +31,15 @@
   font-style: normal;
 }
 
+.heading-text {
+  color:#253858
+ 
+}
+
+.font-weight{
+  font-weight: 600;
+}
+
 .no-data-found-text {
   color: #e4e2e2;
 }

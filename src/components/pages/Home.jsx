@@ -14,19 +14,19 @@ const Home = () => {
   return (
     <div className=" w-screen mt-16">
       <div className="2xl:px-32">
-        <h1 className="custom-font-mavan-pro font-bold text-lg p-3 mt-3 pl-12 homeFontColor opacity-70">
+        <h1 className="custom-font-mavan-pro font-weight text-xl p-3 mt-3 pl-12 heading-text opacity-80">
           Important Reminders
         </h1>
         <ReminderCard />
         <div className="flex mt-10 py-3">
-        <h1 className="custom-font-mavan-pro font-bold text-lg pl-12 homeFontColor  opacity-70 w-full">
+        <h1 className="custom-font-mavan-pro font-weight text-xl pl-12 heading-text  opacity-80 w-full">
           Business Unit Status
         </h1>
         <SeeAll />
         </div>
         <UnitsStatus />
         <div className="flex mt-10 py-3">
-        <h1 className="custom-font-mavan-pro font-bold text-lg pl-12 homeFontColor opacity-70 w-full">
+        <h1 className="custom-font-mavan-pro font-weight text-xl pl-12 heading-text opacity-80 w-full">
           Business Units
         </h1>
 
