@@ -32,12 +32,12 @@ function reducer(state, action) {
         ...state,
         changePassword: action.payload,
       };
-      case "code":
-        return {
-          ...state,
-          code: action.payload,
-        };
-  
+    case "code":
+      return {
+        ...state,
+        code: action.payload,
+      };
+
     case "confirmPassword":
       return {
         ...state,
@@ -49,15 +49,20 @@ function reducer(state, action) {
         currentPassword: action.payload,
       };
 
-      case "token":  // Adding token action
-  return {
-    ...state,
-    token: action.payload,
-  };
+    case "token": // Adding token action
+      return {
+        ...state,
+        token: action.payload,
+      };
 
+    case "tokenData":
+      return {
+        ...state,
+        tokenData: action.payload,
+      };
     default:
       return state;
-  };
+  }
 }
 
 const initialValue = {
@@ -68,8 +73,9 @@ const initialValue = {
   changePassword: null,
   confirmPassword: null,
   currentPassword: null,
-  code:null,
+  code: null,
   token: false,
+  tokenData: null,
 };
 
 const CustomReducerContext = createContext();
@@ -77,7 +83,7 @@ const CustomReducerContext = createContext();
 export const CustomReducerProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialValue);
   return (
-    <CustomReducerContext.Provider value={{ state, dispatch}}>
+    <CustomReducerContext.Provider value={{ state, dispatch }}>
       {children}
     </CustomReducerContext.Provider>
   );

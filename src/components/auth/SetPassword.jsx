@@ -1,12 +1,10 @@
 import React from "react";
-import { useReducer,useContext } from "react";
+import { useReducer, useContext } from "react";
 import LoginButton from "../common/LoginButton";
 import LoginTextBox from "../common/LoginTextBox";
-import CustomReducerContext from '../../utils/useContext/CustomReducerContext';
-
+import CustomReducerContext from "../../utils/useContext/CustomReducerContext";
 
 const SetPassword = () => {
-  
   const { state, dispatch } = useContext(CustomReducerContext);
 
   const initialValue = {
@@ -15,7 +13,6 @@ const SetPassword = () => {
     confirmPassword: null,
     isTrue: true,
   };
- 
 
   return (
     <div className="w-screen h-screen flex justify-center">
