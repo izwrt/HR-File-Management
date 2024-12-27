@@ -30,7 +30,7 @@ const SetPassword = () => {
 
           <LoginTextBox
             isTrue={state.isTrue}
-            placeholder={"Change Password"}
+            placeholder={"New Password"}
             type={"password"}
             name={"changePassword"}
             dispatch={dispatch}

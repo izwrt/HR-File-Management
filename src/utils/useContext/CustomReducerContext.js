@@ -22,16 +22,20 @@ function reducer(state, action) {
       };
 
     case "employeeId":
-      return {
-        ...state,
-        employeeId: action.payload,
-      };
+      if (/^\d*$/.test(action.payload)) {
+        return {
+          ...state,
+          employeeId: action.payload,
+        };
+      }
+      return state;
 
     case "changePassword":
       return {
         ...state,
         changePassword: action.payload,
       };
+
     case "code":
       return {
         ...state,
