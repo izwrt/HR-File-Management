@@ -36,12 +36,11 @@ import CustomReducerContext, {
 } from "./utils/useContext/CustomReducerContext";
 import { NavContextProvide } from "./utils/useContext/NavContext";
 import Notifications from "./components/pages/Notifications.jsx";
-import { useNavigate } from "react-router-dom";
-import axios from '../api/axios.js';
-import HelperLogin from "./utils/HelperLogin.jsx"
+import { useNavigate, Navigate } from "react-router-dom";
+import axios from "../api/axios.js";
+import HelperLogin from "./utils/HelperLogin.jsx";
 
 const AppLoyout = () => {
-  const { state, dispatch } = useContext(CustomReducerContext);
   const getMe = HelperLogin();
   const [loading, setLoading] = useState(true);
   const Navigate = useNavigate();
@@ -65,6 +64,15 @@ const AppLoyout = () => {
   );
 };
 
+const ProtectedRoute = ({ children }) => {
+  const { state, dispatch } = useContext(CustomReducerContext);
+  if (!state.token) {
+    return <Navigate to="/login" replace />;
+  } else {
+    return children;
+  }
+};
+
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -75,12 +83,16 @@ const appRouter = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/setpassword",
+        path: "/setpassword/:employeeId",
         element: <SetPassword />,
       },
       {
         path: "/changepassword",
-        element: <ChangePassword />,
+        element: (
+          <ProtectedRoute>
+            <ChangePassword />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/addrecovery",
@@ -88,29 +100,51 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/",
-        element: <Home />,
+        element: (
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/businessunit",
-        element: <BusinessUnit />,
+        element: (
+          <ProtectedRoute>
+            <BusinessUnit />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: (
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        ),
       },
       {
-        path: "/addEmployee",
-        element: <AddEmployee />,
+        path: "/addemployee",
+        element: (
+          <ProtectedRoute>
+            <AddEmployee />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/notifications",
-        element: <Notifications />,
+        element: (
+          <ProtectedRoute>
+            <Notifications />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/viewemployee/:id",
         element: (
           <NavContextProvide>
-            <ViewEmployeeDetails />
+            <ProtectedRoute>
+              <ViewEmployeeDetails />
+            </ProtectedRoute>
           </NavContextProvide>
         ),
         children: [

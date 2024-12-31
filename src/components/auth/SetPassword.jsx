@@ -3,12 +3,17 @@ import { useReducer, useContext } from "react";
 import LoginButton from "../common/LoginButton";
 import LoginTextBox from "../common/LoginTextBox";
 import CustomReducerContext from "../../utils/useContext/CustomReducerContext";
+import { useParams } from "react-router-dom";
+import { decryptEmployeeId } from "../../utils/decryptEmployeeId";
 
 const SetPassword = () => {
   const { state, dispatch } = useContext(CustomReducerContext);
+  const { employeeId } = useParams();
+
+  const decryptedEmployeeId = decryptEmployeeId(employeeId);
+  console.log("decrypted id is " + decryptedEmployeeId);
 
   const initialValue = {
-    employeeId: null,
     changePassword: null,
     confirmPassword: null,
     isTrue: true,
@@ -25,7 +30,8 @@ const SetPassword = () => {
             type={"text"}
             name={"employeeId"}
             dispatch={dispatch}
-            value={state.employeeId || ""}
+            value={decryptedEmployeeId}
+            read={true}
           />
 
           <LoginTextBox
@@ -35,6 +41,7 @@ const SetPassword = () => {
             name={"changePassword"}
             dispatch={dispatch}
             value={state.changePassword || ""}
+            read={false}
           />
           <LoginTextBox
             isTrue={state.isTrue}
@@ -43,6 +50,7 @@ const SetPassword = () => {
             name={"confirmPassword"}
             dispatch={dispatch}
             value={state.confirmPassword || ""}
+            read={false}
           />
         </div>
         <div className="mt-4 p-4 w-full flex justify-center items-center flex-col gap-8">

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 function AddEmployeeLogo() {
   return (
     <NavLink
-      to="/addEmployee"
+      to="/addemployee"
       className={({ isActive }) =>
         ` ${
           isActive

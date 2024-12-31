@@ -25,6 +25,7 @@ const ChangePassword = () => {
             name={"currentPassword"}
             dispatch={dispatch}
             value={state.currentPassword || ""}
+            read={false}
           />
 
           <LoginTextBox
@@ -34,6 +35,7 @@ const ChangePassword = () => {
             name={"changePassword"}
             dispatch={dispatch}
             value={state.changePassword || ""}
+            read={false}
           />
           <LoginTextBox
             isTrue={state.isTrue}
@@ -42,6 +44,7 @@ const ChangePassword = () => {
             name={"confirmPassword"}
             dispatch={dispatch}
             value={state.confirmPassword || ""}
+            read={false}
           />
         </div>
         <div className="mt-4 p-4 w-full flex justify-center items-center flex-col gap-8">

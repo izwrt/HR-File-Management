@@ -32,11 +32,10 @@
 }
 
 .heading-text {
-  color:#253858
- 
+  color: #253858;
 }
 
-.font-weight{
+.font-weight {
   font-weight: 600;
 }
 
@@ -310,4 +309,15 @@
 .carousel-container {
   display: flex;
   transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scale-card {
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.scale-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 }
