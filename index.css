@@ -319,5 +319,5 @@
 
 .scale-card:hover {
   transform: scale(1.1);
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
 }

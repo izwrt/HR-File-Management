@@ -1,10 +1,32 @@
 import { useState } from "react";
+import axios from "../../../api/axios";
 
 function AdminCard({ name, empid, department, empImg, admin }) {
-  const [isChecked, setIsChecked] = useState(admin);
+  const [isChecked, setIsChecked] = useState(admin ?? false);
+  const empId = empid;
+
+  const sendMail = async () => {
+    const response = await axios.post(`/api/v1/user/register-user/${empId}`, {
+      withCredentials: true,
+    });
+    return response;
+  };
 
   const handleToggle = () => {
-    setIsChecked((prev) => !prev);
+    setIsChecked(async (prev) => {
+      const newState = !prev;
+
+      if (newState) {
+        const response = await axios.post(
+          `/api/v1/user/register-user/${empId}`,
+          {},
+          {
+            withCredentials: true,
+          }
+        );
+        alert(response.data.message);
+      }
+    });
   };
   return (
     <div className="flex items-center px-3 py-2 card-color card-shadow rounded-lg custom-font-mavan-pro scroll-cards">

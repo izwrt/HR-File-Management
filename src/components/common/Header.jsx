@@ -183,7 +183,7 @@ const Header = ({ openMenu, setOpenMenu, menuOpen, location }) => {
 
     if (response.status === 200) {
       dispatch({ type: "token", payload: false });
-      navigate("/login");
+      navigate("/login", { replace: true });
     }
   };
 

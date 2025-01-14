@@ -4,13 +4,14 @@ import CustomReducerContext from "../../utils/useContext/CustomReducerContext";
 import LoginTextBox from "../common/LoginTextBox";
 import LoginButton from "../common/LoginButton";
 import { NavLink, useNavigate } from "react-router-dom";
-import HelperLogin from "../../utils/HelperLogin"
+import HelperLogin from "../../utils/HelperLogin";
 
 const Login = () => {
   const { state, dispatch } = useContext(CustomReducerContext);
   const navigate = useNavigate();
   const getMe = HelperLogin();
   const [loading, setLoading] = useState(true);
+  const [success, setSuccess] = useState(true);
 
   useEffect(() => {
     if (state.token) {
@@ -23,6 +24,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { success, data } = await loginApi(state.email, state.password);
+    setSuccess(success);
     dispatch({ type: "isAuthoticated", payload: success });
     dispatch({ type: "tokenData", payload: data });
 
@@ -64,6 +66,10 @@ const Login = () => {
             value={state.password || ""}
           />
         </div>
+
+        {!success && (
+          <div className="text-red-500 h-0">Incorrect Email or Password</div>
+        )}
 
         <div className=" flex flex-col items-center h-[120px] w-[90%] gap-8  mt-6">
           <LoginButton>Login</LoginButton>

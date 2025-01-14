@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useState, useCallback } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useState,
+  useCallback,
+  useRef,
+} from "react";
 import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
@@ -21,7 +27,6 @@ import OfferConfirmation from "./components/common/ViewEmpSubPages/OfferConfirma
 import OfferLetter from "./components/common/ViewEmpSubPages/OfferLetter.jsx";
 import OnBoarding from "./components/common/ViewEmpSubPages/OnBoarding.jsx";
 import PerformanceAppraisal from "./components/common/ViewEmpSubPages/PerformanceAppraisal.jsx";
-import PopContent from "./components/common/ViewEmpSubPages/PopContent.jsx";
 import SalaryDiscussion from "./components/common/ViewEmpSubPages/SalaryDiscussion.jsx";
 import SalarySlip from "./components/common/ViewEmpSubPages/SalarySlip";
 import VerifyBackground from "./components/common/ViewEmpSubPages/VerifyBackground.jsx";
@@ -30,20 +35,24 @@ import BusinessUnit from "./components/pages/BusinessUnit";
 import Dashboard from "./components/pages/Dashboard";
 import Home from "./components/pages/Home";
 import ViewEmployeeDetails from "./components/pages/ViewEmployeeDetails";
-import { ApiProvider } from "./utils/useContext/ApiContext";
 import CustomReducerContext, {
   CustomReducerProvider,
 } from "./utils/useContext/CustomReducerContext";
 import { NavContextProvide } from "./utils/useContext/NavContext";
 import Notifications from "./components/pages/Notifications.jsx";
 import { useNavigate, Navigate } from "react-router-dom";
-import axios from "../api/axios.js";
 import HelperLogin from "./utils/HelperLogin.jsx";
+import tabVisibility from "./utils/tabVisibility.js";
+import ProtectedRoute from "./utils/ProtectedRoute.jsx";
 
 const AppLoyout = () => {
   const getMe = HelperLogin();
   const [loading, setLoading] = useState(true);
   const Navigate = useNavigate();
+  const { state, dispatch } = useContext(CustomReducerContext);
+  const tabVisible = tabVisibility();
+
+  // const tokenExpiryRef = useRef(state.tokenExpiry);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,6 +61,34 @@ const AppLoyout = () => {
     };
     fetchData();
   }, [getMe]);
+
+  // const refreshApi = async () => {
+  //   const response = await axios.post(
+  //     "/api/v1/user/refresh-token",
+  //     {},
+  //     { withCredentials: true }
+  //   );
+  //   if (response.status === 200) {
+  //     dispatch({ type: "tokenExpiry", payload: Date.now() + 14 * 60 * 1000 });
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   tokenExpiryRef.current = state.tokenExpiry;
+  // }, [state.tokenExpiry]);
+
+  // useEffect(() => {
+  //   const sixtySecondInterval = setInterval(() => {
+  //     if (tokenExpiryRef.current <= Date.now()) {
+  //       console.log("Token is expired");
+  //       refreshApi();
+  //     } else {
+  //       console.log("Token is not expired");
+  //     }
+  //   }, 60000);
+
+  //   return () => clearInterval(sixtySecondInterval);
+  // }, []);
 
   if (loading) {
     return <div>loading</div>;
@@ -64,14 +101,14 @@ const AppLoyout = () => {
   );
 };
 
-const ProtectedRoute = ({ children }) => {
-  const { state, dispatch } = useContext(CustomReducerContext);
-  if (!state.token) {
-    return <Navigate to="/login" replace />;
-  } else {
-    return children;
-  }
-};
+// const ProtectedRoute = ({ children }) => {
+//   const { state, dispatch } = useContext(CustomReducerContext);
+//   if (!state.token) {
+//     return <Navigate to="/login" replace />;
+//   } else {
+//     return children;
+//   }
+// };
 
 const appRouter = createBrowserRouter([
   {

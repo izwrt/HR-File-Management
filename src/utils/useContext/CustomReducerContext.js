@@ -59,6 +59,12 @@ function reducer(state, action) {
         token: action.payload,
       };
 
+    case "tokenExpiry":
+      return {
+        ...state,
+        tokenExpiry: action.payload,
+      };
+
     case "tokenData":
       return {
         ...state,
@@ -80,6 +86,7 @@ const initialValue = {
   code: null,
   token: false,
   tokenData: null,
+  tokenExpiry: null,
 };
 
 const CustomReducerContext = createContext();

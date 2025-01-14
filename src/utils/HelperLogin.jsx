@@ -17,6 +17,7 @@ function HelperLogin() {
         withCredentials: true,
       });
       dispatch({ type: "token", payload: true });
+      dispatch({ type: "tokenExpiry", payload: Date.now() + 14 * 60 * 1000 });
     } catch (err) {
       console.error("Error:", err);
       // navigate("/login");

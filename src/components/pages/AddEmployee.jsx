@@ -13,7 +13,9 @@ function AddEmployee() {
   const inputRef = useRef(null);
   const photoRef = useRef(null);
   const resumeRef = useRef(null);
-  const [profilePhoto, setProfilePhoto] = useState();
+  const [passportPhotoFile, setPassportPhotoFile] = useState("");
+  const [resumePhotoFile, setResumePhotoFile] = useState("");
+  const [profileImage, setProfileImage] = useState(null);
 
   const handleChangeDateOfBirth = (date) => {
     setDateOfBirth(date);
@@ -39,24 +41,62 @@ function AddEmployee() {
     resumeRef.current.click();
   };
 
+  const handlePassportFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setPassportPhotoFile(file.name);
+    }
+  };
+
+  const handleResumeFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setResumePhotoFile(file.name);
+    }
+  };
+
+  const handlePhotoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        setProfileImage(reader.result);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <div className="mt-16 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit pl-8 pr-12 md:pl-5 md:pr-6 gap-8 custom-font-mavan-pro">
       <div className="my-9">
         <div className="font-bold text-md">Add Employee</div>
         <div className="rounded-lg bg-white shadow-sm border-solid border border-slate-100 shadow-gray-20 mt-2 overflow-auto">
           <div className="flex items-start justify-between p-8 ">
-            {profilePhoto ? (
-              <input src={profilePhoto} />
+            <input
+              type="file"
+              className="hidden"
+              ref={inputRef}
+              onChange={handlePhotoChange}
+            />
+            {profileImage ? (
+              <div
+                className="flex items-center justify-center cursor-pointer relative "
+                onClick={callRef}
+              >
+                <img
+                  src={profileImage}
+                  className="w-[95px] h-[95px] rounded-full border-2"
+                ></img>
+              </div>
             ) : (
-              <>
-                <input type="file" className="hidden" ref={inputRef} />
-                <div
-                  className="flex items-center justify-center cursor-pointer relative "
-                  onClick={callRef}
-                >
-                  <Setting_Employee />
-                </div>
-              </>
+              <div
+                className="flex items-center justify-center cursor-pointer relative "
+                onClick={callRef}
+              >
+                <Setting_Employee />
+              </div>
             )}
             <div className="flex flex-col items-center gap-5">
               <p className="font-color">Active Status</p>
@@ -87,6 +127,16 @@ function AddEmployee() {
               idName="personalEmail"
               type="text"
             />
+            <div className="flex flex-col">
+              <label className="text-sm font-light">Gender</label>
+              <select className=" mt-2 px-2 pt-2.5 pb-3 rounded-lg  border-2 border-[#D9D9D9] focus:outline-none text-sm">
+                <option value="" disabled selected hidden>
+                  Select Gender
+                </option>
+                <option value="option1">Male</option>
+                <option value="option2">Female</option>
+              </select>
+            </div>
             <InputField
               fieldName="Blood Group"
               idName="bloodGroup"
@@ -139,12 +189,15 @@ function AddEmployee() {
                 onClick={callInputElement}
               >
                 <MdUploadFile size="24" color="gray" />
-                <span className="text-sm text-gray-500 pl-1">Upload Photo</span>
+                <span className="text-sm text-gray-500 pl-1">
+                  {passportPhotoFile ? passportPhotoFile : "Upload Photo"}
+                </span>
                 <input
                   type="file"
                   id="passportSizePhoto"
                   className="hidden"
                   ref={photoRef}
+                  onChange={handlePassportFileChange}
                 />
               </div>
             </div>
@@ -163,13 +216,14 @@ function AddEmployee() {
               >
                 <MdUploadFile size="24" color="gray" />
                 <span className="text-sm text-gray-500 pl-1">
-                  Upload Resume
+                  {resumePhotoFile ? resumePhotoFile : "Upload Resume"}
                 </span>
                 <input
                   type="file"
                   id="resumePhoto"
                   className="hidden "
                   ref={resumeRef}
+                  onChange={handleResumeFileChange}
                 />
               </div>
             </div>
@@ -188,6 +242,9 @@ function AddEmployee() {
             <div className="flex flex-col">
               <label className="text-sm font-light">Business Units</label>
               <select className=" mt-2 px-2 pt-2.5 pb-3 rounded-lg  border-2 border-[#D9D9D9] focus:outline-none text-sm">
+                <option value="" disabled selected hidden>
+                  Select Business Unit
+                </option>
                 <option value="option1">Option1</option>
                 <option value="option2">Option2</option>
                 <option value="option3">Option3</option>
@@ -196,6 +253,9 @@ function AddEmployee() {
             <div className="flex flex-col">
               <label className="text-sm font-light">Clients</label>
               <select className="mt-2 px-2 pt-2.5 pb-3 rounded-lg border-2 border-[#D9D9D9] focus:outline-none text-sm">
+                <option value="" disabled selected hidden>
+                  Select Client
+                </option>
                 <option value="option1">Option1</option>
                 <option value="option2">Option2</option>
                 <option value="option3">Option3</option>

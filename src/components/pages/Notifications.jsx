@@ -1,9 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import BlueButton from "../common/BlueButton";
 import NotificationComponent from "../common/NotificationComponent";
 import { GrLinkPrevious } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
 import NotificationComponent from "../common/NotificationComponent";
+import { CiFilter, CiSearch } from "react-icons/ci";
+import debounce from "lodash.debounce";
+import NotificationShimmer from "../common/SImmerComponents/NotificationShimmer";
 
 const employees = [
   {
@@ -100,10 +103,28 @@ const employees = [
 
 function Notifications() {
   const [empData, setEmpData] = useState([]);
+  const [searchEmployee, setSearchEmployee] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setIsLoading(false);
+    setSearchEmployee(e.target.value);
+  };
+
+  const debouncedHandleChange = useMemo(() => {
+    return debounce((event) => {
+      handleChange(event);
+    }, 300);
+  }, []);
+
+  const handleInputChange = (e) => {
+    setIsLoading(true);
+    debouncedHandleChange(e);
+  };
 
   useEffect(() => {
     setEmpData(employees.map((emp) => ({ ...emp, checked: false })));
-  },[])
+  }, []);
 
   const navigate = useNavigate();
 
@@ -111,50 +132,91 @@ function Notifications() {
     navigate(-1);
   };
 
+  const filteredEmployees = useMemo(() => {
+    return empData.filter((emp) => {
+      const searchMatch =
+        searchEmployee === "" ||
+        emp.employeeName.toLowerCase().includes(searchEmployee.toLowerCase()) ||
+        emp.employeeId.toString().includes(searchEmployee);
+
+      return searchMatch;
+    });
+  }, [employees, searchEmployee, empData]);
+  console.log("krkrS");
+
   const selectEmployee = (e) => {
-    const {id, checked} = e.target;
-    if(id === "SelectAllEmp") {
-      setEmpData(empData.map(emp => ({...emp, checked: checked})))
+    const { id, checked } = e.target;
+    if (id === "SelectAllEmp") {
+      setEmpData(empData.map((emp) => ({ ...emp, checked: checked })));
     } else {
-      const tempEmployee = empData.map(emp => parseInt(id) === emp?.id ? {...emp, checked: checked} : {...emp});
+      const tempEmployee = empData.map((emp) =>
+        parseInt(id) === emp?.id ? { ...emp, checked: checked } : { ...emp }
+      );
       setEmpData(tempEmployee);
     }
-  }
-
-
+  };
 
   return (
-    <div className="relative mt-20 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit pl-8 pr-12 md:pl-5 md:pr-6">
-      <GrLinkPrevious onClick={handlePreviousPage} className="cursor-pointer" />
-      <div className=" border-2 text-black w-full h-12 mt-4 grid grid-cols-[auto_1fr_1fr_1fr_1fr_1fr] items-center justify-start opacity-80">
+    <div className="relative mt-20 ml-[220px] 2xl:ml-[230px] md:ml-0 h-fit pl-8 pr-12 md:pl-5 md:pr-6 pb-4">
+      <div className="flex flex-row items-center justify-between">
+        <GrLinkPrevious
+          onClick={handlePreviousPage}
+          className="cursor-pointer"
+        />
+        <span className="flex gap-1 items-center">
+          <label
+            htmlFor="search"
+            className="border border-slate-200 flex w-[200px] items-center p-[2px] px-[6px] gap-1.5 textbox-color"
+          >
+            <CiSearch className="size-5 stroke-1 h-fit opacity-40" />
+            <input
+              type="text"
+              name="search"
+              className="w-full focus:outline-none textbox-color custom-font-mavan-pro opacity-80"
+              placeholder="Search"
+              onChange={handleInputChange}
+              autoComplete="off"
+            />
+          </label>
+        </span>
+      </div>
+
+      <div className=" border-2 text-black w-full h-12 mt-4 grid grid-cols-[auto_2fr_1fr_1.5fr_1fr_1fr] items-center justify-start opacity-80 bg-gray-100">
         <input
           type="checkbox"
           className="w-5 h-5 mx-6 appearance-none checked:bg-green-500 border-2 border-gray-400 rounded-lg"
           onChange={selectEmployee}
-          checked = { empData.every(emp => emp?.checked )}
+          checked={empData.every((emp) => emp?.checked)}
           id="SelectAllEmp"
         ></input>
         <div className="font-extralight">Employee Name / (id)</div>
         <div></div>
         <div className="font-extralight">Department</div>
-        <div className="font-extralight">Documents Yet To Be Uploaded</div>
+        <div className="font-extralight">Upload Pending </div>
       </div>
       <div className="overflow-y-auto">
-        {empData.map(( employee ) => (
-          <NotificationComponent
-            key={employee.id}
-            empid={employee.id}
-            employeeName={employee.employeeName}
-            department={employee.department}
-            documentsToBeUploaded={employee.documentsToBeUploaded}
-
-            timePosted={employee.timePosted}
-            employeeImage={employee.employeeImage}
-            employeeId={employee.employeeId}
-            checked={employee.checked}
-            selectEmployee={selectEmployee}
-          />
-        ))}
+        {isLoading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2  md:mt-8">
+            {Array.from({ length: 10 }).map((_, index) => (
+              <NotificationShimmer key={index} />
+            ))}
+          </div>
+        ) : (
+          filteredEmployees.map((employee) => (
+            <NotificationComponent
+              key={employee.id}
+              empid={employee.id}
+              employeeName={employee.employeeName}
+              department={employee.department}
+              documentsToBeUploaded={employee.documentsToBeUploaded}
+              timePosted={employee.timePosted}
+              employeeImage={employee.employeeImage}
+              employeeId={employee.employeeId}
+              checked={employee.checked}
+              selectEmployee={selectEmployee}
+            />
+          ))
+        )}
       </div>
     </div>
   );

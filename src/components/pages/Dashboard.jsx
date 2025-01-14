@@ -20,11 +20,13 @@ function Dashboard() {
       const response = await axios.get("/api/v1/employee/get-all-employees", {
         withCredentials: true,
       });
-      console.log(response.data);
-      setEmployees(response.data);
+      console.log(response.data.data);
+      setEmployees(response.data.data);
     };
     apiEmployees();
   }, []);
+
+  console.log(employees);
 
   const [searchEmployee, setSearchEmployee] = useState("");
   const [selectedUnits, setSelectedUnits] = useState([]);

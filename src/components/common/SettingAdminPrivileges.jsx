@@ -1,39 +1,49 @@
-import debounce from 'lodash.debounce';
+import debounce from "lodash.debounce";
 import React, { useEffect, useMemo, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import apiFecthEmployees from "../../../api/apiFecthEmployees";
 import AdminCard from "../common/AdminCard";
+import axios from "../../../api/axios";
 
 const SettingAdminPrivileges = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [employees1, setEmployees1] = useState([]);
 
-  const [searchTerm, setSearchTerm] = useState(""); 
+  const { adminUsers, employees } = apiFecthEmployees();
 
-  const {adminUsers,employees} = apiFecthEmployees();
-
-
-
+  useEffect(() => {
+    const apiEmployees = async () => {
+      const response = await axios.get("/api/v1/employee/get-all-employees", {
+        withCredentials: true,
+      });
+      console.log(response.data);
+      setEmployees1(response.data);
+    };
+    apiEmployees();
+  }, []);
 
   const searchHandler = (e) => {
     setSearchTerm(e.target.value);
-  }
+  };
 
   const filteredEmployees = employees
-  .filter((emp) => emp.department === "HR" && (
-    emp.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    emp.empid.includes(searchTerm)
-  ))
-  .sort((a, b) => (b.admin ? 1 : 0) - (a.admin ? 1 : 0));
+    .filter(
+      (emp) =>
+        emp.department === "HR" &&
+        (emp.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          emp.empid.includes(searchTerm))
+    )
+    .sort((a, b) => (b.admin ? 1 : 0) - (a.admin ? 1 : 0));
 
   console.log("searched : ", filteredEmployees);
 
-const searchDebounce = useMemo(() => debounce(searchHandler, 200), []);
+  const searchDebounce = useMemo(() => debounce(searchHandler, 200), []);
 
-useEffect(() => {
-  return () => {
-    searchDebounce.cancel();
-  };
-}, [searchDebounce]);
-
+  useEffect(() => {
+    return () => {
+      searchDebounce.cancel();
+    };
+  }, [searchDebounce]);
 
   return (
     <div className="w-3/4 pl-6 custom-font-mavan-pro">
@@ -47,30 +57,29 @@ useEffect(() => {
             type="text"
             name="search"
             autoComplete="off"
-            
-            onChange={searchDebounce} 
+            onChange={searchDebounce}
             className="w-full focus:outline-none textbox-color custom-font-mavan-pro opacity-80"
             placeholder="Search"
           />
         </label>
-        {adminUsers == null ? (
+        {/* {adminUsers == null ? (
           <p>No Data Found</p>
-        ) : adminUsers.length === 0 ? (<p>Loading</p>) :
-        (
-          <div className="flex flex-col gap-7 ">
-            {filteredEmployees.map((user) => (
-              <AdminCard
-                key={user.empid}
-                name={user.name}
-                empid={user.empid}
-                department={user.department}
-                enabled={user.admin}
-                empImg = {user.empImg}
-              />
-            ))}
-          </div>
-        )
-        }
+        ) : adminUsers.length === 0 ? (
+          <p>Loading</p>
+        ) : ( */}
+        <div className="flex flex-col gap-7 ">
+          {employees1.map((user) => (
+            <AdminCard
+              key={user.id}
+              name={user.firstName}
+              empid={user.employeeId}
+              department={user.department}
+              enabled={user.admin}
+              empImg={user.empImg}
+            />
+          ))}
+        </div>
+        {/* )} */}
       </div>
     </div>
   );
